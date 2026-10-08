@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ОГЭ Физика</title>
+<style>
+:root{--p:#0284c7;--g:#0ea5e9;--gs:#e0f2fe;--t:#0c4a6e;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(2,132,199,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#020617;
+background-image:
+  radial-gradient(circle at 20% 30%,rgba(99,102,241,.35),transparent 35%),
+  radial-gradient(circle at 80% 20%,rgba(236,72,153,.2),transparent 30%),
+  radial-gradient(circle at 60% 80%,rgba(34,211,238,.25),transparent 35%),
+  linear-gradient(180deg,#020617 0%,#1e1b4b 50%,#0f172a 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+box-shadow:inset 0 0 120px rgba(99,102,241,.15)}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(2,132,199,.12);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(2,132,199,.06)}
+.logo{font-weight:800;font-size:1.2rem}.logo span{background:linear-gradient(135deg,#0284c7,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:flex;gap:14px;font-size:.9rem;font-weight:600}.stat.xp{color:#0369a1}.stat.streak{color:#ea580c}
+.tabs{display:flex;gap:8px;padding:16px 16px 0;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.7);border:2px solid transparent;cursor:pointer;color:var(--ts);font-family:inherit}
+.tab.active{background:#fff;border-color:var(--p);color:var(--p);box-shadow:var(--sh)}
+.hero{padding:24px 20px 20px;text-align:center;max-width:560px;margin:0 auto}
+.hero h1{font-size:clamp(1.4rem,5vw,1.85rem);margin-bottom:8px}.hero p{color:var(--ts);font-size:.95rem}
+.path{max-width:560px;margin:0 auto;padding:12px 16px 40px}.path.hidden{display:none}
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(2,132,199,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#e0f2fe,#bae6fd)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#e0f2fe;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#0284c7,#0ea5e9);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #7dd3fc;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.quiz-box{background:linear-gradient(145deg,#f0f9ff,#e0f2fe);border:1.5px solid #7dd3fc;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#075985;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#f0f9ff}
+.opt.correct{border-color:#10b981;background:#d1fae5;color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(14,165,233,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(2,132,199,.1);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:90}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem;color:var(--ts);padding:4px 10px;background:none;border:none;font-family:inherit;cursor:pointer}
+.bnav-item.active{color:var(--p);font-weight:600}.bnav-item span{font-size:1.3rem}
+.xp-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fff;border-radius:24px;padding:28px 36px;box-shadow:0 25px 60px rgba(2,132,199,.25);text-align:center;z-index:200;opacity:0;pointer-events:none;transition:all .3s}
+.xp-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}.xp-popup .big{font-size:2.8rem;margin-bottom:6px}
+.overlay{position:fixed;inset:0;background:rgba(12,74,110,.45);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}.overlay.show{opacity:1;pointer-events:auto}
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px}
+.duo-module{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0369a1;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0c4a6e;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#0ea5e9,#0284c7);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0369a1}
+.duo-mascot{font-size:2.5rem;margin:8px 0}
+.var-result{margin-top:12px;padding:12px;border-radius:12px;font-weight:600;display:none}
+.var-result.show{display:block}
+.var-result.good{background:#d1fae5;color:#065f46}
+.var-result.mid{background:#fef3c7;color:#92400e}
+.var-result.bad{background:#fee2e2;color:#991b1b}
+.ans-input{width:100%;max-width:280px;padding:12px 14px;border:2px solid #7dd3fc;border-radius:12px;font-size:1.05rem;font-family:inherit;margin-top:8px;background:#fff}
+.ans-input:focus{outline:none;border-color:#0284c7}
+.ans-input.ok{border-color:#10b981;background:#ecfdf5}
+.ans-input.bad{border-color:#ef4444;background:#fef2f2}
+.correct-ans{margin-top:6px;font-size:.9rem;color:#065f46;font-weight:600;display:none}
+.correct-ans.show{display:block}
+.exam-task{margin:20px 0;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0}
+.exam-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;background:#0284c7;color:#fff;border-radius:8px;font-weight:800;font-size:.9rem;margin-right:8px}
+.exam-title{font-size:.85rem;color:#075985;font-weight:600;margin-bottom:8px}
+.exam-text{font-size:.95rem;line-height:1.55;margin:8px 0}
+.ans-row{margin-top:10px}
+.ans-row label{font-size:.85rem;color:#64748b;display:block;margin-bottom:4px}
+.check-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(2,132,199,.3)}
+.check-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.warn-box{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.9rem;color:#9a3412}
+
+.bottom-nav{z-index:100}
+body{padding-bottom:70px}
+
+.home-btn{
+  display:flex;align-items:center;justify-content:center;
+  margin:12px 16px 8px;
+  padding:14px 18px;
+  font-size:1.05rem;font-weight:800;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(79,70,229,.35);
+  letter-spacing:.01em;
+}
+.home-btn:active{transform:scale(.98);opacity:.95}
+
+
+
+
+/* Duolingo-style sequential lesson */
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none;animation:duoFade .3s ease}
+.lesson .duo-step.active{display:block}
+@keyframes duoFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{
+  display:flex;gap:4px;margin:0 0 12px;padding:0 2px;
+}
+.duo-progress i{
+  flex:1;height:6px;border-radius:99px;background:#e2e8f0;
+  transition:background .25s;
+}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.25)}
+.duo-nav{
+  display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;
+}
+.duo-nav .duo-next{
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.3);
+}
+.duo-nav .duo-next:disabled{opacity:.5;cursor:default}
+.duo-nav .duo-skip{
+  padding:14px 14px;border-radius:14px;border:2px solid #e2e8f0;
+  background:#fff;font-weight:700;color:#64748b;cursor:pointer;
+}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.lesson.duo-mode .q-item{margin:0;border:none;padding:0;background:transparent}
+.duo-step-label{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:#7c3aed;margin-bottom:8px;
+}
+.duo-finish{
+  text-align:center;padding:20px 12px;
+  background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px;
+}
+.duo-finish .big{font-size:1.5rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none !important;animation:duoFade .28s ease}
+.lesson .duo-step.active{display:block !important}
+@keyframes duoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{display:flex;gap:4px;margin:0 0 12px}
+.duo-progress i{flex:1;height:7px;border-radius:99px;background:#e2e8f0;transition:background .25s}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.3)}
+.duo-nav{display:flex;gap:10px;margin-top:14px;position:sticky;bottom:72px;z-index:5}
+.duo-nav .duo-next{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1.05rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
+.duo-nav .duo-next:disabled{opacity:.45}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.duo-step-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7c3aed;margin-bottom:8px}
+.duo-finish{text-align:center;padding:22px 12px;background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px}
+.duo-finish .big{font-size:1.45rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+
+
+/* subject-theme-physics */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='8' y='28' font-size='15' fill='%237c3aed' opacity='0.08'%3EF%3Dma%3C/text%3E%3Ctext x='50' y='65' font-size='14' fill='%234f46e5' opacity='0.07'%3EE%3Dmc%C2%B2%3C/text%3E%3Ctext x='15' y='105' font-size='13' fill='%2306b6d4' opacity='0.07'%3EV%3DIR%3C/text%3E%3Ctext x='80' y='40' font-size='12' fill='%238b5cf6' opacity='0.06'%3Ep%3Dmv%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+
+</style>
+</head>
+<body data-subject="physics">
+<div class="topbar">
+  <a href="../index.html" class="back">←</a>
+  <div class="topbar-title">ОГЭ Физика</div>
+  <div class="topbar-stats"><span>⚡ <b id="xpCount">0</b></span> <span>🔥 <b id="streakCount">0</b></span></div>
+</div>
+<a class="home-btn" href="../index.html">← Главное меню</a>
+<div class="tabs">
+  <button class="tab active" data-tab="main" onclick="switchTab('main')">📋 ОГЭ</button>
+  <button class="tab" data-tab="duo" onclick="switchTab('duo')">🎮 Практика</button>
+  <button class="tab" data-tab="hard" onclick="switchTab('hard')">🔥 Сложные</button>
+  <button class="tab" data-tab="vars" onclick="switchTab('vars')">📝 Варианты</button>
+</div>
+<div class="content">
+<div class="path" id="path-main">
+  <div class="hero">
+    <h1>ОГЭ по физике</h1>
+    <p>С нуля: механика, тепло, электричество, оптика. Для тех, кто много пропускал.</p>
+  </div>
+
+  <div class="unit open" data-unit="p0">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📋</div>
+      <div class="unit-info">
+        <h3>Структура ОГЭ</h3>
+        <p>С нуля</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p0">
+        <div class="theory"><p>ОГЭ по физике проверяет понимание явлений, умение читать графики и таблицы, применять формулы и решать качественные задачи. Основные разделы: <strong>механика</strong>, <strong>тепловые явления</strong>, <strong>электричество и магнетизм</strong>, <strong>оптика</strong>, <strong>квантовые и атомные явления</strong> (на базовом уровне).</p><p>Готовьтесь с нуля: сначала смысл величин и единиц СИ, затем формулы и типовые сюжеты задач. На экзамене часто дают график зависимости пути от времени, вольт-амперную характеристику, схему цепи.</p><p>Стратегия: переведите условие на язык величин, вспомните закон, подставьте единицы. Не бойтесь качественных вопросов «что изменится, если…» — рассуждайте по формуле или по определению.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ОГЭ по физике включает?</div><div class="opts"><button class="opt" data-v="1">Механику, тепло, электричество, оптику</button><button class="opt" data-v="2">Только астрономию</button><button class="opt" data-v="3">Только биологию</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">СИ единица силы?</div><div class="opts"><button class="opt" data-v="1">Ньютон</button><button class="opt" data-v="2">Джоуль</button><button class="opt" data-v="3">Ватт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость при равномерном?</div><div class="opts"><button class="opt" data-v="1">s/t</button><button class="opt" data-v="2">ma</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=ma — закон?</div><div class="opts"><button class="opt" data-v="1">II Ньютона</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt — это?</div><div class="opts"><button class="opt" data-v="1">Нагревание</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Сила тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R —?</div><div class="opts"><button class="opt" data-v="1">Закон Ома</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила в?</div><div class="opts"><button class="opt" data-v="1">Диоптриях</button><button class="opt" data-v="2">Ньютонах</button><button class="opt" data-v="3">Паскалях</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Работа тока?</div><div class="opts"><button class="opt" data-v="1">IUt</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">mv</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление?</div><div class="opts"><button class="opt" data-v="1">F/S</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кинетическая энергия?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">I²R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">График s(t) горизонтален — тело?</div><div class="opts"><button class="opt" data-v="1">Покоится</button><button class="opt" data-v="2">Падает</button><button class="opt" data-v="3">Ускоряется</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельно напряжение?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Всегда ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно ток?</div><div class="opts"><button class="opt" data-v="1">Одинаков</button><button class="opt" data-v="2">Разный всегда</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">λ=v/ν —?</div><div class="opts"><button class="opt" data-v="1">Длина волны</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Протон в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Электронной оболочке только</button><button class="opt" data-v="3">Вакууме линзы</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,10)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚙️</div>
+      <div class="unit-info">
+        <h3>Механика</h3>
+        <p>~250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p1">
+        <div class="theory"><p><strong>Механика</strong> описывает движение и взаимодействие тел. Путь — длина траектории, перемещение — вектор от начальной точки к конечной. Скорость \(v=s/t\) при равномерном движении; ускорение \(a=\Delta v/t\). При равноускоренном движении \(v=v_0+at\), \(s=v_0 t+rac{1}{2}at^2\).</p><p>Сила измеряется в ньютонах. Второй закон Ньютона: \(F=ma\). Сила тяжести \(F=mg\), вес — сила, с которой тело давит на опору. Сила трения препятствует движению; сила упругости по закону Гука \(F=kx\). Давление \(p=F/S\).</p><p>Работа \(A=Fs\coslpha\), мощность \(N=A/t\), кинетическая энергия \(E_k=rac{mv^2}{2}\), потенциальная \(E_p=mgh\). Импульс \(p=mv\). На ОГЭ важно читать графики \(s(t)\), \(v(t)\) и понимать, где тело покоится, ускоряется или движется равномерно.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">v=s/t при?</div><div class="opts"><button class="opt" data-v="1">Равномерном движении</button><button class="opt" data-v="2">Только падении</button><button class="opt" data-v="3">Только покое</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ускорение —?</div><div class="opts"><button class="opt" data-v="1">Δv/t</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=ma?</div><div class="opts"><button class="opt" data-v="1">II Ньютона</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вес — сила?</div><div class="opts"><button class="opt" data-v="1">На опору/подвес</button><button class="opt" data-v="2">Трения в воздухе всегда 0</button><button class="opt" data-v="3">Только на Луне</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=kx?</div><div class="opts"><button class="opt" data-v="1">Гука</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Ньютона III</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление?</div><div class="opts"><button class="opt" data-v="1">F/S</button><button class="opt" data-v="2">F·S</button><button class="opt" data-v="3">s/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A=Fs (при cos0)?</div><div class="opts"><button class="opt" data-v="1">Работа</button><button class="opt" data-v="2">Мощность</button><button class="opt" data-v="3">Импульс</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N=A/t?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Работа</button><button class="opt" data-v="3">Сила</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ek=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ep=?</div><div class="opts"><button class="opt" data-v="1">mgh</button><button class="opt" data-v="2">mv²/2</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Импульс?</div><div class="opts"><button class="opt" data-v="1">mv</button><button class="opt" data-v="2">m/v</button><button class="opt" data-v="3">v/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">g≈?</div><div class="opts"><button class="opt" data-v="1">10 м/с²</button><button class="opt" data-v="2">10 м/с</button><button class="opt" data-v="3">10 Н</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Горизонтальный s(t)?</div><div class="opts"><button class="opt" data-v="1">Покой</button><button class="opt" data-v="2">Ускорение</button><button class="opt" data-v="3">Свободное падение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Наклон s(t) больше —?</div><div class="opts"><button class="opt" data-v="1">Скорость больше</button><button class="opt" data-v="2">Масса больше</button><button class="opt" data-v="3">Заряд больше</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица работы?</div><div class="opts"><button class="opt" data-v="1">Джоуль</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Ампер</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌡️</div>
+      <div class="unit-info">
+        <h3>Тепловые явления</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p2">
+        <div class="theory"><p>Температура связана со средней кинетической энергией молекул. Тепловое движение хаотично. Способы изменения внутренней энергии: работа и теплопередача (теплопроводность, конвекция, излучение).</p><p>Количество теплоты при нагревании \(Q=cm\Delta t\), где \(c\) — удельная теплоёмкость. При плавлении \(Q=\lambda m\), при парообразовании \(Q=Lm\). Уравнение теплового баланса: отданное тепло равно полученному (в идеальном случае).</p><p>Агрегатные состояния: твёрдое, жидкое, газообразное. Плавление и кристаллизация, кипение и конденсация идут при постоянной температуре для чистого вещества при данном давлении. На ОГЭ часто дают график нагревания и просят указать участки плавления или кипения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt?</div><div class="opts"><button class="opt" data-v="1">Нагрев без перехода</button><button class="opt" data-v="2">Плавление</button><button class="opt" data-v="3">Кипение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плавление Q=?</div><div class="opts"><button class="opt" data-v="1">λm</button><button class="opt" data-v="2">cmΔt</button><button class="opt" data-v="3">Lm только для нагрева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Парообразование?</div><div class="opts"><button class="opt" data-v="1">Lm</button><button class="opt" data-v="2">λm</button><button class="opt" data-v="3">cmΔt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Теплопроводность —?</div><div class="opts"><button class="opt" data-v="1">Передача тепла</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Сила Ампера</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Конвекция в?</div><div class="opts"><button class="opt" data-v="1">Жидкостях и газах</button><button class="opt" data-v="2">Вакууме</button><button class="opt" data-v="3">Только металлах кристалла</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">На графике нагрева плато —?</div><div class="opts"><button class="opt" data-v="1">Плавление/кипение</button><button class="opt" data-v="2">Равномерный нагрев</button><button class="opt" data-v="3">Покой тела</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Удельная теплоёмкость c —?</div><div class="opts"><button class="opt" data-v="1">Q/(mΔt)</button><button class="opt" data-v="2">F/S</button><button class="opt" data-v="3">U/I</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Внутренняя энергия растёт при?</div><div class="opts"><button class="opt" data-v="1">Нагреве/работе над телом</button><button class="opt" data-v="2">Только охлаждении</button><button class="opt" data-v="3">Только покое</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кипение идёт при?</div><div class="opts"><button class="opt" data-v="1">Постоянной T (для чистого)</button><button class="opt" data-v="2">Любой T сразу</button><button class="opt" data-v="3">Только 0°C</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Излучение — способ?</div><div class="opts"><button class="opt" data-v="1">Теплопередачи</button><button class="opt" data-v="2">Создания заряда</button><button class="opt" data-v="3">Измерения тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Агрегат твердый→жидкий?</div><div class="opts"><button class="opt" data-v="1">Плавление</button><button class="opt" data-v="2">Конденсация</button><button class="opt" data-v="3">Сублимация наоборот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Баланс тепла?</div><div class="opts"><button class="opt" data-v="1">Отдали = получили</button><button class="opt" data-v="2">Всегда Q=0</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица Q?</div><div class="opts"><button class="opt" data-v="1">Джоуль</button><button class="opt" data-v="2">Ватт</button><button class="opt" data-v="3">Ампер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Молекулы при нагреве?</div><div class="opts"><button class="opt" data-v="1">Движутся быстрее</button><button class="opt" data-v="2">Останавливаются</button><button class="opt" data-v="3">Исчезают</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Δt в формуле —?</div><div class="opts"><button class="opt" data-v="1">Изменение температуры</button><button class="opt" data-v="2">Время только</button><button class="opt" data-v="3">Путь</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚡</div>
+      <div class="unit-info">
+        <h3>Электричество</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p3">
+        <div class="theory"><p>Электрический заряд; закон сохранения заряда. Ток — направленное движение зарядов; сила тока \(I=q/t\). Напряжение \(U=A/q\). Сопротивление проводника \(R=
+ho l/S\). Закон Ома для участка цепи: \(I=U/R\).</p><p>Последовательное соединение: ток один, напряжения складываются, \(R=R_1+R_2\). Параллельное: напряжение одно, токи складываются, \(1/R=1/R_1+1/R_2\). Работа тока \(A=IUt\), мощность \(P=IU=I^2R=U^2/R\).</p><p>Магнитное поле действует на проводник с током (сила Ампера) и на движущийся заряд. Электромагнитная индукция: при изменении магнитного потока в контуре возникает ток. На ОГЭ умейте собирать простую цепь «на словах» и считать ток, напряжение, сопротивление.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">I=q/t?</div><div class="opts"><button class="opt" data-v="1">Сила тока</button><button class="opt" data-v="2">Напряжение</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ом: I=?</div><div class="opts"><button class="opt" data-v="1">U/R</button><button class="opt" data-v="2">U·R</button><button class="opt" data-v="3">R/U</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">R=ρl/S — длиннее провод?</div><div class="opts"><button class="opt" data-v="1">R больше</button><button class="opt" data-v="2">R меньше</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно R?</div><div class="opts"><button class="opt" data-v="1">Складываются</button><button class="opt" data-v="2">Уменьшаются как 1/R</button><button class="opt" data-v="3">Всегда равны U</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельно U?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=IU?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Заряд</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A=IUt?</div><div class="opts"><button class="opt" data-v="1">Работа тока</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Давление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица I?</div><div class="opts"><button class="opt" data-v="1">Ампер</button><button class="opt" data-v="2">Вольт</button><button class="opt" data-v="3">Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица U?</div><div class="opts"><button class="opt" data-v="1">Вольт</button><button class="opt" data-v="2">Ампер</button><button class="opt" data-v="3">Ватт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица R?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Джоуль</button><button class="opt" data-v="3">Ньютон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Короткое замыкание —?</div><div class="opts"><button class="opt" data-v="1">Очень малый R</button><button class="opt" data-v="2">Бесконечный R</button><button class="opt" data-v="3">Разрыв</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Два R подряд 2Ом и 3Ом — R?</div><div class="opts"><button class="opt" data-v="1">5 Ом</button><button class="opt" data-v="2">1 Ом</button><button class="opt" data-v="3">6 Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Магнит действует на?</div><div class="opts"><button class="opt" data-v="1">Ток/движ. заряд</button><button class="opt" data-v="2">Неподвижный нейтральный пылинку без тока</button><button class="opt" data-v="3">Только свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Индукция — ток при?</div><div class="opts"><button class="opt" data-v="1">Изменении потока</button><button class="opt" data-v="2">Постоянном всём</button><button class="opt" data-v="3">Только нагреве</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=U²/R при росте U?</div><div class="opts"><button class="opt" data-v="1">P растёт</button><button class="opt" data-v="2">P падает</button><button class="opt" data-v="3">P=0</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔦</div>
+      <div class="unit-info">
+        <h3>Оптика</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p4">
+        <div class="theory"><p>Свет распространяется прямолинейно в однородной среде. Закон отражения: угол падения равен углу отражения. Преломление: при переходе в другую среду луч меняет направление; \(n=rac{\sin i}{\sin r}\) (относительно воздуха для многих задач школьного уровня).</p><p>Линзы: собирающая и рассеивающая. Фокус, фокусное расстояние \(F\), оптическая сила \(D=1/F\) (в диоптриях, \(F\) в метрах). Формула тонкой линзы: \(rac{1}{F}=rac{1}{d}+rac{1}{f}\), где \(d\) — расстояние до предмета, \(f\) — до изображения.</p><p>Изображение может быть действительным или мнимым, увеличенным или уменьшенным. На ОГЭ часто рисуют ход лучей через линзу или зеркало и спрашивают, где будет изображение.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Отражение: угол падения?</div><div class="opts"><button class="opt" data-v="1">= углу отражения</button><button class="opt" data-v="2">= 90° всегда</button><button class="opt" data-v="3">= 0 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Собирающая линза в середине?</div><div class="opts"><button class="opt" data-v="1">Толще</button><button class="opt" data-v="2">Тоньше</button><button class="opt" data-v="3">Плоская</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F?</div><div class="opts"><button class="opt" data-v="1">Оптическая сила</button><button class="opt" data-v="2">Сила тока</button><button class="opt" data-v="3">Давление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F в метрах, D в?</div><div class="opts"><button class="opt" data-v="1">дптр</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Формула линзы?</div><div class="opts"><button class="opt" data-v="1">1/F=1/d+1/f</button><button class="opt" data-v="2">F=ma</button><button class="opt" data-v="3">I=U/R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мнимое изображение?</div><div class="opts"><button class="opt" data-v="1">Не ловится экраном</button><button class="opt" data-v="2">Всегда на экране</button><button class="opt" data-v="3">Только в ядре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Преломление —?</div><div class="opts"><button class="opt" data-v="1">Смена среды</button><button class="opt" data-v="2">Только зеркало</button><button class="opt" data-v="3">Только вакуум</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Луч к оптической оси через фокус после линзы?</div><div class="opts"><button class="opt" data-v="1">Параллелен оси</button><button class="opt" data-v="2">Исчезает</button><button class="opt" data-v="3">Уходит в ядро</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рассеивающая линза?</div><div class="opts"><button class="opt" data-v="1">Расширяет пучок</button><button class="opt" data-v="2">Собирает в точку всегда</button><button class="opt" data-v="3">Не преломляет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Увеличение?</div><div class="opts"><button class="opt" data-v="1">Отношение размеров</button><button class="opt" data-v="2">Сила тока</button><button class="opt" data-v="3">Масса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плоское зеркало даёт?</div><div class="opts"><button class="opt" data-v="1">Мнимое равное</button><button class="opt" data-v="2">Действительное всегда</button><button class="opt" data-v="3">Только увеличенное</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свет в однородном?</div><div class="opts"><button class="opt" data-v="1">Прямолинейно</button><button class="opt" data-v="2">Только по кругу</button><button class="opt" data-v="3">Только по спирали</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">n>1 обычно значит?</div><div class="opts"><button class="opt" data-v="1">Среда оптически плотнее воздуха</button><button class="opt" data-v="2">Вакуум</button><button class="opt" data-v="3">Металл как провод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила больше — F?</div><div class="opts"><button class="opt" data-v="1">Меньше</button><button class="opt" data-v="2">Больше</button><button class="opt" data-v="3">Не связано</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Экран ловит изображение?</div><div class="opts"><button class="opt" data-v="1">Действительное</button><button class="opt" data-v="2">Только мнимое</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌊</div>
+      <div class="unit-info">
+        <h3>Колебания и волны</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p5">
+        <div class="theory"><p>Колебания: период \(T\), частота \(
+u=1/T\). Маятник: период нитяного маятника зависит от длины и \(g\). Волны: длина волны \(\lambda=vT=v/
+u\). Звук — продольная волна в среде; ультразвук и инфразвук отличаются частотой.</p><p>Электромагнитные волны не требуют среды. Шкала: радиоволны, ИК, видимый свет, УФ, рентген, гамма. Чем меньше длина волны, тем больше частота и энергия кванта.</p><p>На ОГЭ связывайте период, частоту и длину волны, различайте звук и электромагнитные волны.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ν=1/T?</div><div class="opts"><button class="opt" data-v="1">Частота</button><button class="opt" data-v="2">Длина волны</button><button class="opt" data-v="3">Сила</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">λ=v/ν?</div><div class="opts"><button class="opt" data-v="1">Длина волны</button><button class="opt" data-v="2">Период</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Звук — волна?</div><div class="opts"><button class="opt" data-v="1">Продольная в среде</button><button class="opt" data-v="2">Электромагнитная в вакууме</button><button class="opt" data-v="3">Поперечная только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ультразвук — частота?</div><div class="opts"><button class="opt" data-v="1">Выше слышимого</button><button class="opt" data-v="2">Ниже слышимого</button><button class="opt" data-v="3">Только свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЭМ волны не требуют?</div><div class="opts"><button class="opt" data-v="1">Среды</button><button class="opt" data-v="2">Скорости</button><button class="opt" data-v="3">Частоты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Видимый свет — часть?</div><div class="opts"><button class="opt" data-v="1">ЭМ спектра</button><button class="opt" data-v="2">Только звука</button><button class="opt" data-v="3">Только α-лучей</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Больше частота ЭМ —?</div><div class="opts"><button class="opt" data-v="1">Больше энергия кванта</button><button class="opt" data-v="2">Меньше всегда энергия</button><button class="opt" data-v="3">Нет связи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Период маятника зависит от?</div><div class="opts"><button class="opt" data-v="1">Длины и g</button><button class="opt" data-v="2">Массы груза (идеально)</button><button class="opt" data-v="3">Цвета нити</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Инфразвук?</div><div class="opts"><button class="opt" data-v="1">Ниже слышимого</button><button class="opt" data-v="2">Выше света</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Радиоволны λ?</div><div class="opts"><button class="opt" data-v="1">Большие</button><button class="opt" data-v="2">Самые короткие</button><button class="opt" data-v="3">Как у γ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">γ-излучение λ?</div><div class="opts"><button class="opt" data-v="1">Очень малые</button><button class="opt" data-v="2">Километры</button><button class="opt" data-v="3">Как звук в воздухе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость света ≈?</div><div class="opts"><button class="opt" data-v="1">3·10⁸ м/с</button><button class="opt" data-v="2">340 м/с</button><button class="opt" data-v="3">10 м/с</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Звук в вакууме?</div><div class="opts"><button class="opt" data-v="1">Не распространяется</button><button class="opt" data-v="2">Лететь быстрее света</button><button class="opt" data-v="3">Громче</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">T — это?</div><div class="opts"><button class="opt" data-v="1">Период</button><button class="opt" data-v="2">Ток</button><button class="opt" data-v="3">Температура только в этой формуле</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Волна переносит?</div><div class="opts"><button class="opt" data-v="1">Энергию</button><button class="opt" data-v="2">Массу среды целиком</button><button class="opt" data-v="3">Заряд обязательно</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="p6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚛️</div>
+      <div class="unit-info">
+        <h3>Атом и кванты</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="p6">
+        <div class="theory"><p>Строение атома: ядро (протоны и нейтроны) и электроны. Зарядовое число — число протонов. Изотопы отличаются числом нейтронов. Радиоактивность: α-, β-, γ-излучение; период полураспада.</p><p>Модель Бора (школьный уровень): электроны на уровнях; переход с уровня на уровень — излучение или поглощение кванта. Фотоэффект: выбивание электронов светом; красная граница.</p><p>Для ОГЭ достаточно знать состав ядра, виды излучения и смысл периода полураспада, а также что свет может вести себя как поток частиц (фотонов).</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Протон где?</div><div class="opts"><button class="opt" data-v="1">В ядре</button><button class="opt" data-v="2">На внешней орбите только</button><button class="opt" data-v="3">В линзе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Число протонов —?</div><div class="opts"><button class="opt" data-v="1">Зарядовое число</button><button class="opt" data-v="2">Масса в кг</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Изотопы отличаются?</div><div class="opts"><button class="opt" data-v="1">Нейтронами</button><button class="opt" data-v="2">Зарядом ядра</button><button class="opt" data-v="3">Числом электронов в нейтральном атоме иначе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">α-частица —?</div><div class="opts"><button class="opt" data-v="1">Ядро гелия</button><button class="opt" data-v="2">Электрон</button><button class="opt" data-v="3">Фотон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">β — часто?</div><div class="opts"><button class="opt" data-v="1">Электрон</button><button class="opt" data-v="2">Протон</button><button class="opt" data-v="3">Нейтрон как частица α</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">γ — это?</div><div class="opts"><button class="opt" data-v="1">ЭМ излучение</button><button class="opt" data-v="2">Заряженная частица</button><button class="opt" data-v="3">Молекула</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Период полураспада —?</div><div class="opts"><button class="opt" data-v="1">Время распада половины</button><button class="opt" data-v="2">Время полного исчезновения сразу</button><button class="opt" data-v="3">Период маятника</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотоэффект —?</div><div class="opts"><button class="opt" data-v="1">Выбивание электронов светом</button><button class="opt" data-v="2">Кипение</button><button class="opt" data-v="3">Закон Ома</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотон —?</div><div class="opts"><button class="opt" data-v="1">Квант света</button><button class="opt" data-v="2">Протон</button><button class="opt" data-v="3">Нейтрон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нейтральный атом: электронов?</div><div class="opts"><button class="opt" data-v="1">= протонам</button><button class="opt" data-v="2">= нейтронам всегда</button><button class="opt" data-v="3">= нулю</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Радиоактивность —?</div><div class="opts"><button class="opt" data-v="1">Самопроизвольный распад ядер</button><button class="opt" data-v="2">Горение</button><button class="opt" data-v="3">Кипение воды</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Электронный заряд?</div><div class="opts"><button class="opt" data-v="1">Отрицательный</button><button class="opt" data-v="2">Положительный</button><button class="opt" data-v="3">Нейтральный</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Массовое число ≈?</div><div class="opts"><button class="opt" data-v="1">p+n</button><button class="opt" data-v="2">Только p</button><button class="opt" data-v="3">Только e</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ионизация —?</div><div class="opts"><button class="opt" data-v="1">Отрыв электрона</button><button class="opt" data-v="2">Слияние ядер всегда</button><button class="opt" data-v="3">Плавление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Красная граница фотоэффекта?</div><div class="opts"><button class="opt" data-v="1">Минимальная частота</button><button class="opt" data-v="2">Максимальная длина всегда 0</button><button class="opt" data-v="3">Ток короткого</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="path hidden" id="path-duo">
+  <div class="duo-path">
+    <div class="hero" style="padding-top:8px"><h1>Практика</h1><p>200 уроков · 10 вопросов · финал 50</p></div>
+    <div id="duoContainer"></div>
+  </div>
+</div>
+<div class="path hidden" id="path-hard">
+  <div class="hero">
+    <h1>Сложные темы</h1>
+    <p>Углубление · 15 вопросов в каждой</p>
+  </div>
+
+  <div class="unit" data-unit="ph1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📐</div>
+      <div class="unit-info">
+        <h3>Механика сложно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph1">
+        <div class="theory"><p><strong>Механика</strong> описывает движение и взаимодействие тел. Путь — длина траектории, перемещение — вектор от начальной точки к конечной. Скорость \(v=s/t\) при равномерном движении; ускорение \(a=\Delta v/t\). При равноускоренном движении \(v=v_0+at\), \(s=v_0 t+rac{1}{2}at^2\).</p><p>Сила измеряется в ньютонах. Второй закон Ньютона: \(F=ma\). Сила тяжести \(F=mg\), вес — сила, с которой тело давит на опору. Сила трения препятствует движению; сила упругости по закону Гука \(F=kx\). Давление \(p=F/S\).</p><p>Работа \(A=Fs\coslpha\), мощность \(N=A/t\), кинетическая энергия \(E_k=rac{mv^2}{2}\), потенциальная \(E_p=mgh\). Импульс \(p=mv\). На ОГЭ важно читать графики \(s(t)\), \(v(t)\) и понимать, где тело покоится, ускоряется или движется равномерно.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">v=s/t при?</div><div class="opts"><button class="opt" data-v="1">Равномерном движении</button><button class="opt" data-v="2">Только падении</button><button class="opt" data-v="3">Только покое</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ускорение —?</div><div class="opts"><button class="opt" data-v="1">Δv/t</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=ma?</div><div class="opts"><button class="opt" data-v="1">II Ньютона</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вес — сила?</div><div class="opts"><button class="opt" data-v="1">На опору/подвес</button><button class="opt" data-v="2">Трения в воздухе всегда 0</button><button class="opt" data-v="3">Только на Луне</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=kx?</div><div class="opts"><button class="opt" data-v="1">Гука</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Ньютона III</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление?</div><div class="opts"><button class="opt" data-v="1">F/S</button><button class="opt" data-v="2">F·S</button><button class="opt" data-v="3">s/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A=Fs (при cos0)?</div><div class="opts"><button class="opt" data-v="1">Работа</button><button class="opt" data-v="2">Мощность</button><button class="opt" data-v="3">Импульс</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N=A/t?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Работа</button><button class="opt" data-v="3">Сила</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ek=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ep=?</div><div class="opts"><button class="opt" data-v="1">mgh</button><button class="opt" data-v="2">mv²/2</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Импульс?</div><div class="opts"><button class="opt" data-v="1">mv</button><button class="opt" data-v="2">m/v</button><button class="opt" data-v="3">v/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">g≈?</div><div class="opts"><button class="opt" data-v="1">10 м/с²</button><button class="opt" data-v="2">10 м/с</button><button class="opt" data-v="3">10 Н</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Горизонтальный s(t)?</div><div class="opts"><button class="opt" data-v="1">Покой</button><button class="opt" data-v="2">Ускорение</button><button class="opt" data-v="3">Свободное падение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Наклон s(t) больше —?</div><div class="opts"><button class="opt" data-v="1">Скорость больше</button><button class="opt" data-v="2">Масса больше</button><button class="opt" data-v="3">Заряд больше</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица работы?</div><div class="opts"><button class="opt" data-v="1">Джоуль</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Ампер</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔥</div>
+      <div class="unit-info">
+        <h3>Тепло сложно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph2">
+        <div class="theory"><p>Температура связана со средней кинетической энергией молекул. Тепловое движение хаотично. Способы изменения внутренней энергии: работа и теплопередача (теплопроводность, конвекция, излучение).</p><p>Количество теплоты при нагревании \(Q=cm\Delta t\), где \(c\) — удельная теплоёмкость. При плавлении \(Q=\lambda m\), при парообразовании \(Q=Lm\). Уравнение теплового баланса: отданное тепло равно полученному (в идеальном случае).</p><p>Агрегатные состояния: твёрдое, жидкое, газообразное. Плавление и кристаллизация, кипение и конденсация идут при постоянной температуре для чистого вещества при данном давлении. На ОГЭ часто дают график нагревания и просят указать участки плавления или кипения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt?</div><div class="opts"><button class="opt" data-v="1">Нагрев без перехода</button><button class="opt" data-v="2">Плавление</button><button class="opt" data-v="3">Кипение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плавление Q=?</div><div class="opts"><button class="opt" data-v="1">λm</button><button class="opt" data-v="2">cmΔt</button><button class="opt" data-v="3">Lm только для нагрева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Парообразование?</div><div class="opts"><button class="opt" data-v="1">Lm</button><button class="opt" data-v="2">λm</button><button class="opt" data-v="3">cmΔt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Теплопроводность —?</div><div class="opts"><button class="opt" data-v="1">Передача тепла</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Сила Ампера</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Конвекция в?</div><div class="opts"><button class="opt" data-v="1">Жидкостях и газах</button><button class="opt" data-v="2">Вакууме</button><button class="opt" data-v="3">Только металлах кристалла</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">На графике нагрева плато —?</div><div class="opts"><button class="opt" data-v="1">Плавление/кипение</button><button class="opt" data-v="2">Равномерный нагрев</button><button class="opt" data-v="3">Покой тела</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Удельная теплоёмкость c —?</div><div class="opts"><button class="opt" data-v="1">Q/(mΔt)</button><button class="opt" data-v="2">F/S</button><button class="opt" data-v="3">U/I</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Внутренняя энергия растёт при?</div><div class="opts"><button class="opt" data-v="1">Нагреве/работе над телом</button><button class="opt" data-v="2">Только охлаждении</button><button class="opt" data-v="3">Только покое</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кипение идёт при?</div><div class="opts"><button class="opt" data-v="1">Постоянной T (для чистого)</button><button class="opt" data-v="2">Любой T сразу</button><button class="opt" data-v="3">Только 0°C</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Излучение — способ?</div><div class="opts"><button class="opt" data-v="1">Теплопередачи</button><button class="opt" data-v="2">Создания заряда</button><button class="opt" data-v="3">Измерения тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Агрегат твердый→жидкий?</div><div class="opts"><button class="opt" data-v="1">Плавление</button><button class="opt" data-v="2">Конденсация</button><button class="opt" data-v="3">Сублимация наоборот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Баланс тепла?</div><div class="opts"><button class="opt" data-v="1">Отдали = получили</button><button class="opt" data-v="2">Всегда Q=0</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица Q?</div><div class="opts"><button class="opt" data-v="1">Джоуль</button><button class="opt" data-v="2">Ватт</button><button class="opt" data-v="3">Ампер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Молекулы при нагреве?</div><div class="opts"><button class="opt" data-v="1">Движутся быстрее</button><button class="opt" data-v="2">Останавливаются</button><button class="opt" data-v="3">Исчезают</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Δt в формуле —?</div><div class="opts"><button class="opt" data-v="1">Изменение температуры</button><button class="opt" data-v="2">Время только</button><button class="opt" data-v="3">Путь</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">💡</div>
+      <div class="unit-info">
+        <h3>Цепи сложно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph3">
+        <div class="theory"><p>Электрический заряд; закон сохранения заряда. Ток — направленное движение зарядов; сила тока \(I=q/t\). Напряжение \(U=A/q\). Сопротивление проводника \(R=
+ho l/S\). Закон Ома для участка цепи: \(I=U/R\).</p><p>Последовательное соединение: ток один, напряжения складываются, \(R=R_1+R_2\). Параллельное: напряжение одно, токи складываются, \(1/R=1/R_1+1/R_2\). Работа тока \(A=IUt\), мощность \(P=IU=I^2R=U^2/R\).</p><p>Магнитное поле действует на проводник с током (сила Ампера) и на движущийся заряд. Электромагнитная индукция: при изменении магнитного потока в контуре возникает ток. На ОГЭ умейте собирать простую цепь «на словах» и считать ток, напряжение, сопротивление.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">I=q/t?</div><div class="opts"><button class="opt" data-v="1">Сила тока</button><button class="opt" data-v="2">Напряжение</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ом: I=?</div><div class="opts"><button class="opt" data-v="1">U/R</button><button class="opt" data-v="2">U·R</button><button class="opt" data-v="3">R/U</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">R=ρl/S — длиннее провод?</div><div class="opts"><button class="opt" data-v="1">R больше</button><button class="opt" data-v="2">R меньше</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно R?</div><div class="opts"><button class="opt" data-v="1">Складываются</button><button class="opt" data-v="2">Уменьшаются как 1/R</button><button class="opt" data-v="3">Всегда равны U</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельно U?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=IU?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Заряд</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A=IUt?</div><div class="opts"><button class="opt" data-v="1">Работа тока</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Давление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица I?</div><div class="opts"><button class="opt" data-v="1">Ампер</button><button class="opt" data-v="2">Вольт</button><button class="opt" data-v="3">Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица U?</div><div class="opts"><button class="opt" data-v="1">Вольт</button><button class="opt" data-v="2">Ампер</button><button class="opt" data-v="3">Ватт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица R?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Джоуль</button><button class="opt" data-v="3">Ньютон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Короткое замыкание —?</div><div class="opts"><button class="opt" data-v="1">Очень малый R</button><button class="opt" data-v="2">Бесконечный R</button><button class="opt" data-v="3">Разрыв</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Два R подряд 2Ом и 3Ом — R?</div><div class="opts"><button class="opt" data-v="1">5 Ом</button><button class="opt" data-v="2">1 Ом</button><button class="opt" data-v="3">6 Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Магнит действует на?</div><div class="opts"><button class="opt" data-v="1">Ток/движ. заряд</button><button class="opt" data-v="2">Неподвижный нейтральный пылинку без тока</button><button class="opt" data-v="3">Только свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Индукция — ток при?</div><div class="opts"><button class="opt" data-v="1">Изменении потока</button><button class="opt" data-v="2">Постоянном всём</button><button class="opt" data-v="3">Только нагреве</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=U²/R при росте U?</div><div class="opts"><button class="opt" data-v="1">P растёт</button><button class="opt" data-v="2">P падает</button><button class="opt" data-v="3">P=0</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔎</div>
+      <div class="unit-info">
+        <h3>Линзы и лучи</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph4">
+        <div class="theory"><p>Свет распространяется прямолинейно в однородной среде. Закон отражения: угол падения равен углу отражения. Преломление: при переходе в другую среду луч меняет направление; \(n=rac{\sin i}{\sin r}\) (относительно воздуха для многих задач школьного уровня).</p><p>Линзы: собирающая и рассеивающая. Фокус, фокусное расстояние \(F\), оптическая сила \(D=1/F\) (в диоптриях, \(F\) в метрах). Формула тонкой линзы: \(rac{1}{F}=rac{1}{d}+rac{1}{f}\), где \(d\) — расстояние до предмета, \(f\) — до изображения.</p><p>Изображение может быть действительным или мнимым, увеличенным или уменьшенным. На ОГЭ часто рисуют ход лучей через линзу или зеркало и спрашивают, где будет изображение.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Отражение: угол падения?</div><div class="opts"><button class="opt" data-v="1">= углу отражения</button><button class="opt" data-v="2">= 90° всегда</button><button class="opt" data-v="3">= 0 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Собирающая линза в середине?</div><div class="opts"><button class="opt" data-v="1">Толще</button><button class="opt" data-v="2">Тоньше</button><button class="opt" data-v="3">Плоская</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F?</div><div class="opts"><button class="opt" data-v="1">Оптическая сила</button><button class="opt" data-v="2">Сила тока</button><button class="opt" data-v="3">Давление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F в метрах, D в?</div><div class="opts"><button class="opt" data-v="1">дптр</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Формула линзы?</div><div class="opts"><button class="opt" data-v="1">1/F=1/d+1/f</button><button class="opt" data-v="2">F=ma</button><button class="opt" data-v="3">I=U/R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мнимое изображение?</div><div class="opts"><button class="opt" data-v="1">Не ловится экраном</button><button class="opt" data-v="2">Всегда на экране</button><button class="opt" data-v="3">Только в ядре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Преломление —?</div><div class="opts"><button class="opt" data-v="1">Смена среды</button><button class="opt" data-v="2">Только зеркало</button><button class="opt" data-v="3">Только вакуум</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Луч к оптической оси через фокус после линзы?</div><div class="opts"><button class="opt" data-v="1">Параллелен оси</button><button class="opt" data-v="2">Исчезает</button><button class="opt" data-v="3">Уходит в ядро</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рассеивающая линза?</div><div class="opts"><button class="opt" data-v="1">Расширяет пучок</button><button class="opt" data-v="2">Собирает в точку всегда</button><button class="opt" data-v="3">Не преломляет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Увеличение?</div><div class="opts"><button class="opt" data-v="1">Отношение размеров</button><button class="opt" data-v="2">Сила тока</button><button class="opt" data-v="3">Масса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плоское зеркало даёт?</div><div class="opts"><button class="opt" data-v="1">Мнимое равное</button><button class="opt" data-v="2">Действительное всегда</button><button class="opt" data-v="3">Только увеличенное</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свет в однородном?</div><div class="opts"><button class="opt" data-v="1">Прямолинейно</button><button class="opt" data-v="2">Только по кругу</button><button class="opt" data-v="3">Только по спирали</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">n>1 обычно значит?</div><div class="opts"><button class="opt" data-v="1">Среда оптически плотнее воздуха</button><button class="opt" data-v="2">Вакуум</button><button class="opt" data-v="3">Металл как провод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила больше — F?</div><div class="opts"><button class="opt" data-v="1">Меньше</button><button class="opt" data-v="2">Больше</button><button class="opt" data-v="3">Не связано</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Экран ловит изображение?</div><div class="opts"><button class="opt" data-v="1">Действительное</button><button class="opt" data-v="2">Только мнимое</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📡</div>
+      <div class="unit-info">
+        <h3>Волны и спектр</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph5">
+        <div class="theory"><p>Колебания: период \(T\), частота \(
+u=1/T\). Маятник: период нитяного маятника зависит от длины и \(g\). Волны: длина волны \(\lambda=vT=v/
+u\). Звук — продольная волна в среде; ультразвук и инфразвук отличаются частотой.</p><p>Электромагнитные волны не требуют среды. Шкала: радиоволны, ИК, видимый свет, УФ, рентген, гамма. Чем меньше длина волны, тем больше частота и энергия кванта.</p><p>На ОГЭ связывайте период, частоту и длину волны, различайте звук и электромагнитные волны.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ν=1/T?</div><div class="opts"><button class="opt" data-v="1">Частота</button><button class="opt" data-v="2">Длина волны</button><button class="opt" data-v="3">Сила</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">λ=v/ν?</div><div class="opts"><button class="opt" data-v="1">Длина волны</button><button class="opt" data-v="2">Период</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Звук — волна?</div><div class="opts"><button class="opt" data-v="1">Продольная в среде</button><button class="opt" data-v="2">Электромагнитная в вакууме</button><button class="opt" data-v="3">Поперечная только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ультразвук — частота?</div><div class="opts"><button class="opt" data-v="1">Выше слышимого</button><button class="opt" data-v="2">Ниже слышимого</button><button class="opt" data-v="3">Только свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЭМ волны не требуют?</div><div class="opts"><button class="opt" data-v="1">Среды</button><button class="opt" data-v="2">Скорости</button><button class="opt" data-v="3">Частоты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Видимый свет — часть?</div><div class="opts"><button class="opt" data-v="1">ЭМ спектра</button><button class="opt" data-v="2">Только звука</button><button class="opt" data-v="3">Только α-лучей</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Больше частота ЭМ —?</div><div class="opts"><button class="opt" data-v="1">Больше энергия кванта</button><button class="opt" data-v="2">Меньше всегда энергия</button><button class="opt" data-v="3">Нет связи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Период маятника зависит от?</div><div class="opts"><button class="opt" data-v="1">Длины и g</button><button class="opt" data-v="2">Массы груза (идеально)</button><button class="opt" data-v="3">Цвета нити</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Инфразвук?</div><div class="opts"><button class="opt" data-v="1">Ниже слышимого</button><button class="opt" data-v="2">Выше света</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Радиоволны λ?</div><div class="opts"><button class="opt" data-v="1">Большие</button><button class="opt" data-v="2">Самые короткие</button><button class="opt" data-v="3">Как у γ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">γ-излучение λ?</div><div class="opts"><button class="opt" data-v="1">Очень малые</button><button class="opt" data-v="2">Километры</button><button class="opt" data-v="3">Как звук в воздухе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость света ≈?</div><div class="opts"><button class="opt" data-v="1">3·10⁸ м/с</button><button class="opt" data-v="2">340 м/с</button><button class="opt" data-v="3">10 м/с</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Звук в вакууме?</div><div class="opts"><button class="opt" data-v="1">Не распространяется</button><button class="opt" data-v="2">Лететь быстрее света</button><button class="opt" data-v="3">Громче</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">T — это?</div><div class="opts"><button class="opt" data-v="1">Период</button><button class="opt" data-v="2">Ток</button><button class="opt" data-v="3">Температура только в этой формуле</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Волна переносит?</div><div class="opts"><button class="opt" data-v="1">Энергию</button><button class="opt" data-v="2">Массу среды целиком</button><button class="opt" data-v="3">Заряд обязательно</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧪</div>
+      <div class="unit-info">
+        <h3>Атом и излучение</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph6">
+        <div class="theory"><p>Строение атома: ядро (протоны и нейтроны) и электроны. Зарядовое число — число протонов. Изотопы отличаются числом нейтронов. Радиоактивность: α-, β-, γ-излучение; период полураспада.</p><p>Модель Бора (школьный уровень): электроны на уровнях; переход с уровня на уровень — излучение или поглощение кванта. Фотоэффект: выбивание электронов светом; красная граница.</p><p>Для ОГЭ достаточно знать состав ядра, виды излучения и смысл периода полураспада, а также что свет может вести себя как поток частиц (фотонов).</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Протон где?</div><div class="opts"><button class="opt" data-v="1">В ядре</button><button class="opt" data-v="2">На внешней орбите только</button><button class="opt" data-v="3">В линзе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Число протонов —?</div><div class="opts"><button class="opt" data-v="1">Зарядовое число</button><button class="opt" data-v="2">Масса в кг</button><button class="opt" data-v="3">Сопротивление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Изотопы отличаются?</div><div class="opts"><button class="opt" data-v="1">Нейтронами</button><button class="opt" data-v="2">Зарядом ядра</button><button class="opt" data-v="3">Числом электронов в нейтральном атоме иначе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">α-частица —?</div><div class="opts"><button class="opt" data-v="1">Ядро гелия</button><button class="opt" data-v="2">Электрон</button><button class="opt" data-v="3">Фотон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">β — часто?</div><div class="opts"><button class="opt" data-v="1">Электрон</button><button class="opt" data-v="2">Протон</button><button class="opt" data-v="3">Нейтрон как частица α</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">γ — это?</div><div class="opts"><button class="opt" data-v="1">ЭМ излучение</button><button class="opt" data-v="2">Заряженная частица</button><button class="opt" data-v="3">Молекула</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Период полураспада —?</div><div class="opts"><button class="opt" data-v="1">Время распада половины</button><button class="opt" data-v="2">Время полного исчезновения сразу</button><button class="opt" data-v="3">Период маятника</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотоэффект —?</div><div class="opts"><button class="opt" data-v="1">Выбивание электронов светом</button><button class="opt" data-v="2">Кипение</button><button class="opt" data-v="3">Закон Ома</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотон —?</div><div class="opts"><button class="opt" data-v="1">Квант света</button><button class="opt" data-v="2">Протон</button><button class="opt" data-v="3">Нейтрон</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нейтральный атом: электронов?</div><div class="opts"><button class="opt" data-v="1">= протонам</button><button class="opt" data-v="2">= нейтронам всегда</button><button class="opt" data-v="3">= нулю</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Радиоактивность —?</div><div class="opts"><button class="opt" data-v="1">Самопроизвольный распад ядер</button><button class="opt" data-v="2">Горение</button><button class="opt" data-v="3">Кипение воды</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Электронный заряд?</div><div class="opts"><button class="opt" data-v="1">Отрицательный</button><button class="opt" data-v="2">Положительный</button><button class="opt" data-v="3">Нейтральный</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Массовое число ≈?</div><div class="opts"><button class="opt" data-v="1">p+n</button><button class="opt" data-v="2">Только p</button><button class="opt" data-v="3">Только e</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ионизация —?</div><div class="opts"><button class="opt" data-v="1">Отрыв электрона</button><button class="opt" data-v="2">Слияние ядер всегда</button><button class="opt" data-v="3">Плавление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Красная граница фотоэффекта?</div><div class="opts"><button class="opt" data-v="1">Минимальная частота</button><button class="opt" data-v="2">Максимальная длина всегда 0</button><button class="opt" data-v="3">Ток короткого</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ph7">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📊</div>
+      <div class="unit-info">
+        <h3>Графики и единицы</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ph7">
+        <div class="theory"><p>ОГЭ по физике проверяет понимание явлений, умение читать графики и таблицы, применять формулы и решать качественные задачи. Основные разделы: <strong>механика</strong>, <strong>тепловые явления</strong>, <strong>электричество и магнетизм</strong>, <strong>оптика</strong>, <strong>квантовые и атомные явления</strong> (на базовом уровне).</p><p>Готовьтесь с нуля: сначала смысл величин и единиц СИ, затем формулы и типовые сюжеты задач. На экзамене часто дают график зависимости пути от времени, вольт-амперную характеристику, схему цепи.</p><p>Стратегия: переведите условие на язык величин, вспомните закон, подставьте единицы. Не бойтесь качественных вопросов «что изменится, если…» — рассуждайте по формуле или по определению.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ОГЭ по физике включает?</div><div class="opts"><button class="opt" data-v="1">Механику, тепло, электричество, оптику</button><button class="opt" data-v="2">Только астрономию</button><button class="opt" data-v="3">Только биологию</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">СИ единица силы?</div><div class="opts"><button class="opt" data-v="1">Ньютон</button><button class="opt" data-v="2">Джоуль</button><button class="opt" data-v="3">Ватт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость при равномерном?</div><div class="opts"><button class="opt" data-v="1">s/t</button><button class="opt" data-v="2">ma</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=ma — закон?</div><div class="opts"><button class="opt" data-v="1">II Ньютона</button><button class="opt" data-v="2">Ома</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt — это?</div><div class="opts"><button class="opt" data-v="1">Нагревание</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Сила тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R —?</div><div class="opts"><button class="opt" data-v="1">Закон Ома</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Гука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила в?</div><div class="opts"><button class="opt" data-v="1">Диоптриях</button><button class="opt" data-v="2">Ньютонах</button><button class="opt" data-v="3">Паскалях</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Работа тока?</div><div class="opts"><button class="opt" data-v="1">IUt</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">mv</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление?</div><div class="opts"><button class="opt" data-v="1">F/S</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кинетическая энергия?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">I²R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">График s(t) горизонтален — тело?</div><div class="opts"><button class="opt" data-v="1">Покоится</button><button class="opt" data-v="2">Падает</button><button class="opt" data-v="3">Ускоряется</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельно напряжение?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Всегда ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно ток?</div><div class="opts"><button class="opt" data-v="1">Одинаков</button><button class="opt" data-v="2">Разный всегда</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">λ=v/ν —?</div><div class="opts"><button class="opt" data-v="1">Длина волны</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Протон в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Электронной оболочке только</button><button class="opt" data-v="3">Вакууме линзы</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="unit" data-unit="phf">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📚</div>
+      <div class="unit-info">
+        <h3>Формулы: контроль</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="phf">
+        <div class="theory"><h4>7 класс — механика</h4>
+<p><strong>v = s/t</strong> — скорость при равномерном движении. <em>v</em> — скорость (м/с), <em>s</em> — путь (м), <em>t</em> — время (с).</p><p><strong>ρ = m/V</strong> — плотность. <em>ρ</em> (кг/м³), <em>m</em> — масса (кг), <em>V</em> — объём (м³).</p><p><strong>F = mg</strong> — сила тяжести. <em>F</em> (Н), <em>m</em> (кг), <em>g</em> ≈ 9,8…10 м/с².</p><p><strong>P = mg</strong> — вес тела (сила на опору/подвес), в ньютонах.</p><p><strong>p = F/S</strong> — давление. <em>p</em> (Па = Н/м²), <em>S</em> — площадь (м²).</p><p><strong>p = ρgh</strong> — давление столба жидкости. <em>h</em> — высота столба (м).</p><p><strong>F₁/F₂ = S₂/S₁</strong> — гидравлический пресс.</p><p><strong>Fₐ = ρgV</strong> — сила Архимеда. <em>V</em> — объём погружённой части.</p><p><strong>A = Fs</strong> — работа (при направлении силы вдоль перемещения). <em>A</em> (Дж).</p><p><strong>N = A/t</strong> — мощность (Вт).</p><p><strong>F₁/F₂ = l₂/l₁</strong> — правило рычага; <strong>M = Fl</strong> — момент силы (Н·м).</p><p><strong>s₁/s₂ = F₂/F₁</strong> — «золотое правило» механики; <strong>η = Aп/Aз</strong> — КПД.</p>
+
+<h4>8 класс — тепло и электричество</h4>
+<p><strong>Q = cmΔt</strong> — нагревание/охлаждение. <em>c</em> — удельная теплоёмкость (Дж/(кг·°C)), <em>Δt</em> — изменение температуры.</p><p><strong>Q = qm</strong> — теплота сгорания топлива. <em>q</em> — удельная теплота сгорания (Дж/кг).</p><p><strong>Q = λm</strong> — плавление; <em>λ</em> — удельная теплота плавления.</p><p><strong>Q = Lm</strong> — парообразование; <em>L</em> — удельная теплота парообразования.</p><p><strong>η = Aп/Q</strong> — КПД теплового двигателя.</p><p><strong>I = q/t</strong> — сила тока (А). <strong>U = A/q</strong> — напряжение (В).</p><p><strong>I = U/R</strong> — закон Ома. <strong>R = ρl/S</strong> — сопротивление. <em>ρ</em> — удельное сопротивление, <em>l</em> — длина, <em>S</em> — сечение.</p><p><strong>Последовательно:</strong> I = const, R = R₁+R₂+…, U = U₁+U₂+…</p><p><strong>Параллельно:</strong> U = const, 1/R = 1/R₁+1/R₂+…, I = I₁+I₂+…</p><p><strong>A = IUt</strong>, <strong>Q = I²Rt</strong> (Джоуля–Ленца), <strong>P = UI = I²R = U²/R</strong> — мощность.</p>
+
+<h4>9 класс — кинематика и динамика</h4>
+<p><strong>v = s/t</strong>, <strong>v_ср = (s₁+…)/(t₁+…)</strong> — средняя скорость.</p><p><strong>v = v₀ + at</strong>, <strong>s = v₀t + at²/2</strong>, <strong>v² − v₀² = 2as</strong> — равноускоренное движение.</p><p><strong>Свободное падение:</strong> v = gt, H = gt²/2 (из покоя).</p><p><strong>Бросок вверх:</strong> v = v₀ − gt, H_max = v₀²/(2g), t_подъёма = v₀/g.</p><p><strong>Законы Ньютона:</strong> ΣF = 0 (I), F = ma (II), F₁ = −F₂ (III).</p><p><strong>F_упр = kx</strong>, <strong>F_тр = μN</strong>, <strong>p = mv</strong> — импульс, <strong>Δp = Ft</strong>.</p><p><strong>A = Fs cosα</strong>, <strong>E_k = mv²/2</strong>, <strong>E_p = mgh</strong>, <strong>E_p пружины = kx²/2</strong>.</p><p><strong>T = 2π√(l/g)</strong> — математический маятник; <strong>T = 2π√(m/k)</strong> — пружинный.</p><p><strong>λ = vT = v/ν</strong> — длина волны. <strong>1/F = 1/d + 1/f</strong> — тонкая линза; <strong>D = 1/F</strong> (дптр).</p>
+</div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">v=s/t измеряется в?</div><div class="opts"><button class="opt" data-v="1">м/с</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">Дж</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ρ=m/V — это?</div><div class="opts"><button class="opt" data-v="1">Плотность</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Мощность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица силы?</div><div class="opts"><button class="opt" data-v="1">Н</button><button class="opt" data-v="2">Па</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">p=F/S —?</div><div class="opts"><button class="opt" data-v="1">Давление</button><button class="opt" data-v="2">Скорость</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Fₐ=ρgV —?</div><div class="opts"><button class="opt" data-v="1">Архимед</button><button class="opt" data-v="2">Ом</button><button class="opt" data-v="3">Гук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt —?</div><div class="opts"><button class="opt" data-v="1">Нагревание</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Импульс</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=λm —?</div><div class="opts"><button class="opt" data-v="1">Плавление</button><button class="opt" data-v="2">Кипение</button><button class="opt" data-v="3">Нагрев без перехода</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=Lm —?</div><div class="opts"><button class="opt" data-v="1">Парообразование</button><button class="opt" data-v="2">Плавление</button><button class="opt" data-v="3">Ток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R —?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Гук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно R?</div><div class="opts"><button class="opt" data-v="1">Складываются</button><button class="opt" data-v="2">1/R</button><button class="opt" data-v="3">U постоянно только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=UI в?</div><div class="opts"><button class="opt" data-v="1">Вт</button><button class="opt" data-v="2">Дж</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">s=v₀t+at²/2 —?</div><div class="opts"><button class="opt" data-v="1">Равноускоренное</button><button class="opt" data-v="2">Равномерное только</button><button class="opt" data-v="3">Покой</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_k=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">T=2π√(l/g) —?</div><div class="opts"><button class="opt" data-v="1">Мат. маятник</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F в?</div><div class="opts"><button class="opt" data-v="1">дптр</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">А</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pha">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🫧</div>
+      <div class="unit-info">
+        <h3>Плавание и гидростатика</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pha">
+        <div class="theory"><p><strong>Сила Архимеда</strong> выталкивает тело из жидкости (газа): Fₐ = ρ_ж g V_погр. Она равна весу вытесненной жидкости. Условие плавания: Fₐ ≥ mg. Среднее тело тонет, если плотность тела больше плотности жидкости.</p><p>Давление в жидкости растёт с глубиной: p = ρgh. Гидростатическое давление не зависит от формы сосуда — только от высоты столба. Сообщающиеся сосуды: однородная жидкость устанавливается на одном уровне.</p><p>Гидравлический пресс: F₁/F₂ = S₁/S₂ — выигрыш в силе за счёт площади поршней. На ОГЭ часто спрашивают, утонет ли тело, и сравнивают плотности.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Fₐ зависит от?</div><div class="opts"><button class="opt" data-v="1">ρ жидкости и V</button><button class="opt" data-v="2">Цвета тела</button><button class="opt" data-v="3">Только массы в воздухе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Тонет если?</div><div class="opts"><button class="opt" data-v="1">ρ тела > ρ жидкости</button><button class="opt" data-v="2">ρ тела < ρ жидкости</button><button class="opt" data-v="3">Всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">p=ρgh растёт с?</div><div class="opts"><button class="opt" data-v="1">Глубиной</button><button class="opt" data-v="2">Шириной сосуда</button><button class="opt" data-v="3">Цветом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Архимед равен?</div><div class="opts"><button class="opt" data-v="1">Весу вытесненной жидкости</button><button class="opt" data-v="2">Весу воздуха всегда</button><button class="opt" data-v="3">Силе тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица давления?</div><div class="opts"><button class="opt" data-v="1">Па</button><button class="opt" data-v="2">Н только</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плавает если?</div><div class="opts"><button class="opt" data-v="1">Fₐ ≥ mg</button><button class="opt" data-v="2">Fₐ = 0</button><button class="opt" data-v="3">ρ тела огромна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гидравлика выигрыш в?</div><div class="opts"><button class="opt" data-v="1">Силе</button><button class="opt" data-v="2">Пути без потерь всегда 100%</button><button class="opt" data-v="3">Заряде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">V в Fₐ — это?</div><div class="opts"><button class="opt" data-v="1">Объём погружённой части</button><button class="opt" data-v="2">Вся комната</button><button class="opt" data-v="3">Только масса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сообщающиеся сосуды уровень?</div><div class="opts"><button class="opt" data-v="1">Одинаковый (одна жидкость)</button><button class="opt" data-v="2">Всегда разный</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плотность воды ≈?</div><div class="opts"><button class="opt" data-v="1">1000 кг/м³</button><button class="opt" data-v="2">1 кг/м³</button><button class="opt" data-v="3">10</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление на дно зависит от?</div><div class="opts"><button class="opt" data-v="1">Высоты столба</button><button class="opt" data-v="2">Формы в первую очередь</button><button class="opt" data-v="3">Названия жидкости только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сила тяжести?</div><div class="opts"><button class="opt" data-v="1">mg</button><button class="opt" data-v="2">ρgV</button><button class="opt" data-v="3">U/R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Атмосферное давление ≈?</div><div class="opts"><button class="opt" data-v="1">10⁵ Па</button><button class="opt" data-v="2">1 Па</button><button class="opt" data-v="3">10 Н</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Выталкивание в газе?</div><div class="opts"><button class="opt" data-v="1">Тоже есть (меньше)</button><button class="opt" data-v="2">Нет никогда</button><button class="opt" data-v="3">Только в металлах</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица Fₐ?</div><div class="opts"><button class="opt" data-v="1">Н</button><button class="opt" data-v="2">Па</button><button class="opt" data-v="3">Дж</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="phg">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📊</div>
+      <div class="unit-info">
+        <h3>Графики сложно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="phg">
+        <div class="theory"><p>График <strong>s(t)</strong>: горизонталь — покой; наклон — скорость (чем круче, тем больше v). Излом — смена скорости.</p><p>График <strong>v(t)</strong>: горизонталь — равномерное движение; наклон — ускорение; площадь под графиком — перемещение.</p><p>График нагревания: наклон — нагрев (Q=cmΔt); горизонтальное плато — плавление или кипение (T постоянна). На ОГЭ умейте указать участок и объяснить, какая энергия на что уходит.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">s(t) горизонталь —?</div><div class="opts"><button class="opt" data-v="1">Покой</button><button class="opt" data-v="2">Ускорение</button><button class="opt" data-v="3">Свободное падение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Круче s(t) —?</div><div class="opts"><button class="opt" data-v="1">Больше скорость</button><button class="opt" data-v="2">Больше масса</button><button class="opt" data-v="3">Больше заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Площадь под v(t) —?</div><div class="opts"><button class="opt" data-v="1">Перемещение</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Напряжение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">v(t) наклон —?</div><div class="opts"><button class="opt" data-v="1">Ускорение</button><button class="opt" data-v="2">Путь мгновенный</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плато на графике T(t) —?</div><div class="opts"><button class="opt" data-v="1">Плавление/кипение</button><button class="opt" data-v="2">Равномерный нагрев</button><button class="opt" data-v="3">Покой механики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нагрев на графике —?</div><div class="opts"><button class="opt" data-v="1">Рост T</button><button class="opt" data-v="2">Плато</button><button class="opt" data-v="3">Падение до 0 К</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Равномерное на v(t) —?</div><div class="opts"><button class="opt" data-v="1">Горизонталь</button><button class="opt" data-v="2">Наклон вверх</button><button class="opt" data-v="3">Точка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Излом s(t) —?</div><div class="opts"><button class="opt" data-v="1">Смена режима движения</button><button class="opt" data-v="2">Смена массы</button><button class="opt" data-v="3">Смена заряда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">v=0 на графике —?</div><div class="opts"><button class="opt" data-v="1">Остановка</button><button class="opt" data-v="2">Максимум скорости</button><button class="opt" data-v="3">Максимум пути</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отрицательная v —?</div><div class="opts"><button class="opt" data-v="1">Движение обратно</button><button class="opt" data-v="2">Масса отрицательна</button><button class="opt" data-v="3">Ток отрицателен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ускорение модуль —?</div><div class="opts"><button class="opt" data-v="1">|Δv|/t</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">График нужен чтобы?</div><div class="opts"><button class="opt" data-v="1">Читать величины без формулы сразу</button><button class="opt" data-v="2">Заменить все законы</button><button class="opt" data-v="3">Отменить СИ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кипение vs нагрев воды?</div><div class="opts"><button class="opt" data-v="1">T постоянна vs растёт</button><button class="opt" data-v="2">Одинаково</button><button class="opt" data-v="3">T падает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Площадь под a(t) даёт?</div><div class="opts"><button class="opt" data-v="1">Δv</button><button class="opt" data-v="2">Путь сразу</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость из s(t) —?</div><div class="opts"><button class="opt" data-v="1">Наклон касательной</button><button class="opt" data-v="2">Высота точки только</button><button class="opt" data-v="3">Цвет линии</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="phc">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚡</div>
+      <div class="unit-info">
+        <h3>Схемы и расчёты</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="phc">
+        <div class="theory"><p>В схеме ищите источник, ключ, резисторы, амперметр (последовательно) и вольтметр (параллельно участку).</p><p>При последовательном соединении обрыв одного элемента гасит всю цепь; при параллельном — остальные ветви работают. Мощность на участке P=I²R: при большем R при том же I выделяется больше тепла.</p><p>Типовая задача: даны U и R — найти I; даны две R — найти эквивалентное и ток. Не путайте формулы последовательного и параллельного соединения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Амперметр включают?</div><div class="opts"><button class="opt" data-v="1">Последовательно</button><button class="opt" data-v="2">Параллельно</button><button class="opt" data-v="3">Вместо ключа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вольтметр?</div><div class="opts"><button class="opt" data-v="1">Параллельно участку</button><button class="opt" data-v="2">Последовательно обязательно</button><button class="opt" data-v="3">Вместо резистора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Обрыв последовательно —?</div><div class="opts"><button class="opt" data-v="1">Ток 0 везде</button><button class="opt" data-v="2">Ток в других есть</button><button class="opt" data-v="3">U=0 источник</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллель: одна ветвь off —?</div><div class="opts"><button class="opt" data-v="1">Другие работают</button><button class="opt" data-v="2">Всё гаснет</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">R экв. два по 4 Ом послед.?</div><div class="opts"><button class="opt" data-v="1">8 Ом</button><button class="opt" data-v="2">2 Ом</button><button class="opt" data-v="3">4 Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Два по 4 Ом паралл.?</div><div class="opts"><button class="opt" data-v="1">2 Ом</button><button class="opt" data-v="2">8 Ом</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Больше R при том же I — тепло?</div><div class="opts"><button class="opt" data-v="1">Больше (I²R)</button><button class="opt" data-v="2">Меньше</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Короткое замыкание R?</div><div class="opts"><button class="opt" data-v="1">Очень мало</button><button class="opt" data-v="2">Бесконечно</button><button class="opt" data-v="3">Как у изолятора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R при росте R?</div><div class="opts"><button class="opt" data-v="1">I падает</button><button class="opt" data-v="2">I растёт</button><button class="opt" data-v="3">I²</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мощность P=?</div><div class="opts"><button class="opt" data-v="1">UI</button><button class="opt" data-v="2">q/t</button><button class="opt" data-v="3">m/V</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Посл. ток в элементах?</div><div class="opts"><button class="opt" data-v="1">Одинаков</button><button class="opt" data-v="2">Разный</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Паралл. напряжение?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Пропадает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ключ разомкнут —?</div><div class="opts"><button class="opt" data-v="1">Тока нет</button><button class="opt" data-v="2">Ток максимален</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица сопротивления?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Ватт</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Джоуля–Ленца Q=?</div><div class="opts"><button class="opt" data-v="1">I²Rt</button><button class="opt" data-v="2">cmΔt</button><button class="opt" data-v="3">mv²/2</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="phl">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔦</div>
+      <div class="unit-info">
+        <h3>Оптика сложно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="phl">
+        <div class="theory"><p>Собирающая линза толще в центре, рассеивающая — тоньше. Ход лучей: луч через оптический центр не преломляется; луч, параллельный оси, после собирающей идёт через фокус.</p><p>Формула: 1/F = 1/d + 1/f. Если предмет за 2F — изображение действительное, перевёрнутое, уменьшенное. Между F и 2F — увеличенное. Между линзой и F — мнимое, прямое, увеличенное.</p><p>Оптическая сила D=1/F (F в метрах). На ОГЭ часто дают рисунок лучей и просят тип изображения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Собирающая в центре?</div><div class="opts"><button class="opt" data-v="1">Толще</button><button class="opt" data-v="2">Тоньше</button><button class="opt" data-v="3">Плоская</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Луч через центр?</div><div class="opts"><button class="opt" data-v="1">Не отклоняется</button><button class="opt" data-v="2">Всегда в фокус</button><button class="opt" data-v="3">Исчезает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельный луч после собирающей?</div><div class="opts"><button class="opt" data-v="1">Через фокус</button><button class="opt" data-v="2">Назад</button><button class="opt" data-v="3">Параллелен всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F F в?</div><div class="opts"><button class="opt" data-v="1">Метрах</button><button class="opt" data-v="2">Сантиметрах обязательно</button><button class="opt" data-v="3">Ньютонах</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Предмет за 2F — изображение?</div><div class="opts"><button class="opt" data-v="1">Действ. перевёрн. уменьш.</button><button class="opt" data-v="2">Мнимое</button><button class="opt" data-v="3">Нет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Между F и линзой —?</div><div class="opts"><button class="opt" data-v="1">Мнимое прямое увелич.</button><button class="opt" data-v="2">Действительное</button><button class="opt" data-v="3">Точка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мнимое на экран?</div><div class="opts"><button class="opt" data-v="1">Не ловится</button><button class="opt" data-v="2">Ловится всегда</button><button class="opt" data-v="3">Только ночью</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рассеивающая даёт?</div><div class="opts"><button class="opt" data-v="1">Мнимое уменьшенное</button><button class="opt" data-v="2">Действительное всегда</button><button class="opt" data-v="3">Только увеличенное</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1/F=1/d+1/f —?</div><div class="opts"><button class="opt" data-v="1">Тонкая линза</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Архимед</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Увеличение Γ=?</div><div class="opts"><button class="opt" data-v="1">H/h = f/d по модулю</button><button class="opt" data-v="2">I/U</button><button class="opt" data-v="3">m/V</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила больше — фокус?</div><div class="opts"><button class="opt" data-v="1">Ближе</button><button class="opt" data-v="2">Дальше</button><button class="opt" data-v="3">Не связан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плоское зеркало?</div><div class="opts"><button class="opt" data-v="1">Мнимое равное</button><button class="opt" data-v="2">Действительное</button><button class="opt" data-v="3">Увеличенное всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угол падения равен?</div><div class="opts"><button class="opt" data-v="1">Углу отражения</button><button class="opt" data-v="2">90°</button><button class="opt" data-v="3">0°</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Преломление при?</div><div class="opts"><button class="opt" data-v="1">Смене среды</button><button class="opt" data-v="2">Только в вакууме</button><button class="opt" data-v="3">Только металле</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">дптр — единица?</div><div class="opts"><button class="opt" data-v="1">Опт. силы</button><button class="opt" data-v="2">Тока</button><button class="opt" data-v="3">Давления</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="phe">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔋</div>
+      <div class="unit-info">
+        <h3>Энергия и импульс</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="phe">
+        <div class="theory"><p>Механическая работа A = Fs cosα. Мощность N = A/t = Fv. КПД η = A_полезн / A_затрат.</p><p>Кинетическая энергия E_k = mv²/2, потенциальная в поле тяжести E_p = mgh, у пружины E_p = kx²/2. Закон сохранения: при отсутствии трения сумма E_k + E_p постоянна.</p><p>Импульс p = mv; изменение импульса равно импульсу силы Ft. В замкнутой системе суммарный импульс сохраняется (удар, отдача).</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">A=Fs cosα —?</div><div class="opts"><button class="opt" data-v="1">Работа</button><button class="opt" data-v="2">Ток</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N=A/t —?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Импульс</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_k=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">kx</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_p тяжести?</div><div class="opts"><button class="opt" data-v="1">mgh</button><button class="opt" data-v="2">mv²/2</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_p пружины?</div><div class="opts"><button class="opt" data-v="1">kx²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">КПД η=?</div><div class="opts"><button class="opt" data-v="1">Aп/Aз</button><button class="opt" data-v="2">F/S</button><button class="opt" data-v="3">U/I</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Импульс p=?</div><div class="opts"><button class="opt" data-v="1">mv</button><button class="opt" data-v="2">m/v</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Δp=?</div><div class="opts"><button class="opt" data-v="1">Ft</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">Q/m</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Без трения E_k+E_p?</div><div class="opts"><button class="opt" data-v="1">Сохраняется</button><button class="opt" data-v="2">Растёт всегда</button><button class="opt" data-v="3">=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица энергии?</div><div class="opts"><button class="opt" data-v="1">Дж</button><button class="opt" data-v="2">Вт</button><button class="opt" data-v="3">А</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мощность в?</div><div class="opts"><button class="opt" data-v="1">Вт</button><button class="opt" data-v="2">Дж</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">cosα=0 значит A?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">Максимум</button><button class="opt" data-v="3">Бесконечность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отдача ружья —?</div><div class="opts"><button class="opt" data-v="1">Сохранение импульса</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Архимед</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полезная работа меньше затраченной из-за?</div><div class="opts"><button class="opt" data-v="1">Потерь (трение и т.д.)</button><button class="opt" data-v="2">Ошибки СИ</button><button class="opt" data-v="3">Заряда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Теорема о кин. энергии: A=?</div><div class="opts"><button class="opt" data-v="1">ΔE_k</button><button class="opt" data-v="2">mgh только</button><button class="opt" data-v="3">IUt только</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+<div class="unit" data-unit="pf">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📚</div>
+      <div class="unit-info">
+        <h3>Все формулы (справочник)</h3>
+        <p>7–9 класс · что значит каждая буква</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pf">
+        <div class="theory"><h4>7 класс — механика</h4>
+<p><strong>v = s/t</strong> — скорость при равномерном движении. <em>v</em> — скорость (м/с), <em>s</em> — путь (м), <em>t</em> — время (с).</p><p><strong>ρ = m/V</strong> — плотность. <em>ρ</em> (кг/м³), <em>m</em> — масса (кг), <em>V</em> — объём (м³).</p><p><strong>F = mg</strong> — сила тяжести. <em>F</em> (Н), <em>m</em> (кг), <em>g</em> ≈ 9,8…10 м/с².</p><p><strong>P = mg</strong> — вес тела (сила на опору/подвес), в ньютонах.</p><p><strong>p = F/S</strong> — давление. <em>p</em> (Па = Н/м²), <em>S</em> — площадь (м²).</p><p><strong>p = ρgh</strong> — давление столба жидкости. <em>h</em> — высота столба (м).</p><p><strong>F₁/F₂ = S₂/S₁</strong> — гидравлический пресс.</p><p><strong>Fₐ = ρgV</strong> — сила Архимеда. <em>V</em> — объём погружённой части.</p><p><strong>A = Fs</strong> — работа (при направлении силы вдоль перемещения). <em>A</em> (Дж).</p><p><strong>N = A/t</strong> — мощность (Вт).</p><p><strong>F₁/F₂ = l₂/l₁</strong> — правило рычага; <strong>M = Fl</strong> — момент силы (Н·м).</p><p><strong>s₁/s₂ = F₂/F₁</strong> — «золотое правило» механики; <strong>η = Aп/Aз</strong> — КПД.</p>
+
+<h4>8 класс — тепло и электричество</h4>
+<p><strong>Q = cmΔt</strong> — нагревание/охлаждение. <em>c</em> — удельная теплоёмкость (Дж/(кг·°C)), <em>Δt</em> — изменение температуры.</p><p><strong>Q = qm</strong> — теплота сгорания топлива. <em>q</em> — удельная теплота сгорания (Дж/кг).</p><p><strong>Q = λm</strong> — плавление; <em>λ</em> — удельная теплота плавления.</p><p><strong>Q = Lm</strong> — парообразование; <em>L</em> — удельная теплота парообразования.</p><p><strong>η = Aп/Q</strong> — КПД теплового двигателя.</p><p><strong>I = q/t</strong> — сила тока (А). <strong>U = A/q</strong> — напряжение (В).</p><p><strong>I = U/R</strong> — закон Ома. <strong>R = ρl/S</strong> — сопротивление. <em>ρ</em> — удельное сопротивление, <em>l</em> — длина, <em>S</em> — сечение.</p><p><strong>Последовательно:</strong> I = const, R = R₁+R₂+…, U = U₁+U₂+…</p><p><strong>Параллельно:</strong> U = const, 1/R = 1/R₁+1/R₂+…, I = I₁+I₂+…</p><p><strong>A = IUt</strong>, <strong>Q = I²Rt</strong> (Джоуля–Ленца), <strong>P = UI = I²R = U²/R</strong> — мощность.</p>
+
+<h4>9 класс — кинематика и динамика</h4>
+<p><strong>v = s/t</strong>, <strong>v_ср = (s₁+…)/(t₁+…)</strong> — средняя скорость.</p><p><strong>v = v₀ + at</strong>, <strong>s = v₀t + at²/2</strong>, <strong>v² − v₀² = 2as</strong> — равноускоренное движение.</p><p><strong>Свободное падение:</strong> v = gt, H = gt²/2 (из покоя).</p><p><strong>Бросок вверх:</strong> v = v₀ − gt, H_max = v₀²/(2g), t_подъёма = v₀/g.</p><p><strong>Законы Ньютона:</strong> ΣF = 0 (I), F = ma (II), F₁ = −F₂ (III).</p><p><strong>F_упр = kx</strong>, <strong>F_тр = μN</strong>, <strong>p = mv</strong> — импульс, <strong>Δp = Ft</strong>.</p><p><strong>A = Fs cosα</strong>, <strong>E_k = mv²/2</strong>, <strong>E_p = mgh</strong>, <strong>E_p пружины = kx²/2</strong>.</p><p><strong>T = 2π√(l/g)</strong> — математический маятник; <strong>T = 2π√(m/k)</strong> — пружинный.</p><p><strong>λ = vT = v/ν</strong> — длина волны. <strong>1/F = 1/d + 1/f</strong> — тонкая линза; <strong>D = 1/F</strong> (дптр).</p>
+</div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">v=s/t измеряется в?</div><div class="opts"><button class="opt" data-v="1">м/с</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">Дж</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ρ=m/V — это?</div><div class="opts"><button class="opt" data-v="1">Плотность</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Мощность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица силы?</div><div class="opts"><button class="opt" data-v="1">Н</button><button class="opt" data-v="2">Па</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">p=F/S —?</div><div class="opts"><button class="opt" data-v="1">Давление</button><button class="opt" data-v="2">Скорость</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Fₐ=ρgV —?</div><div class="opts"><button class="opt" data-v="1">Архимед</button><button class="opt" data-v="2">Ом</button><button class="opt" data-v="3">Гук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=cmΔt —?</div><div class="opts"><button class="opt" data-v="1">Нагревание</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Импульс</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=λm —?</div><div class="opts"><button class="opt" data-v="1">Плавление</button><button class="opt" data-v="2">Кипение</button><button class="opt" data-v="3">Нагрев без перехода</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Q=Lm —?</div><div class="opts"><button class="opt" data-v="1">Парообразование</button><button class="opt" data-v="2">Плавление</button><button class="opt" data-v="3">Ток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R —?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Ньютон</button><button class="opt" data-v="3">Гук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Последовательно R?</div><div class="opts"><button class="opt" data-v="1">Складываются</button><button class="opt" data-v="2">1/R</button><button class="opt" data-v="3">U постоянно только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">P=UI в?</div><div class="opts"><button class="opt" data-v="1">Вт</button><button class="opt" data-v="2">Дж</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">s=v₀t+at²/2 —?</div><div class="opts"><button class="opt" data-v="1">Равноускоренное</button><button class="opt" data-v="2">Равномерное только</button><button class="opt" data-v="3">Покой</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_k=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">T=2π√(l/g) —?</div><div class="opts"><button class="opt" data-v="1">Мат. маятник</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F в?</div><div class="opts"><button class="opt" data-v="1">дптр</button><button class="opt" data-v="2">Н</button><button class="opt" data-v="3">А</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pa">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🫧</div>
+      <div class="unit-info">
+        <h3>Архимед и давление</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pa">
+        <div class="theory"><p><strong>Сила Архимеда</strong> выталкивает тело из жидкости (газа): Fₐ = ρ_ж g V_погр. Она равна весу вытесненной жидкости. Условие плавания: Fₐ ≥ mg. Среднее тело тонет, если плотность тела больше плотности жидкости.</p><p>Давление в жидкости растёт с глубиной: p = ρgh. Гидростатическое давление не зависит от формы сосуда — только от высоты столба. Сообщающиеся сосуды: однородная жидкость устанавливается на одном уровне.</p><p>Гидравлический пресс: F₁/F₂ = S₁/S₂ — выигрыш в силе за счёт площади поршней. На ОГЭ часто спрашивают, утонет ли тело, и сравнивают плотности.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Fₐ зависит от?</div><div class="opts"><button class="opt" data-v="1">ρ жидкости и V</button><button class="opt" data-v="2">Цвета тела</button><button class="opt" data-v="3">Только массы в воздухе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Тонет если?</div><div class="opts"><button class="opt" data-v="1">ρ тела > ρ жидкости</button><button class="opt" data-v="2">ρ тела < ρ жидкости</button><button class="opt" data-v="3">Всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">p=ρgh растёт с?</div><div class="opts"><button class="opt" data-v="1">Глубиной</button><button class="opt" data-v="2">Шириной сосуда</button><button class="opt" data-v="3">Цветом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Архимед равен?</div><div class="opts"><button class="opt" data-v="1">Весу вытесненной жидкости</button><button class="opt" data-v="2">Весу воздуха всегда</button><button class="opt" data-v="3">Силе тока</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица давления?</div><div class="opts"><button class="opt" data-v="1">Па</button><button class="opt" data-v="2">Н только</button><button class="opt" data-v="3">Вт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плавает если?</div><div class="opts"><button class="opt" data-v="1">Fₐ ≥ mg</button><button class="opt" data-v="2">Fₐ = 0</button><button class="opt" data-v="3">ρ тела огромна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гидравлика выигрыш в?</div><div class="opts"><button class="opt" data-v="1">Силе</button><button class="opt" data-v="2">Пути без потерь всегда 100%</button><button class="opt" data-v="3">Заряде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">V в Fₐ — это?</div><div class="opts"><button class="opt" data-v="1">Объём погружённой части</button><button class="opt" data-v="2">Вся комната</button><button class="opt" data-v="3">Только масса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сообщающиеся сосуды уровень?</div><div class="opts"><button class="opt" data-v="1">Одинаковый (одна жидкость)</button><button class="opt" data-v="2">Всегда разный</button><button class="opt" data-v="3">Только в вакууме</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плотность воды ≈?</div><div class="opts"><button class="opt" data-v="1">1000 кг/м³</button><button class="opt" data-v="2">1 кг/м³</button><button class="opt" data-v="3">10</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Давление на дно зависит от?</div><div class="opts"><button class="opt" data-v="1">Высоты столба</button><button class="opt" data-v="2">Формы в первую очередь</button><button class="opt" data-v="3">Названия жидкости только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сила тяжести?</div><div class="opts"><button class="opt" data-v="1">mg</button><button class="opt" data-v="2">ρgV</button><button class="opt" data-v="3">U/R</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Атмосферное давление ≈?</div><div class="opts"><button class="opt" data-v="1">10⁵ Па</button><button class="opt" data-v="2">1 Па</button><button class="opt" data-v="3">10 Н</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Выталкивание в газе?</div><div class="opts"><button class="opt" data-v="1">Тоже есть (меньше)</button><button class="opt" data-v="2">Нет никогда</button><button class="opt" data-v="3">Только в металлах</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица Fₐ?</div><div class="opts"><button class="opt" data-v="1">Н</button><button class="opt" data-v="2">Па</button><button class="opt" data-v="3">Дж</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pg">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📈</div>
+      <div class="unit-info">
+        <h3>Графики на ОГЭ</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pg">
+        <div class="theory"><p>График <strong>s(t)</strong>: горизонталь — покой; наклон — скорость (чем круче, тем больше v). Излом — смена скорости.</p><p>График <strong>v(t)</strong>: горизонталь — равномерное движение; наклон — ускорение; площадь под графиком — перемещение.</p><p>График нагревания: наклон — нагрев (Q=cmΔt); горизонтальное плато — плавление или кипение (T постоянна). На ОГЭ умейте указать участок и объяснить, какая энергия на что уходит.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">s(t) горизонталь —?</div><div class="opts"><button class="opt" data-v="1">Покой</button><button class="opt" data-v="2">Ускорение</button><button class="opt" data-v="3">Свободное падение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Круче s(t) —?</div><div class="opts"><button class="opt" data-v="1">Больше скорость</button><button class="opt" data-v="2">Больше масса</button><button class="opt" data-v="3">Больше заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Площадь под v(t) —?</div><div class="opts"><button class="opt" data-v="1">Перемещение</button><button class="opt" data-v="2">Сила</button><button class="opt" data-v="3">Напряжение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">v(t) наклон —?</div><div class="opts"><button class="opt" data-v="1">Ускорение</button><button class="opt" data-v="2">Путь мгновенный</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плато на графике T(t) —?</div><div class="opts"><button class="opt" data-v="1">Плавление/кипение</button><button class="opt" data-v="2">Равномерный нагрев</button><button class="opt" data-v="3">Покой механики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нагрев на графике —?</div><div class="opts"><button class="opt" data-v="1">Рост T</button><button class="opt" data-v="2">Плато</button><button class="opt" data-v="3">Падение до 0 К</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Равномерное на v(t) —?</div><div class="opts"><button class="opt" data-v="1">Горизонталь</button><button class="opt" data-v="2">Наклон вверх</button><button class="opt" data-v="3">Точка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Излом s(t) —?</div><div class="opts"><button class="opt" data-v="1">Смена режима движения</button><button class="opt" data-v="2">Смена массы</button><button class="opt" data-v="3">Смена заряда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">v=0 на графике —?</div><div class="opts"><button class="opt" data-v="1">Остановка</button><button class="opt" data-v="2">Максимум скорости</button><button class="opt" data-v="3">Максимум пути</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отрицательная v —?</div><div class="opts"><button class="opt" data-v="1">Движение обратно</button><button class="opt" data-v="2">Масса отрицательна</button><button class="opt" data-v="3">Ток отрицателен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ускорение модуль —?</div><div class="opts"><button class="opt" data-v="1">|Δv|/t</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">График нужен чтобы?</div><div class="opts"><button class="opt" data-v="1">Читать величины без формулы сразу</button><button class="opt" data-v="2">Заменить все законы</button><button class="opt" data-v="3">Отменить СИ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кипение vs нагрев воды?</div><div class="opts"><button class="opt" data-v="1">T постоянна vs растёт</button><button class="opt" data-v="2">Одинаково</button><button class="opt" data-v="3">T падает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Площадь под a(t) даёт?</div><div class="opts"><button class="opt" data-v="1">Δv</button><button class="opt" data-v="2">Путь сразу</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость из s(t) —?</div><div class="opts"><button class="opt" data-v="1">Наклон касательной</button><button class="opt" data-v="2">Высота точки только</button><button class="opt" data-v="3">Цвет линии</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pc">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔌</div>
+      <div class="unit-info">
+        <h3>Электрические цепи</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pc">
+        <div class="theory"><p>В схеме ищите источник, ключ, резисторы, амперметр (последовательно) и вольтметр (параллельно участку).</p><p>При последовательном соединении обрыв одного элемента гасит всю цепь; при параллельном — остальные ветви работают. Мощность на участке P=I²R: при большем R при том же I выделяется больше тепла.</p><p>Типовая задача: даны U и R — найти I; даны две R — найти эквивалентное и ток. Не путайте формулы последовательного и параллельного соединения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Амперметр включают?</div><div class="opts"><button class="opt" data-v="1">Последовательно</button><button class="opt" data-v="2">Параллельно</button><button class="opt" data-v="3">Вместо ключа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вольтметр?</div><div class="opts"><button class="opt" data-v="1">Параллельно участку</button><button class="opt" data-v="2">Последовательно обязательно</button><button class="opt" data-v="3">Вместо резистора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Обрыв последовательно —?</div><div class="opts"><button class="opt" data-v="1">Ток 0 везде</button><button class="opt" data-v="2">Ток в других есть</button><button class="opt" data-v="3">U=0 источник</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллель: одна ветвь off —?</div><div class="opts"><button class="opt" data-v="1">Другие работают</button><button class="opt" data-v="2">Всё гаснет</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">R экв. два по 4 Ом послед.?</div><div class="opts"><button class="opt" data-v="1">8 Ом</button><button class="opt" data-v="2">2 Ом</button><button class="opt" data-v="3">4 Ом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Два по 4 Ом паралл.?</div><div class="opts"><button class="opt" data-v="1">2 Ом</button><button class="opt" data-v="2">8 Ом</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Больше R при том же I — тепло?</div><div class="opts"><button class="opt" data-v="1">Больше (I²R)</button><button class="opt" data-v="2">Меньше</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Короткое замыкание R?</div><div class="opts"><button class="opt" data-v="1">Очень мало</button><button class="opt" data-v="2">Бесконечно</button><button class="opt" data-v="3">Как у изолятора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">I=U/R при росте R?</div><div class="opts"><button class="opt" data-v="1">I падает</button><button class="opt" data-v="2">I растёт</button><button class="opt" data-v="3">I²</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мощность P=?</div><div class="opts"><button class="opt" data-v="1">UI</button><button class="opt" data-v="2">q/t</button><button class="opt" data-v="3">m/V</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Посл. ток в элементах?</div><div class="opts"><button class="opt" data-v="1">Одинаков</button><button class="opt" data-v="2">Разный</button><button class="opt" data-v="3">Ноль</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Паралл. напряжение?</div><div class="opts"><button class="opt" data-v="1">Одинаково</button><button class="opt" data-v="2">Складывается</button><button class="opt" data-v="3">Пропадает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ключ разомкнут —?</div><div class="opts"><button class="opt" data-v="1">Тока нет</button><button class="opt" data-v="2">Ток максимален</button><button class="opt" data-v="3">R=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица сопротивления?</div><div class="opts"><button class="opt" data-v="1">Ом</button><button class="opt" data-v="2">Ватт</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Джоуля–Ленца Q=?</div><div class="opts"><button class="opt" data-v="1">I²Rt</button><button class="opt" data-v="2">cmΔt</button><button class="opt" data-v="3">mv²/2</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pl">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔎</div>
+      <div class="unit-info">
+        <h3>Линзы подробно</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pl">
+        <div class="theory"><p>Собирающая линза толще в центре, рассеивающая — тоньше. Ход лучей: луч через оптический центр не преломляется; луч, параллельный оси, после собирающей идёт через фокус.</p><p>Формула: 1/F = 1/d + 1/f. Если предмет за 2F — изображение действительное, перевёрнутое, уменьшенное. Между F и 2F — увеличенное. Между линзой и F — мнимое, прямое, увеличенное.</p><p>Оптическая сила D=1/F (F в метрах). На ОГЭ часто дают рисунок лучей и просят тип изображения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Собирающая в центре?</div><div class="opts"><button class="opt" data-v="1">Толще</button><button class="opt" data-v="2">Тоньше</button><button class="opt" data-v="3">Плоская</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Луч через центр?</div><div class="opts"><button class="opt" data-v="1">Не отклоняется</button><button class="opt" data-v="2">Всегда в фокус</button><button class="opt" data-v="3">Исчезает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Параллельный луч после собирающей?</div><div class="opts"><button class="opt" data-v="1">Через фокус</button><button class="opt" data-v="2">Назад</button><button class="opt" data-v="3">Параллелен всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">D=1/F F в?</div><div class="opts"><button class="opt" data-v="1">Метрах</button><button class="opt" data-v="2">Сантиметрах обязательно</button><button class="opt" data-v="3">Ньютонах</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Предмет за 2F — изображение?</div><div class="opts"><button class="opt" data-v="1">Действ. перевёрн. уменьш.</button><button class="opt" data-v="2">Мнимое</button><button class="opt" data-v="3">Нет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Между F и линзой —?</div><div class="opts"><button class="opt" data-v="1">Мнимое прямое увелич.</button><button class="opt" data-v="2">Действительное</button><button class="opt" data-v="3">Точка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мнимое на экран?</div><div class="opts"><button class="opt" data-v="1">Не ловится</button><button class="opt" data-v="2">Ловится всегда</button><button class="opt" data-v="3">Только ночью</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рассеивающая даёт?</div><div class="opts"><button class="opt" data-v="1">Мнимое уменьшенное</button><button class="opt" data-v="2">Действительное всегда</button><button class="opt" data-v="3">Только увеличенное</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1/F=1/d+1/f —?</div><div class="opts"><button class="opt" data-v="1">Тонкая линза</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Архимед</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Увеличение Γ=?</div><div class="opts"><button class="opt" data-v="1">H/h = f/d по модулю</button><button class="opt" data-v="2">I/U</button><button class="opt" data-v="3">m/V</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Оптическая сила больше — фокус?</div><div class="opts"><button class="opt" data-v="1">Ближе</button><button class="opt" data-v="2">Дальше</button><button class="opt" data-v="3">Не связан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плоское зеркало?</div><div class="opts"><button class="opt" data-v="1">Мнимое равное</button><button class="opt" data-v="2">Действительное</button><button class="opt" data-v="3">Увеличенное всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угол падения равен?</div><div class="opts"><button class="opt" data-v="1">Углу отражения</button><button class="opt" data-v="2">90°</button><button class="opt" data-v="3">0°</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Преломление при?</div><div class="opts"><button class="opt" data-v="1">Смене среды</button><button class="opt" data-v="2">Только в вакууме</button><button class="opt" data-v="3">Только металле</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">дптр — единица?</div><div class="opts"><button class="opt" data-v="1">Опт. силы</button><button class="opt" data-v="2">Тока</button><button class="opt" data-v="3">Давления</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="pe">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">💪</div>
+      <div class="unit-info">
+        <h3>Работа и энергия</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="pe">
+        <div class="theory"><p>Механическая работа A = Fs cosα. Мощность N = A/t = Fv. КПД η = A_полезн / A_затрат.</p><p>Кинетическая энергия E_k = mv²/2, потенциальная в поле тяжести E_p = mgh, у пружины E_p = kx²/2. Закон сохранения: при отсутствии трения сумма E_k + E_p постоянна.</p><p>Импульс p = mv; изменение импульса равно импульсу силы Ft. В замкнутой системе суммарный импульс сохраняется (удар, отдача).</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">A=Fs cosα —?</div><div class="opts"><button class="opt" data-v="1">Работа</button><button class="opt" data-v="2">Ток</button><button class="opt" data-v="3">Плотность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N=A/t —?</div><div class="opts"><button class="opt" data-v="1">Мощность</button><button class="opt" data-v="2">Импульс</button><button class="opt" data-v="3">Заряд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_k=?</div><div class="opts"><button class="opt" data-v="1">mv²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">kx</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_p тяжести?</div><div class="opts"><button class="opt" data-v="1">mgh</button><button class="opt" data-v="2">mv²/2</button><button class="opt" data-v="3">IUt</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">E_p пружины?</div><div class="opts"><button class="opt" data-v="1">kx²/2</button><button class="opt" data-v="2">mgh</button><button class="opt" data-v="3">q/t</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">КПД η=?</div><div class="opts"><button class="opt" data-v="1">Aп/Aз</button><button class="opt" data-v="2">F/S</button><button class="opt" data-v="3">U/I</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Импульс p=?</div><div class="opts"><button class="opt" data-v="1">mv</button><button class="opt" data-v="2">m/v</button><button class="opt" data-v="3">F/S</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Δp=?</div><div class="opts"><button class="opt" data-v="1">Ft</button><button class="opt" data-v="2">s/t</button><button class="opt" data-v="3">Q/m</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Без трения E_k+E_p?</div><div class="opts"><button class="opt" data-v="1">Сохраняется</button><button class="opt" data-v="2">Растёт всегда</button><button class="opt" data-v="3">=0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единица энергии?</div><div class="opts"><button class="opt" data-v="1">Дж</button><button class="opt" data-v="2">Вт</button><button class="opt" data-v="3">А</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мощность в?</div><div class="opts"><button class="opt" data-v="1">Вт</button><button class="opt" data-v="2">Дж</button><button class="opt" data-v="3">Па</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">cosα=0 значит A?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">Максимум</button><button class="opt" data-v="3">Бесконечность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отдача ружья —?</div><div class="opts"><button class="opt" data-v="1">Сохранение импульса</button><button class="opt" data-v="2">Закон Ома</button><button class="opt" data-v="3">Архимед</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полезная работа меньше затраченной из-за?</div><div class="opts"><button class="opt" data-v="1">Потерь (трение и т.д.)</button><button class="opt" data-v="2">Ошибки СИ</button><button class="opt" data-v="3">Заряда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Теорема о кин. энергии: A=?</div><div class="opts"><button class="opt" data-v="1">ΔE_k</button><button class="opt" data-v="2">mgh только</button><button class="opt" data-v="3">IUt только</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="path hidden" id="path-vars">
+  <div id="variantsContainer"></div>
+</div>
+</div>
+<nav class="bottom-nav">
+  <button class="bnav-item active" data-tab="main" onclick="switchTab('main');setActiveBnav(this)"><span>📋</span>ОГЭ</button>
+  <button class="bnav-item" data-tab="duo" onclick="switchTab('duo');setActiveBnav(this)"><span>🎮</span>Практика</button>
+  <button class="bnav-item" data-tab="hard" onclick="switchTab('hard');setActiveBnav(this)"><span>🔥</span>Сложные</button>
+  <button class="bnav-item" data-tab="vars" onclick="switchTab('vars');setActiveBnav(this)"><span>📝</span>Варианты</button>
+</nav>
+<script>
+
+let xp=parseInt(localStorage.getItem('oge_phys_xp')||'0'),streak=parseInt(localStorage.getItem('oge_phys_streak')||'0'),completed=JSON.parse(localStorage.getItem('oge_phys_completed')||'{}');
+document.getElementById('xpCount').textContent=xp;document.getElementById('streakCount').textContent=streak;
+function switchTab(n){
+  document.getElementById('path-main').classList.toggle('hidden',n!=='main');
+  document.getElementById('path-duo').classList.toggle('hidden',n!=='duo');
+  document.getElementById('path-hard').classList.toggle('hidden',n!=='hard');
+  document.getElementById('path-vars').classList.toggle('hidden',n!=='vars');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setActiveBnav(b){document.querySelectorAll('.bnav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function toggleUnit(h){h.parentElement.classList.toggle('open')}
+
+function bindQuizzes(){
+  document.querySelectorAll('.q-item').forEach(function(q){
+    if(q.dataset.bound==='1') return;
+    q.dataset.bound='1';
+    var opts=q.querySelectorAll('.opt');
+    var fb=q.querySelector('.fb');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        if(opt.classList.contains('disabled')) return;
+        var c=String(q.getAttribute('data-c')||'');
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){
+            if(String(o.getAttribute('data-v'))===c) o.classList.add('correct');
+          });
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+      });
+    });
+  });
+}
+
+bindQuizzes();
+function completeLesson(btn,pts){
+  const id=btn.closest('.lesson').dataset.lesson;
+  if(completed[id]){btn.textContent='Уже пройдено ✓';btn.disabled=true;return}
+  completed[id]=true;localStorage.setItem('oge_phys_completed',JSON.stringify(completed));
+  xp+=pts;
+/* sync progress to main menu (only lessons/tests) */
+try{
+  var STORE='oge_fun_v1';
+  var g=JSON.parse(localStorage.getItem(STORE)||'{}');
+  if(!g.subj) g.subj={};
+  var subj=document.body.getAttribute('data-subject')||(location.pathname.split('/').filter(Boolean).slice(-2,-1)[0])||'russian';
+  g.subj[subj]=Math.min(100,(g.subj[subj]||0)+Math.max(3,Math.round((pts||10)/3)));
+  g.xp=(g.xp||0)+(pts||10);
+  localStorage.setItem(STORE,JSON.stringify(g));
+}catch(e){}
+localStorage.setItem('oge_phys_xp',xp);document.getElementById('xpCount').textContent=xp;
+  const today=new Date().toDateString(),last=localStorage.getItem('oge_phys_last');
+  if(last!==today){streak=(last&&new Date(last).getTime()>Date.now()-172800000)?streak+1:1;localStorage.setItem('oge_phys_streak',streak);localStorage.setItem('oge_phys_last',today);document.getElementById('streakCount').textContent=streak}
+  btn.textContent='Пройдено ✓';btn.disabled=true;updateProgress();
+  document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+  setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1500)
+}
+function updateProgress(){
+  document.querySelectorAll('.unit').forEach(u=>{
+    const ls=u.querySelectorAll('.lesson');if(!ls.length)return;
+    let d=0;ls.forEach(l=>{if(completed[l.dataset.lesson])d++});
+    const b=u.querySelector('.unit-progress-bar');if(b)b.style.width=Math.round(d/ls.length*100)+'%'
+  })
+}
+document.querySelectorAll('.lesson').forEach(l=>{if(completed[l.dataset.lesson]){const b=l.querySelector('.done-btn');if(b){b.textContent='Пройдено ✓';b.disabled=true}}});
+updateProgress();
+function openDuoLesson(btn,panelId){if(btn.classList.contains('locked'))return;document.querySelectorAll('.duo-lesson-panel').forEach(p=>p.classList.remove('show'));const panel=document.getElementById(panelId);if(panel)panel.classList.toggle('show')}
+function completeDuoNode(btn,id,pts){
+  if(!completed['duo-'+id]){completed['duo-'+id]=true;localStorage.setItem('oge_phys_completed',JSON.stringify(completed));xp+=pts;localStorage.setItem('oge_phys_xp',xp);document.getElementById('xpCount').textContent=xp;
+    document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+    setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1200)}
+  const node=btn.closest('.duo-node-wrap').querySelector('.duo-node');
+  if(node){node.classList.remove('active');node.classList.add('done');node.textContent='✓'}
+  document.querySelectorAll('.duo-node.locked[data-unlock="'+id+'"]').forEach(n=>{n.classList.remove('locked');n.classList.add('active')});
+  btn.closest('.duo-lesson-panel').classList.remove('show');bindQuizzes()
+}
+document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+function normalizeAns(s){return String(s).trim().toLowerCase().replace(/\s+/g,'').replace('ё','е')}
+function checkOpenVariant(btn){
+  const lesson=btn.closest('.lesson');if(lesson.dataset.checked==='1')return;
+  const tasks=lesson.querySelectorAll('.open-task');let ok=0,total=tasks.length;
+  tasks.forEach(t=>{
+    const input=t.querySelector('.ans-input');if(!input)return;
+    const corrects=normalizeAns(t.dataset.answer).split('|');
+    const user=normalizeAns(input.value);
+    const ansBox=t.querySelector('.correct-ans');
+    let match=corrects.some(c=>c===user);
+    if(!match&&user.length>=2&&corrects[0]&&corrects[0].length===user.length){
+      match=user.split('').sort().join('')===corrects[0].split('').sort().join('');
+    }
+    if(match&&user!==''){input.classList.add('ok');ok++}else{input.classList.add('bad')}
+    if(ansBox)ansBox.classList.add('show');input.readOnly=true;
+  });
+  lesson.dataset.checked='1';btn.disabled=true;btn.textContent='Проверено';
+  const res=lesson.querySelector('.var-result');const pct=total?Math.round(ok/total*100):0;
+  if(res){res.classList.add('show');res.innerHTML='Результат: <strong>'+ok+' из '+total+'</strong> ('+pct+'%)';
+    if(pct>=80)res.className='var-result show good';else if(pct>=50)res.className='var-result show mid';else res.className='var-result show bad'}
+  const done=lesson.querySelector('.done-btn');if(done)done.style.display='block';
+}
+
+
+
+function generateDuo(){
+  const container=document.getElementById('duoContainer');
+  if(!container)return;
+  const bank=[
+    ['Единица силы?','Ньютон','Джоуль','Ватт',1],['v=s/t при?','Равномерном','Только падении','Покое',1],
+    ['F=ma?','II Ньютона','Ома','Гука',1],['Давление?','F/S','s/t','q/t',1],
+    ['Ek=?','mv²/2','mgh','IUt',1],['Ep=?','mgh','mv²/2','q/t',1],
+    ['Q=cmΔt?','Нагрев','Плавление','Кипение',1],['Плавление Q?','λm','cmΔt','IUt',1],
+    ['I=U/R?','Ом','Ньютон','Гука',1],['Последовательно R?','Складываются','1/R сумма','U сумма тока',1],
+    ['Параллельно U?','Одинаково','Складывается','Ноль',1],['P=IU?','Мощность','Заряд','Путь',1],
+    ['Угол падения?','= отражения','=90 всегда','=0',1],['D=1/F?','Опт. сила','Ток','Давление',1],
+    ['ν=1/T?','Частота','Сила','Заряд',1],['λ=v/ν?','Длина волны','Период','Масса',1],
+    ['Звук в вакууме?','Нет','Да','Громче',1],['Протон где?','В ядре','В линзе','Только в проводе',1],
+    ['α-частица?','Ядро гелия','Электрон','Фотон',1],['Фотоэффект?','Выбивание e светом','Кипение','Ом'],
+    ['g≈?','10 м/с²','10 м/с','10 Н',1],['Единица U?','Вольт','Ампер','Ом',1],
+    ['Единица R?','Ом','Ватт','Паскаль',1],['Работа тока?','IUt','mgh','s/t',1],
+    ['Горизонт s(t)?','Покой','Ускорение','Падение',1],['Кипение на графике?','Плато','Прямая вверх','Точка'],
+    ['Собирающая линза?','Толще в центре','Тоньше в центре','Плоская',1],['γ-лучи?','ЭМ излучение','Протоны','Молекулы',1]
+  ];
+  // fix last incomplete
+  bank[19]=['Фотоэффект?','Выбивание e светом','Кипение','Закон Ома',1];
+  bank[25]=['Кипение на графике?','Плато','Прямая вверх','Точка',1];
+  const TOTAL=200; let track=null;
+  for(let i=0;i<TOTAL;i++){
+    if(i%10===0){const m=document.createElement('div');m.className='duo-module';m.innerHTML='<div><h2>МОДУЛЬ '+(Math.floor(i/10)+1)+'</h2></div>';container.appendChild(m);track=document.createElement('div');track.className='duo-track';container.appendChild(track);}
+    const id='dn'+i; const off=['',' offset-left',' offset-right'][i%3];
+    const wrap=document.createElement('div');wrap.className='duo-node-wrap'+off;
+    const btn=document.createElement('button');btn.className='duo-node '+(i===0?'active':'locked');
+    if(i>0)btn.dataset.unlock='dn'+(i-1);
+    btn.textContent=['⚙️','🌡️','⚡','🔦','🌊','⚛️'][i%6];
+    btn.onclick=function(){openDuoLesson(this,'panel-'+id)};
+    const label=document.createElement('div');label.className='duo-label';label.textContent='Урок '+(i+1);
+    const panel=document.createElement('div');panel.className='duo-lesson-panel';panel.id='panel-'+id;
+    let quiz='';
+    for(let k=0;k<10;k++){const it=bank[(i*3+k)%bank.length];quiz+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+    panel.innerHTML='<h4>Урок '+(i+1)+'</h4><div class="quiz-box">'+quiz+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\''+id+'\',12)">Готово ✓</button>';
+    wrap.appendChild(btn);wrap.appendChild(label);wrap.appendChild(panel);track.appendChild(wrap);
+    track.appendChild(Object.assign(document.createElement('div'),{className:'duo-line'}));
+  }
+  const fw=document.createElement('div');fw.className='duo-node-wrap';
+  const fb=document.createElement('button');fb.className='duo-node locked';fb.dataset.unlock='dn199';fb.textContent='🏆';
+  fb.onclick=function(){openDuoLesson(this,'panel-dnfinal')};
+  const fl=document.createElement('div');fl.className='duo-label';fl.textContent='Финал 50';
+  const fp=document.createElement('div');fp.className='duo-lesson-panel';fp.id='panel-dnfinal';
+  let fq='';for(let k=0;k<50;k++){const it=bank[k%bank.length];fq+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+(k+1)+'. '+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+  fp.innerHTML='<h4>Итоговый тест — 50 вопросов</h4><div class="quiz-box">'+fq+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\'dnfinal\',100)">Готово ✓</button>';
+  fw.appendChild(fb);fw.appendChild(fl);fw.appendChild(fp);container.appendChild(fw);
+  document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+  bindQuizzes();
+}
+
+
+function generateVariants(){
+  const container=document.getElementById('variantsContainer');
+  if(!container)return;
+  const note=document.createElement('div');
+  note.className='hero';
+  note.innerHTML='<h1>Варианты</h1><p><strong>Тренировочные задания, не официальные КИМ ОГЭ.</strong> Формат близок к экзамену: краткий ответ, выбор, соответствия.</p>';
+  container.appendChild(note);
+
+  const shortQ=[
+    ['Сила тяжести тела массой 5 кг (g=10). Ответ в Н','50'],
+    ['Путь при v=8 м/с за 4 с (равномерно). В метрах','32'],
+    ['Ток при U=12 В и R=3 Ом. В амперах','4'],
+    ['Мощность при A=120 Дж за 6 с. В ваттах','20'],
+    ['Давление F=40 Н на S=2 м². В паскалях','20'],
+    ['Оптическая сила при F=0,25 м. В диоптриях','4'],
+    ['Период при частоте 25 Гц. В секундах','0,04'],
+    ['Q нагрева 2 кг воды на 5°C (c=4200). В джоулях','42000'],
+    ['R двух резисторов 3 Ом и 5 Ом последовательно','8'],
+    ['Импульс m=2 кг, v=6 м/с','12'],
+    ['R двух по 6 Ом параллельно','3'],
+    ['E_k при m=2 кг, v=3 м/с','9'],
+    ['E_p при m=4 кг, h=5 м (g=10)','200'],
+    ['Путь s=v₀t+at²/2: v₀=0, a=4, t=3','18'],
+    ['I при q=10 Кл за 5 с','2'],
+    ['Вес тела 3 кг (g=10)','30'],
+    ['Плотность m=400 г, V=200 см³. В г/см³','2'],
+    ['F упругости k=100 Н/м, x=0,05 м','5'],
+    ['λ при v=340 м/с, T=0,02 с','6,8'],
+    ['D линзы F=50 см (в дптр)','2']
+  ];
+  const choice=[
+    ['При увеличении R при постоянном U ток','Уменьшится','Увеличится','Не изменится'],
+    ['На участке плавления температура','Постоянна','Растёт','Падает'],
+    ['Изображение в плоском зеркале','Мнимое','Действительное','Отсутствует'],
+    ['Единица мощности','Вт','Дж','Н'],
+    ['Второй закон Ньютона','F=ma','I=U/R','Q=cmΔt'],
+    ['Тело тонет, если его плотность по отношению к жидкости','Больше','Меньше','Равна нулю'],
+    ['Амперметр в цепь включают','Последовательно','Параллельно','Вместо источника'],
+    ['Горизонтальный участок графика s(t) означает','Покой','Ускорение','Свободное падение'],
+    ['Сила Архимеда зависит от','Плотности жидкости и объёма','Цвета тела','Только массы в воздухе'],
+    ['Последовательно соединённые резисторы: ток','Одинаков','Разный','Всегда ноль']
+  ];
+  const matchHints=[
+    'Соотнесите: 1) плотность 2) сила 3) давление → A) F/S B) m/V C) ma',
+    'Соотнесите: 1) Q=cmΔt 2) Q=λm 3) Q=Lm → A) плавление B) нагрев C) парообразование',
+    'Соотнесите: 1) амперметр 2) вольтметр → A) последовательно B) параллельно'
+  ];
+
+  for(let v=1;v<=50;v++){
+    const unit=document.createElement('div');unit.className='unit';unit.dataset.unit='var'+v;
+    unit.innerHTML='<div class="unit-header" onclick="toggleUnit(this)"><div class="unit-icon">📝</div><div class="unit-info"><h3>Вариант '+v+'</h3><p>12 заданий · тренировка</p><div class="unit-progress"><div class="unit-progress-bar"></div></div></div><div class="unit-chevron">▼</div></div>';
+    const body=document.createElement('div');body.className='unit-body';
+    const lesson=document.createElement('div');lesson.className='lesson';lesson.dataset.lesson='var'+v;
+    let h='<div class="theory"><p>Тренировочный вариант (не официальный КИМ). Задания 1–8 — краткий ответ, 9–12 — выбор.</p></div><div class="quiz-box">';
+    for(let i=0;i<8;i++){
+      const q=shortQ[(v*3+i)%shortQ.length];
+      h+='<div class="q-item open-q" data-a="'+q[1]+'"><div class="q-text">'+(i+1)+'. '+q[0]+'</div><input class="open-input" placeholder="Ответ" style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #ccc"><div class="fb"></div></div>';
+    }
+    for(let i=0;i<4;i++){
+      const q=choice[(v+i)%choice.length];
+      h+='<div class="q-item" data-c="1"><div class="q-text">'+(9+i)+'. '+q[0]+'</div><div class="opts"><button class="opt" data-v="1">'+q[1]+'</button><button class="opt" data-v="2">'+q[2]+'</button><button class="opt" data-v="3">'+q[3]+'</button></div><div class="fb"></div></div>';
+    }
+    h+='</div><button class="done-btn" style="display:block" onclick="checkOpenVariant(this)">Проверить</button>';
+    lesson.innerHTML=h;body.appendChild(lesson);unit.appendChild(body);container.appendChild(unit);
+  }
+  bindQuizzes();
+}
+
+
+generateDuo();
+generateVariants();
+
+</script>
+<script src="../shared-enhance.js">
+
+
+
+
+
+/* ===== Duolingo sequential lessons (fixed) ===== */
+(function(){
+  function initDuoLessons(){
+    document.querySelectorAll('.lesson').forEach(function(lesson){
+      if(lesson.dataset.duoInit==='1') return;
+      lesson.dataset.duoInit='1';
+
+      var theory=lesson.querySelector('.theory');
+      var tip=lesson.querySelector('.tip');
+      var questions=Array.prototype.slice.call(lesson.querySelectorAll('.q-item'));
+      var doneBtn=lesson.querySelector('.done-btn');
+      var pts=10;
+      if(doneBtn){
+        var mm=(doneBtn.getAttribute('onclick')||'').match(/completeLesson\([^,]+,\s*(\d+)/);
+        if(mm) pts=parseInt(mm[1],10)||10;
+      }
+
+      var steps=[];
+      if(theory){
+        var th=document.createElement('div');
+        th.className='duo-step duo-theory';
+        th.appendChild(theory);
+        if(tip) th.appendChild(tip);
+        steps.push({el:th, type:'theory'});
+      }
+      questions.forEach(function(q,i){
+        var st=document.createElement('div');
+        st.className='duo-step duo-q';
+        var lab=document.createElement('div');
+        lab.className='duo-step-label';
+        lab.textContent='Вопрос '+(i+1)+' из '+questions.length;
+        st.appendChild(lab);
+        st.appendChild(q);
+        steps.push({el:st, type:'q', q:q, qi:i});
+      });
+      if(!steps.length) return;
+
+      lesson.classList.add('duo-mode');
+      var h4=lesson.querySelector('h4');
+      Array.prototype.slice.call(lesson.children).forEach(function(ch){
+        if(ch===h4) return;
+        if(ch===doneBtn){ ch.style.display='none'; return; }
+        try{ lesson.removeChild(ch); }catch(e){}
+      });
+
+      var prog=document.createElement('div');
+      prog.className='duo-progress';
+      for(var i=0;i<steps.length;i++){
+        prog.appendChild(document.createElement('i'));
+      }
+      lesson.appendChild(prog);
+      steps.forEach(function(s){ lesson.appendChild(s.el); });
+
+      var nav=document.createElement('div');
+      nav.className='duo-nav';
+      var next=document.createElement('button');
+      next.type='button';
+      next.className='duo-next';
+      next.textContent='Далее →';
+      nav.appendChild(next);
+      lesson.appendChild(nav);
+
+      var finish=document.createElement('div');
+      finish.className='duo-step duo-finish-wrap';
+      finish.innerHTML='<div class="duo-finish"><div class="big">Урок пройден!</div><div>Отличная работа</div></div>';
+      lesson.appendChild(finish);
+
+      var state={idx:0, answered:{}, finished:false};
+
+      function setProgress(){
+        var dots=prog.querySelectorAll('i');
+        for(var j=0;j<dots.length;j++){
+          dots[j].classList.remove('on','cur');
+          if(j<state.idx) dots[j].classList.add('on');
+          if(j===state.idx) dots[j].classList.add('cur');
+        }
+      }
+
+      function show(i){
+        if(state.finished) return;
+        state.idx=i;
+        for(var j=0;j<steps.length;j++){
+          steps[j].el.classList.toggle('active', j===i);
+        }
+        finish.classList.remove('active');
+        setProgress();
+        var step=steps[i];
+        if(!step) return;
+        if(step.type==='theory'){
+          next.style.display='flex';
+          next.disabled=false;
+          next.textContent=questions.length?'К вопросам →':'Готово ✓';
+        } else {
+          if(state.answered[step.qi]){
+            next.style.display='flex';
+            next.disabled=false;
+            next.textContent=(i>=steps.length-1)?'Завершить ✓':'Далее →';
+          } else {
+            next.style.display='none';
+          }
+        }
+        try{ step.el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+      }
+
+      function finishLesson(){
+        if(state.finished) return;
+        state.finished=true;
+        for(var j=0;j<steps.length;j++) steps[j].el.classList.remove('active');
+        finish.classList.add('active');
+        prog.querySelectorAll('i').forEach(function(d){ d.classList.add('on'); d.classList.remove('cur'); });
+        next.style.display='none';
+        var btn=doneBtn;
+        if(!btn){
+          btn=document.createElement('button');
+          btn.className='done-btn';
+          btn.style.display='none';
+          lesson.appendChild(btn);
+        } else if(!lesson.contains(btn)){
+          lesson.appendChild(btn);
+          btn.style.display='none';
+        }
+        try{
+          if(typeof completeLesson==='function') completeLesson(btn, pts);
+        }catch(e){ console.warn(e); }
+      }
+
+      next.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(state.finished) return;
+        if(state.idx>=steps.length-1){
+          finishLesson();
+          return;
+        }
+        show(state.idx+1);
+      };
+
+      lesson.addEventListener('click', function(e){
+        var opt=e.target.closest ? e.target.closest('.opt') : null;
+        if(!opt || !lesson.contains(opt)) return;
+        if(opt.classList.contains('disabled')) return;
+        var q=opt.closest('.q-item');
+        if(!q) return;
+        var stepEl=opt.closest('.duo-step');
+        if(!stepEl || !stepEl.classList.contains('active')) return;
+
+        var c=String(q.getAttribute('data-c'));
+        var opts=q.querySelectorAll('.opt');
+        var fb=q.querySelector('.fb');
+        for(var oi=0;oi<opts.length;oi++) opts[oi].classList.add('disabled');
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          for(var oi=0;oi<opts.length;oi++){
+            if(String(opts[oi].getAttribute('data-v'))===c) opts[oi].classList.add('correct');
+          }
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+
+        var qi=-1;
+        for(var i=0;i<questions.length;i++){ if(questions[i]===q) qi=i; }
+        if(qi>=0) state.answered[qi]=true;
+
+        next.style.display='flex';
+        next.disabled=false;
+        var isLast=state.idx>=steps.length-1;
+        next.textContent=isLast?'Завершить ✓':'Далее →';
+
+        clearTimeout(lesson._duoT);
+        lesson._duoT=setTimeout(function(){
+          if(state.finished) return;
+          if(isLast) finishLesson();
+          else show(state.idx+1);
+        }, 700);
+      }, true);
+
+      show(0);
+    });
+  }
+
+  var _toggle=window.toggleUnit;
+  window.toggleUnit=function(h){
+    try{
+      if(typeof _toggle==='function') _toggle(h);
+      else if(h && h.parentElement) h.parentElement.classList.toggle('open');
+    }catch(e){}
+    setTimeout(initDuoLessons, 40);
+  };
+
+  function boot(){ setTimeout(initDuoLessons, 80); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    initDuoLessons();
+    if(tries>15) clearInterval(iv);
+  }, 500);
+})();
+
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="../ai-coach.js"></script>
+<script src="../ai-tutor-widget.js"></script>
+</body>
+</html>

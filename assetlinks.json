@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.preparationforoge.twa",
+        "sha256_cert_fingerprints": ["6B:91:46:4D:E8:C2:DF:E8:A8:9F:13:65:44:26:E1:CD:21:EF:CE:1C:59:2E:D6:45:4E:A2:4D:0D:AC:C1:CA:F6"]
+      }
+    }]

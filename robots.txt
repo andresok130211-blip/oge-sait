@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://preparationforoge.netlify.app/sitemap.xml

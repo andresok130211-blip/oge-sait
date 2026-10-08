@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ОГЭ История — Полный курс</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#d97706;--g:#10b981;--gs:#d1fae5;--t:#1e1b4b;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(217,119,6,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#1c1410;
+background-image:
+  radial-gradient(ellipse at 30% 0%,rgba(251,191,36,.35),transparent 50%),
+  radial-gradient(ellipse at 80% 60%,rgba(180,83,9,.25),transparent 45%),
+  linear-gradient(180deg,#292524 0%,#1c1917 50%,#0c0a09 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.15;
+background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='50' font-size='40' fill='%23fbbf24' opacity='0.3'%3E§%3C/text%3E%3C/svg%3E")}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,119,6,.12);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(217,119,6,.06)}
+.logo{font-weight:800;font-size:1.2rem}.logo span{background:linear-gradient(135deg,#d97706,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:flex;gap:14px;font-size:.9rem;font-weight:600}.stat.xp{color:#ca8a04}.stat.streak{color:#ea580c}
+.tabs{display:flex;gap:8px;padding:16px 16px 0;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.7);border:2px solid transparent;cursor:pointer;color:var(--ts);font-family:inherit}
+.tab.active{background:#fff;border-color:var(--p);color:var(--p);box-shadow:var(--sh)}
+.hero{padding:24px 20px 20px;text-align:center;max-width:560px;margin:0 auto}
+.hero h1{font-size:clamp(1.4rem,5vw,1.85rem);margin-bottom:8px}.hero p{color:var(--ts);font-size:.95rem}
+.path{max-width:560px;margin:0 auto;padding:12px 16px 40px}.path.hidden{display:none}
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(217,119,6,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#fef3c7,#fde68a)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#fef3c7;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#d97706,#f59e0b);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.warn{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.warn::before{content:"⚠️";flex-shrink:0}
+.ex{background:#fff;border-left:4px solid var(--p);padding:12px 14px;margin:12px 0;border-radius:0 12px 12px 0;font-size:.93rem}
+.ex-label{font-size:.72rem;font-weight:700;color:var(--p);letter-spacing:.04em;margin-bottom:4px}
+.quiz-box{background:linear-gradient(145deg,#fffbeb,#fef3c7);border:1.5px solid #fcd34d;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#92400e;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#fffbeb}
+.opt.correct{border-color:var(--g);background:var(--gs);color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(217,119,6,.1);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:90}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem;color:var(--ts);padding:4px 10px;background:none;border:none;font-family:inherit;cursor:pointer}
+.bnav-item.active{color:var(--p);font-weight:600}.bnav-item span{font-size:1.3rem}
+.xp-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fff;border-radius:24px;padding:28px 36px;box-shadow:0 25px 60px rgba(217,119,6,.25);text-align:center;z-index:200;opacity:0;pointer-events:none;transition:all .3s}
+.xp-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}.xp-popup .big{font-size:2.8rem;margin-bottom:6px}
+.overlay{position:fixed;inset:0;background:rgba(30,27,75,.45);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}.overlay.show{opacity:1;pointer-events:auto}
+.section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--p);margin:8px 0 12px;padding-left:4px}
+
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px;position:relative}
+.duo-module{background:linear-gradient(135deg,#d97706, #f59e0b);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #b45309;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}.duo-module p{font-size:.8rem;opacity:.95;margin:2px 0 0;font-weight:600}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#d97706,#b45309);box-shadow:0 5px 0 #78350f;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#10b981,#059669);box-shadow:0 5px 0 #065f46;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-node.chest{background:#e5e5e5;box-shadow:0 5px 0 #ccc;border-radius:16px;width:64px;height:56px}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-node.active + .duo-label,.duo-node-wrap:has(.duo-node.active) .duo-label{color:#b45309}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#d97706,#b45309);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #78350f;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #78350f}
+.duo-mascot{font-size:2.5rem;margin:8px 0}
+
+.var-result{margin-top:12px;padding:12px;border-radius:12px;font-weight:600;display:none}
+.var-result.show{display:block}
+.var-result.good{background:#d1fae5;color:#065f46}
+.var-result.mid{background:#fef3c7;color:#92400e}
+.var-result.bad{background:#fee2e2;color:#991b1b}
+.ans-input{width:100%;max-width:280px;padding:12px 14px;border:2px solid #fcd34d;border-radius:12px;font-size:1.05rem;font-family:inherit;margin-top:8px;background:#fff}
+.ans-input:focus{outline:none;border-color:#d97706}
+.ans-input.ok{border-color:#10b981;background:#ecfdf5}
+.ans-input.bad{border-color:#ef4444;background:#fef2f2}
+.correct-ans{margin-top:6px;font-size:.9rem;color:#065f46;font-weight:600;display:none}
+.correct-ans.show{display:block}
+.task-block{margin:18px 0;padding:16px;background:#fff;border-radius:14px;border:1px solid #e2e8f0}
+.task-num{display:inline-block;background:#d97706;color:#fff;min-width:28px;height:28px;padding:0 8px;border-radius:8px;text-align:center;line-height:28px;font-size:.85rem;font-weight:700;margin-right:8px}
+.fig{margin:12px 0;text-align:center;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.data-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:10px 0}
+.data-table th,.data-table td{border:1px solid #cbd5e1;padding:6px 8px;text-align:center}
+.data-table th{background:#fef3c7;font-weight:600}
+.plan-note{font-size:.85rem;color:#64748b;margin:8px 0}
+.check-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#d97706,#b45309);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(217,119,6,.3)}
+.check-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+
+.exam-task{margin:20px 0;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0}
+.exam-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;background:#d97706;color:#fff;border-radius:8px;font-weight:800;font-size:.9rem;margin-right:8px}
+.exam-title{font-size:.8rem;color:#92400e;font-weight:600;margin-bottom:8px}
+.exam-text{font-size:.95rem;line-height:1.55;margin:8px 0}
+.exam-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:10px 0}
+.exam-table th,.exam-table td{border:1px solid #94a3b8;padding:8px;text-align:left}
+.exam-table th{background:#fef3c7}
+.exam-match{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;font-size:.88rem}
+.exam-match .col{background:#f8fafc;padding:10px;border-radius:8px;border:1px solid #e2e8f0}
+.exam-source{background:#fffbeb;border-left:4px solid #d97706;padding:12px 14px;margin:10px 0;font-size:.92rem;font-style:italic}
+.exam-img{text-align:center;margin:12px 0;padding:16px;background:#f1f5f9;border-radius:12px}
+.exam-img-label{font-size:.8rem;color:#64748b;margin-top:6px}
+.ans-row{margin-top:10px}
+.ans-row label{font-size:.85rem;color:#64748b;display:block;margin-bottom:4px}
+
+.home-btn{
+  display:flex;align-items:center;justify-content:center;
+  margin:12px 16px 8px;
+  padding:14px 18px;
+  font-size:1.05rem;font-weight:800;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(79,70,229,.35);
+  letter-spacing:.01em;
+}
+.home-btn:active{transform:scale(.98);opacity:.95}
+
+
+
+
+/* Duolingo-style sequential lesson */
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none;animation:duoFade .3s ease}
+.lesson .duo-step.active{display:block}
+@keyframes duoFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{
+  display:flex;gap:4px;margin:0 0 12px;padding:0 2px;
+}
+.duo-progress i{
+  flex:1;height:6px;border-radius:99px;background:#e2e8f0;
+  transition:background .25s;
+}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.25)}
+.duo-nav{
+  display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;
+}
+.duo-nav .duo-next{
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.3);
+}
+.duo-nav .duo-next:disabled{opacity:.5;cursor:default}
+.duo-nav .duo-skip{
+  padding:14px 14px;border-radius:14px;border:2px solid #e2e8f0;
+  background:#fff;font-weight:700;color:#64748b;cursor:pointer;
+}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.lesson.duo-mode .q-item{margin:0;border:none;padding:0;background:transparent}
+.duo-step-label{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:#7c3aed;margin-bottom:8px;
+}
+.duo-finish{
+  text-align:center;padding:20px 12px;
+  background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px;
+}
+.duo-finish .big{font-size:1.5rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none !important;animation:duoFade .28s ease}
+.lesson .duo-step.active{display:block !important}
+@keyframes duoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{display:flex;gap:4px;margin:0 0 12px}
+.duo-progress i{flex:1;height:7px;border-radius:99px;background:#e2e8f0;transition:background .25s}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.3)}
+.duo-nav{display:flex;gap:10px;margin-top:14px;position:sticky;bottom:72px;z-index:5}
+.duo-nav .duo-next{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1.05rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
+.duo-nav .duo-next:disabled{opacity:.45}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.duo-step-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7c3aed;margin-bottom:8px}
+.duo-finish{text-align:center;padding:22px 12px;background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px}
+.duo-finish .big{font-size:1.45rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+
+
+/* subject-theme-history */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Ctext x='10' y='30' font-size='14' fill='%23b45309' opacity='0.08'%3E1380%3C/text%3E%3Ctext x='50' y='70' font-size='13' fill='%23d97706' opacity='0.07'%3E1812%3C/text%3E%3Ctext x='15' y='110' font-size='12' fill='%239a3412' opacity='0.07'%3E1945%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+
+</style>
+</head>
+<body data-subject="history">
+<div class="topbar">
+  <div class="logo">ОГЭ <span>История</span></div>
+  <div class="stats">
+    <div class="stat xp">⚡ <span id="xpCount">0</span></div>
+    <div class="stat streak">🔥 <span id="streakCount">0</span></div>
+  </div>
+</div>
+<a class="home-btn" href="../index.html">← Главное меню</a>
+
+<div class="tabs">
+  <button class="tab active" data-tab="main" onclick="switchTab('main')">📋 ОГЭ</button>
+  <button class="tab" data-tab="duo" onclick="switchTab('duo')">🎮 Практика</button>
+  <button class="tab" data-tab="hard" onclick="switchTab('hard')">🔥 Сложные</button>
+  <button class="tab" data-tab="vars" onclick="switchTab('vars')">📝 Варианты</button>
+</div>
+
+<!-- ===================== MAIN / ТЕОРИЯ ===================== -->
+<div class="path" id="path-main">
+  <div class="hero"><h1>ОГЭ по истории</h1><p>Большие темы · 15 вопросов в каждой</p></div>
+
+  <div class="unit open" data-unit="h0">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📋</div>
+      <div class="unit-info">
+        <h3>Структура ОГЭ</h3>
+        <p>Как готовиться</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h0">
+        <div class="theory"><p>ОГЭ по истории проверяет даты, личности, причины и последствия, работу с источником и картой. Стройте хронологическую ленту и к каждой дате привязывайте имя и смысл.</p><p>Якорные даты: 862, 988, 1223, 1240, 1242, 1380, 1480, 1547, 1565, 1613, 1703, 1709, 1721, 1812, 1825, 1861.</p><p>В источнике ищите имена и годы. На карте — походы и города. Учите связки, а не голые списки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Главное на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Связки дата–событие</button><button class="opt" data-v="2">Только реки</button><button class="opt" data-v="3">Только новости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Налог на чай</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина — кто?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы с?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1721</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Отмена крепостного</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812 против?</div><div class="opts"><button class="opt" data-v="1">Наполеона</button><button class="opt" data-v="2">Швеции</button><button class="opt" data-v="3">Японии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый — век?</div><div class="opts"><button class="opt" data-v="1">XIII</button><button class="opt" data-v="2">IX</button><button class="opt" data-v="3">XVIII</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1613</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Невская?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ледовое?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В источнике ищи?</div><div class="opts"><button class="opt" data-v="1">Даты и имена</button><button class="opt" data-v="2">Цвет чернил</button><button class="opt" data-v="3">Номер бланка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,10)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚔️</div>
+      <div class="unit-info">
+        <h3>Русь IX–XIII</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h1">
+        <div class="theory"><p>Древняя Русь: <strong>862</strong> — Рюрик, <strong>882</strong> — Олег объединил Новгород и Киев, <strong>988</strong> — крещение Владимиром. В XI–XII вв. — раздробленность. <strong>1223</strong> — Калка, <strong>1237–1240</strong> — Батый. Орда: дань, ярлыки, баскаки.</p><p>Александр Невский: <strong>1240</strong> Нева, <strong>1242</strong> Ледовое побоище — защита северо-запада.</p><p>Крещение связало Русь с Византией. Ордынское влияние ограничивало князей, но внутренние порядки сохранялись. Эти сюжеты — база ОГЭ.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Рюрик?</div><div class="opts"><button class="opt" data-v="1">862</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1240</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Калка?</div><div class="opts"><button class="opt" data-v="1">1223</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый?</div><div class="opts"><button class="opt" data-v="1">1237–1240</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1703</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нева?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёд?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кто на Неве?</div><div class="opts"><button class="opt" data-v="1">Александр Невский</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Кутузов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дань Орде?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет никогда</button><button class="opt" data-v="3">Только при Петре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Флот</button><button class="opt" data-v="3">Земства</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Раздробленность?</div><div class="opts"><button class="opt" data-v="1">Самостоятельность земель</button><button class="opt" data-v="2">Империя Петра</button><button class="opt" data-v="3">Только 1812</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">882?</div><div class="opts"><button class="opt" data-v="1">Олег и Киев</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Угра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Византия?</div><div class="opts"><button class="opt" data-v="1">Крещение</button><button class="opt" data-v="2">Куликово</button><button class="opt" data-v="3">Бородино</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Баскак?</div><div class="opts"><button class="opt" data-v="1">Сборщик дани</button><button class="opt" data-v="2">Адмирал</button><button class="opt" data-v="3">Декабрист</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Новгород?</div><div class="opts"><button class="opt" data-v="1">Вече и торговля</button><button class="opt" data-v="2">Опричнина</button><button class="opt" data-v="3">Полтава</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Орда ограничивала?</div><div class="opts"><button class="opt" data-v="1">Князей</button><button class="opt" data-v="2">Климат</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">👑</div>
+      <div class="unit-info">
+        <h3>Москва и царство</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h2">
+        <div class="theory"><p>Возвышение Москвы: <strong>1380</strong> Куликово поле (Дмитрий Донской), <strong>1480</strong> Угра (Иван III) — конец зависимости от Орды. Судебник <strong>1497</strong>. Иван IV: <strong>1547</strong> венчание, <strong>1552</strong> Казань, с <strong>1565</strong> опричнина.</p><p>Смута завершилась в <strong>1613</strong> избранием Михаила Романова.</p><p>Опричнина усилила власть ценой разорения. Помните цепочку 1380–1480–1547–1565–1613.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1547</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Венчание?</div><div class="opts"><button class="opt" data-v="1">1547</button><button class="opt" data-v="2">1552</button><button class="opt" data-v="3">1565</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Казань?</div><div class="opts"><button class="opt" data-v="1">1552</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина с?</div><div class="opts"><button class="opt" data-v="1">1565</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1721</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Донской?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Судебник 1497?</div><div class="opts"><button class="opt" data-v="1">Иван III</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Смута конец?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1565</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Иван III?</div><div class="opts"><button class="opt" data-v="1">Угра</button><button class="opt" data-v="2">Бородино</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина?</div><div class="opts"><button class="opt" data-v="1">Политика Ивана IV</button><button class="opt" data-v="2">Реформа 1861</button><button class="opt" data-v="3">Крещение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Москва XIV–XV?</div><div class="opts"><button class="opt" data-v="1">Возвышение</button><button class="opt" data-v="2">Закат</button><button class="opt" data-v="3">Перенос в Киев</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мамай?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ливонская?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Рюрик</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1613?</div><div class="opts"><button class="opt" data-v="1">Михаил Романов</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Батый</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚓</div>
+      <div class="unit-info">
+        <h3>Пётр и XIX век</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h3">
+        <div class="theory"><p>Пётр I: Северная война <strong>1700–1721</strong>, <strong>1703</strong> Петербург, <strong>1709</strong> Полтава, <strong>1721</strong> империя. Реформы: Сенат, коллегии, рекруты, Табель о рангах, флот.</p><p><strong>1812</strong> — Отечественная война, <strong>1825</strong> — декабристы, <strong>1861</strong> — отмена крепостного права и реформы Александра II.</p><p>Итог Петра — Балтика и модернизация. 1861 — перелом в социальном строе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1721</button><button class="opt" data-v="3">1812</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1703</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сев. война?</div><div class="opts"><button class="opt" data-v="1">1700–1721</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Империя?</div><div class="opts"><button class="opt" data-v="1">1721</button><button class="opt" data-v="2">1703</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812?</div><div class="opts"><button class="opt" data-v="1">Наполеон</button><button class="opt" data-v="2">Карл XII</button><button class="opt" data-v="3">Батый</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Декабристы?</div><div class="opts"><button class="opt" data-v="1">1825</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Крепостное право</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Табель?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Иван III</button><button class="opt" data-v="3">Рюрик</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ништадт?</div><div class="opts"><button class="opt" data-v="1">Северная война</button><button class="opt" data-v="2">Смута</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бородино?</div><div class="opts"><button class="opt" data-v="1">1812</button><button class="opt" data-v="2">1709</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рекруты?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Владимир</button><button class="opt" data-v="3">Донской</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сенат?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Иван IV</button><button class="opt" data-v="3">Невский</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Александр II?</div><div class="opts"><button class="opt" data-v="1">Реформы 1860-х</button><button class="opt" data-v="2">Опричнина</button><button class="opt" data-v="3">Лёд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Балтика?</div><div class="opts"><button class="opt" data-v="1">Северная война</button><button class="opt" data-v="2">Угра</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Земства?</div><div class="opts"><button class="opt" data-v="1">Александр II</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Иван III</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📜</div>
+      <div class="unit-info">
+        <h3>Источники и карта</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h4">
+        <div class="theory"><p>Источник: определите автора, время, факты и оценку. Карта: стрелки походов, легенда, города сражений. Задания на соответствие связывают личность и событие, термин и определение.</p><p>Сначала отсекайте невозможное, затем сверяйте с хронологией.</p><p>Тренируйте чтение короткого текста под таймер — так спокойнее на экзамене.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Главное на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Связки дата–событие</button><button class="opt" data-v="2">Только реки</button><button class="opt" data-v="3">Только новости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Налог на чай</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина — кто?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы с?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1721</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Отмена крепостного</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812 против?</div><div class="opts"><button class="opt" data-v="1">Наполеона</button><button class="opt" data-v="2">Швеции</button><button class="opt" data-v="3">Японии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый — век?</div><div class="opts"><button class="opt" data-v="1">XIII</button><button class="opt" data-v="2">IX</button><button class="opt" data-v="3">XVIII</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1613</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Невская?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ледовое?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В источнике ищи?</div><div class="opts"><button class="opt" data-v="1">Даты и имена</button><button class="opt" data-v="2">Цвет чернил</button><button class="opt" data-v="3">Номер бланка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📅</div>
+      <div class="unit-info">
+        <h3>Повтор дат</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h5">
+        <div class="theory"><p>Древняя Русь: <strong>862</strong> — Рюрик, <strong>882</strong> — Олег объединил Новгород и Киев, <strong>988</strong> — крещение Владимиром. В XI–XII вв. — раздробленность. <strong>1223</strong> — Калка, <strong>1237–1240</strong> — Батый. Орда: дань, ярлыки, баскаки.</p><p>Александр Невский: <strong>1240</strong> Нева, <strong>1242</strong> Ледовое побоище — защита северо-запада.</p><p>Крещение связало Русь с Византией. Ордынское влияние ограничивало князей, но внутренние порядки сохранялись. Эти сюжеты — база ОГЭ.</p><p>Возвышение Москвы: <strong>1380</strong> Куликово поле (Дмитрий Донской), <strong>1480</strong> Угра (Иван III) — конец зависимости от Орды. Судебник <strong>1497</strong>. Иван IV: <strong>1547</strong> венчание, <strong>1552</strong> Казань, с <strong>1565</strong> опричнина.</p><p>Смута завершилась в <strong>1613</strong> избранием Михаила Романова.</p><p>Опричнина усилила власть ценой разорения. Помните цепочку 1380–1480–1547–1565–1613.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Рюрик?</div><div class="opts"><button class="opt" data-v="1">862</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1240</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Калка?</div><div class="opts"><button class="opt" data-v="1">1223</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый?</div><div class="opts"><button class="opt" data-v="1">1237–1240</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1703</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нева?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёд?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кто на Неве?</div><div class="opts"><button class="opt" data-v="1">Александр Невский</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Кутузов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дань Орде?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет никогда</button><button class="opt" data-v="3">Только при Петре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Флот</button><button class="opt" data-v="3">Земства</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Раздробленность?</div><div class="opts"><button class="opt" data-v="1">Самостоятельность земель</button><button class="opt" data-v="2">Империя Петра</button><button class="opt" data-v="3">Только 1812</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">882?</div><div class="opts"><button class="opt" data-v="1">Олег и Киев</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Угра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Византия?</div><div class="opts"><button class="opt" data-v="1">Крещение</button><button class="opt" data-v="2">Куликово</button><button class="opt" data-v="3">Бородино</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Баскак?</div><div class="opts"><button class="opt" data-v="1">Сборщик дани</button><button class="opt" data-v="2">Адмирал</button><button class="opt" data-v="3">Декабрист</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Новгород?</div><div class="opts"><button class="opt" data-v="1">Вече и торговля</button><button class="opt" data-v="2">Опричнина</button><button class="opt" data-v="3">Полтава</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Орда ограничивала?</div><div class="opts"><button class="opt" data-v="1">Князей</button><button class="opt" data-v="2">Климат</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="h6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">👤</div>
+      <div class="unit-info">
+        <h3>Личности</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="h6">
+        <div class="theory"><p>Возвышение Москвы: <strong>1380</strong> Куликово поле (Дмитрий Донской), <strong>1480</strong> Угра (Иван III) — конец зависимости от Орды. Судебник <strong>1497</strong>. Иван IV: <strong>1547</strong> венчание, <strong>1552</strong> Казань, с <strong>1565</strong> опричнина.</p><p>Смута завершилась в <strong>1613</strong> избранием Михаила Романова.</p><p>Опричнина усилила власть ценой разорения. Помните цепочку 1380–1480–1547–1565–1613.</p><p>Пётр I: Северная война <strong>1700–1721</strong>, <strong>1703</strong> Петербург, <strong>1709</strong> Полтава, <strong>1721</strong> империя. Реформы: Сенат, коллегии, рекруты, Табель о рангах, флот.</p><p><strong>1812</strong> — Отечественная война, <strong>1825</strong> — декабристы, <strong>1861</strong> — отмена крепостного права и реформы Александра II.</p><p>Итог Петра — Балтика и модернизация. 1861 — перелом в социальном строе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1547</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Венчание?</div><div class="opts"><button class="opt" data-v="1">1547</button><button class="opt" data-v="2">1552</button><button class="opt" data-v="3">1565</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Казань?</div><div class="opts"><button class="opt" data-v="1">1552</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина с?</div><div class="opts"><button class="opt" data-v="1">1565</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1721</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Донской?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Судебник 1497?</div><div class="opts"><button class="opt" data-v="1">Иван III</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Смута конец?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1565</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Иван III?</div><div class="opts"><button class="opt" data-v="1">Угра</button><button class="opt" data-v="2">Бородино</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина?</div><div class="opts"><button class="opt" data-v="1">Политика Ивана IV</button><button class="opt" data-v="2">Реформа 1861</button><button class="opt" data-v="3">Крещение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Москва XIV–XV?</div><div class="opts"><button class="opt" data-v="1">Возвышение</button><button class="opt" data-v="2">Закат</button><button class="opt" data-v="3">Перенос в Киев</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мамай?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ливонская?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Рюрик</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1613?</div><div class="opts"><button class="opt" data-v="1">Михаил Романов</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Батый</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="path hidden" id="path-duo">
+  <div class="duo-path">
+    <div class="hero" style="padding-top:8px"><h1>Практика</h1><p>200 уроков · 10 вопросов · финал 50</p></div>
+    <div id="duoContainer"></div>
+  </div>
+</div>
+
+
+<!-- ===================== СЛОЖНЫЕ ТЕМЫ ===================== -->
+<div class="path hidden" id="path-hard">
+  <div class="hero"><h1>Сложные темы</h1><p>15 вопросов в каждой теме</p></div>
+
+  <div class="unit" data-unit="hh1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📅</div>
+      <div class="unit-info">
+        <h3>Хронология</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh1">
+        <div class="theory"><p>Древняя Русь: <strong>862</strong> — Рюрик, <strong>882</strong> — Олег объединил Новгород и Киев, <strong>988</strong> — крещение Владимиром. В XI–XII вв. — раздробленность. <strong>1223</strong> — Калка, <strong>1237–1240</strong> — Батый. Орда: дань, ярлыки, баскаки.</p><p>Александр Невский: <strong>1240</strong> Нева, <strong>1242</strong> Ледовое побоище — защита северо-запада.</p><p>Крещение связало Русь с Византией. Ордынское влияние ограничивало князей, но внутренние порядки сохранялись. Эти сюжеты — база ОГЭ.</p><p>Возвышение Москвы: <strong>1380</strong> Куликово поле (Дмитрий Донской), <strong>1480</strong> Угра (Иван III) — конец зависимости от Орды. Судебник <strong>1497</strong>. Иван IV: <strong>1547</strong> венчание, <strong>1552</strong> Казань, с <strong>1565</strong> опричнина.</p><p>Смута завершилась в <strong>1613</strong> избранием Михаила Романова.</p><p>Опричнина усилила власть ценой разорения. Помните цепочку 1380–1480–1547–1565–1613.</p><p>Пётр I: Северная война <strong>1700–1721</strong>, <strong>1703</strong> Петербург, <strong>1709</strong> Полтава, <strong>1721</strong> империя. Реформы: Сенат, коллегии, рекруты, Табель о рангах, флот.</p><p><strong>1812</strong> — Отечественная война, <strong>1825</strong> — декабристы, <strong>1861</strong> — отмена крепостного права и реформы Александра II.</p><p>Итог Петра — Балтика и модернизация. 1861 — перелом в социальном строе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Рюрик?</div><div class="opts"><button class="opt" data-v="1">862</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1240</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Калка?</div><div class="opts"><button class="opt" data-v="1">1223</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый?</div><div class="opts"><button class="opt" data-v="1">1237–1240</button><button class="opt" data-v="2">988</button><button class="opt" data-v="3">1703</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нева?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёд?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кто на Неве?</div><div class="opts"><button class="opt" data-v="1">Александр Невский</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Кутузов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дань Орде?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет никогда</button><button class="opt" data-v="3">Только при Петре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Флот</button><button class="opt" data-v="3">Земства</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Раздробленность?</div><div class="opts"><button class="opt" data-v="1">Самостоятельность земель</button><button class="opt" data-v="2">Империя Петра</button><button class="opt" data-v="3">Только 1812</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">882?</div><div class="opts"><button class="opt" data-v="1">Олег и Киев</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Угра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Византия?</div><div class="opts"><button class="opt" data-v="1">Крещение</button><button class="opt" data-v="2">Куликово</button><button class="opt" data-v="3">Бородино</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Баскак?</div><div class="opts"><button class="opt" data-v="1">Сборщик дани</button><button class="opt" data-v="2">Адмирал</button><button class="opt" data-v="3">Декабрист</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Новгород?</div><div class="opts"><button class="opt" data-v="1">Вече и торговля</button><button class="opt" data-v="2">Опричнина</button><button class="opt" data-v="3">Полтава</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Орда ограничивала?</div><div class="opts"><button class="opt" data-v="1">Князей</button><button class="opt" data-v="2">Климат</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="hh2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">👤</div>
+      <div class="unit-info">
+        <h3>Личности</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh2">
+        <div class="theory"><p>Возвышение Москвы: <strong>1380</strong> Куликово поле (Дмитрий Донской), <strong>1480</strong> Угра (Иван III) — конец зависимости от Орды. Судебник <strong>1497</strong>. Иван IV: <strong>1547</strong> венчание, <strong>1552</strong> Казань, с <strong>1565</strong> опричнина.</p><p>Смута завершилась в <strong>1613</strong> избранием Михаила Романова.</p><p>Опричнина усилила власть ценой разорения. Помните цепочку 1380–1480–1547–1565–1613.</p><p>Пётр I: Северная война <strong>1700–1721</strong>, <strong>1703</strong> Петербург, <strong>1709</strong> Полтава, <strong>1721</strong> империя. Реформы: Сенат, коллегии, рекруты, Табель о рангах, флот.</p><p><strong>1812</strong> — Отечественная война, <strong>1825</strong> — декабристы, <strong>1861</strong> — отмена крепостного права и реформы Александра II.</p><p>Итог Петра — Балтика и модернизация. 1861 — перелом в социальном строе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1547</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Венчание?</div><div class="opts"><button class="opt" data-v="1">1547</button><button class="opt" data-v="2">1552</button><button class="opt" data-v="3">1565</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Казань?</div><div class="opts"><button class="opt" data-v="1">1552</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина с?</div><div class="opts"><button class="opt" data-v="1">1565</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1721</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Донской?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Судебник 1497?</div><div class="opts"><button class="opt" data-v="1">Иван III</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Смута конец?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1565</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Иван III?</div><div class="opts"><button class="opt" data-v="1">Угра</button><button class="opt" data-v="2">Бородино</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина?</div><div class="opts"><button class="opt" data-v="1">Политика Ивана IV</button><button class="opt" data-v="2">Реформа 1861</button><button class="opt" data-v="3">Крещение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Москва XIV–XV?</div><div class="opts"><button class="opt" data-v="1">Возвышение</button><button class="opt" data-v="2">Закат</button><button class="opt" data-v="3">Перенос в Киев</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мамай?</div><div class="opts"><button class="opt" data-v="1">Куликово</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Нева</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ливонская?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Рюрик</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1613?</div><div class="opts"><button class="opt" data-v="1">Михаил Романов</button><button class="opt" data-v="2">Пётр</button><button class="opt" data-v="3">Батый</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="hh3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📖</div>
+      <div class="unit-info">
+        <h3>Источники</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh3">
+        <div class="theory"><p>Источник: определите автора, время, факты и оценку. Карта: стрелки походов, легенда, города сражений. Задания на соответствие связывают личность и событие, термин и определение.</p><p>Сначала отсекайте невозможное, затем сверяйте с хронологией.</p><p>Тренируйте чтение короткого текста под таймер — так спокойнее на экзамене.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Главное на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Связки дата–событие</button><button class="opt" data-v="2">Только реки</button><button class="opt" data-v="3">Только новости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Налог на чай</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина — кто?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы с?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1721</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Отмена крепостного</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812 против?</div><div class="opts"><button class="opt" data-v="1">Наполеона</button><button class="opt" data-v="2">Швеции</button><button class="opt" data-v="3">Японии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый — век?</div><div class="opts"><button class="opt" data-v="1">XIII</button><button class="opt" data-v="2">IX</button><button class="opt" data-v="3">XVIII</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1613</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Невская?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ледовое?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В источнике ищи?</div><div class="opts"><button class="opt" data-v="1">Даты и имена</button><button class="opt" data-v="2">Цвет чернил</button><button class="opt" data-v="3">Номер бланка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="hh4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">⚔️</div>
+      <div class="unit-info">
+        <h3>Войны</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh4">
+        <div class="theory"><p>Пётр I: Северная война <strong>1700–1721</strong>, <strong>1703</strong> Петербург, <strong>1709</strong> Полтава, <strong>1721</strong> империя. Реформы: Сенат, коллегии, рекруты, Табель о рангах, флот.</p><p><strong>1812</strong> — Отечественная война, <strong>1825</strong> — декабристы, <strong>1861</strong> — отмена крепостного права и реформы Александра II.</p><p>Итог Петра — Балтика и модернизация. 1861 — перелом в социальном строе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1721</button><button class="opt" data-v="3">1812</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1703</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сев. война?</div><div class="opts"><button class="opt" data-v="1">1700–1721</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Империя?</div><div class="opts"><button class="opt" data-v="1">1721</button><button class="opt" data-v="2">1703</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812?</div><div class="opts"><button class="opt" data-v="1">Наполеон</button><button class="opt" data-v="2">Карл XII</button><button class="opt" data-v="3">Батый</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Декабристы?</div><div class="opts"><button class="opt" data-v="1">1825</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1861</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Крепостное право</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Табель?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Иван III</button><button class="opt" data-v="3">Рюрик</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ништадт?</div><div class="opts"><button class="opt" data-v="1">Северная война</button><button class="opt" data-v="2">Смута</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бородино?</div><div class="opts"><button class="opt" data-v="1">1812</button><button class="opt" data-v="2">1709</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рекруты?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Владимир</button><button class="opt" data-v="3">Донской</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сенат?</div><div class="opts"><button class="opt" data-v="1">Пётр I</button><button class="opt" data-v="2">Иван IV</button><button class="opt" data-v="3">Невский</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Александр II?</div><div class="opts"><button class="opt" data-v="1">Реформы 1860-х</button><button class="opt" data-v="2">Опричнина</button><button class="opt" data-v="3">Лёд</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Балтика?</div><div class="opts"><button class="opt" data-v="1">Северная война</button><button class="opt" data-v="2">Угра</button><button class="opt" data-v="3">Калка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Земства?</div><div class="opts"><button class="opt" data-v="1">Александр II</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Иван III</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="hh5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📝</div>
+      <div class="unit-info">
+        <h3>Термины</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh5">
+        <div class="theory"><p>ОГЭ по истории проверяет даты, личности, причины и последствия, работу с источником и картой. Стройте хронологическую ленту и к каждой дате привязывайте имя и смысл.</p><p>Якорные даты: 862, 988, 1223, 1240, 1242, 1380, 1480, 1547, 1565, 1613, 1703, 1709, 1721, 1812, 1825, 1861.</p><p>В источнике ищите имена и годы. На карте — походы и города. Учите связки, а не голые списки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Главное на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Связки дата–событие</button><button class="opt" data-v="2">Только реки</button><button class="opt" data-v="3">Только новости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Налог на чай</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина — кто?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы с?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1721</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Отмена крепостного</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812 против?</div><div class="opts"><button class="opt" data-v="1">Наполеона</button><button class="opt" data-v="2">Швеции</button><button class="opt" data-v="3">Японии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый — век?</div><div class="opts"><button class="opt" data-v="1">XIII</button><button class="opt" data-v="2">IX</button><button class="opt" data-v="3">XVIII</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1613</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Невская?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ледовое?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В источнике ищи?</div><div class="opts"><button class="opt" data-v="1">Даты и имена</button><button class="opt" data-v="2">Цвет чернил</button><button class="opt" data-v="3">Номер бланка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="hh6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🗺️</div>
+      <div class="unit-info">
+        <h3>Карта</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="hh6">
+        <div class="theory"><p>Источник: определите автора, время, факты и оценку. Карта: стрелки походов, легенда, города сражений. Задания на соответствие связывают личность и событие, термин и определение.</p><p>Сначала отсекайте невозможное, затем сверяйте с хронологией.</p><p>Тренируйте чтение короткого текста под таймер — так спокойнее на экзамене.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Главное на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Связки дата–событие</button><button class="opt" data-v="2">Только реки</button><button class="opt" data-v="3">Только новости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ярлык?</div><div class="opts"><button class="opt" data-v="1">Грамота хана</button><button class="opt" data-v="2">Налог на чай</button><button class="opt" data-v="3">Флот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крещение?</div><div class="opts"><button class="opt" data-v="1">988</button><button class="opt" data-v="2">862</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Куликово?</div><div class="opts"><button class="opt" data-v="1">1380</button><button class="opt" data-v="2">1480</button><button class="opt" data-v="3">1709</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Угра?</div><div class="opts"><button class="opt" data-v="1">1480</button><button class="opt" data-v="2">1380</button><button class="opt" data-v="3">1613</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Опричнина — кто?</div><div class="opts"><button class="opt" data-v="1">Иван IV</button><button class="opt" data-v="2">Пётр I</button><button class="opt" data-v="3">Александр II</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Романовы с?</div><div class="opts"><button class="opt" data-v="1">1613</button><button class="opt" data-v="2">1547</button><button class="opt" data-v="3">1721</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полтава?</div><div class="opts"><button class="opt" data-v="1">1709</button><button class="opt" data-v="2">1812</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1861?</div><div class="opts"><button class="opt" data-v="1">Отмена крепостного</button><button class="opt" data-v="2">Полтава</button><button class="opt" data-v="3">Куликово</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1812 против?</div><div class="opts"><button class="opt" data-v="1">Наполеона</button><button class="opt" data-v="2">Швеции</button><button class="opt" data-v="3">Японии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Батый — век?</div><div class="opts"><button class="opt" data-v="1">XIII</button><button class="opt" data-v="2">IX</button><button class="opt" data-v="3">XVIII</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Петербург?</div><div class="opts"><button class="opt" data-v="1">1703</button><button class="opt" data-v="2">1613</button><button class="opt" data-v="3">1480</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Невская?</div><div class="opts"><button class="opt" data-v="1">1240</button><button class="opt" data-v="2">1242</button><button class="opt" data-v="3">1380</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ледовое?</div><div class="opts"><button class="opt" data-v="1">1242</button><button class="opt" data-v="2">1240</button><button class="opt" data-v="3">1223</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В источнике ищи?</div><div class="opts"><button class="opt" data-v="1">Даты и имена</button><button class="opt" data-v="2">Цвет чернил</button><button class="opt" data-v="3">Номер бланка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="path hidden" id="path-vars">
+  <div class="hero">
+    <h1>30 вариантов ОГЭ по истории</h1>
+    <p>Формат экзамена: соответствия, источники, даты, термины. С картами.</p>
+  </div>
+
+<!-- 30 вариантов генерируются через JavaScript -->
+<div id="variantsContainer"></div>
+
+<div style="background:rgba(255,255,255,.9);border-radius:16px;padding:16px;margin-top:12px;font-size:.92rem;color:#64748b">
+  <strong>30 вариантов</strong> с картами, источниками и всеми типами заданий. После проверки видны правильные ответы и результат в процентах.
+</div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="xp-popup" id="xpPopup">
+  <div class="big">🎉</div>
+  <h3>+<span id="xpGain">0</span> XP</h3>
+</div>
+
+<nav class="bottom-nav">
+  <button class="bnav-item active" onclick="switchTab('main');setActiveBnav(this)"><span>📋</span> ОГЭ</button>
+  <button class="bnav-item" onclick="switchTab('duo');setActiveBnav(this)"><span>🎮</span> Практика</button>
+  <button class="bnav-item" onclick="switchTab('hard');setActiveBnav(this)"><span>🔥</span> Сложные</button>
+  <button class="bnav-item" onclick="switchTab('vars');setActiveBnav(this)"><span>📝</span> Варианты</button>
+</nav>
+
+<script>
+// ===================== БАЗОВЫЕ ФУНКЦИИ =====================
+let xp=parseInt(localStorage.getItem('oge_history_xp')||'0'),streak=parseInt(localStorage.getItem('oge_history_streak')||'0'),completed=JSON.parse(localStorage.getItem('oge_history_completed')||'{}');
+document.getElementById('xpCount').textContent=xp;document.getElementById('streakCount').textContent=streak;
+
+function switchTab(n){
+  document.getElementById('path-main').classList.toggle('hidden',n!=='main');
+  document.getElementById('path-duo').classList.toggle('hidden',n!=='duo');
+  document.getElementById('path-hard').classList.toggle('hidden',n!=='hard');
+  document.getElementById('path-vars').classList.toggle('hidden',n!=='vars');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));
+  window.scrollTo({top:0,behavior:'smooth'})
+}
+function setActiveBnav(b){document.querySelectorAll('.bnav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function toggleUnit(h){h.parentElement.classList.toggle('open')}
+
+
+function bindQuizzes(){
+  document.querySelectorAll('.q-item').forEach(function(q){
+    if(q.dataset.bound==='1') return;
+    q.dataset.bound='1';
+    var opts=q.querySelectorAll('.opt');
+    var fb=q.querySelector('.fb');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        if(opt.classList.contains('disabled')) return;
+        var c=String(q.getAttribute('data-c')||'');
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){
+            if(String(o.getAttribute('data-v'))===c) o.classList.add('correct');
+          });
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+      });
+    });
+  });
+}
+
+bindQuizzes();
+
+function completeLesson(btn,pts){
+  const id=btn.closest('.lesson').dataset.lesson;
+  if(completed[id]){btn.textContent='Уже пройдено ✓';btn.disabled=true;return}
+  completed[id]=true;localStorage.setItem('oge_history_completed',JSON.stringify(completed));
+  xp+=pts;
+/* sync progress to main menu (only lessons/tests) */
+try{
+  var STORE='oge_fun_v1';
+  var g=JSON.parse(localStorage.getItem(STORE)||'{}');
+  if(!g.subj) g.subj={};
+  var subj=document.body.getAttribute('data-subject')||(location.pathname.split('/').filter(Boolean).slice(-2,-1)[0])||'russian';
+  g.subj[subj]=Math.min(100,(g.subj[subj]||0)+Math.max(3,Math.round((pts||10)/3)));
+  g.xp=(g.xp||0)+(pts||10);
+  localStorage.setItem(STORE,JSON.stringify(g));
+}catch(e){}
+localStorage.setItem('oge_history_xp',xp);document.getElementById('xpCount').textContent=xp;
+  const today=new Date().toDateString(),last=localStorage.getItem('oge_history_last');
+  if(last!==today){streak=(last&&new Date(last).getTime()>Date.now()-172800000)?streak+1:1;localStorage.setItem('oge_history_streak',streak);localStorage.setItem('oge_history_last',today);document.getElementById('streakCount').textContent=streak}
+  btn.textContent='Пройдено ✓';btn.disabled=true;updateProgress();
+  document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+  setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1500)
+}
+function updateProgress(){
+  document.querySelectorAll('.unit').forEach(u=>{
+    const ls=u.querySelectorAll('.lesson');if(!ls.length)return;
+    let d=0;ls.forEach(l=>{if(completed[l.dataset.lesson])d++});
+    const b=u.querySelector('.unit-progress-bar');if(b)b.style.width=Math.round(d/ls.length*100)+'%'
+  })
+}
+document.querySelectorAll('.lesson').forEach(l=>{
+  if(completed[l.dataset.lesson]){const b=l.querySelector('.done-btn');if(b){b.textContent='Пройдено ✓';b.disabled=true}}
+});
+updateProgress();
+
+function openDuoLesson(btn,panelId){
+  if(btn.classList.contains('locked'))return;
+  document.querySelectorAll('.duo-lesson-panel').forEach(p=>p.classList.remove('show'));
+  const panel=document.getElementById(panelId);if(panel)panel.classList.toggle('show')
+}
+function completeDuoNode(btn,id,pts){
+  if(!completed['duo-'+id]){
+    completed['duo-'+id]=true;localStorage.setItem('oge_history_completed',JSON.stringify(completed));
+    xp+=pts;localStorage.setItem('oge_history_xp',xp);document.getElementById('xpCount').textContent=xp;
+    document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+    setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1200)
+  }
+  const node=btn.closest('.duo-node-wrap').querySelector('.duo-node');
+  if(node){node.classList.remove('active');node.classList.add('done');node.textContent='✓'}
+  document.querySelectorAll('.duo-node.locked[data-unlock="'+id+'"]').forEach(n=>{n.classList.remove('locked');n.classList.add('active')});
+  btn.closest('.duo-lesson-panel').classList.remove('show');bindQuizzes()
+}
+document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{
+  if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');if(!n.classList.contains('chest'))n.classList.add('active')}
+});
+
+// ===================== ГЕНЕРАЦИЯ 30 ВАРИАНТОВ =====================
+
+function generateDuo(){
+  const container=document.getElementById('duoContainer');
+  if(!container)return;
+  const bank=[
+    ['Рюрик — год?','862','988','1240',1],['Крещение Руси?','988','862','1223',1],
+    ['Калка?','1223','1380','1480',1],['Невская битва?','1240','1242','1380',1],
+    ['Ледовое?','1242','1240','1223',1],['Куликово?','1380','1480','1240',1],
+    ['Угра?','1480','1380','1547',1],['Венчание Ивана IV?','1547','1552','1565',1],
+    ['Опричнина с?','1565','1547','1480',1],['Романовы с?','1613','1598','1703',1],
+    ['Петербург?','1703','1721','1709',1],['Полтава?','1709','1703','1812',1],
+    ['Империя с?','1721','1703','1613',1],['Отечественная?','1812','1853','1914',1],
+    ['Декабристы?','1825','1812','1861',1],['Отмена крепостного?','1861','1825','1905',1],
+    ['Ярлык — это?','Грамота хана','Налог','Флот',1],['Кто на Неве?','Александр Невский','Пётр I','Кутузов',1],
+    ['Куликово — князь?','Дмитрий Донской','Иван III','Иван IV',1],['Северная война с?','Швецией','Францией','Японией',1]
+  ];
+  const TOTAL=200; let track=null;
+  for(let i=0;i<TOTAL;i++){
+    if(i%10===0){const m=document.createElement('div');m.className='duo-module';m.innerHTML='<div><h2>МОДУЛЬ '+(Math.floor(i/10)+1)+'</h2></div>';container.appendChild(m);track=document.createElement('div');track.className='duo-track';container.appendChild(track);}
+    const id='dn'+i; const off=['',' offset-left',' offset-right'][i%3];
+    const wrap=document.createElement('div');wrap.className='duo-node-wrap'+off;
+    const btn=document.createElement('button');btn.className='duo-node '+(i===0?'active':'locked');
+    if(i>0)btn.dataset.unlock='dn'+(i-1);btn.textContent=['📜','⚔️','👑','⚓','⭐'][i%5];
+    btn.onclick=function(){openDuoLesson(this,'panel-'+id)};
+    const label=document.createElement('div');label.className='duo-label';label.textContent='Урок '+(i+1);
+    const panel=document.createElement('div');panel.className='duo-lesson-panel';panel.id='panel-'+id;
+    let quiz='';
+    for(let k=0;k<10;k++){const it=bank[(i*3+k)%bank.length];quiz+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+    panel.innerHTML='<h4>Урок '+(i+1)+'</h4><div class="quiz-box">'+quiz+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\''+id+'\',12)">Готово ✓</button>';
+    wrap.appendChild(btn);wrap.appendChild(label);wrap.appendChild(panel);track.appendChild(wrap);
+    const line=document.createElement('div');line.className='duo-line';track.appendChild(line);
+  }
+  const fw=document.createElement('div');fw.className='duo-node-wrap';
+  const fb=document.createElement('button');fb.className='duo-node locked';fb.dataset.unlock='dn199';fb.textContent='🏆';
+  fb.onclick=function(){openDuoLesson(this,'panel-dnfinal')};
+  const fl=document.createElement('div');fl.className='duo-label';fl.textContent='Финал 50';
+  const fp=document.createElement('div');fp.className='duo-lesson-panel';fp.id='panel-dnfinal';
+  let fq='';for(let k=0;k<50;k++){const it=bank[k%bank.length];fq+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+(k+1)+'. '+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+  fp.innerHTML='<h4>Итоговый тест — 50 вопросов</h4><div class="quiz-box">'+fq+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\'dnfinal\',100)">Готово ✓</button>';
+  fw.appendChild(fb);fw.appendChild(fl);fw.appendChild(fp);container.appendChild(fw);
+  document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(typeof completed!=='undefined'&&completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+  if(typeof bindQuizzes==='function')bindQuizzes();
+}
+
+function generateVariants() {
+  const container = document.getElementById('variantsContainer');
+  const variants = [
+    { name: 'Отечественная война 1812', year: 'XIX век', place1: 'Бородино', place2: 'Москва', answer1: 'Бородино', answer2: 'Москва' },
+    { name: 'Нашествие Батыя', year: 'XIII век', place1: 'Рязань', place2: 'Владимир', answer1: 'Рязань', answer2: 'Владимир' },
+    { name: 'Крымская война', year: 'XIX век', place1: 'Севастополь', place2: 'Евпатория', answer1: 'Севастополь', answer2: 'Евпатория' },
+    { name: 'Северная война', year: 'XVIII век', place1: 'Полтава', place2: 'Нарва', answer1: 'Полтава', answer2: 'Нарва' },
+    { name: 'Раздробленность Руси', year: 'XII век', place1: 'Новгород', place2: 'Владимир', answer1: 'Новгород', answer2: 'Владимир' },
+    { name: 'Смутное время', year: 'XVII век', place1: 'Москва', place2: 'Ярославль', answer1: 'Москва', answer2: 'Ярославль' },
+    { name: 'Русско-японская война', year: 'XX век', place1: 'Порт-Артур', place2: 'Цусима', answer1: 'Порт-Артур', answer2: 'Цусима' },
+    { name: 'Кавказская война', year: 'XIX век', place1: 'Грозная', place2: 'Шамиль', answer1: 'Грозная', answer2: 'Шамиль' },
+    { name: 'Восстание Пугачёва', year: 'XVIII век', place1: 'Яицкий городок', place2: 'Оренбург', answer1: 'Яицкий городок', answer2: 'Оренбург' },
+    { name: 'Ливонская война', year: 'XVI век', place1: 'Нарва', place2: 'Полоцк', answer1: 'Нарва', answer2: 'Полоцк' },
+    { name: 'Русско-турецкая война 1877-78', year: 'XIX век', place1: 'Плевна', place2: 'Шипка', answer1: 'Плевна', answer2: 'Шипка' },
+    { name: 'Восстание декабристов', year: 'XIX век', place1: 'Сенатская площадь', place2: 'Петербург', answer1: 'Сенатская площадь', answer2: 'Петербург' },
+    { name: 'Опричнина', year: 'XVI век', place1: 'Александровская слобода', place2: 'Москва', answer1: 'Александровская слобода', answer2: 'Москва' },
+    { name: 'Церковный раскол', year: 'XVII век', place1: 'Москва', place2: 'Соловки', answer1: 'Москва', answer2: 'Соловки' },
+    { name: 'Присоединение Сибири', year: 'XVI век', place1: 'Искер', place2: 'Тобольск', answer1: 'Искер', answer2: 'Тобольск' },
+    { name: 'Азовские походы', year: 'XVII век', place1: 'Азов', place2: 'Дон', answer1: 'Азов', answer2: 'Дон' },
+    { name: 'Русско-шведская война 1808-09', year: 'XIX век', place1: 'Финляндия', place2: 'Ботния', answer1: 'Финляндия', answer2: 'Ботния' },
+    { name: 'Крестьянская война Разина', year: 'XVII век', place1: 'Дон', place2: 'Астрахань', answer1: 'Дон', answer2: 'Астрахань' },
+    { name: 'Прутский поход', year: 'XVIII век', place1: 'Прут', place2: 'Станилешты', answer1: 'Прут', answer2: 'Станилешты' },
+    { name: 'Семилетняя война', year: 'XVIII век', place1: 'Кунерсдорф', place2: 'Пальциг', answer1: 'Кунерсдорф', answer2: 'Пальциг' },
+    { name: 'Восстание Болотникова', year: 'XVII век', place1: 'Путивль', place2: 'Москва', answer1: 'Путивль', answer2: 'Москва' },
+    { name: 'Русско-польская война 1654-67', year: 'XVII век', place1: 'Смоленск', place2: 'Вильно', answer1: 'Смоленск', answer2: 'Вильно' },
+    { name: 'Хивинский поход', year: 'XIX век', place1: 'Хива', place2: 'Казалинск', answer1: 'Хива', answer2: 'Казалинск' },
+    { name: 'Кокандский поход', year: 'XIX век', place1: 'Ташкент', place2: 'Ходжент', answer1: 'Ташкент', answer2: 'Ходжент' },
+    { name: 'Бухарский поход', year: 'XIX век', place1: 'Самарканд', place2: 'Бухара', answer1: 'Самарканд', answer2: 'Бухара' },
+    { name: 'Первая мировая война', year: 'XX век', place1: 'Галиция', place2: 'Варшава', answer1: 'Галиция', answer2: 'Варшава' },
+    { name: 'Гражданская война', year: 'XX век', place1: 'Царицын', place2: 'Екатеринбург', answer1: 'Царицын', answer2: 'Екатеринбург' },
+    { name: 'Нэп и индустриализация', year: 'XX век', place1: 'Москва', place2: 'Донбасс', answer1: 'Москва', answer2: 'Донбасс' },
+    { name: 'Великая Отечественная война', year: 'XX век', place1: 'Сталинград', place2: 'Курск', answer1: 'Сталинград', answer2: 'Курск' },
+    { name: 'Холодная война', year: 'XX век', place1: 'Берлин', place2: 'Куба', answer1: 'Берлин', answer2: 'Куба' }
+  ];
+
+  for (let v = 0; v < variants.length; v++) {
+    const data = variants[v];
+    const num = v + 1;
+    const unit = document.createElement('div');
+    unit.className = 'unit';
+    unit.dataset.unit = 'hv' + num;
+
+    const header = document.createElement('div');
+    header.className = 'unit-header';
+    header.onclick = function(){ toggleUnit(this); };
+    header.innerHTML = `<div class="unit-icon">${num}</div><div class="unit-info"><h3>Вариант ${num}</h3><p>24 задания · формат ОГЭ</p><div class="unit-progress"><div class="unit-progress-bar"></div></div></div><div class="unit-chevron">▼</div>`;
+    unit.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'unit-body';
+    const lesson = document.createElement('div');
+    lesson.className = 'lesson';
+    lesson.dataset.lesson = 'hv' + num;
+
+    // Задание 1: Соответствие
+    const t1 = document.createElement('div');
+    t1.className = 'exam-task open-task';
+    t1.dataset.answer = '5142';
+    t1.innerHTML = `
+      <div class="exam-title"><span class="exam-num">1</span> Установите соответствие</div>
+      <div class="exam-text">Установите соответствие между событиями и годами.</div>
+      <div class="exam-match">
+        <div class="col"><strong>СОБЫТИЯ</strong><br>А) Земская реформа<br>Б) Битва на Калке<br>В) Полтавская битва<br>Г) Соборное уложение</div>
+        <div class="col"><strong>ГОДЫ</strong><br>1) 1223 г.<br>2) 1327 г.<br>3) 1649 г.<br>4) 1709 г.<br>5) 1864 г.</div>
+      </div>
+      <div class="ans-row"><label>Ответ (цифры без пробелов):</label><input type="text" class="ans-input" placeholder="Например: 5142" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>5142</strong></div>
+    `;
+    lesson.appendChild(t1);
+
+    // Задание 2: Хронология
+    const t2 = document.createElement('div');
+    t2.className = 'exam-task open-task';
+    t2.dataset.answer = '2143';
+    t2.innerHTML = `
+      <div class="exam-title"><span class="exam-num">2</span> Хронологическая последовательность</div>
+      <div class="exam-text">Расположите в хронологическом порядке события XIX века.</div>
+      <div class="exam-text">1) учреждение министерств<br>2) реформа Киселёва<br>3) создание Госсовета<br>4) начало правления Александра I</div>
+      <div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Например: 2143" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>2143</strong></div>
+    `;
+    lesson.appendChild(t2);
+
+    // Задание 3: Термин
+    const t3 = document.createElement('div');
+    t3.className = 'exam-task open-task';
+    t3.dataset.answer = 'местничество';
+    t3.innerHTML = `
+      <div class="exam-title"><span class="exam-num">3</span> Запишите термин</div>
+      <div class="exam-source">«Распределение служебных должностей в XV–XVII вв. в зависимости от родовитости.»</div>
+      <div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Термин" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>местничество</strong></div>
+    `;
+    lesson.appendChild(t3);
+
+    // Задание 4: Города Батыя
+    const t4 = document.createElement('div');
+    t4.className = 'exam-task open-task';
+    t4.dataset.answer = '12';
+    t4.innerHTML = `
+      <div class="exam-title"><span class="exam-num">4</span> Города, захваченные Батыем</div>
+      <div class="exam-text">Какие города были захвачены в 1237–1238 гг.? Выберите два.</div>
+      <div class="exam-text">1) Рязань<br>2) Владимир<br>3) Новгород<br>4) Псков<br>5) Смоленск</div>
+      <div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Например: 12" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>12</strong></div>
+    `;
+    lesson.appendChild(t4);
+
+    // Задание 5: Лишнее
+    const t5 = document.createElement('div');
+    t5.className = 'exam-task open-task';
+    t5.dataset.answer = '2';
+    t5.innerHTML = `
+      <div class="exam-title"><span class="exam-num">5</span> Исключите лишнее</div>
+      <div class="exam-text">Все термины, кроме одного, обозначают сословия. Найдите лишний.</div>
+      <div class="exam-text">1) купцы<br>2) пролетарии<br>3) мещане<br>4) казаки<br>5) дворяне</div>
+      <div class="ans-row"><label>Ответ (номер):</label><input type="text" class="ans-input" placeholder="Номер" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>2</strong></div>
+    `;
+    lesson.appendChild(t5);
+
+    // Задание 6: Тезисы и факты
+    const t6 = document.createElement('div');
+    t6.className = 'exam-task open-task';
+    t6.dataset.answer = '31|42';
+    t6.innerHTML = `
+      <div class="exam-title"><span class="exam-num">6</span> Тезисы и факты</div>
+      <div class="exam-text">Подберите факты к тезисам.</div>
+      <div class="exam-text">1) Тильзитский мир — присоединение к блокаде Англии.<br>2) При Александре I — Конституция Польши, отмена крепостного в Прибалтике.<br>3) Реформы Александра I — прогрессивные.<br>4) Внешняя политика начала XIX в. имела негативные последствия.</div>
+      <div class="ans-row"><label>Ответ (тезис|факт через |):</label><input type="text" class="ans-input" placeholder="31|42" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>31|42</strong></div>
+    `;
+    lesson.appendChild(t6);
+
+    // Задание 7: Статистика
+    const t7 = document.createElement('div');
+    t7.className = 'exam-task open-task';
+    t7.dataset.answer = '523';
+    t7.innerHTML = `
+      <div class="exam-title"><span class="exam-num">7</span> Статистика</div>
+      <div class="exam-text">Используя данные таблицы, завершите суждения.</div>
+      <table class="exam-table">
+        <tr><th>Отрасль</th><th>1900</th><th>1913</th></tr>
+        <tr><td>Сельское хозяйство</td><td>4,5 млн</td><td>6,5 млн</td></tr>
+        <tr><td>Строительство</td><td>1 млн</td><td>1,5 млн</td></tr>
+        <tr><td>Мелкая промышленность</td><td>2 млн</td><td>3 млн</td></tr>
+      </table>
+      <div class="exam-text">А) Большинство рабочих трудились в ...<br>Б) Число рабочих в строительстве и мелкой промышленности ...<br>В) Примерно 1/4 сельхозработников составляли занятые в ...</div>
+      <div class="exam-text">Варианты: 1) строительстве 2) выросло в 2 раза 3) мелкой промышленности 4) одинаковыми темпами 5) сельском хозяйстве</div>
+      <div class="ans-row"><label>Ответ (например, 523):</label><input type="text" class="ans-input" placeholder="Например: 523" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>523</strong></div>
+    `;
+    lesson.appendChild(t7);
+
+    // Задания 8-10: Карта
+    const t8 = document.createElement('div');
+    t8.className = 'exam-task open-task';
+    t8.dataset.answer = data.year + '|' + data.answer1 + '|1';
+    t8.innerHTML = `
+      <div class="exam-title"><span class="exam-num">8</span> Карта — век</div>
+      <div class="exam-text">Укажите век, когда произошли события, изображённые на схеме.</div>
+      <div class="fig">
+        <svg viewBox="0 0 400 280" width="400" height="280">
+          <rect x="5" y="5" width="390" height="270" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" rx="6"/>
+          <text x="200" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Схема военных действий</text>
+          <path d="M80 230 L120 210 L160 190 L200 170 L240 150 L280 130 L320 110 L360 90" stroke="#1e40af" stroke-width="1.5" fill="none"/>
+          <path d="M80 230 L60 240 L40 230 L30 210 L40 190 L60 180 L80 170 L100 160 L120 150 L140 140 L160 130 L180 120 L200 110 L220 100 L240 90 L260 80 L280 70 L300 60 L320 50 L340 40 L360 30" stroke="#1e40af" stroke-width="1.5" fill="#dbeafe"/>
+          <text x="180" y="200" font-size="10" fill="#1e40af">Россия</text>
+          <circle cx="200" cy="160" r="8" fill="#dc2626" stroke="#fff" stroke-width="1.5"/>
+          <text x="200" y="175" text-anchor="middle" font-size="8" font-weight="700" fill="#dc2626">${data.place1}</text>
+          <line x1="360" y1="30" x2="300" y2="100" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowB)"/>
+          <line x1="300" y1="100" x2="200" y2="160" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowB)"/>
+          <circle cx="200" cy="160" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+          <text x="200" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">1</text>
+          <circle cx="300" cy="100" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+          <text x="300" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">2</text>
+          <circle cx="360" cy="30" r="12" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+          <text x="360" y="34" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">3</text>
+          <defs><marker id="arrowB" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/></marker></defs>
+        </svg>
+      </div>
+      <div class="ans-row"><label>Ответ (век словом, например: XIX век):</label><input type="text" class="ans-input" placeholder="Например: XIX век" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>${data.year}</strong></div>
+    `;
+    lesson.appendChild(t8);
+
+    const t9 = document.createElement('div');
+    t9.className = 'exam-task open-task';
+    t9.dataset.answer = data.answer1;
+    t9.innerHTML = `
+      <div class="exam-title"><span class="exam-num">9</span> Карта — название города</div>
+      <div class="exam-text">Укажите название города, обозначенного на схеме цифрой «1».</div>
+      <div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Название" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>${data.answer1}</strong></div>
+    `;
+    lesson.appendChild(t9);
+
+    const t10 = document.createElement('div');
+    t10.className = 'exam-task open-task';
+    t10.dataset.answer = '1';
+    t10.innerHTML = `
+      <div class="exam-title"><span class="exam-num">10</span> Карта — город по тексту</div>
+      <div class="exam-text">Прочитайте отрывок и укажите цифру, обозначающую город, название которого пропущено.</div>
+      <div class="exam-source">«...войска противника осадили ________, но защитники города выдержали долгую осаду.»</div>
+      <div class="ans-row"><label>Ответ (цифра):</label><input type="text" class="ans-input" placeholder="Например: 1" autocomplete="off"></div>
+      <div class="correct-ans">Правильный ответ: <strong>1</strong></div>
+    `;
+    lesson.appendChild(t10);
+
+    // Задания 11-23: Краткие
+    const shortQs = [
+      { id: 11, text: 'Участником событий, увековеченных в памятнике, был:', opts: '1) Кутузов 2) Нахимов 3) Скобелев 4) Суворов', ans: '4' },
+      { id: 12, text: 'Запишите название, пропущенное на схеме мирных договоров.', ans: 'Тильзитский мир' },
+      { id: 13, text: 'Какие два памятника созданы в XVII веке?', opts: '1) Собор Василия Блаженного 2) Дворец в Коломенском 3) Успенский собор во Владимире 4) Церковь Покрова в Филях', ans: '24' },
+      { id: 14, text: 'Создателем какого памятника является Екатерина Великая?', opts: '1) Медный всадник 2) Минину и Пожарскому 3) Александровская колонна', ans: '1' },
+      { id: 15, text: 'Участником какого события был Спартак?', ans: '1' },
+      { id: 16, text: 'Прочтите отрывок и укажите событие.', source: '«…Низкий Спартак, в Италийской области всей беснуясь…»', ans: '3' },
+      { id: 17, text: 'Назовите императора и войну по записке.', ans: 'Александр I|Отечественная война 1812' },
+      { id: 18, text: 'Почему Россия спасает Австрию? Какой пример приводит автор? Почему союз невозможен?', ans: 'Священный союз|война с Турцией|недоверие' },
+      { id: 19, text: 'Укажите три итога войны.', ans: 'Венский конгресс|Священный союз|присоединение Финляндии' },
+      { id: 20, text: 'Что стало причиной введения рекрутских наборов?', opts: '1) Северная война 2) Ливонская война 3) Крымская война', ans: '1' },
+      { id: 21, text: 'Найдите две ошибки в тексте о Петре I.', source: '«Пётр I заменил приказы на министерства... ввёл всеобщую воинскую повинность.»', ans: 'министерства→коллегии|всеобщая воинская повинность→рекрутские наборы' },
+      { id: 22, text: 'Назовите отличия в положении крестьян в начале XIX в. и 1860–70-х гг.', ans: 'личная свобода|выкупные платежи|земство' },
+      { id: 23, text: 'Укажите век, князя и архитектора Успенского собора.', ans: 'XV век|Иван III|Аристотель Фиораванти' }
+    ];
+
+    shortQs.forEach(q => {
+      const div = document.createElement('div');
+      div.className = 'exam-task open-task';
+      div.dataset.answer = q.ans;
+      let html = `<div class="exam-title"><span class="exam-num">${q.id}</span> `;
+      if (q.id === 11 || q.id === 13 || q.id === 14 || q.id === 20) {
+        html += q.text + '</div><div class="exam-text">' + q.opts + '</div>';
+      } else if (q.id === 16 || q.id === 21) {
+        html += q.text + '</div><div class="exam-source">' + q.source + '</div>';
+      } else if (q.id === 15 || q.id === 17 || q.id === 18 || q.id === 19 || q.id === 22 || q.id === 23) {
+        html += q.text + '</div>';
+      } else {
+        html += q.text + '</div>';
+      }
+      html += `<div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Ответ" autocomplete="off"></div>
+              <div class="correct-ans">Правильный ответ: <strong>${q.ans}</strong></div>`;
+      div.innerHTML = html;
+      lesson.appendChild(div);
+    });
+
+    // Кнопка проверки
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'check-btn';
+    checkBtn.textContent = 'Проверить вариант';
+    checkBtn.onclick = function(){ checkOpenVariant(this); };
+    lesson.appendChild(checkBtn);
+
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'var-result';
+    lesson.appendChild(resultDiv);
+
+    const doneBtn = document.createElement('button');
+    doneBtn.className = 'done-btn';
+    doneBtn.textContent = 'Вариант ' + num + ' засчитан ✓';
+    doneBtn.style.display = 'none';
+    doneBtn.onclick = function(){ completeLesson(this, 80); };
+    lesson.appendChild(doneBtn);
+
+    body.appendChild(lesson);
+    unit.appendChild(body);
+    container.appendChild(unit);
+  }
+}
+
+// ===================== ПРОВЕРКА ВАРИАНТОВ =====================
+function normalizeAns(s) {
+  return String(s).trim().toLowerCase().replace(/\s+/g,'').replace(',','.').replace('−','-').replace('ё','е');
+}
+function checkOpenVariant(btn) {
+  const lesson = btn.closest('.lesson');
+  if (lesson.dataset.checked === '1') return;
+  const tasks = lesson.querySelectorAll('.open-task');
+  let ok = 0, total = tasks.length;
+  tasks.forEach(t => {
+    const input = t.querySelector('.ans-input');
+    if (!input) return;
+    const corrects = normalizeAns(t.dataset.answer).split('|');
+    const user = normalizeAns(input.value);
+    const ansBox = t.querySelector('.correct-ans');
+    let match = corrects.some(c => c === user);
+    if (!match && user.length === 2 && corrects[0] && corrects[0].length === 2) {
+      match = user.split('').sort().join('') === corrects[0].split('').sort().join('');
+    }
+    if (match && user !== '') {
+      input.classList.add('ok'); ok++;
+    } else {
+      input.classList.add('bad');
+    }
+    if (ansBox) ansBox.classList.add('show');
+    input.readOnly = true;
+  });
+  lesson.dataset.checked = '1';
+  btn.disabled = true;
+  btn.textContent = 'Проверено';
+  const res = lesson.querySelector('.var-result');
+  const pct = total ? Math.round(ok/total*100) : 0;
+  if (res) {
+    res.classList.add('show');
+    res.innerHTML = 'Результат: <strong>' + ok + ' из ' + total + '</strong> (' + pct + '%)';
+    if (pct >= 80) res.className = 'var-result show good';
+    else if (pct >= 50) res.className = 'var-result show mid';
+    else res.className = 'var-result show bad';
+  }
+  const done = lesson.querySelector('.done-btn');
+  if (done) done.style.display = 'block';
+}
+
+// Запускаем генерацию
+generateDuo();
+generateVariants();
+</script>
+<script src="../shared-enhance.js">
+
+
+
+
+
+/* ===== Duolingo sequential lessons (fixed) ===== */
+(function(){
+  function initDuoLessons(){
+    document.querySelectorAll('.lesson').forEach(function(lesson){
+      if(lesson.dataset.duoInit==='1') return;
+      lesson.dataset.duoInit='1';
+
+      var theory=lesson.querySelector('.theory');
+      var tip=lesson.querySelector('.tip');
+      var questions=Array.prototype.slice.call(lesson.querySelectorAll('.q-item'));
+      var doneBtn=lesson.querySelector('.done-btn');
+      var pts=10;
+      if(doneBtn){
+        var mm=(doneBtn.getAttribute('onclick')||'').match(/completeLesson\([^,]+,\s*(\d+)/);
+        if(mm) pts=parseInt(mm[1],10)||10;
+      }
+
+      var steps=[];
+      if(theory){
+        var th=document.createElement('div');
+        th.className='duo-step duo-theory';
+        th.appendChild(theory);
+        if(tip) th.appendChild(tip);
+        steps.push({el:th, type:'theory'});
+      }
+      questions.forEach(function(q,i){
+        var st=document.createElement('div');
+        st.className='duo-step duo-q';
+        var lab=document.createElement('div');
+        lab.className='duo-step-label';
+        lab.textContent='Вопрос '+(i+1)+' из '+questions.length;
+        st.appendChild(lab);
+        st.appendChild(q);
+        steps.push({el:st, type:'q', q:q, qi:i});
+      });
+      if(!steps.length) return;
+
+      lesson.classList.add('duo-mode');
+      var h4=lesson.querySelector('h4');
+      Array.prototype.slice.call(lesson.children).forEach(function(ch){
+        if(ch===h4) return;
+        if(ch===doneBtn){ ch.style.display='none'; return; }
+        try{ lesson.removeChild(ch); }catch(e){}
+      });
+
+      var prog=document.createElement('div');
+      prog.className='duo-progress';
+      for(var i=0;i<steps.length;i++){
+        prog.appendChild(document.createElement('i'));
+      }
+      lesson.appendChild(prog);
+      steps.forEach(function(s){ lesson.appendChild(s.el); });
+
+      var nav=document.createElement('div');
+      nav.className='duo-nav';
+      var next=document.createElement('button');
+      next.type='button';
+      next.className='duo-next';
+      next.textContent='Далее →';
+      nav.appendChild(next);
+      lesson.appendChild(nav);
+
+      var finish=document.createElement('div');
+      finish.className='duo-step duo-finish-wrap';
+      finish.innerHTML='<div class="duo-finish"><div class="big">Урок пройден!</div><div>Отличная работа</div></div>';
+      lesson.appendChild(finish);
+
+      var state={idx:0, answered:{}, finished:false};
+
+      function setProgress(){
+        var dots=prog.querySelectorAll('i');
+        for(var j=0;j<dots.length;j++){
+          dots[j].classList.remove('on','cur');
+          if(j<state.idx) dots[j].classList.add('on');
+          if(j===state.idx) dots[j].classList.add('cur');
+        }
+      }
+
+      function show(i){
+        if(state.finished) return;
+        state.idx=i;
+        for(var j=0;j<steps.length;j++){
+          steps[j].el.classList.toggle('active', j===i);
+        }
+        finish.classList.remove('active');
+        setProgress();
+        var step=steps[i];
+        if(!step) return;
+        if(step.type==='theory'){
+          next.style.display='flex';
+          next.disabled=false;
+          next.textContent=questions.length?'К вопросам →':'Готово ✓';
+        } else {
+          if(state.answered[step.qi]){
+            next.style.display='flex';
+            next.disabled=false;
+            next.textContent=(i>=steps.length-1)?'Завершить ✓':'Далее →';
+          } else {
+            next.style.display='none';
+          }
+        }
+        try{ step.el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+      }
+
+      function finishLesson(){
+        if(state.finished) return;
+        state.finished=true;
+        for(var j=0;j<steps.length;j++) steps[j].el.classList.remove('active');
+        finish.classList.add('active');
+        prog.querySelectorAll('i').forEach(function(d){ d.classList.add('on'); d.classList.remove('cur'); });
+        next.style.display='none';
+        var btn=doneBtn;
+        if(!btn){
+          btn=document.createElement('button');
+          btn.className='done-btn';
+          btn.style.display='none';
+          lesson.appendChild(btn);
+        } else if(!lesson.contains(btn)){
+          lesson.appendChild(btn);
+          btn.style.display='none';
+        }
+        try{
+          if(typeof completeLesson==='function') completeLesson(btn, pts);
+        }catch(e){ console.warn(e); }
+      }
+
+      next.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(state.finished) return;
+        if(state.idx>=steps.length-1){
+          finishLesson();
+          return;
+        }
+        show(state.idx+1);
+      };
+
+      lesson.addEventListener('click', function(e){
+        var opt=e.target.closest ? e.target.closest('.opt') : null;
+        if(!opt || !lesson.contains(opt)) return;
+        if(opt.classList.contains('disabled')) return;
+        var q=opt.closest('.q-item');
+        if(!q) return;
+        var stepEl=opt.closest('.duo-step');
+        if(!stepEl || !stepEl.classList.contains('active')) return;
+
+        var c=String(q.getAttribute('data-c'));
+        var opts=q.querySelectorAll('.opt');
+        var fb=q.querySelector('.fb');
+        for(var oi=0;oi<opts.length;oi++) opts[oi].classList.add('disabled');
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          for(var oi=0;oi<opts.length;oi++){
+            if(String(opts[oi].getAttribute('data-v'))===c) opts[oi].classList.add('correct');
+          }
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+
+        var qi=-1;
+        for(var i=0;i<questions.length;i++){ if(questions[i]===q) qi=i; }
+        if(qi>=0) state.answered[qi]=true;
+
+        next.style.display='flex';
+        next.disabled=false;
+        var isLast=state.idx>=steps.length-1;
+        next.textContent=isLast?'Завершить ✓':'Далее →';
+
+        clearTimeout(lesson._duoT);
+        lesson._duoT=setTimeout(function(){
+          if(state.finished) return;
+          if(isLast) finishLesson();
+          else show(state.idx+1);
+        }, 700);
+      }, true);
+
+      show(0);
+    });
+  }
+
+  var _toggle=window.toggleUnit;
+  window.toggleUnit=function(h){
+    try{
+      if(typeof _toggle==='function') _toggle(h);
+      else if(h && h.parentElement) h.parentElement.classList.toggle('open');
+    }catch(e){}
+    setTimeout(initDuoLessons, 40);
+  };
+
+  function boot(){ setTimeout(initDuoLessons, 80); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    initDuoLessons();
+    if(tries>15) clearInterval(iv);
+  }, 500);
+})();
+
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="../ai-coach.js"></script>
+<script src="../ai-tutor-widget.js"></script>
+</body>
+</html>

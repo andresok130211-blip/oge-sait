@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ОГЭ Биология — Полный курс</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#059669;--g:#10b981;--gs:#d1fae5;--t:#064e3b;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(5,150,105,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#052e16;
+background-image:
+  radial-gradient(ellipse at 20% 0%,rgba(74,222,128,.4),transparent 50%),
+  radial-gradient(ellipse at 85% 30%,rgba(52,211,153,.3),transparent 45%),
+  radial-gradient(ellipse at 40% 100%,rgba(16,185,129,.2),transparent 40%),
+  linear-gradient(180deg,#064e3b 0%,#022c22 60%,#0f172a 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:radial-gradient(circle at 2px 2px,rgba(167,243,208,.12) 1px,transparent 0);
+background-size:28px 28px}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(5,150,105,.12);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(5,150,105,.06)}
+.logo{font-weight:800;font-size:1.2rem}.logo span{background:linear-gradient(135deg,#059669,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:flex;gap:14px;font-size:.9rem;font-weight:600}.stat.xp{color:#047857}.stat.streak{color:#ea580c}
+.tabs{display:flex;gap:8px;padding:16px 16px 0;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.7);border:2px solid transparent;cursor:pointer;color:var(--ts);font-family:inherit}
+.tab.active{background:#fff;border-color:var(--p);color:var(--p);box-shadow:var(--sh)}
+.hero{padding:24px 20px 20px;text-align:center;max-width:560px;margin:0 auto}
+.hero h1{font-size:clamp(1.4rem,5vw,1.85rem);margin-bottom:8px}.hero p{color:var(--ts);font-size:.95rem}
+.path{max-width:560px;margin:0 auto;padding:12px 16px 40px}.path.hidden{display:none}
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(5,150,105,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#d1fae5;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#059669,#10b981);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.warn{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.warn::before{content:"⚠️";flex-shrink:0}
+.ex{background:#fff;border-left:4px solid var(--p);padding:12px 14px;margin:12px 0;border-radius:0 12px 12px 0;font-size:.93rem}
+.ex-label{font-size:.72rem;font-weight:700;color:var(--p);letter-spacing:.04em;margin-bottom:4px}
+.quiz-box{background:linear-gradient(145deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#065f46;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#ecfdf5}
+.opt.correct{border-color:var(--g);background:var(--gs);color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(5,150,105,.1);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:90}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem;color:var(--ts);padding:4px 10px;background:none;border:none;font-family:inherit;cursor:pointer}
+.bnav-item.active{color:var(--p);font-weight:600}.bnav-item span{font-size:1.3rem}
+.xp-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fff;border-radius:24px;padding:28px 36px;box-shadow:0 25px 60px rgba(5,150,105,.25);text-align:center;z-index:200;opacity:0;pointer-events:none;transition:all .3s}
+.xp-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}.xp-popup .big{font-size:2.8rem;margin-bottom:6px}
+.overlay{position:fixed;inset:0;background:rgba(6,78,59,.45);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}.overlay.show{opacity:1;pointer-events:auto}
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px;position:relative}
+.duo-module{background:linear-gradient(135deg,#059669,#10b981);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #047857;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#10b981,#059669);box-shadow:0 5px 0 #047857;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#10b981,#059669);box-shadow:0 5px 0 #065f46;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#10b981,#059669);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #047857;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #047857}
+.duo-mascot{font-size:2.5rem;margin:8px 0}
+.var-result{margin-top:12px;padding:12px;border-radius:12px;font-weight:600;display:none}
+.var-result.show{display:block}
+.var-result.good{background:#d1fae5;color:#065f46}
+.var-result.mid{background:#fef3c7;color:#92400e}
+.var-result.bad{background:#fee2e2;color:#991b1b}
+.ans-input{width:100%;max-width:280px;padding:12px 14px;border:2px solid #6ee7b7;border-radius:12px;font-size:1.05rem;font-family:inherit;margin-top:8px;background:#fff}
+.ans-input:focus{outline:none;border-color:#059669}
+.ans-input.ok{border-color:#10b981;background:#ecfdf5}
+.ans-input.bad{border-color:#ef4444;background:#fef2f2}
+.correct-ans{margin-top:6px;font-size:.9rem;color:#065f46;font-weight:600;display:none}
+.correct-ans.show{display:block}
+.exam-task{margin:20px 0;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0}
+.exam-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;background:#059669;color:#fff;border-radius:8px;font-weight:800;font-size:.9rem;margin-right:8px}
+.exam-title{font-size:.85rem;color:#065f46;font-weight:600;margin-bottom:8px}
+.exam-text{font-size:.95rem;line-height:1.55;margin:8px 0}
+.ans-row{margin-top:10px}
+.ans-row label{font-size:.85rem;color:#64748b;display:block;margin-bottom:4px}
+.check-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#059669,#047857);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(5,150,105,.3)}
+.check-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.schema{background:#f0fdf4;border:1px solid #a7f3d0;border-radius:12px;padding:12px;margin:10px 0;font-size:.9rem;text-align:center}
+
+.home-btn{
+  display:flex;align-items:center;justify-content:center;
+  margin:12px 16px 8px;
+  padding:14px 18px;
+  font-size:1.05rem;font-weight:800;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(79,70,229,.35);
+  letter-spacing:.01em;
+}
+.home-btn:active{transform:scale(.98);opacity:.95}
+
+
+
+
+/* Duolingo-style sequential lesson */
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none;animation:duoFade .3s ease}
+.lesson .duo-step.active{display:block}
+@keyframes duoFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{
+  display:flex;gap:4px;margin:0 0 12px;padding:0 2px;
+}
+.duo-progress i{
+  flex:1;height:6px;border-radius:99px;background:#e2e8f0;
+  transition:background .25s;
+}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.25)}
+.duo-nav{
+  display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;
+}
+.duo-nav .duo-next{
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.3);
+}
+.duo-nav .duo-next:disabled{opacity:.5;cursor:default}
+.duo-nav .duo-skip{
+  padding:14px 14px;border-radius:14px;border:2px solid #e2e8f0;
+  background:#fff;font-weight:700;color:#64748b;cursor:pointer;
+}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.lesson.duo-mode .q-item{margin:0;border:none;padding:0;background:transparent}
+.duo-step-label{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:#7c3aed;margin-bottom:8px;
+}
+.duo-finish{
+  text-align:center;padding:20px 12px;
+  background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px;
+}
+.duo-finish .big{font-size:1.5rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none !important;animation:duoFade .28s ease}
+.lesson .duo-step.active{display:block !important}
+@keyframes duoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{display:flex;gap:4px;margin:0 0 12px}
+.duo-progress i{flex:1;height:7px;border-radius:99px;background:#e2e8f0;transition:background .25s}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.3)}
+.duo-nav{display:flex;gap:10px;margin-top:14px;position:sticky;bottom:72px;z-index:5}
+.duo-nav .duo-next{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1.05rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
+.duo-nav .duo-next:disabled{opacity:.45}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.duo-step-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7c3aed;margin-bottom:8px}
+.duo-finish{text-align:center;padding:22px 12px;background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px}
+.duo-finish .big{font-size:1.45rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+
+
+/* subject-theme-biology */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' viewBox='0 0 130 130'%3E%3Ctext x='10' y='32' font-size='14' fill='%2316a34a' opacity='0.08'%3EDNK%3C/text%3E%3Ctext x='40' y='70' font-size='13' fill='%2322c55e' opacity='0.07'%3A%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3C/text%3E%3Ctext x='15' y='105' font-size='12' fill='%2315803d' opacity='0.07'%3A%D0%B3%D0%B5%D0%BD%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+
+</style>
+</head>
+<body data-subject="biology">
+<div class="topbar">
+  <div class="logo">ОГЭ <span>Биология</span></div>
+  <div class="stats">
+    <div class="stat xp">⚡ <span id="xpCount">0</span></div>
+    <div class="stat streak">🔥 <span id="streakCount">0</span></div>
+  </div>
+</div>
+<a class="home-btn" href="../index.html">← Главное меню</a>
+
+<div class="tabs">
+  <button class="tab active" data-tab="main" onclick="switchTab('main')">📋 ОГЭ</button>
+  <button class="tab" data-tab="duo" onclick="switchTab('duo')">🎮 Практика</button>
+  <button class="tab" data-tab="hard" onclick="switchTab('hard')">🔥 Сложные</button>
+  <button class="tab" data-tab="vars" onclick="switchTab('vars')">📝 Варианты</button>
+</div>
+
+<!-- MAIN -->
+<div class="path" id="path-main">
+  <div class="hero"><h1>ОГЭ по биологии</h1><p>Большие темы · 15 вопросов в каждой</p></div>
+
+  <div class="unit open" data-unit="b0">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📋</div>
+      <div class="unit-info">
+        <h3>Структура ОГЭ</h3>
+        <p>С нуля</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b0">
+        <div class="theory"><p>Клетка — единица жизни. <strong>Прокариоты</strong> (бактерии) без оформленного ядра; <strong>эукариоты</strong> — с ядром. Ядро хранит ДНК, митохондрии дают АТФ, рибосомы синтезируют белок, хлоропласты (растения) — фотосинтез, вакуоль запасает вещества.</p><p>Клеточная стенка у растений (целлюлоза) и грибов (хитин); у животных нет. Мембрана регулирует транспорт. Крахмал — запас растений, гликоген — животных.</p><p>На ОГЭ сравнивайте клетки и функции органоидов.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ДНК в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Вакуоли</button><button class="opt" data-v="3">Стенке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">АТФ?</div><div class="opts"><button class="opt" data-v="1">Митохондрии</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Белок?</div><div class="opts"><button class="opt" data-v="1">Рибосомы</button><button class="opt" data-v="2">Вакуоль</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет у животных?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Мембрана</button><button class="opt" data-v="3">Митохондрии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бактерии?</div><div class="opts"><button class="opt" data-v="1">Прокариоты</button><button class="opt" data-v="2">Эукариоты</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крахмал?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Животные</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гликоген?</div><div class="opts"><button class="opt" data-v="1">Животные</button><button class="opt" data-v="2">Только дуб</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка грибов?</div><div class="opts"><button class="opt" data-v="1">Хитин</button><button class="opt" data-v="2">Целлюлоза</button><button class="opt" data-v="3">Крахмал</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мембрана?</div><div class="opts"><button class="opt" data-v="1">Транспорт</button><button class="opt" data-v="2">Фотосинтез у всех</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет ядра у?</div><div class="opts"><button class="opt" data-v="1">Прокариот</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Растений</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вакуоль крупная у?</div><div class="opts"><button class="opt" data-v="1">Растений</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митохондрии у?</div><div class="opts"><button class="opt" data-v="1">Эукариот</button><button class="opt" data-v="2">Только бактерий</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хлорофилл?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Общее у клеток?</div><div class="opts"><button class="opt" data-v="1">Мембрана и рибосомы</button><button class="opt" data-v="2">Хлоропласты</button><button class="opt" data-v="3">Стенка целлюлоза</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,10)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🦠</div>
+      <div class="unit-info">
+        <h3>Клетка</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b1">
+        <div class="theory"><p>Клетка — единица жизни. <strong>Прокариоты</strong> (бактерии) без оформленного ядра; <strong>эукариоты</strong> — с ядром. Ядро хранит ДНК, митохондрии дают АТФ, рибосомы синтезируют белок, хлоропласты (растения) — фотосинтез, вакуоль запасает вещества.</p><p>Клеточная стенка у растений (целлюлоза) и грибов (хитин); у животных нет. Мембрана регулирует транспорт. Крахмал — запас растений, гликоген — животных.</p><p>На ОГЭ сравнивайте клетки и функции органоидов.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ДНК в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Вакуоли</button><button class="opt" data-v="3">Стенке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">АТФ?</div><div class="opts"><button class="opt" data-v="1">Митохондрии</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Белок?</div><div class="opts"><button class="opt" data-v="1">Рибосомы</button><button class="opt" data-v="2">Вакуоль</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет у животных?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Мембрана</button><button class="opt" data-v="3">Митохондрии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бактерии?</div><div class="opts"><button class="opt" data-v="1">Прокариоты</button><button class="opt" data-v="2">Эукариоты</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крахмал?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Животные</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гликоген?</div><div class="opts"><button class="opt" data-v="1">Животные</button><button class="opt" data-v="2">Только дуб</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка грибов?</div><div class="opts"><button class="opt" data-v="1">Хитин</button><button class="opt" data-v="2">Целлюлоза</button><button class="opt" data-v="3">Крахмал</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мембрана?</div><div class="opts"><button class="opt" data-v="1">Транспорт</button><button class="opt" data-v="2">Фотосинтез у всех</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет ядра у?</div><div class="opts"><button class="opt" data-v="1">Прокариот</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Растений</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вакуоль крупная у?</div><div class="opts"><button class="opt" data-v="1">Растений</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митохондрии у?</div><div class="opts"><button class="opt" data-v="1">Эукариот</button><button class="opt" data-v="2">Только бактерий</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хлорофилл?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Общее у клеток?</div><div class="opts"><button class="opt" data-v="1">Мембрана и рибосомы</button><button class="opt" data-v="2">Хлоропласты</button><button class="opt" data-v="3">Стенка целлюлоза</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🫀</div>
+      <div class="unit-info">
+        <h3>Человек</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b2">
+        <div class="theory"><p>Кровообращение: сердце из 4 камер, артерии от сердца, вены к сердцу, капилляры — обмен. Большой круг — тело, малый — лёгкие. Эритроциты несут O₂, лейкоциты защищают, тромбоциты — свёртывание.</p><p>Дыхание: газообмен в альвеолах. Пищеварение: амилаза во рту, пепсин в желудке, всасывание в тонком кишечнике; печень — желчь, поджелудочная — ферменты и инсулин.</p><p>ЦНС — головной и спинной мозг. Связывайте орган с функцией.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">От сердца?</div><div class="opts"><button class="opt" data-v="1">Артерии</button><button class="opt" data-v="2">Вены</button><button class="opt" data-v="3">Лимфа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">O₂ несут?</div><div class="opts"><button class="opt" data-v="1">Эритроциты</button><button class="opt" data-v="2">Тромбоциты</button><button class="opt" data-v="3">Плазма без клеток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Газообмен?</div><div class="opts"><button class="opt" data-v="1">Альвеолы</button><button class="opt" data-v="2">Трахея</button><button class="opt" data-v="3">Гортань</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Всасывание?</div><div class="opts"><button class="opt" data-v="1">Тонкий кишечник</button><button class="opt" data-v="2">Пищевод</button><button class="opt" data-v="3">Рот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пепсин?</div><div class="opts"><button class="opt" data-v="1">Желудок</button><button class="opt" data-v="2">Рот</button><button class="opt" data-v="3">Толстая кишка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЦНС?</div><div class="opts"><button class="opt" data-v="1">Головной и спинной мозг</button><button class="opt" data-v="2">Только кожа</button><button class="opt" data-v="3">Только глаза</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свёртывание?</div><div class="opts"><button class="opt" data-v="1">Тромбоциты</button><button class="opt" data-v="2">Эритроциты</button><button class="opt" data-v="3">Альвеолы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Малый круг?</div><div class="opts"><button class="opt" data-v="1">Лёгкие</button><button class="opt" data-v="2">Мозг</button><button class="opt" data-v="3">Печень</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёгочная артерия O₂?</div><div class="opts"><button class="opt" data-v="1">Низкий</button><button class="opt" data-v="2">Максимум</button><button class="opt" data-v="3">Нет гемоглобина</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Желчь?</div><div class="opts"><button class="opt" data-v="1">Печень</button><button class="opt" data-v="2">Поджелудочная</button><button class="opt" data-v="3">Селезёнка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Инсулин?</div><div class="opts"><button class="opt" data-v="1">Поджелудочная</button><button class="opt" data-v="2">Щитовидная</button><button class="opt" data-v="3">Гипофиз только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Камеры сердца?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">3</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лейкоциты?</div><div class="opts"><button class="opt" data-v="1">Иммунитет</button><button class="opt" data-v="2">O₂</button><button class="opt" data-v="3">Свёртывание</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Диафрагма?</div><div class="opts"><button class="opt" data-v="1">Дыхание</button><button class="opt" data-v="2">Пищеварение белка</button><button class="opt" data-v="3">ДНК</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рефлекс?</div><div class="opts"><button class="opt" data-v="1">Ответ через НС</button><button class="opt" data-v="2">Только произвольно</button><button class="opt" data-v="3">Только желудок</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌱</div>
+      <div class="unit-info">
+        <h3>Растения</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b3">
+        <div class="theory"><p>Фотосинтез в хлоропластах: CO₂ + H₂O → глюкоза + O₂ на свету. Корень поглощает воду, стебель проводит, лист фотосинтезирует. Ксилема — вода вверх, флоэма — органика.</p><p>Растения — автотрофы. Цветок и плод связаны с размножением.</p><p>Знайте продукты фотосинтеза и отличия растительной клетки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Выделяется?</div><div class="opts"><button class="opt" data-v="1">O₂</button><button class="opt" data-v="2">CO₂</button><button class="opt" data-v="3">N₂</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нужно?</div><div class="opts"><button class="opt" data-v="1">Свет CO₂ вода</button><button class="opt" data-v="2">Только темнота</button><button class="opt" data-v="3">Только O₂</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вода вверх?</div><div class="opts"><button class="opt" data-v="1">Ксилема</button><button class="opt" data-v="2">Флоэма</button><button class="opt" data-v="3">Кора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Органика?</div><div class="opts"><button class="opt" data-v="1">Флоэма</button><button class="opt" data-v="2">Ксилема</button><button class="opt" data-v="3">Кора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез орган?</div><div class="opts"><button class="opt" data-v="1">Лист</button><button class="opt" data-v="2">Корень</button><button class="opt" data-v="3">Только цветок</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Корень?</div><div class="opts"><button class="opt" data-v="1">Вода и соли</button><button class="opt" data-v="2">Фотосинтез</button><button class="opt" data-v="3">Плод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пигмент?</div><div class="opts"><button class="opt" data-v="1">Хлорофилл</button><button class="opt" data-v="2">Гемоглобин</button><button class="opt" data-v="3">Меланин</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Автотрофы?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Все грибы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плод?</div><div class="opts"><button class="opt" data-v="1">Семена</button><button class="opt" data-v="2">Корни</button><button class="opt" data-v="3">Хлоропласты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цветок?</div><div class="opts"><button class="opt" data-v="1">Размножение</button><button class="opt" data-v="2">Только фотосинтез</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка растений?</div><div class="opts"><button class="opt" data-v="1">Целлюлоза</button><button class="opt" data-v="2">Хитин</button><button class="opt" data-v="3">Гликоген</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Запас?</div><div class="opts"><button class="opt" data-v="1">Крахмал</button><button class="opt" data-v="2">Гликоген</button><button class="opt" data-v="3">Мочевина</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Где фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Ядро</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стебель?</div><div class="opts"><button class="opt" data-v="1">Проводит и опора</button><button class="opt" data-v="2">Только фотосинтез</button><button class="opt" data-v="3">Только всасывает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Глюкоза из?</div><div class="opts"><button class="opt" data-v="1">CO₂ и H₂O</button><button class="opt" data-v="2">Только O₂</button><button class="opt" data-v="3">Только азот</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌍</div>
+      <div class="unit-info">
+        <h3>Экология</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b4">
+        <div class="theory"><p>Цепь питания: продуценты → консументы → редуценты. Правило ~10% энергии. Факторы: абиотические и биотические. Вид — плодовитое потомство. Отбор по Дарвину — двигатель эволюции.</p><p>Определяйте роли в цепи и тип фактора.</p><p>Экосистема — организмы плюс среда.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Продуценты?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Паразиты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Редуценты?</div><div class="opts"><button class="opt" data-v="1">Бактерии и грибы</button><button class="opt" data-v="2">Тигры</button><button class="opt" data-v="3">Деревья только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Первое звено?</div><div class="opts"><button class="opt" data-v="1">Продуценты</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Паразиты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">10% энергии?</div><div class="opts"><button class="opt" data-v="1">Пирамида</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Фотосинтез только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Абиотика?</div><div class="opts"><button class="opt" data-v="1">Температура</button><button class="opt" data-v="2">Хищничество</button><button class="opt" data-v="3">Паразитизм</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Биотика?</div><div class="opts"><button class="opt" data-v="1">Хищничество</button><button class="opt" data-v="2">Температура</button><button class="opt" data-v="3">Свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вид?</div><div class="opts"><button class="opt" data-v="1">Плодовитое потомство</button><button class="opt" data-v="2">Только цвет</button><button class="opt" data-v="3">Только размер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отбор?</div><div class="opts"><button class="opt" data-v="1">Дарвин</button><button class="opt" data-v="2">Только климат</button><button class="opt" data-v="3">Без изменчивости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Консумент 1?</div><div class="opts"><button class="opt" data-v="1">Травоядное</button><button class="opt" data-v="2">Растение</button><button class="opt" data-v="3">Редуцент</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Консумент 2?</div><div class="opts"><button class="opt" data-v="1">Хищник</button><button class="opt" data-v="2">Продуцент</button><button class="opt" data-v="3">Гриб только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цепь с?</div><div class="opts"><button class="opt" data-v="1">Автотрофов</button><button class="opt" data-v="2">Хищников</button><button class="opt" data-v="3">Редуцентов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Разложение?</div><div class="opts"><button class="opt" data-v="1">Редуценты</button><button class="opt" data-v="2">Продуценты</button><button class="opt" data-v="3">Хищники</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свет —?</div><div class="opts"><button class="opt" data-v="1">Абиотический</button><button class="opt" data-v="2">Биотический</button><button class="opt" data-v="3">Только человек</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Борьба за жизнь?</div><div class="opts"><button class="opt" data-v="1">Эволюция</button><button class="opt" data-v="2">Фотосинтез</button><button class="opt" data-v="3">Митоз</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Экосистема?</div><div class="opts"><button class="opt" data-v="1">Организмы и среда</button><button class="opt" data-v="2">Один вид</button><button class="opt" data-v="3">Только камни</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧬</div>
+      <div class="unit-info">
+        <h3>Генетика</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b5">
+        <div class="theory"><p>Ген — участок ДНК. 23 пары хромосом у человека; XX / XY. Митоз — рост (одинаковый набор), мейоз — гаметы (половинный набор).</p><p>Доминантный признак в гетерозиготе. Мутации меняют ДНК.</p><p>Не путайте митоз и мейоз на ОГЭ.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Пар хромосом?</div><div class="opts"><button class="opt" data-v="1">23</button><button class="opt" data-v="2">46 пар</button><button class="opt" data-v="3">12</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митоз?</div><div class="opts"><button class="opt" data-v="1">Рост</button><button class="opt" data-v="2">Гаметы</button><button class="opt" data-v="3">Фотосинтез</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мейоз?</div><div class="opts"><button class="opt" data-v="1">Гаметы</button><button class="opt" data-v="2">Кожа</button><button class="opt" data-v="3">Бактерии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">После мейоза?</div><div class="opts"><button class="opt" data-v="1">Вдвое меньше</button><button class="opt" data-v="2">Вдвое больше</button><button class="opt" data-v="3">Как митоз</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">XX?</div><div class="opts"><button class="opt" data-v="1">Женский</button><button class="opt" data-v="2">Мужской</button><button class="opt" data-v="3">Вирус</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">XY?</div><div class="opts"><button class="opt" data-v="1">Мужской</button><button class="opt" data-v="2">Женский</button><button class="opt" data-v="3">Растение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ген?</div><div class="opts"><button class="opt" data-v="1">ДНК</button><button class="opt" data-v="2">Крахмал</button><button class="opt" data-v="3">Целлюлоза</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Доминанта?</div><div class="opts"><button class="opt" data-v="1">В гетерозиготе</button><button class="opt" data-v="2">Никогда</button><button class="opt" data-v="3">Только вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мутация?</div><div class="opts"><button class="opt" data-v="1">ДНК</button><button class="opt" data-v="2">Температура</button><button class="opt" data-v="3">Свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гаметы?</div><div class="opts"><button class="opt" data-v="1">Половые</button><button class="opt" data-v="2">Кожа</button><button class="opt" data-v="3">Мышцы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Регенерация?</div><div class="opts"><button class="opt" data-v="1">Митоз</button><button class="opt" data-v="2">Мейоз</button><button class="opt" data-v="3">Фотосинтез</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">46 хромосом?</div><div class="opts"><button class="opt" data-v="1">Диплоид человека</button><button class="opt" data-v="2">Гаплоид</button><button class="opt" data-v="3">Бактерии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сперматозоид?</div><div class="opts"><button class="opt" data-v="1">Мейоз</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Диффузия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Наследственность?</div><div class="opts"><button class="opt" data-v="1">Гены</button><button class="opt" data-v="2">Климат</button><button class="opt" data-v="3">Пища только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Комбинации?</div><div class="opts"><button class="opt" data-v="1">Половое размножение</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Почкование</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="b6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔬</div>
+      <div class="unit-info">
+        <h3>Повтор: клетка</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="b6">
+        <div class="theory"><p>Клетка — единица жизни. <strong>Прокариоты</strong> (бактерии) без оформленного ядра; <strong>эукариоты</strong> — с ядром. Ядро хранит ДНК, митохондрии дают АТФ, рибосомы синтезируют белок, хлоропласты (растения) — фотосинтез, вакуоль запасает вещества.</p><p>Клеточная стенка у растений (целлюлоза) и грибов (хитин); у животных нет. Мембрана регулирует транспорт. Крахмал — запас растений, гликоген — животных.</p><p>На ОГЭ сравнивайте клетки и функции органоидов.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ДНК в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Вакуоли</button><button class="opt" data-v="3">Стенке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">АТФ?</div><div class="opts"><button class="opt" data-v="1">Митохондрии</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Белок?</div><div class="opts"><button class="opt" data-v="1">Рибосомы</button><button class="opt" data-v="2">Вакуоль</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет у животных?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Мембрана</button><button class="opt" data-v="3">Митохондрии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бактерии?</div><div class="opts"><button class="opt" data-v="1">Прокариоты</button><button class="opt" data-v="2">Эукариоты</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крахмал?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Животные</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гликоген?</div><div class="opts"><button class="opt" data-v="1">Животные</button><button class="opt" data-v="2">Только дуб</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка грибов?</div><div class="opts"><button class="opt" data-v="1">Хитин</button><button class="opt" data-v="2">Целлюлоза</button><button class="opt" data-v="3">Крахмал</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мембрана?</div><div class="opts"><button class="opt" data-v="1">Транспорт</button><button class="opt" data-v="2">Фотосинтез у всех</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет ядра у?</div><div class="opts"><button class="opt" data-v="1">Прокариот</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Растений</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вакуоль крупная у?</div><div class="opts"><button class="opt" data-v="1">Растений</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митохондрии у?</div><div class="opts"><button class="opt" data-v="1">Эукариот</button><button class="opt" data-v="2">Только бактерий</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хлорофилл?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Общее у клеток?</div><div class="opts"><button class="opt" data-v="1">Мембрана и рибосомы</button><button class="opt" data-v="2">Хлоропласты</button><button class="opt" data-v="3">Стенка целлюлоза</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="path hidden" id="path-duo">
+  <div class="duo-path">
+    <div class="hero" style="padding-top:8px"><h1>Практика</h1><p>200 уроков по 10 вопросов. В конце — финал из 50.</p></div>
+    <div id="duoContainer"></div>
+  </div>
+</div>
+
+
+<!-- HARD -->
+<div class="path hidden" id="path-hard">
+  <div class="hero"><h1>Сложные темы</h1><p>15 вопросов в каждой</p></div>
+
+  <div class="unit" data-unit="bh1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔬</div>
+      <div class="unit-info">
+        <h3>Клетка сложно</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh1">
+        <div class="theory"><p>Клетка — единица жизни. <strong>Прокариоты</strong> (бактерии) без оформленного ядра; <strong>эукариоты</strong> — с ядром. Ядро хранит ДНК, митохондрии дают АТФ, рибосомы синтезируют белок, хлоропласты (растения) — фотосинтез, вакуоль запасает вещества.</p><p>Клеточная стенка у растений (целлюлоза) и грибов (хитин); у животных нет. Мембрана регулирует транспорт. Крахмал — запас растений, гликоген — животных.</p><p>На ОГЭ сравнивайте клетки и функции органоидов.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ДНК в?</div><div class="opts"><button class="opt" data-v="1">Ядре</button><button class="opt" data-v="2">Вакуоли</button><button class="opt" data-v="3">Стенке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">АТФ?</div><div class="opts"><button class="opt" data-v="1">Митохондрии</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Белок?</div><div class="opts"><button class="opt" data-v="1">Рибосомы</button><button class="opt" data-v="2">Вакуоль</button><button class="opt" data-v="3">Стенка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет у животных?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Мембрана</button><button class="opt" data-v="3">Митохондрии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бактерии?</div><div class="opts"><button class="opt" data-v="1">Прокариоты</button><button class="opt" data-v="2">Эукариоты</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крахмал?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Животные</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гликоген?</div><div class="opts"><button class="opt" data-v="1">Животные</button><button class="opt" data-v="2">Только дуб</button><button class="opt" data-v="3">Вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка грибов?</div><div class="opts"><button class="opt" data-v="1">Хитин</button><button class="opt" data-v="2">Целлюлоза</button><button class="opt" data-v="3">Крахмал</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мембрана?</div><div class="opts"><button class="opt" data-v="1">Транспорт</button><button class="opt" data-v="2">Фотосинтез у всех</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нет ядра у?</div><div class="opts"><button class="opt" data-v="1">Прокариот</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Растений</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вакуоль крупная у?</div><div class="opts"><button class="opt" data-v="1">Растений</button><button class="opt" data-v="2">Животных</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митохондрии у?</div><div class="opts"><button class="opt" data-v="1">Эукариот</button><button class="opt" data-v="2">Только бактерий</button><button class="opt" data-v="3">Вирусов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хлорофилл?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Ядро</button><button class="opt" data-v="3">Рибосомы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Общее у клеток?</div><div class="opts"><button class="opt" data-v="1">Мембрана и рибосомы</button><button class="opt" data-v="2">Хлоропласты</button><button class="opt" data-v="3">Стенка целлюлоза</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="bh2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🩸</div>
+      <div class="unit-info">
+        <h3>Кровь и дыхание</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh2">
+        <div class="theory"><p>Кровообращение: сердце из 4 камер, артерии от сердца, вены к сердцу, капилляры — обмен. Большой круг — тело, малый — лёгкие. Эритроциты несут O₂, лейкоциты защищают, тромбоциты — свёртывание.</p><p>Дыхание: газообмен в альвеолах. Пищеварение: амилаза во рту, пепсин в желудке, всасывание в тонком кишечнике; печень — желчь, поджелудочная — ферменты и инсулин.</p><p>ЦНС — головной и спинной мозг. Связывайте орган с функцией.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">От сердца?</div><div class="opts"><button class="opt" data-v="1">Артерии</button><button class="opt" data-v="2">Вены</button><button class="opt" data-v="3">Лимфа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">O₂ несут?</div><div class="opts"><button class="opt" data-v="1">Эритроциты</button><button class="opt" data-v="2">Тромбоциты</button><button class="opt" data-v="3">Плазма без клеток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Газообмен?</div><div class="opts"><button class="opt" data-v="1">Альвеолы</button><button class="opt" data-v="2">Трахея</button><button class="opt" data-v="3">Гортань</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Всасывание?</div><div class="opts"><button class="opt" data-v="1">Тонкий кишечник</button><button class="opt" data-v="2">Пищевод</button><button class="opt" data-v="3">Рот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пепсин?</div><div class="opts"><button class="opt" data-v="1">Желудок</button><button class="opt" data-v="2">Рот</button><button class="opt" data-v="3">Толстая кишка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЦНС?</div><div class="opts"><button class="opt" data-v="1">Головной и спинной мозг</button><button class="opt" data-v="2">Только кожа</button><button class="opt" data-v="3">Только глаза</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свёртывание?</div><div class="opts"><button class="opt" data-v="1">Тромбоциты</button><button class="opt" data-v="2">Эритроциты</button><button class="opt" data-v="3">Альвеолы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Малый круг?</div><div class="opts"><button class="opt" data-v="1">Лёгкие</button><button class="opt" data-v="2">Мозг</button><button class="opt" data-v="3">Печень</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёгочная артерия O₂?</div><div class="opts"><button class="opt" data-v="1">Низкий</button><button class="opt" data-v="2">Максимум</button><button class="opt" data-v="3">Нет гемоглобина</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Желчь?</div><div class="opts"><button class="opt" data-v="1">Печень</button><button class="opt" data-v="2">Поджелудочная</button><button class="opt" data-v="3">Селезёнка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Инсулин?</div><div class="opts"><button class="opt" data-v="1">Поджелудочная</button><button class="opt" data-v="2">Щитовидная</button><button class="opt" data-v="3">Гипофиз только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Камеры сердца?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">3</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лейкоциты?</div><div class="opts"><button class="opt" data-v="1">Иммунитет</button><button class="opt" data-v="2">O₂</button><button class="opt" data-v="3">Свёртывание</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Диафрагма?</div><div class="opts"><button class="opt" data-v="1">Дыхание</button><button class="opt" data-v="2">Пищеварение белка</button><button class="opt" data-v="3">ДНК</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рефлекс?</div><div class="opts"><button class="opt" data-v="1">Ответ через НС</button><button class="opt" data-v="2">Только произвольно</button><button class="opt" data-v="3">Только желудок</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="bh3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔄</div>
+      <div class="unit-info">
+        <h3>Митоз/мейоз</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh3">
+        <div class="theory"><p>Ген — участок ДНК. 23 пары хромосом у человека; XX / XY. Митоз — рост (одинаковый набор), мейоз — гаметы (половинный набор).</p><p>Доминантный признак в гетерозиготе. Мутации меняют ДНК.</p><p>Не путайте митоз и мейоз на ОГЭ.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Пар хромосом?</div><div class="opts"><button class="opt" data-v="1">23</button><button class="opt" data-v="2">46 пар</button><button class="opt" data-v="3">12</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Митоз?</div><div class="opts"><button class="opt" data-v="1">Рост</button><button class="opt" data-v="2">Гаметы</button><button class="opt" data-v="3">Фотосинтез</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мейоз?</div><div class="opts"><button class="opt" data-v="1">Гаметы</button><button class="opt" data-v="2">Кожа</button><button class="opt" data-v="3">Бактерии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">После мейоза?</div><div class="opts"><button class="opt" data-v="1">Вдвое меньше</button><button class="opt" data-v="2">Вдвое больше</button><button class="opt" data-v="3">Как митоз</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">XX?</div><div class="opts"><button class="opt" data-v="1">Женский</button><button class="opt" data-v="2">Мужской</button><button class="opt" data-v="3">Вирус</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">XY?</div><div class="opts"><button class="opt" data-v="1">Мужской</button><button class="opt" data-v="2">Женский</button><button class="opt" data-v="3">Растение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ген?</div><div class="opts"><button class="opt" data-v="1">ДНК</button><button class="opt" data-v="2">Крахмал</button><button class="opt" data-v="3">Целлюлоза</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Доминанта?</div><div class="opts"><button class="opt" data-v="1">В гетерозиготе</button><button class="opt" data-v="2">Никогда</button><button class="opt" data-v="3">Только вирусы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мутация?</div><div class="opts"><button class="opt" data-v="1">ДНК</button><button class="opt" data-v="2">Температура</button><button class="opt" data-v="3">Свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гаметы?</div><div class="opts"><button class="opt" data-v="1">Половые</button><button class="opt" data-v="2">Кожа</button><button class="opt" data-v="3">Мышцы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Регенерация?</div><div class="opts"><button class="opt" data-v="1">Митоз</button><button class="opt" data-v="2">Мейоз</button><button class="opt" data-v="3">Фотосинтез</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">46 хромосом?</div><div class="opts"><button class="opt" data-v="1">Диплоид человека</button><button class="opt" data-v="2">Гаплоид</button><button class="opt" data-v="3">Бактерии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сперматозоид?</div><div class="opts"><button class="opt" data-v="1">Мейоз</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Диффузия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Наследственность?</div><div class="opts"><button class="opt" data-v="1">Гены</button><button class="opt" data-v="2">Климат</button><button class="opt" data-v="3">Пища только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Комбинации?</div><div class="opts"><button class="opt" data-v="1">Половое размножение</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Почкование</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="bh4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔗</div>
+      <div class="unit-info">
+        <h3>Цепи и отбор</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh4">
+        <div class="theory"><p>Цепь питания: продуценты → консументы → редуценты. Правило ~10% энергии. Факторы: абиотические и биотические. Вид — плодовитое потомство. Отбор по Дарвину — двигатель эволюции.</p><p>Определяйте роли в цепи и тип фактора.</p><p>Экосистема — организмы плюс среда.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Продуценты?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Паразиты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Редуценты?</div><div class="opts"><button class="opt" data-v="1">Бактерии и грибы</button><button class="opt" data-v="2">Тигры</button><button class="opt" data-v="3">Деревья только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Первое звено?</div><div class="opts"><button class="opt" data-v="1">Продуценты</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Паразиты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">10% энергии?</div><div class="opts"><button class="opt" data-v="1">Пирамида</button><button class="opt" data-v="2">Митоз</button><button class="opt" data-v="3">Фотосинтез только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Абиотика?</div><div class="opts"><button class="opt" data-v="1">Температура</button><button class="opt" data-v="2">Хищничество</button><button class="opt" data-v="3">Паразитизм</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Биотика?</div><div class="opts"><button class="opt" data-v="1">Хищничество</button><button class="opt" data-v="2">Температура</button><button class="opt" data-v="3">Свет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вид?</div><div class="opts"><button class="opt" data-v="1">Плодовитое потомство</button><button class="opt" data-v="2">Только цвет</button><button class="opt" data-v="3">Только размер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отбор?</div><div class="opts"><button class="opt" data-v="1">Дарвин</button><button class="opt" data-v="2">Только климат</button><button class="opt" data-v="3">Без изменчивости</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Консумент 1?</div><div class="opts"><button class="opt" data-v="1">Травоядное</button><button class="opt" data-v="2">Растение</button><button class="opt" data-v="3">Редуцент</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Консумент 2?</div><div class="opts"><button class="opt" data-v="1">Хищник</button><button class="opt" data-v="2">Продуцент</button><button class="opt" data-v="3">Гриб только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цепь с?</div><div class="opts"><button class="opt" data-v="1">Автотрофов</button><button class="opt" data-v="2">Хищников</button><button class="opt" data-v="3">Редуцентов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Разложение?</div><div class="opts"><button class="opt" data-v="1">Редуценты</button><button class="opt" data-v="2">Продуценты</button><button class="opt" data-v="3">Хищники</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свет —?</div><div class="opts"><button class="opt" data-v="1">Абиотический</button><button class="opt" data-v="2">Биотический</button><button class="opt" data-v="3">Только человек</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Борьба за жизнь?</div><div class="opts"><button class="opt" data-v="1">Эволюция</button><button class="opt" data-v="2">Фотосинтез</button><button class="opt" data-v="3">Митоз</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Экосистема?</div><div class="opts"><button class="opt" data-v="1">Организмы и среда</button><button class="opt" data-v="2">Один вид</button><button class="opt" data-v="3">Только камни</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="bh5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌿</div>
+      <div class="unit-info">
+        <h3>Растения сложно</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh5">
+        <div class="theory"><p>Фотосинтез в хлоропластах: CO₂ + H₂O → глюкоза + O₂ на свету. Корень поглощает воду, стебель проводит, лист фотосинтезирует. Ксилема — вода вверх, флоэма — органика.</p><p>Растения — автотрофы. Цветок и плод связаны с размножением.</p><p>Знайте продукты фотосинтеза и отличия растительной клетки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Выделяется?</div><div class="opts"><button class="opt" data-v="1">O₂</button><button class="opt" data-v="2">CO₂</button><button class="opt" data-v="3">N₂</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нужно?</div><div class="opts"><button class="opt" data-v="1">Свет CO₂ вода</button><button class="opt" data-v="2">Только темнота</button><button class="opt" data-v="3">Только O₂</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вода вверх?</div><div class="opts"><button class="opt" data-v="1">Ксилема</button><button class="opt" data-v="2">Флоэма</button><button class="opt" data-v="3">Кора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Органика?</div><div class="opts"><button class="opt" data-v="1">Флоэма</button><button class="opt" data-v="2">Ксилема</button><button class="opt" data-v="3">Кора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фотосинтез орган?</div><div class="opts"><button class="opt" data-v="1">Лист</button><button class="opt" data-v="2">Корень</button><button class="opt" data-v="3">Только цветок</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Корень?</div><div class="opts"><button class="opt" data-v="1">Вода и соли</button><button class="opt" data-v="2">Фотосинтез</button><button class="opt" data-v="3">Плод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пигмент?</div><div class="opts"><button class="opt" data-v="1">Хлорофилл</button><button class="opt" data-v="2">Гемоглобин</button><button class="opt" data-v="3">Меланин</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Автотрофы?</div><div class="opts"><button class="opt" data-v="1">Растения</button><button class="opt" data-v="2">Хищники</button><button class="opt" data-v="3">Все грибы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плод?</div><div class="opts"><button class="opt" data-v="1">Семена</button><button class="opt" data-v="2">Корни</button><button class="opt" data-v="3">Хлоропласты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цветок?</div><div class="opts"><button class="opt" data-v="1">Размножение</button><button class="opt" data-v="2">Только фотосинтез</button><button class="opt" data-v="3">Только опора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стенка растений?</div><div class="opts"><button class="opt" data-v="1">Целлюлоза</button><button class="opt" data-v="2">Хитин</button><button class="opt" data-v="3">Гликоген</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Запас?</div><div class="opts"><button class="opt" data-v="1">Крахмал</button><button class="opt" data-v="2">Гликоген</button><button class="opt" data-v="3">Мочевина</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Где фотосинтез?</div><div class="opts"><button class="opt" data-v="1">Хлоропласты</button><button class="opt" data-v="2">Митохондрии</button><button class="opt" data-v="3">Ядро</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стебель?</div><div class="opts"><button class="opt" data-v="1">Проводит и опора</button><button class="opt" data-v="2">Только фотосинтез</button><button class="opt" data-v="3">Только всасывает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Глюкоза из?</div><div class="opts"><button class="opt" data-v="1">CO₂ и H₂O</button><button class="opt" data-v="2">Только O₂</button><button class="opt" data-v="3">Только азот</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="bh6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧠</div>
+      <div class="unit-info">
+        <h3>Нервы и регуляция</h3>
+        <p>15</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="bh6">
+        <div class="theory"><p>Кровообращение: сердце из 4 камер, артерии от сердца, вены к сердцу, капилляры — обмен. Большой круг — тело, малый — лёгкие. Эритроциты несут O₂, лейкоциты защищают, тромбоциты — свёртывание.</p><p>Дыхание: газообмен в альвеолах. Пищеварение: амилаза во рту, пепсин в желудке, всасывание в тонком кишечнике; печень — желчь, поджелудочная — ферменты и инсулин.</p><p>ЦНС — головной и спинной мозг. Связывайте орган с функцией.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">От сердца?</div><div class="opts"><button class="opt" data-v="1">Артерии</button><button class="opt" data-v="2">Вены</button><button class="opt" data-v="3">Лимфа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">O₂ несут?</div><div class="opts"><button class="opt" data-v="1">Эритроциты</button><button class="opt" data-v="2">Тромбоциты</button><button class="opt" data-v="3">Плазма без клеток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Газообмен?</div><div class="opts"><button class="opt" data-v="1">Альвеолы</button><button class="opt" data-v="2">Трахея</button><button class="opt" data-v="3">Гортань</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Всасывание?</div><div class="opts"><button class="opt" data-v="1">Тонкий кишечник</button><button class="opt" data-v="2">Пищевод</button><button class="opt" data-v="3">Рот</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пепсин?</div><div class="opts"><button class="opt" data-v="1">Желудок</button><button class="opt" data-v="2">Рот</button><button class="opt" data-v="3">Толстая кишка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЦНС?</div><div class="opts"><button class="opt" data-v="1">Головной и спинной мозг</button><button class="opt" data-v="2">Только кожа</button><button class="opt" data-v="3">Только глаза</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свёртывание?</div><div class="opts"><button class="opt" data-v="1">Тромбоциты</button><button class="opt" data-v="2">Эритроциты</button><button class="opt" data-v="3">Альвеолы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Малый круг?</div><div class="opts"><button class="opt" data-v="1">Лёгкие</button><button class="opt" data-v="2">Мозг</button><button class="opt" data-v="3">Печень</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лёгочная артерия O₂?</div><div class="opts"><button class="opt" data-v="1">Низкий</button><button class="opt" data-v="2">Максимум</button><button class="opt" data-v="3">Нет гемоглобина</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Желчь?</div><div class="opts"><button class="opt" data-v="1">Печень</button><button class="opt" data-v="2">Поджелудочная</button><button class="opt" data-v="3">Селезёнка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Инсулин?</div><div class="opts"><button class="opt" data-v="1">Поджелудочная</button><button class="opt" data-v="2">Щитовидная</button><button class="opt" data-v="3">Гипофиз только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Камеры сердца?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">3</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лейкоциты?</div><div class="opts"><button class="opt" data-v="1">Иммунитет</button><button class="opt" data-v="2">O₂</button><button class="opt" data-v="3">Свёртывание</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Диафрагма?</div><div class="opts"><button class="opt" data-v="1">Дыхание</button><button class="opt" data-v="2">Пищеварение белка</button><button class="opt" data-v="3">ДНК</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Рефлекс?</div><div class="opts"><button class="opt" data-v="1">Ответ через НС</button><button class="opt" data-v="2">Только произвольно</button><button class="opt" data-v="3">Только желудок</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="path hidden" id="path-vars">
+    <div class="hero">
+    <h1>Варианты для тренировки</h1>
+    <p><strong>Это не реальные варианты ОГЭ.</strong> Задания составлены для практики в похожем формате. На экзамене будут другие формулировки и материалы из официальных КИМ.</p><p>Сначала ответь — потом нажми «Проверить».</p>
+  </div>
+  <div id="variantsContainer"></div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="xp-popup" id="xpPopup">
+  <div class="big">🎉</div>
+  <h3>+<span id="xpGain">0</span> XP</h3>
+</div>
+
+<nav class="bottom-nav">
+  <button class="bnav-item active" onclick="switchTab('main');setActiveBnav(this)"><span>📋</span> ОГЭ</button>
+  <button class="bnav-item" onclick="switchTab('duo');setActiveBnav(this)"><span>🎮</span> Практика</button>
+  <button class="bnav-item" onclick="switchTab('hard');setActiveBnav(this)"><span>🔥</span> Сложные</button>
+  <button class="bnav-item" onclick="switchTab('vars');setActiveBnav(this)"><span>📝</span> Варианты</button>
+</nav>
+
+<script>
+let xp=parseInt(localStorage.getItem('oge_bio_xp')||'0'),streak=parseInt(localStorage.getItem('oge_bio_streak')||'0'),completed=JSON.parse(localStorage.getItem('oge_bio_completed')||'{}');
+document.getElementById('xpCount').textContent=xp;document.getElementById('streakCount').textContent=streak;
+
+function switchTab(n){
+  document.getElementById('path-main').classList.toggle('hidden',n!=='main');
+  document.getElementById('path-duo').classList.toggle('hidden',n!=='duo');
+  document.getElementById('path-hard').classList.toggle('hidden',n!=='hard');
+  document.getElementById('path-vars').classList.toggle('hidden',n!=='vars');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setActiveBnav(b){document.querySelectorAll('.bnav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function toggleUnit(h){h.parentElement.classList.toggle('open')}
+
+
+function bindQuizzes(){
+  document.querySelectorAll('.q-item').forEach(function(q){
+    if(q.dataset.bound==='1') return;
+    q.dataset.bound='1';
+    var opts=q.querySelectorAll('.opt');
+    var fb=q.querySelector('.fb');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        if(opt.classList.contains('disabled')) return;
+        var c=String(q.getAttribute('data-c')||'');
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){
+            if(String(o.getAttribute('data-v'))===c) o.classList.add('correct');
+          });
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+      });
+    });
+  });
+}
+
+bindQuizzes();
+
+function completeLesson(btn,pts){
+  const id=btn.closest('.lesson').dataset.lesson;
+  if(completed[id]){btn.textContent='Уже пройдено ✓';btn.disabled=true;return}
+  completed[id]=true;localStorage.setItem('oge_bio_completed',JSON.stringify(completed));
+  xp+=pts;
+/* sync progress to main menu (only lessons/tests) */
+try{
+  var STORE='oge_fun_v1';
+  var g=JSON.parse(localStorage.getItem(STORE)||'{}');
+  if(!g.subj) g.subj={};
+  var subj=document.body.getAttribute('data-subject')||(location.pathname.split('/').filter(Boolean).slice(-2,-1)[0])||'russian';
+  g.subj[subj]=Math.min(100,(g.subj[subj]||0)+Math.max(3,Math.round((pts||10)/3)));
+  g.xp=(g.xp||0)+(pts||10);
+  localStorage.setItem(STORE,JSON.stringify(g));
+}catch(e){}
+localStorage.setItem('oge_bio_xp',xp);document.getElementById('xpCount').textContent=xp;
+  const today=new Date().toDateString(),last=localStorage.getItem('oge_bio_last');
+  if(last!==today){streak=(last&&new Date(last).getTime()>Date.now()-172800000)?streak+1:1;localStorage.setItem('oge_bio_streak',streak);localStorage.setItem('oge_bio_last',today);document.getElementById('streakCount').textContent=streak}
+  btn.textContent='Пройдено ✓';btn.disabled=true;updateProgress();
+  document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+  setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1500)
+}
+function updateProgress(){
+  document.querySelectorAll('.unit').forEach(u=>{
+    const ls=u.querySelectorAll('.lesson');if(!ls.length)return;
+    let d=0;ls.forEach(l=>{if(completed[l.dataset.lesson])d++});
+    const b=u.querySelector('.unit-progress-bar');if(b)b.style.width=Math.round(d/ls.length*100)+'%'
+  })
+}
+document.querySelectorAll('.lesson').forEach(l=>{
+  if(completed[l.dataset.lesson]){const b=l.querySelector('.done-btn');if(b){b.textContent='Пройдено ✓';b.disabled=true}}
+});
+updateProgress();
+
+function openDuoLesson(btn,panelId){
+  if(btn.classList.contains('locked'))return;
+  document.querySelectorAll('.duo-lesson-panel').forEach(p=>p.classList.remove('show'));
+  const panel=document.getElementById(panelId);if(panel)panel.classList.toggle('show')
+}
+function completeDuoNode(btn,id,pts){
+  if(!completed['duo-'+id]){
+    completed['duo-'+id]=true;localStorage.setItem('oge_bio_completed',JSON.stringify(completed));
+    xp+=pts;localStorage.setItem('oge_bio_xp',xp);document.getElementById('xpCount').textContent=xp;
+    document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+    setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1200)
+  }
+  const node=btn.closest('.duo-node-wrap').querySelector('.duo-node');
+  if(node){node.classList.remove('active');node.classList.add('done');node.textContent='✓'}
+  document.querySelectorAll('.duo-node.locked[data-unlock="'+id+'"]').forEach(n=>{n.classList.remove('locked');n.classList.add('active')});
+  btn.closest('.duo-lesson-panel').classList.remove('show');bindQuizzes()
+}
+document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{
+  if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');if(!n.classList.contains('chest'))n.classList.add('active')}
+});
+
+function normalizeAns(s){return String(s).trim().toLowerCase().replace(/\s+/g,'').replace('ё','е')}
+function checkOpenVariant(btn){
+  const lesson=btn.closest('.lesson');
+  if(lesson.dataset.checked==='1')return;
+  const tasks=lesson.querySelectorAll('.open-task');
+  let ok=0,total=tasks.length;
+  tasks.forEach(t=>{
+    const input=t.querySelector('.ans-input');if(!input)return;
+    const corrects=normalizeAns(t.dataset.answer).split('|');
+    const user=normalizeAns(input.value);
+    const ansBox=t.querySelector('.correct-ans');
+    let match=corrects.some(c=>c===user);
+    if(!match&&user.length===2&&corrects[0]&&corrects[0].length===2){
+      match=user.split('').sort().join('')===corrects[0].split('').sort().join('');
+    }
+    if(match&&user!==''){input.classList.add('ok');ok++}else{input.classList.add('bad')}
+    if(ansBox)ansBox.classList.add('show');input.readOnly=true;
+  });
+  lesson.dataset.checked='1';btn.disabled=true;btn.textContent='Проверено';
+  const res=lesson.querySelector('.var-result');
+  const pct=total?Math.round(ok/total*100):0;
+  if(res){res.classList.add('show');res.innerHTML='Результат: <strong>'+ok+' из '+total+'</strong> ('+pct+'%)';
+    if(pct>=80)res.className='var-result show good';else if(pct>=50)res.className='var-result show mid';else res.className='var-result show bad'}
+  const done=lesson.querySelector('.done-btn');if(done)done.style.display='block';
+}
+
+
+function generateDuo(){
+  const container=document.getElementById('duoContainer');
+  if(!container)return;
+  const bank=[
+    ['Ядро хранит?','ДНК','Хлорофилл','Желчь',1],['Фотосинтез в?','Хлоропластах','Митохондриях','Рибосомах',1],
+    ['Энергия АТФ в?','Митохондриях','Ядре','Стенке',1],['Белок синтезируют?','Рибосомы','Вакуоли','Стенки',1],
+    ['У животных нет?','Хлоропластов','Мембраны','Митохондрий',1],['Бактерии —?','Прокариоты','Эукариоты','Грибы',1],
+    ['Крахмал у?','Растений','Животных','Вирусов',1],['Гликоген у?','Животных','Только дуба','Вирусов',1],
+    ['Артерии несут кровь?','От сердца','К сердцу','Только в мозг',1],['O₂ в крови несут?','Эритроциты','Тромбоциты','Лейкоциты',1],
+    ['Газообмен в?','Альвеолах','Трахее','Гортани',1],['Всасывание в?','Тонком кишечнике','Пищеводе','Рту',1],
+    ['Пепсин в?','Желудке','Рту','Толстой кишке',1],['ЦНС —?','Головной и спинной мозг','Только кожа','Только глаза',1],
+    ['Свёртывание?','Тромбоциты','Эритроциты','Альвеолы',1],['Малый круг — в?','Лёгкие','Печень','Почки',1],
+    ['При фотосинтезе выделяется?','O₂','CO₂','N₂',1],['Вода по стеблю?','Ксилема','Флоэма','Кора',1],
+    ['Продуценты?','Растения','Хищники','Паразиты',1],['Митоз для?','Роста','Гамет','Только вирусов',1],
+    ['Мейоз даёт?','Гаметы','Клетки кожи','Бактерии',1],['23 пары хромосом у?','Человека','Бактерии','Вируса',1],
+    ['Инсулин вырабатывает?','Поджелудочная','Печень','Селезёнка',1],['Желчь образуется в?','Печени','Желудке','Лёгких',1],
+    ['Перья — класс?','Птицы','Рыбы','Земноводные',1],['Молоко — класс?','Млекопитающие','Птицы','Рыбы',1],
+    ['Жабры у взрослых?','Рыбы','Птицы','Млекопитающие',1],['Редуценты?','Бактерии и грибы','Только тигры','Только дуб',1],
+    ['Цинга — нехватка?','C','D','A',1],['Хитин в стенке?','Грибов','Растений','Животных клеток',1]
+  ];
+  const TOTAL=200;
+  let track=null;
+  for(let i=0;i<TOTAL;i++){
+    if(i%10===0){
+      const m=document.createElement('div');m.className='duo-module';m.innerHTML='<div><h2>МОДУЛЬ '+(Math.floor(i/10)+1)+'</h2></div>';container.appendChild(m);
+      track=document.createElement('div');track.className='duo-track';container.appendChild(track);
+    }
+    const id='dn'+i;
+    const off=['',' offset-left',' offset-right'][i%3];
+    const wrap=document.createElement('div');wrap.className='duo-node-wrap'+off;
+    const btn=document.createElement('button');
+    btn.className='duo-node '+(i===0?'active':'locked');
+    if(i>0)btn.dataset.unlock='dn'+(i-1);
+    btn.textContent=['🦠','🫀','🌱','🌍','🧬','⭐'][i%6];
+    btn.onclick=function(){openDuoLesson(this,'panel-'+id)};
+    const label=document.createElement('div');label.className='duo-label';label.textContent='Урок '+(i+1);
+    const panel=document.createElement('div');panel.className='duo-lesson-panel';panel.id='panel-'+id;
+    let quiz='';
+    for(let k=0;k<10;k++){
+      const it=bank[(i*3+k)%bank.length];
+      quiz+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';
+    }
+    panel.innerHTML='<h4>Урок '+(i+1)+'</h4><div class="quiz-box">'+quiz+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\''+id+'\',12)">Готово ✓</button>';
+    wrap.appendChild(btn);wrap.appendChild(label);wrap.appendChild(panel);track.appendChild(wrap);
+    const line=document.createElement('div');line.className='duo-line';track.appendChild(line);
+  }
+  // final 50
+  const fw=document.createElement('div');fw.className='duo-node-wrap';
+  const fb=document.createElement('button');fb.className='duo-node locked';fb.dataset.unlock='dn199';fb.textContent='🏆';
+  fb.onclick=function(){openDuoLesson(this,'panel-dnfinal')};
+  const fl=document.createElement('div');fl.className='duo-label';fl.textContent='Финал 50';
+  const fp=document.createElement('div');fp.className='duo-lesson-panel';fp.id='panel-dnfinal';
+  let fq='';
+  for(let k=0;k<50;k++){const it=bank[k%bank.length];fq+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+(k+1)+'. '+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+  fp.innerHTML='<h4>Итоговый тест — 50 вопросов</h4><div class="quiz-box">'+fq+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\'dnfinal\',100)">Готово ✓</button>';
+  fw.appendChild(fb);fw.appendChild(fl);fw.appendChild(fp);container.appendChild(fw);
+  document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+  bindQuizzes();
+}
+
+function generateVariants(){
+  const container=document.getElementById('variantsContainer');
+  container.innerHTML='';
+  
+  // Банк заданий на соответствие (как в реальном ОГЭ)
+  const matchTasks = [
+    {
+      title: 'Установите соответствие между органами и системами органов.',
+      left: ['А) Сердце', 'Б) Лёгкие', 'В) Желудок', 'Г) Почки'],
+      right: ['1) Дыхательная', '2) Кровеносная', '3) Мочевыделительная', '4) Пищеварительная'],
+      ans: '2143'
+    },
+    {
+      title: 'Установите соответствие между структурами клетки и их функциями.',
+      left: ['А) Ядро', 'Б) Митохондрия', 'В) Рибосома', 'Г) Хлоропласт'],
+      right: ['1) Синтез белка', '2) Фотосинтез', '3) Хранение ДНК', '4) Клеточное дыхание'],
+      ans: '3412'
+    },
+    {
+      title: 'Установите соответствие между классами животных и их признаками.',
+      left: ['А) Рыбы', 'Б) Земноводные', 'В) Птицы', 'Г) Млекопитающие'],
+      right: ['1) Шерсть, молочные железы', '2) Перья, клюв', '3) Жабры, плавники', '4) Влажная кожа, метаморфоз'],
+      ans: '3421'
+    },
+    {
+      title: 'Установите соответствие между тканями и их функциями.',
+      left: ['А) Эпителиальная', 'Б) Соединительная', 'В) Мышечная', 'Г) Нервная'],
+      right: ['1) Сокращение', '2) Проведение импульсов', '3) Покровная', '4) Опорная, транспортная'],
+      ans: '3412'
+    },
+    {
+      title: 'Установите соответствие между отделами мозга и их функциями.',
+      left: ['А) Продолговатый', 'Б) Мозжечок', 'В) Средний', 'Г) Кора больших полушарий'],
+      right: ['1) Высшая нервная деятельность', '2) Координация движений', '3) Сложные рефлексы', '4) Дыхательный центр'],
+      ans: '4213'
+    },
+    {
+      title: 'Установите соответствие между царствами организмов и их признаками.',
+      left: ['А) Растения', 'Б) Животные', 'В) Грибы', 'Г) Бактерии'],
+      right: ['1) Хлорофилл, фотосинтез', '2) Гетеротрофы, хитин', '3) Прокариоты', '4) Активное передвижение'],
+      ans: '1423'
+    },
+    {
+      title: 'Установите соответствие между отделами растений и их особенностями.',
+      left: ['А) Водоросли', 'Б) Папоротники', 'В) Голосеменные', 'Г) Покрытосеменные'],
+      right: ['1) Цветок и плод', '2) Семена шишек', '3) Семена отсутствуют', '4) Споры, есть корни и листья'],
+      ans: '3421'
+    },
+    {
+      title: 'Установите соответствие между процессами и их местом протекания.',
+      left: ['А) Гликолиз', 'Б) Фотосинтез', 'В) Окисление', 'Г) Синтез белка'],
+      right: ['1) Хлоропласт', '2) Митохондрия', '3) Рибосома', '4) Цитоплазма'],
+      ans: '4123'
+    },
+    {
+      title: 'Установите соответствие между органами кровеносной системы и их функциями.',
+      left: ['А) Артерии', 'Б) Вены', 'В) Капилляры', 'Г) Сердце'],
+      right: ['1) Насос, качает кровь', '2) Обмен с тканями', '3) К сердцу', '4) От сердца'],
+      ans: '4321'
+    },
+    {
+      title: 'Установите соответствие между органами и их функциями у растений.',
+      left: ['А) Корень', 'Б) Стебель', 'В) Лист', 'Г) Цветок'],
+      right: ['1) Проведение веществ', '2) Поглощение воды', '3) Половое размножение', '4) Фотосинтез'],
+      ans: '2143'
+    },
+    {
+      title: 'Установите соответствие между типами клеток крови и их функциями.',
+      left: ['А) Эритроциты', 'Б) Лейкоциты', 'В) Тромбоциты', 'Г) Лимфоциты'],
+      right: ['1) Свёртывание', '2) Перенос кислорода', '3) Клеточный иммунитет', '4) Фагоцитоз'],
+      ans: '2413'
+    },
+    {
+      title: 'Установите соответствие между системами органов и их функциями.',
+      left: ['А) Дыхательная', 'Б) Пищеварительная', 'В) Выделительная', 'Г) Нервная'],
+      right: ['1) Обеспечение связи с внешней средой', '2) Поступление O₂', '3) Удаление продуктов обмена', '4) Расщепление пищи'],
+      ans: '2431'
+    },
+    {
+      title: 'Установите соответствие между организмами и их типом питания.',
+      left: ['А) Дуб', 'Б) Лев', 'В) Гриб-сапротроф', 'Г) Хлорелла'],
+      right: ['1) Автотроф (фотосинтез)', '2) Гетеротроф (разложение)', '3) Автотроф', '4) Гетеротроф (хищник)'],
+      ans: '1423'
+    },
+    {
+      title: 'Установите соответствие между структурами цветка и их функциями.',
+      left: ['А) Тычинки', 'Б) Лепестки', 'В) Завязь', 'Г) Пыльца'],
+      right: ['1) Образует плод', '2) Мужские половые клетки', '3) Привлекает насекомых', '4) Пыльцевые зёрна'],
+      ans: '2314'
+    },
+    {
+      title: 'Установите соответствие между органическими веществами и их функциями.',
+      left: ['А) Белки', 'Б) Жиры', 'В) Углеводы', 'Г) Нуклеиновые кислоты'],
+      right: ['1) Запас энергии', '2) Быстрая энергия', '3) Структурная, ферменты', '4) Хранение наследственности'],
+      ans: '3124'
+    },
+    {
+      title: 'Установите соответствие между железами и их гормонами.',
+      left: ['А) Гипофиз', 'Б) Щитовидная', 'В) Надпочечники', 'Г) Поджелудочная'],
+      right: ['1) Адреналин', '2) Тироксин', '3) Инсулин', '4) Гормон роста'],
+      ans: '4213'
+    },
+    {
+      title: 'Установите соответствие между классами позвоночных и особенностями кровеносной системы.',
+      left: ['А) Рыбы', 'Б) Земноводные', 'В) Пресмыкающиеся', 'Г) Птицы'],
+      right: ['1) Трёхкамерное сердце', '2) Двухкамерное сердце', '3) Четырёхкамерное', '4) Трёхкамерное с перегородкой'],
+      ans: '2143'
+    },
+    {
+      title: 'Установите соответствие между тканями растений и их функциями.',
+      left: ['А) Ксилема', 'Б) Флоэма', 'В) Меристема', 'Г) Склеренхима'],
+      right: ['1) Проведение органики', '2) Опора', '3) Проведение воды', '4) Образовательная ткань'],
+      ans: '3142'
+    },
+    {
+      title: 'Установите соответствие между стадиями деления клетки и процессами.',
+      left: ['А) Интерфаза', 'Б) Метафаза', 'В) Анафаза', 'Г) Телофаза'],
+      right: ['1) Расхождение хроматид', '2) Удвоение ДНК', '3) Расположение хромосом по экватору', '4) Образование двух клеток'],
+      ans: '2314'
+    },
+    {
+      title: 'Установите соответствие между таксонами и их примерами.',
+      left: ['А) Вид', 'Б) Род', 'В) Семейство', 'Г) Класс'],
+      right: ['1) Бобовые', '2) Млекопитающие', '3) Роза', '4) Роза дикая'],
+      ans: '4312'
+    },
+    {
+      title: 'Установите соответствие между организмами и способами их питания.',
+      left: ['А) Повилика', 'Б) Мукор', 'В) Росянка', 'Г) Венерина мухоловка'],
+      right: ['1) Сапротроф', '2) Паразит', '3) Автотроф', '4) Хищник'],
+      ans: '2134'
+    },
+    {
+      title: 'Установите соответствие между витаминами и их функциями.',
+      left: ['А) A', 'Б) B₁', 'В) C', 'Г) D'],
+      right: ['1) Зрение, рост', '2) Кости, иммунитет', '3) Нервная система', '4) Иммунитет, сосуды'],
+      ans: '1342'
+    },
+    {
+      title: 'Установите соответствие между растениями и их жизненными формами.',
+      left: ['А) Трава', 'Б) Кустарник', 'В) Дерево', 'Г) Лиана'],
+      right: ['1) Дуб', '2) Виноград', '3) Тюльпан', '4) Сирень'],
+      ans: '3421'
+    },
+    {
+      title: 'Установите соответствие между процессами и их результатами.',
+      left: ['А) Фотосинтез', 'Б) Дыхание', 'В) Брожение', 'Г) Горение'],
+      right: ['1) Образование глюкозы', '2) Разложение органики', '3) Окисление', '4) Выделение CO₂'],
+      ans: '1423'
+    },
+    {
+      title: 'Установите соответствие между экологическими факторами и их типами.',
+      left: ['А) Температура', 'Б) Хищничество', 'В) Паразитизм', 'Г) Свет'],
+      right: ['1) Биотический', '2) Биотический', '3) Абиотический', '4) Абиотический'],
+      ans: '3421'
+    },
+    {
+      title: 'Установите соответствие между организмами и их ролью в цепи питания.',
+      left: ['А) Дуб', 'Б) Лось', 'В) Волк', 'Г) Бактерии'],
+      right: ['1) Консумент 2', '2) Редуцент', '3) Продуцент', '4) Консумент 1'],
+      ans: '3412'
+    },
+    {
+      title: 'Установите соответствие между эволюционными процессами и их механизмами.',
+      left: ['А) Макроэволюция', 'Б) Микроэволюция', 'В) Дивергенция', 'Г) Конвергенция'],
+      right: ['1) Расхождение признаков', '2) Схождение признаков', '3) Образование надвидов', '4) Изменение популяции'],
+      ans: '3412'
+    },
+    {
+      title: 'Установите соответствие между органами и их функциями у человека.',
+      left: ['А) Печень', 'Б) Селезёнка', 'В) Почки', 'Г) Поджелудочная'],
+      right: ['1) Обезвреживание токсинов', '2) Фильтрация крови', '3) Инсулин, ферменты', '4) Иммунная защита'],
+      ans: '1423'
+    },
+    {
+      title: 'Установите соответствие между классами животных и их признаками размножения.',
+      left: ['А) Рыбы', 'Б) Птицы', 'В) Млекопитающие', 'Г) Пресмыкающиеся'],
+      right: ['1) Яйцеклад, кожа яйца', '2) Внутреннее оплодотворение, откладывание яиц', '3) Внешнее оплодотворение', '4) Живорождение'],
+      ans: '3214'
+    },
+    {
+      title: 'Установите соответствие между типами кровеносных сосудов и их особенностями.',
+      left: ['А) Артерии', 'Б) Вены', 'В) Капилляры', 'Г) Венулы'],
+      right: ['1) Самые тонкие', '2) Клапаны', '3) Высокое давление', '4) Собирают кровь из капилляров'],
+      ans: '3124'
+    },
+    {
+      title: 'Установите соответствие между клеточными структурами и их функциями.',
+      left: ['А) Эндоплазматическая сеть', 'Б) Аппарат Гольджи', 'В) Лизосомы', 'Г) Центриоли'],
+      right: ['1) Участие в делении клетки', '2) Внутриклеточное пищеварение', '3) Транспорт веществ', '4) Упаковка секретов'],
+      ans: '3421'
+    },
+    {
+      title: 'Установите соответствие между типами размножения и их примерами.',
+      left: ['А) Половое', 'Б) Бесполое', 'В) Вегетативное', 'Г) Споровое'],
+      right: ['1) Делением', '2) Сливанием гамет', '3) Отводками', '4) Спорами'],
+      ans: '2134'
+    },
+    {
+      title: 'Установите соответствие между отделами растений и их признаками.',
+      left: ['А) Плауны', 'Б) Хвощи', 'В) Папоротники', 'Г) Голосеменные'],
+      right: ['1) Семена в шишках', '2) Членистый стебель', '3) Крупные листья-вайи', '4) Стелющийся стебель'],
+      ans: '4231'
+    },
+    {
+      title: 'Установите соответствие между организмами и их средой обитания.',
+      left: ['А) Касатка', 'Б) Верблюд', 'В) Дождевой червь', 'Г) Лосось'],
+      right: ['1) Почва', '2) Пресная вода', '3) Мировой океан', '4) Пустыня'],
+      ans: '3412'
+    },
+    {
+      title: 'Установите соответствие между биомолекулами и их мономерами.',
+      left: ['А) ДНК', 'Б) Белок', 'В) Крахмал', 'Г) Жир'],
+      right: ['1) Аминокислоты', '2) Глицерин и жирные кислоты', '3) Глюкоза', '4) Нуклеотиды'],
+      ans: '4132'
+    },
+    {
+      title: 'Установите соответствие между признаками и их значением для организма.',
+      left: ['А) Влажная кожа у земноводных', 'Б) Перья у птиц', 'В) Теплокровность', 'Г) Сухая чешуя у рептилий'],
+      right: ['1) Терморегуляция', '2) Газообмен', '3) Защита от потери воды', '4) Полёт'],
+      ans: '2413'
+    },
+    {
+      title: 'Установите соответствие между процессами и их продуктами.',
+      left: ['А) Фотосинтез', 'Б) Дыхание', 'В) Гликолиз', 'Г) Мейоз'],
+      right: ['1) CO₂ + H₂O', '2) Глюкоза + O₂', '3) ПВК', '4) Гаметы'],
+      ans: '2134'
+    },
+    {
+      title: 'Установите соответствие между органами чувств и их функциями.',
+      left: ['А) Ухо', 'Б) Глаз', 'В) Язык', 'Г) Кожа'],
+      right: ['1) Вкус', '2) Осязание', '3) Зрение', '4) Слух, равновесие'],
+      ans: '4312'
+    },
+    {
+      title: 'Установите соответствие между типами иммунитета и их механизмами.',
+      left: ['А) Неспецифический', 'Б) Специфический клеточный', 'В) Специфический гуморальный', 'Г) Искусственный'],
+      right: ['1) Антитела', '2) Т-киллеры', '3) Барьеры', '4) Вакцинация'],
+      ans: '3214'
+    },
+    {
+      title: 'Установите соответствие между структурами глаза и их функциями.',
+      left: ['А) Роговица', 'Б) Хрусталик', 'В) Сетчатка', 'Г) Зрачок'],
+      right: ['1) Фокусировка света', '2) Световосприятие', '3) Преломление света', '4) Регуляция света'],
+      ans: '3124'
+    }
+  ];
+
+  // Банк кратких ответов
+  const shortQ = [
+    ['Органоид фотосинтеза', 'хлоропласт'],
+    ['Энергостанция клетки', 'митохондрия'],
+    ['Сосуды от сердца', 'артерии'],
+    ['Газообмен в лёгких', 'альвеолы'],
+    ['Всасывание питательных веществ', 'тонкий кишечник'],
+    ['Клетки с гемоглобином', 'эритроциты'],
+    ['Запасной углевод растений', 'крахмал'],
+    ['Запасной углевод животных', 'гликоген'],
+    ['Продуценты в экосистеме', 'растения'],
+    ['Деление для роста и восстановления', 'митоз'],
+    ['Образование гамет', 'мейоз'],
+    ['Пигмент листа', 'хлорофилл'],
+    ['Нехватка витамина C', 'цинга'],
+    ['Молочные железы — класс', 'млекопитающие'],
+    ['Перья — класс', 'птицы'],
+    ['Жабры у взрослых особей', 'рыбы'],
+    ['Центральная нервная система', 'головной и спинной мозг'],
+    ['Свёртывание крови', 'тромбоциты'],
+    ['Вода по стеблю', 'ксилема'],
+    ['Органические вещества по стеблю', 'флоэма'],
+    ['Нет клеточной стенки у', 'животных'],
+    ['Клеточное дыхание', 'митохондрии'],
+    ['Кроветворение', 'красный костный мозг'],
+    ['Кровь от сердца', 'артерии'],
+    ['Дыхание рыб', 'жабры'],
+    ['Пищеварение в желудке', 'пепсин'],
+    ['Всасывание воды', 'толстый кишечник'],
+    ['Кислород в крови', 'эритроциты'],
+    ['Защита от инфекций', 'лейкоциты'],
+    ['Фермент слюны', 'амилаза'],
+    ['Опорно-двигательная', 'скелет'],
+    ['Гормон роста', 'гипофиз'],
+    ['Терморегуляция', 'кожа'],
+    ['Половое размножение', 'гаметы'],
+    ['Бактерии без ядра', 'прокариоты']
+  ];
+
+  // Банк заданий на выбор двух верных
+  const twoChoice = [
+    ['1) В хлоропластах идёт фотосинтез', '2) Эритроциты переносят кислород', '3) Митохондрии есть только у бактерий', '4) У животных всегда есть клеточная стенка', '12'],
+    ['1) Сердце — это мышечный орган', '2) Артерии несут кровь к сердцу', '3) Лейкоциты участвуют в иммунитете', '4) Вены имеют клапаны', '13'],
+    ['1) Ксилема проводит воду', '2) Флоэма проводит воду', '3) Корень поглощает воду', '4) Лист поглощает воду', '13'],
+    ['1) Рыбы дышат жабрами', '2) Птицы теплокровные', '3) Земноводные откладывают яйца на суше', '4) Млекопитающие холоднокровные', '12'],
+    ['1) ДНК хранит наследственную информацию', '2) Рибосомы синтезируют белки', '3) Ядро есть у прокариот', '4) Митохондрии есть у всех бактерий', '12'],
+    ['1) Водоросли — низшие растения', '2) Папоротники имеют семена', '3) Голосеменные образуют цветки', '4) Покрытосеменные имеют плоды', '14'],
+    ['1) Гемоглобин содержится в эритроцитах', '2) Тромбоциты переносят кислород', '3) Плазма — жидкая часть крови', '4) Лейкоциты отвечают за свёртывание', '13']
+  ];
+
+  // Генерируем 50 вариантов
+  for(let v=1; v<=50; v++){
+    const unit=document.createElement('div');
+    unit.className='unit'+(v===1?' open':'');
+    
+    const header=document.createElement('div');
+    header.className='unit-header';
+    header.onclick=function(){ toggleUnit(this); };
+    header.innerHTML=`
+      <div class="unit-icon">${v}</div>
+      <div class="unit-info">
+        <h3>Вариант ${v}</h3>
+        <p>Полноценный вариант ОГЭ по биологии</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    `;
+    unit.appendChild(header);
+    
+    const body=document.createElement('div');
+    body.className='unit-body';
+    
+    const lesson=document.createElement('div');
+    lesson.className='lesson';
+    lesson.dataset.lesson='bv'+v;
+    
+    // === Задание 1: Соответствие ===
+    const task1 = matchTasks[(v-1) % matchTasks.length];
+    let leftHTML1 = '';
+    const leftLetters1 = ['А', 'Б', 'В', 'Г'];
+    task1.left.forEach((item, i) => {
+      leftHTML1 += `${leftLetters1[i]}) ${item}<br>`;
+    });
+    let rightHTML1 = '';
+    task1.right.forEach((item, i) => {
+      rightHTML1 += `${i+1}) ${item}<br>`;
+    });
+    
+    const taskDiv1 = document.createElement('div');
+    taskDiv1.className = 'exam-task open-task';
+    taskDiv1.dataset.answer = task1.ans;
+    taskDiv1.innerHTML = `
+      <div class="exam-title"><span class="exam-num">1</span> ${task1.title}</div>
+      <div class="exam-text">
+        <strong>СТОЛБЕЦ 1</strong><br>
+        ${leftHTML1}
+      </div>
+      <div class="exam-text">
+        <strong>СТОЛБЕЦ 2</strong><br>
+        ${rightHTML1}
+      </div>
+      <div class="ans-row">
+        <label>Ответ (последовательность цифр А-Б-В-Г):</label>
+        <input type="text" class="ans-input" placeholder="Например: ${task1.ans}" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${task1.ans}</strong></div>
+    `;
+    lesson.appendChild(taskDiv1);
+
+    // === Задание 2: Соответствие ===
+    const task2 = matchTasks[(v+7) % matchTasks.length];
+    let leftHTML2 = '';
+    const leftLetters2 = ['А', 'Б', 'В', 'Г'];
+    task2.left.forEach((item, i) => {
+      leftHTML2 += `${leftLetters2[i]}) ${item}<br>`;
+    });
+    let rightHTML2 = '';
+    task2.right.forEach((item, i) => {
+      rightHTML2 += `${i+1}) ${item}<br>`;
+    });
+    
+    const taskDiv2 = document.createElement('div');
+    taskDiv2.className = 'exam-task open-task';
+    taskDiv2.dataset.answer = task2.ans;
+    taskDiv2.innerHTML = `
+      <div class="exam-title"><span class="exam-num">2</span> ${task2.title}</div>
+      <div class="exam-text">
+        <strong>СТОЛБЕЦ 1</strong><br>
+        ${leftHTML2}
+      </div>
+      <div class="exam-text">
+        <strong>СТОЛБЕЦ 2</strong><br>
+        ${rightHTML2}
+      </div>
+      <div class="ans-row">
+        <label>Ответ (последовательность цифр А-Б-В-Г):</label>
+        <input type="text" class="ans-input" placeholder="Например: ${task2.ans}" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${task2.ans}</strong></div>
+    `;
+    lesson.appendChild(taskDiv2);
+
+    // === Задания 3-11: Краткие ответы (9 заданий) ===
+    for(let i=0; i<9; i++){
+      const idx = (v*3 + i) % shortQ.length;
+      const item = shortQ[idx];
+      const qNum = i + 3;
+      
+      const taskDiv = document.createElement('div');
+      taskDiv.className = 'exam-task open-task';
+      taskDiv.dataset.answer = item[1];
+      taskDiv.innerHTML = `
+        <div class="exam-title"><span class="exam-num">${qNum}</span> Краткий ответ</div>
+        <div class="exam-text">${item[0]}?</div>
+        <div class="ans-row">
+          <label>Ответ:</label>
+          <input type="text" class="ans-input" placeholder="Введите ответ" autocomplete="off">
+        </div>
+        <div class="correct-ans">Правильный ответ: <strong>${item[1]}</strong></div>
+      `;
+      lesson.appendChild(taskDiv);
+    }
+
+    // === Задание 12: Определение класса по признаку ===
+    const classes = [
+      ['Перья и клюв', 'птицы'],
+      ['Шерсть и молочные железы', 'млекопитающие'],
+      ['Жабры и плавники', 'рыбы'],
+      ['Сухая кожа с чешуёй', 'пресмыкающиеся'],
+      ['Влажная кожа, метаморфоз', 'земноводные'],
+      ['Трахеи и лёгкие', 'насекомые']
+    ];
+    const cls = classes[v % classes.length];
+    const taskDiv12 = document.createElement('div');
+    taskDiv12.className = 'exam-task open-task';
+    taskDiv12.dataset.answer = cls[1];
+    taskDiv12.innerHTML = `
+      <div class="exam-title"><span class="exam-num">12</span> Класс животного</div>
+      <div class="exam-text">По признаку «${cls[0]}» определите класс животного.</div>
+      <div class="ans-row">
+        <label>Ответ:</label>
+        <input type="text" class="ans-input" placeholder="Класс" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${cls[1]}</strong></div>
+    `;
+    lesson.appendChild(taskDiv12);
+
+    // === Задание 13: Выбор двух верных ===
+    const two = twoChoice[v % twoChoice.length];
+    const taskDiv13 = document.createElement('div');
+    taskDiv13.className = 'exam-task open-task';
+    taskDiv13.dataset.answer = two[4];
+    taskDiv13.innerHTML = `
+      <div class="exam-title"><span class="exam-num">13</span> Выберите два верных утверждения</div>
+      <div class="exam-text">
+        ${two[0]}<br>
+        ${two[1]}<br>
+        ${two[2]}<br>
+        ${two[3]}
+      </div>
+      <div class="ans-row">
+        <label>Ответ (две цифры):</label>
+        <input type="text" class="ans-input" placeholder="Например: ${two[4]}" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${two[4]}</strong></div>
+    `;
+    lesson.appendChild(taskDiv13);
+
+    // === Задание 14: Последовательность ===
+    const seqTasks = [
+      ['Расположите в порядке возрастания сложности: клетка → ткань → орган → организм', 'клетка→ткань→орган→организм'],
+      ['Последовательность в пищевой цепи: дуб → гусеница → синица → ястреб', 'дуб→гусеница→синица→ястреб']
+    ];
+    const seq = seqTasks[v % seqTasks.length];
+    const taskDiv14 = document.createElement('div');
+    taskDiv14.className = 'exam-task open-task';
+    taskDiv14.dataset.answer = seq[1];
+    taskDiv14.innerHTML = `
+      <div class="exam-title"><span class="exam-num">14</span> Установите последовательность</div>
+      <div class="exam-text">${seq[0]}</div>
+      <div class="ans-row">
+        <label>Ответ:</label>
+        <input type="text" class="ans-input" placeholder="Введите последовательность" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${seq[1]}</strong></div>
+    `;
+    lesson.appendChild(taskDiv14);
+
+    // === Задание 15: Процесс ===
+    const procTasks = [
+      ['CO₂ + H₂O → C₆H₁₂O₆ + O₂ (на свету). Название процесса', 'фотосинтез'],
+      ['C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + энергия. Название процесса', 'клеточное дыхание'],
+      ['Образование гамет с половинным набором хромосом', 'мейоз']
+    ];
+    const proc = procTasks[v % procTasks.length];
+    const taskDiv15 = document.createElement('div');
+    taskDiv15.className = 'exam-task open-task';
+    taskDiv15.dataset.answer = proc[1];
+    taskDiv15.innerHTML = `
+      <div class="exam-title"><span class="exam-num">15</span> Процесс</div>
+      <div class="exam-text">${proc[0]}</div>
+      <div class="ans-row">
+        <label>Ответ:</label>
+        <input type="text" class="ans-input" placeholder="Название процесса" autocomplete="off">
+      </div>
+      <div class="correct-ans">Правильный ответ: <strong>${proc[1]}</strong></div>
+    `;
+    lesson.appendChild(taskDiv15);
+    
+    // Кнопка проверки
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'check-btn';
+    checkBtn.textContent = 'Проверить вариант';
+    checkBtn.onclick = function(){ checkOpenVariant(this); };
+    lesson.appendChild(checkBtn);
+    
+    // Результат
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'var-result';
+    lesson.appendChild(resultDiv);
+    
+    // Кнопка засчитывания
+    const doneBtn = document.createElement('button');
+    doneBtn.className = 'done-btn';
+    doneBtn.style.display = 'none';
+    doneBtn.textContent = `Вариант ${v} засчитан ✓`;
+    doneBtn.onclick = function(){ completeLesson(this, 60); };
+    lesson.appendChild(doneBtn);
+    
+    body.appendChild(lesson);
+    unit.appendChild(body);
+    container.appendChild(unit);
+  }
+}
+generateDuo();
+generateVariants();
+</script>
+<script src="../shared-enhance.js">
+
+
+
+
+
+/* ===== Duolingo sequential lessons (fixed) ===== */
+(function(){
+  function initDuoLessons(){
+    document.querySelectorAll('.lesson').forEach(function(lesson){
+      if(lesson.dataset.duoInit==='1') return;
+      lesson.dataset.duoInit='1';
+
+      var theory=lesson.querySelector('.theory');
+      var tip=lesson.querySelector('.tip');
+      var questions=Array.prototype.slice.call(lesson.querySelectorAll('.q-item'));
+      var doneBtn=lesson.querySelector('.done-btn');
+      var pts=10;
+      if(doneBtn){
+        var mm=(doneBtn.getAttribute('onclick')||'').match(/completeLesson\([^,]+,\s*(\d+)/);
+        if(mm) pts=parseInt(mm[1],10)||10;
+      }
+
+      var steps=[];
+      if(theory){
+        var th=document.createElement('div');
+        th.className='duo-step duo-theory';
+        th.appendChild(theory);
+        if(tip) th.appendChild(tip);
+        steps.push({el:th, type:'theory'});
+      }
+      questions.forEach(function(q,i){
+        var st=document.createElement('div');
+        st.className='duo-step duo-q';
+        var lab=document.createElement('div');
+        lab.className='duo-step-label';
+        lab.textContent='Вопрос '+(i+1)+' из '+questions.length;
+        st.appendChild(lab);
+        st.appendChild(q);
+        steps.push({el:st, type:'q', q:q, qi:i});
+      });
+      if(!steps.length) return;
+
+      lesson.classList.add('duo-mode');
+      var h4=lesson.querySelector('h4');
+      Array.prototype.slice.call(lesson.children).forEach(function(ch){
+        if(ch===h4) return;
+        if(ch===doneBtn){ ch.style.display='none'; return; }
+        try{ lesson.removeChild(ch); }catch(e){}
+      });
+
+      var prog=document.createElement('div');
+      prog.className='duo-progress';
+      for(var i=0;i<steps.length;i++){
+        prog.appendChild(document.createElement('i'));
+      }
+      lesson.appendChild(prog);
+      steps.forEach(function(s){ lesson.appendChild(s.el); });
+
+      var nav=document.createElement('div');
+      nav.className='duo-nav';
+      var next=document.createElement('button');
+      next.type='button';
+      next.className='duo-next';
+      next.textContent='Далее →';
+      nav.appendChild(next);
+      lesson.appendChild(nav);
+
+      var finish=document.createElement('div');
+      finish.className='duo-step duo-finish-wrap';
+      finish.innerHTML='<div class="duo-finish"><div class="big">Урок пройден!</div><div>Отличная работа</div></div>';
+      lesson.appendChild(finish);
+
+      var state={idx:0, answered:{}, finished:false};
+
+      function setProgress(){
+        var dots=prog.querySelectorAll('i');
+        for(var j=0;j<dots.length;j++){
+          dots[j].classList.remove('on','cur');
+          if(j<state.idx) dots[j].classList.add('on');
+          if(j===state.idx) dots[j].classList.add('cur');
+        }
+      }
+
+      function show(i){
+        if(state.finished) return;
+        state.idx=i;
+        for(var j=0;j<steps.length;j++){
+          steps[j].el.classList.toggle('active', j===i);
+        }
+        finish.classList.remove('active');
+        setProgress();
+        var step=steps[i];
+        if(!step) return;
+        if(step.type==='theory'){
+          next.style.display='flex';
+          next.disabled=false;
+          next.textContent=questions.length?'К вопросам →':'Готово ✓';
+        } else {
+          if(state.answered[step.qi]){
+            next.style.display='flex';
+            next.disabled=false;
+            next.textContent=(i>=steps.length-1)?'Завершить ✓':'Далее →';
+          } else {
+            next.style.display='none';
+          }
+        }
+        try{ step.el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+      }
+
+      function finishLesson(){
+        if(state.finished) return;
+        state.finished=true;
+        for(var j=0;j<steps.length;j++) steps[j].el.classList.remove('active');
+        finish.classList.add('active');
+        prog.querySelectorAll('i').forEach(function(d){ d.classList.add('on'); d.classList.remove('cur'); });
+        next.style.display='none';
+        var btn=doneBtn;
+        if(!btn){
+          btn=document.createElement('button');
+          btn.className='done-btn';
+          btn.style.display='none';
+          lesson.appendChild(btn);
+        } else if(!lesson.contains(btn)){
+          lesson.appendChild(btn);
+          btn.style.display='none';
+        }
+        try{
+          if(typeof completeLesson==='function') completeLesson(btn, pts);
+        }catch(e){ console.warn(e); }
+      }
+
+      next.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(state.finished) return;
+        if(state.idx>=steps.length-1){
+          finishLesson();
+          return;
+        }
+        show(state.idx+1);
+      };
+
+      lesson.addEventListener('click', function(e){
+        var opt=e.target.closest ? e.target.closest('.opt') : null;
+        if(!opt || !lesson.contains(opt)) return;
+        if(opt.classList.contains('disabled')) return;
+        var q=opt.closest('.q-item');
+        if(!q) return;
+        var stepEl=opt.closest('.duo-step');
+        if(!stepEl || !stepEl.classList.contains('active')) return;
+
+        var c=String(q.getAttribute('data-c'));
+        var opts=q.querySelectorAll('.opt');
+        var fb=q.querySelector('.fb');
+        for(var oi=0;oi<opts.length;oi++) opts[oi].classList.add('disabled');
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          for(var oi=0;oi<opts.length;oi++){
+            if(String(opts[oi].getAttribute('data-v'))===c) opts[oi].classList.add('correct');
+          }
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+
+        var qi=-1;
+        for(var i=0;i<questions.length;i++){ if(questions[i]===q) qi=i; }
+        if(qi>=0) state.answered[qi]=true;
+
+        next.style.display='flex';
+        next.disabled=false;
+        var isLast=state.idx>=steps.length-1;
+        next.textContent=isLast?'Завершить ✓':'Далее →';
+
+        clearTimeout(lesson._duoT);
+        lesson._duoT=setTimeout(function(){
+          if(state.finished) return;
+          if(isLast) finishLesson();
+          else show(state.idx+1);
+        }, 700);
+      }, true);
+
+      show(0);
+    });
+  }
+
+  var _toggle=window.toggleUnit;
+  window.toggleUnit=function(h){
+    try{
+      if(typeof _toggle==='function') _toggle(h);
+      else if(h && h.parentElement) h.parentElement.classList.toggle('open');
+    }catch(e){}
+    setTimeout(initDuoLessons, 40);
+  };
+
+  function boot(){ setTimeout(initDuoLessons, 80); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    initDuoLessons();
+    if(tries>15) clearInterval(iv);
+  }, 500);
+})();
+
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="../ai-coach.js"></script>
+<script src="../ai-tutor-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ОГЭ Информатика</title>
+<style>
+:root{--p:#0284c7;--g:#0ea5e9;--gs:#e0f2fe;--t:#0c4a6e;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(2,132,199,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#020617;
+background-image:
+  radial-gradient(ellipse at 30% 0%,rgba(34,197,94,.3),transparent 50%),
+  radial-gradient(ellipse at 80% 80%,rgba(16,185,129,.2),transparent 40%),
+  linear-gradient(180deg,#052e16 0%,#020617 60%,#000 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.12;
+background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(34,197,94,.4) 3px);
+background-size:100% 6px}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(2,132,199,.12);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(2,132,199,.06)}
+.logo{font-weight:800;font-size:1.2rem}.logo span{background:linear-gradient(135deg,#0284c7,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:flex;gap:14px;font-size:.9rem;font-weight:600}.stat.xp{color:#0369a1}.stat.streak{color:#ea580c}
+.tabs{display:flex;gap:8px;padding:16px 16px 0;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.7);border:2px solid transparent;cursor:pointer;color:var(--ts);font-family:inherit}
+.tab.active{background:#fff;border-color:var(--p);color:var(--p);box-shadow:var(--sh)}
+.hero{padding:24px 20px 20px;text-align:center;max-width:560px;margin:0 auto}
+.hero h1{font-size:clamp(1.4rem,5vw,1.85rem);margin-bottom:8px}.hero p{color:var(--ts);font-size:.95rem}
+.path{max-width:560px;margin:0 auto;padding:12px 16px 40px}.path.hidden{display:none}
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(2,132,199,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#e0f2fe,#bae6fd)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#e0f2fe;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#0284c7,#0ea5e9);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #7dd3fc;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.quiz-box{background:linear-gradient(145deg,#f0f9ff,#e0f2fe);border:1.5px solid #7dd3fc;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#075985;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#f0f9ff}
+.opt.correct{border-color:#10b981;background:#d1fae5;color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(14,165,233,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(2,132,199,.1);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:90}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem;color:var(--ts);padding:4px 10px;background:none;border:none;font-family:inherit;cursor:pointer}
+.bnav-item.active{color:var(--p);font-weight:600}.bnav-item span{font-size:1.3rem}
+.xp-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fff;border-radius:24px;padding:28px 36px;box-shadow:0 25px 60px rgba(2,132,199,.25);text-align:center;z-index:200;opacity:0;pointer-events:none;transition:all .3s}
+.xp-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}.xp-popup .big{font-size:2.8rem;margin-bottom:6px}
+.overlay{position:fixed;inset:0;background:rgba(12,74,110,.45);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}.overlay.show{opacity:1;pointer-events:auto}
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px}
+.duo-module{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0369a1;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0c4a6e;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#0ea5e9,#0284c7);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0369a1}
+.duo-mascot{font-size:2.5rem;margin:8px 0}
+.var-result{margin-top:12px;padding:12px;border-radius:12px;font-weight:600;display:none}
+.var-result.show{display:block}
+.var-result.good{background:#d1fae5;color:#065f46}
+.var-result.mid{background:#fef3c7;color:#92400e}
+.var-result.bad{background:#fee2e2;color:#991b1b}
+.ans-input{width:100%;max-width:280px;padding:12px 14px;border:2px solid #7dd3fc;border-radius:12px;font-size:1.05rem;font-family:inherit;margin-top:8px;background:#fff}
+.ans-input:focus{outline:none;border-color:#0284c7}
+.ans-input.ok{border-color:#10b981;background:#ecfdf5}
+.ans-input.bad{border-color:#ef4444;background:#fef2f2}
+.correct-ans{margin-top:6px;font-size:.9rem;color:#065f46;font-weight:600;display:none}
+.correct-ans.show{display:block}
+.exam-task{margin:20px 0;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0}
+.exam-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;background:#0284c7;color:#fff;border-radius:8px;font-weight:800;font-size:.9rem;margin-right:8px}
+.exam-title{font-size:.85rem;color:#075985;font-weight:600;margin-bottom:8px}
+.exam-text{font-size:.95rem;line-height:1.55;margin:8px 0}
+.ans-row{margin-top:10px}
+.ans-row label{font-size:.85rem;color:#64748b;display:block;margin-bottom:4px}
+.check-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(2,132,199,.3)}
+.check-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.warn-box{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.9rem;color:#9a3412}
+
+.bottom-nav{z-index:100}
+body{padding-bottom:70px}
+
+.home-btn{
+  display:flex;align-items:center;justify-content:center;
+  margin:12px 16px 8px;
+  padding:14px 18px;
+  font-size:1.05rem;font-weight:800;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(79,70,229,.35);
+  letter-spacing:.01em;
+}
+.home-btn:active{transform:scale(.98);opacity:.95}
+
+
+
+
+/* Duolingo-style sequential lesson */
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none;animation:duoFade .3s ease}
+.lesson .duo-step.active{display:block}
+@keyframes duoFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{
+  display:flex;gap:4px;margin:0 0 12px;padding:0 2px;
+}
+.duo-progress i{
+  flex:1;height:6px;border-radius:99px;background:#e2e8f0;
+  transition:background .25s;
+}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.25)}
+.duo-nav{
+  display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;
+}
+.duo-nav .duo-next{
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.3);
+}
+.duo-nav .duo-next:disabled{opacity:.5;cursor:default}
+.duo-nav .duo-skip{
+  padding:14px 14px;border-radius:14px;border:2px solid #e2e8f0;
+  background:#fff;font-weight:700;color:#64748b;cursor:pointer;
+}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.lesson.duo-mode .q-item{margin:0;border:none;padding:0;background:transparent}
+.duo-step-label{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:#7c3aed;margin-bottom:8px;
+}
+.duo-finish{
+  text-align:center;padding:20px 12px;
+  background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px;
+}
+.duo-finish .big{font-size:1.5rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none !important;animation:duoFade .28s ease}
+.lesson .duo-step.active{display:block !important}
+@keyframes duoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{display:flex;gap:4px;margin:0 0 12px}
+.duo-progress i{flex:1;height:7px;border-radius:99px;background:#e2e8f0;transition:background .25s}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.3)}
+.duo-nav{display:flex;gap:10px;margin-top:14px;position:sticky;bottom:72px;z-index:5}
+.duo-nav .duo-next{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1.05rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
+.duo-nav .duo-next:disabled{opacity:.45}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.duo-step-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7c3aed;margin-bottom:8px}
+.duo-finish{text-align:center;padding:22px 12px;background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px}
+.duo-finish .big{font-size:1.45rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+
+
+/* subject-theme-informatics */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' viewBox='0 0 130 130'%3E%3Ctext x='10' y='30' font-size='14' fill='%23059669' opacity='0.08'%3E01%3C/text%3E%3Ctext x='45' y='70' font-size='13' fill='%2310b981' opacity='0.07'%3Aif%7B%7D%3C/text%3E%3Ctext x='15' y='105' font-size='12' fill='%23047857' opacity='0.07'%3Abit%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+
+</style>
+</head>
+<body data-subject="informatics">
+<div class="topbar">
+  <a href="../index.html" class="back">←</a>
+  <div class="topbar-title">ОГЭ Информатика</div>
+  <div class="topbar-stats"><span>⚡ <b id="xpCount">0</b></span> <span>🔥 <b id="streakCount">0</b></span></div>
+</div>
+<a class="home-btn" href="../index.html">← Главное меню</a>
+<div class="tabs">
+  <button class="tab active" data-tab="main" onclick="switchTab('main')">📋 ОГЭ</button>
+  <button class="tab" data-tab="duo" onclick="switchTab('duo')">🎮 Практика</button>
+  <button class="tab" data-tab="hard" onclick="switchTab('hard')">🔥 Сложные</button>
+  <button class="tab" data-tab="vars" onclick="switchTab('vars')">📝 Варианты</button>
+</div>
+<div class="content">
+<div class="path" id="path-main">
+  <div class="hero">
+    <h1>ОГЭ по информатике</h1>
+    <p>С нуля: системы счисления, логика, алгоритмы, файлы, таблицы.</p>
+  </div>
+
+  <div class="unit open" data-unit="i0">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📋</div>
+      <div class="unit-info">
+        <h3>Структура ОГЭ</h3>
+        <p>С нуля</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i0">
+        <div class="theory"><p>ОГЭ по информатике проверяет умение работать с системами счисления, логикой, алгоритмами, файлами, кодированием, таблицами и простыми программами. Часть заданий — с кратким ответом, часть связана с исполнителем или кодом.</p><p>Готовьтесь с нуля: двоичная система, байты и биты, блок-схемы, условия и циклы, сортировка данных в таблицах.</p><p>На экзамене внимательно читайте условие: часто ответ — число, цепочка символов или значение переменной после выполнения алгоритма.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">ОГЭ по информатике включает?</div><div class="opts"><button class="opt" data-v="1">Системы счисления, логику, алгоритмы</button><button class="opt" data-v="2">Только литературу</button><button class="opt" data-v="3">Только физкультуру</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бит — это?</div><div class="opts"><button class="opt" data-v="1">Минимальная единица информации</button><button class="opt" data-v="2">Единица длины</button><button class="opt" data-v="3">Единица массы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1 байт = ?</div><div class="opts"><button class="opt" data-v="1">8 бит</button><button class="opt" data-v="2">10 бит</button><button class="opt" data-v="3">2 бита</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Двоичная система использует?</div><div class="opts"><button class="opt" data-v="1">0 и 1</button><button class="opt" data-v="2">0–9</button><button class="opt" data-v="3">A–Z только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Алгоритм должен быть?</div><div class="opts"><button class="opt" data-v="1">Конечным и однозначным</button><button class="opt" data-v="2">Бесконечным</button><button class="opt" data-v="3">Случайным всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">И — логическая операция?</div><div class="opts"><button class="opt" data-v="1">Конъюнкция</button><button class="opt" data-v="2">Только сложение чисел</button><button class="opt" data-v="3">Деление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Файловая маска * значит?</div><div class="opts"><button class="opt" data-v="1">Любая последовательность</button><button class="opt" data-v="2">Только один символ</button><button class="opt" data-v="3">Ничего</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Формула в таблице начинается с?</div><div class="opts"><button class="opt" data-v="1">=</button><button class="opt" data-v="2">#</button><button class="opt" data-v="3">?</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">if в программе — это?</div><div class="opts"><button class="opt" data-v="1">Ветвление</button><button class="opt" data-v="2">Только цикл</button><button class="opt" data-v="3">Только вывод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кбайт в школьных задачах часто?</div><div class="opts"><button class="opt" data-v="1">1024 байт</button><button class="opt" data-v="2">1000 бит</button><button class="opt" data-v="3">8 бит</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цикл нужен чтобы?</div><div class="opts"><button class="opt" data-v="1">Повторять действия</button><button class="opt" data-v="2">Удалить алгоритм</button><button class="opt" data-v="3">Отменить компьютер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">IP-адрес связан с?</div><div class="opts"><button class="opt" data-v="1">Сетью</button><button class="opt" data-v="2">Только принтером без сети</button><button class="opt" data-v="3">Только мышкой</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Таблица истинности для?</div><div class="opts"><button class="opt" data-v="1">Логики</button><button class="opt" data-v="2">Только рисования</button><button class="opt" data-v="3">Только звука</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Переменная хранит?</div><div class="opts"><button class="opt" data-v="1">Значение</button><button class="opt" data-v="2">Только цвет корпуса</button><button class="opt" data-v="3">Только имя файла ОС</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ответ на ОГЭ часто?</div><div class="opts"><button class="opt" data-v="1">Число или строка по условию</button><button class="opt" data-v="2">Только эссе</button><button class="opt" data-v="3">Только рисунок от руки</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,10)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔢</div>
+      <div class="unit-info">
+        <h3>Системы счисления</h3>
+        <p>2, 8, 16 · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i1">
+        <div class="theory"><p><strong>Системы счисления.</strong> В позиционной системе вес разряда — степень основания. Двоичная (0 и 1): 1010₂ = 1·8+0·4+1·2+0·1 = 10₁₀.</p><p>Перевод в десятичную: сумма цифр × основание^номер разряда (справа с 0). Из десятичной в двоичную: деление на 2, остатки снизу вверх.</p><p>Восьмеричная и шестнадцатеричная удобны для сжатой записи двоичных групп (3 и 4 бита). На ОГЭ часто просят перевести число или сравнить значения в разных системах.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">1010₂ в десятичной?</div><div class="opts"><button class="opt" data-v="1">10</button><button class="opt" data-v="2">5</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Основание двоичной?</div><div class="opts"><button class="opt" data-v="1">2</button><button class="opt" data-v="2">10</button><button class="opt" data-v="3">16</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цифры двоичной?</div><div class="opts"><button class="opt" data-v="1">0 и 1</button><button class="opt" data-v="2">0–7</button><button class="opt" data-v="3">0–9</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Перевод 10→2: делят на?</div><div class="opts"><button class="opt" data-v="1">2</button><button class="opt" data-v="2">10</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вес младшего разряда?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">8₁₀ в двоичной?</div><div class="opts"><button class="opt" data-v="1">1000</button><button class="opt" data-v="2">100</button><button class="opt" data-v="3">1010</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Шестнадцатеричная основание?</div><div class="opts"><button class="opt" data-v="1">16</button><button class="opt" data-v="2">10</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Одна hex-цифра = бит?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">0 в любой системе?</div><div class="opts"><button class="opt" data-v="1">Ноль</button><button class="opt" data-v="2">Один</button><button class="opt" data-v="3">Десять</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сравнение чисел в разных системах: удобно?</div><div class="opts"><button class="opt" data-v="1">Перевести в 10</button><button class="opt" data-v="2">Угадать</button><button class="opt" data-v="3">Сложить буквы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">111₂ = ?</div><div class="opts"><button class="opt" data-v="1">7</button><button class="opt" data-v="2">3</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Позиционная система — вес зависит от?</div><div class="opts"><button class="opt" data-v="1">Позиции цифры</button><button class="opt" data-v="2">Цвета</button><button class="opt" data-v="3">Имени файла</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Остатки при делении на 2 читают?</div><div class="opts"><button class="opt" data-v="1">Снизу вверх</button><button class="opt" data-v="2">Сверху только</button><button class="opt" data-v="3">Случайно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">100₂ = ?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Двоичное 1 + 1 = ?</div><div class="opts"><button class="opt" data-v="1">10₂</button><button class="opt" data-v="2">2₂</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">💾</div>
+      <div class="unit-info">
+        <h3>Информация и объём</h3>
+        <p>биты, байты, кодирование</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i2">
+        <div class="theory"><p><strong>Информация и кодирование.</strong> Бит — минимальная единица. 1 байт = 8 бит. 1 Кбайт = 2¹⁰ = 1024 байт (в школьных задачах часто так).</p><p>Мощность алфавита N, длина сообщения L → количество вариантов N^L. Информационный объём при равновероятных символах: i = log₂N бит на символ.</p><p>Кодирование текста, изображений, звука — перевод в двоичный код. Сжатие уменьшает объём (с потерями / без). На ОГЭ считают объём файла и число бит на символ.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">1 байт = ? бит</div><div class="opts"><button class="opt" data-v="1">8</button><button class="opt" data-v="2">16</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1024 байт = ?</div><div class="opts"><button class="opt" data-v="1">1 Кбайт</button><button class="opt" data-v="2">1 бит</button><button class="opt" data-v="3">1 Мбайт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Алфавит из 2 символов, i на символ?</div><div class="opts"><button class="opt" data-v="1">1 бит</button><button class="opt" data-v="2">8 бит</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N^L это?</div><div class="opts"><button class="opt" data-v="1">Число сообщений длины L</button><button class="opt" data-v="2">Сумма байт</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">log₂8 = ?</div><div class="opts"><button class="opt" data-v="1">3</button><button class="opt" data-v="2">8</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бит минимален?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Иногда метр</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кодирование — это?</div><div class="opts"><button class="opt" data-v="1">В код</button><button class="opt" data-v="2">В музыку обязательно</button><button class="opt" data-v="3">Удаление данных</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сжатие без потерь?</div><div class="opts"><button class="opt" data-v="1">Можно восстановить точно</button><button class="opt" data-v="2">Нельзя никогда</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Объём растёт с?</div><div class="opts"><button class="opt" data-v="1">Числом бит</button><button class="opt" data-v="2">Цветом корпуса</button><button class="opt" data-v="3">Именем пользователя</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">2¹⁰ = ?</div><div class="opts"><button class="opt" data-v="1">1024</button><button class="opt" data-v="2">1000</button><button class="opt" data-v="3">512</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сообщение из 10 бит max вариантов (двоич.)?</div><div class="opts"><button class="opt" data-v="1">2^10</button><button class="opt" data-v="2">10</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Байт больше бита?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Равны</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Текст в компьютере хранится как?</div><div class="opts"><button class="opt" data-v="1">Коды символов</button><button class="opt" data-v="2">Только картинка всегда</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Информативный символ несет?</div><div class="opts"><button class="opt" data-v="1">Информацию</button><button class="opt" data-v="2">Только вес</button><button class="opt" data-v="3">Только температуру</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единицы объёма упорядочить?</div><div class="opts"><button class="opt" data-v="1">бит < байт < Кбайт</button><button class="opt" data-v="2">Кбайт < бит</button><button class="opt" data-v="3">Все равны</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔗</div>
+      <div class="unit-info">
+        <h3>Логика</h3>
+        <p>И, ИЛИ, НЕ · таблицы</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i3">
+        <div class="theory"><p><strong>Логика.</strong> Высказывание истинно (1) или ложно (0). Операции: НЕ (инверсия), И (конъюнкция), ИЛИ (дизъюнкция).</p><p>Таблица истинности перечисляет все комбинации. Приоритет: НЕ → И → ИЛИ (если нет скобок).</p><p>Эквивалентность и импликация встречаются реже, но полезны. На ОГЭ строят таблицы, упрощают выражения, находят набор значений, при котором выражение истинно.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">НЕ 1 = ?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1 И 0 = ?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1 ИЛИ 0 = ?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Истинно обозначают?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">Только 5</button><button class="opt" data-v="3">−1</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Конъюнкция — это?</div><div class="opts"><button class="opt" data-v="1">И</button><button class="opt" data-v="2">ИЛИ</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дизъюнкция —?</div><div class="opts"><button class="opt" data-v="1">ИЛИ</button><button class="opt" data-v="2">И</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">НЕ НЕ A = ?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">1 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Таблица истинности нужна для?</div><div class="opts"><button class="opt" data-v="1">Всех комбинаций</button><button class="opt" data-v="2">Одного случая</button><button class="opt" data-v="3">Рисования</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Приоритет выше у?</div><div class="opts"><button class="opt" data-v="1">НЕ</button><button class="opt" data-v="2">ИЛИ</button><button class="opt" data-v="3">Сложения строк</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">0 ИЛИ 0 = ?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1 И 1 = ?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Высказывание бывает?</div><div class="opts"><button class="opt" data-v="1">Истина/ложь</button><button class="opt" data-v="2">Только красное</button><button class="opt" data-v="3">Только длинное</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скобки в логике?</div><div class="opts"><button class="opt" data-v="1">Меняют порядок</button><button class="opt" data-v="2">Запрещены</button><button class="opt" data-v="3">Не влияют</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A И НЕ A = ?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A ИЛИ НЕ A = ?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📐</div>
+      <div class="unit-info">
+        <h3>Алгоритмы</h3>
+        <p>схемы, свойства</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i4">
+        <div class="theory"><p><strong>Алгоритм</strong> — конечная последовательность шагов с однозначным результатом. Свойства: дискретность, понятность, определённость, результативность, массовость.</p><p>Линейный, ветвление (если–то–иначе), цикл (пока / n раз). Блок-схема: начало/конец, процесс, условие, ввод/вывод.</p><p>Исполнитель имеет среду, систему команд, отказы. На ОГЭ «прогоняют» алгоритм на данных и записывают результат.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Алгоритм конечен?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Иногда бесконечен обязан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ветвление — это?</div><div class="opts"><button class="opt" data-v="1">Выбор по условию</button><button class="opt" data-v="2">Только цикл</button><button class="opt" data-v="3">Только линейность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цикл повторяет?</div><div class="opts"><button class="opt" data-v="1">Шаги</button><button class="opt" data-v="2">Имя файла</button><button class="opt" data-v="3">Цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Блок ромб на схеме часто?</div><div class="opts"><button class="opt" data-v="1">Условие</button><button class="opt" data-v="2">Начало</button><button class="opt" data-v="3">Конец только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Исполнитель имеет?</div><div class="opts"><button class="opt" data-v="1">Систему команд</button><button class="opt" data-v="2">Только эмоции</button><button class="opt" data-v="3">Только зрение</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Линейный алгоритм?</div><div class="opts"><button class="opt" data-v="1">Без ветвлений и циклов</button><button class="opt" data-v="2">Только циклы</button><button class="opt" data-v="3">Только хаос</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Результативность —?</div><div class="opts"><button class="opt" data-v="1">Есть результат</button><button class="opt" data-v="2">Нет шагов</button><button class="opt" data-v="3">Случайность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Понятность алгоритма —?</div><div class="opts"><button class="opt" data-v="1">Для исполнителя</button><button class="opt" data-v="2">Для камня</button><button class="opt" data-v="3">Для ветра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">«Пока» — тип?</div><div class="opts"><button class="opt" data-v="1">Цикла</button><button class="opt" data-v="2">Только ветвления без повтора</button><button class="opt" data-v="3">Файла</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Массовость —?</div><div class="opts"><button class="opt" data-v="1">Для класса задач</button><button class="opt" data-v="2">Для одной цифры только</button><button class="opt" data-v="3">Запрет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ввод/вывод на схеме?</div><div class="opts"><button class="opt" data-v="1">Отдельные блоки</button><button class="opt" data-v="2">Не нужны</button><button class="opt" data-v="3">Только цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Однозначность шагов —?</div><div class="opts"><button class="opt" data-v="1">Определённость</button><button class="opt" data-v="2">Случайность</button><button class="opt" data-v="3">Бесконечность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отказ исполнителя —?</div><div class="opts"><button class="opt" data-v="1">Не может выполнить команду</button><button class="opt" data-v="2">Всегда успех</button><button class="opt" data-v="3">Только сеть</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Прогнать алгоритм —?</div><div class="opts"><button class="opt" data-v="1">Выполнить на данных</button><button class="opt" data-v="2">Удалить</button><button class="opt" data-v="3">Нарисовать только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Конец алгоритма обязателен?</div><div class="opts"><button class="opt" data-v="1">Да (конечность)</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только в цикле</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">💻</div>
+      <div class="unit-info">
+        <h3>Программирование</h3>
+        <p>переменные, if, циклы</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i5">
+        <div class="theory"><p><strong>Программирование (базовый уровень).</strong> Переменные хранят значения. Присваивание: a = a + 1.</p><p>Ветвление: if условие then … else … Цикл: while, for. Массивы/списки — набор элементов по индексу.</p><p>Типовые задачи: сумма, количество, максимум, поиск. Читайте код построчно, ведите таблицу значений переменных — так меньше ошибок на ОГЭ.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">a = a + 1 означает?</div><div class="opts"><button class="opt" data-v="1">Увеличить a на 1</button><button class="opt" data-v="2">Удалить a</button><button class="opt" data-v="3">Сравнить</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">if — это?</div><div class="opts"><button class="opt" data-v="1">Ветвление</button><button class="opt" data-v="2">Цикл for только</button><button class="opt" data-v="3">Файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">while —?</div><div class="opts"><button class="opt" data-v="1">Цикл</button><button class="opt" data-v="2">Только присваивание</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Переменная хранит?</div><div class="opts"><button class="opt" data-v="1">Значение</button><button class="opt" data-v="2">Только комментарий</button><button class="opt" data-v="3">Только цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Индекс в массиве часто с?</div><div class="opts"><button class="opt" data-v="1">0 или 1 (по языку)</button><button class="opt" data-v="2">1000 всегда</button><button class="opt" data-v="3">−5</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сумма в цикле: s = s + x?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только деление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Таблица значений помогает?</div><div class="opts"><button class="opt" data-v="1">Отладке</button><button class="opt" data-v="2">Ломать код</button><button class="opt" data-v="3">Удалять ПК</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Присваивание справа налево по смыслу?</div><div class="opts"><button class="opt" data-v="1">Сначала выражение, потом в переменную</button><button class="opt" data-v="2">Случайно</button><button class="opt" data-v="3">Только влево</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Условие x > 0 при x=−1?</div><div class="opts"><button class="opt" data-v="1">Ложно</button><button class="opt" data-v="2">Истинно</button><button class="opt" data-v="3">Ошибка всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Счётчик в цикле?</div><div class="opts"><button class="opt" data-v="1">Часто i = i + 1</button><button class="opt" data-v="2">Удаляет файл</button><button class="opt" data-v="3">Меняет IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Максимум ищут сравнивая?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только сумму</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Комментарий в коде —?</div><div class="opts"><button class="opt" data-v="1">Пояснение</button><button class="opt" data-v="2">Команда CPU</button><button class="opt" data-v="3">Файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка off-by-one —?</div><div class="opts"><button class="opt" data-v="1">На единицу промах</button><button class="opt" data-v="2">Только сеть</button><button class="opt" data-v="3">Только граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вывод результата —?</div><div class="opts"><button class="opt" data-v="1">Показать значение</button><button class="opt" data-v="2">Скрыть алгоритм</button><button class="opt" data-v="3">Удалить переменную</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Читать код нужно?</div><div class="opts"><button class="opt" data-v="1">Построчно</button><button class="opt" data-v="2">С конца только</button><button class="opt" data-v="3">Не читать</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📁</div>
+      <div class="unit-info">
+        <h3>Файлы и маски</h3>
+        <p>пути, * и ?</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i6">
+        <div class="theory"><p><strong>Файлы и каталоги.</strong> Путь: абсолютный и относительный. Имя файла + расширение (.txt, .jpg). Каталог (папка) содержит файлы и другие каталоги.</p><p>Маска: * — любая последовательность, ? — один символ. Поиск файлов по маске — частое задание.</p><p>Объём носителя, свободное место, копирование. На ОГЭ отвечают, какие файлы подходят под маску, или считают суммарный размер.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">* в маске —?</div><div class="opts"><button class="opt" data-v="1">Любая последовательность</button><button class="opt" data-v="2">Один символ</button><button class="opt" data-v="3">Точка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">? в маске —?</div><div class="opts"><button class="opt" data-v="1">Один символ</button><button class="opt" data-v="2">Любая длина</button><button class="opt" data-v="3">Папка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Расширение .txt —?</div><div class="opts"><button class="opt" data-v="1">Текст</button><button class="opt" data-v="2">Только фото</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Каталог — это?</div><div class="opts"><button class="opt" data-v="1">Папка</button><button class="opt" data-v="2">Процессор</button><button class="opt" data-v="3">Бит</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Абсолютный путь —?</div><div class="opts"><button class="opt" data-v="1">От корня</button><button class="opt" data-v="2">Только имя</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Файл a?c.txt подойдёт?</div><div class="opts"><button class="opt" data-v="1">abc.txt и a1c.txt</button><button class="opt" data-v="2">только abcd.txt</button><button class="opt" data-v="3">никакой</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">*.jpg найдёт?</div><div class="opts"><button class="opt" data-v="1">Все jpeg по маске</button><button class="opt" data-v="2">Только один файл без jpg</button><button class="opt" data-v="3">Ничего</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Имя файла без пути —?</div><div class="opts"><button class="opt" data-v="1">Короткое имя</button><button class="opt" data-v="2">IP</button><button class="opt" data-v="3">Байт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Копирование увеличивает?</div><div class="opts"><button class="opt" data-v="1">Число копий</button><button class="opt" data-v="2">Разрядность CPU</button><button class="opt" data-v="3">Скорость света</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Свободное место на диске —?</div><div class="opts"><button class="opt" data-v="1">Доступный объём</button><button class="opt" data-v="2">Число вкладок</button><button class="opt" data-v="3">Цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Маска ??.txt — длина имени?</div><div class="opts"><button class="opt" data-v="1">2 символа + .txt</button><button class="opt" data-v="2">Любая</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Папка может содержать?</div><div class="opts"><button class="opt" data-v="1">Файлы и папки</button><button class="opt" data-v="2">Только биты CPU</button><button class="opt" data-v="3">Только IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Расширение показывает?</div><div class="opts"><button class="opt" data-v="1">Тип часто</button><button class="opt" data-v="2">Только автора</button><button class="opt" data-v="3">Только дату всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Поиск по маске — задание?</div><div class="opts"><button class="opt" data-v="1">Частое на ОГЭ</button><button class="opt" data-v="2">Запрещено</button><button class="opt" data-v="3">Только ЕГЭ физики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Путь C:\School\a.txt — пример?</div><div class="opts"><button class="opt" data-v="1">Windows-пути</button><button class="opt" data-v="2">Байта</button><button class="opt" data-v="3">Логики И</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i7">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📊</div>
+      <div class="unit-info">
+        <h3>Электронные таблицы</h3>
+        <p>ячейки, формулы</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i7">
+        <div class="theory"><p><strong>Электронные таблицы.</strong> Ячейки: A1, B2. Формулы начинаются с =. Сумма, среднее, счёт. Относительные и абсолютные ссылки ($A$1).</p><p>Сортировка и фильтр. Диаграммы строятся по диапазону данных.</p><p>На ОГЭ читают готовую таблицу: находят сумму, количество по условию, значение после сортировки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Ячейка A1 — столбец?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">B</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Формула начинается с?</div><div class="opts"><button class="opt" data-v="1">=</button><button class="opt" data-v="2">+</button><button class="opt" data-v="3">#</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">=A1+B1 считает?</div><div class="opts"><button class="opt" data-v="1">Сумму</button><button class="opt" data-v="2">Произведение обязательно</button><button class="opt" data-v="3">Текст</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сортировка упорядочивает?</div><div class="opts"><button class="opt" data-v="1">Данные</button><button class="opt" data-v="2">Формулы удаляет</button><button class="opt" data-v="3">Сеть</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фильтр показывает?</div><div class="opts"><button class="opt" data-v="1">По условию</button><button class="opt" data-v="2">Всё удаляет</button><button class="opt" data-v="3">Только график</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">$A$1 — ссылка?</div><div class="opts"><button class="opt" data-v="1">Абсолютная</button><button class="opt" data-v="2">Относительная</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Среднее — функция часто?</div><div class="opts"><button class="opt" data-v="1">СРЗНАЧ/AVERAGE</button><button class="opt" data-v="2">ЕСЛИ только</button><button class="opt" data-v="3">ИЛИ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Диаграмма строится по?</div><div class="opts"><button class="opt" data-v="1">Диапазону</button><button class="opt" data-v="2">Маске файла</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Строка 2 столбец C —?</div><div class="opts"><button class="opt" data-v="1">C2</button><button class="opt" data-v="2">2C</button><button class="opt" data-v="3">A2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Относительная ссылка при копировании?</div><div class="opts"><button class="opt" data-v="1">Меняется</button><button class="opt" data-v="2">Не меняется никогда</button><button class="opt" data-v="3">Удаляется</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Число в ячейке можно?</div><div class="opts"><button class="opt" data-v="1">Сложить формулой</button><button class="opt" data-v="2">Только нарисовать</button><button class="opt" data-v="3">Только спеть</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Заголовок таблицы —?</div><div class="opts"><button class="opt" data-v="1">Первая строка часто</button><button class="opt" data-v="2">Бит</button><button class="opt" data-v="3">Граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Количество по условию —?</div><div class="opts"><button class="opt" data-v="1">Счётчик/COUNTIF</button><button class="opt" data-v="2">Только сортировка без счёта</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в формуле даст?</div><div class="opts"><button class="opt" data-v="1">Сообщение об ошибке</button><button class="opt" data-v="2">Новый CPU</button><button class="opt" data-v="3">Файл jpg</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лист книги —?</div><div class="opts"><button class="opt" data-v="1">Страница таблицы</button><button class="opt" data-v="2">Сеть</button><button class="opt" data-v="3">Алгоритм while</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i8">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌐</div>
+      <div class="unit-info">
+        <h3>Компьютер и сеть</h3>
+        <p>устройства, безопасность</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i8">
+        <div class="theory"><p><strong>Компьютер и сеть.</strong> Устройство: процессор, память (ОЗУ), диск, устройства ввода-вывода. Программа — алгоритм на языке, понятном компьютеру.</p><p>Сеть: клиент–сервер, IP-адрес, доменное имя. Браузер, электронная почта, поиск.</p><p>Безопасность: пароли, антивирус, фишинг. На ОГЭ — базовые понятия и выбор верного суждения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Процессор выполняет?</div><div class="opts"><button class="opt" data-v="1">Команды</button><button class="opt" data-v="2">Только охлаждение</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ОЗУ — память?</div><div class="opts"><button class="opt" data-v="1">Оперативная</button><button class="opt" data-v="2">Только диск DVD</button><button class="opt" data-v="3">Только бумага</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Браузер нужен для?</div><div class="opts"><button class="opt" data-v="1">Просмотра веб-страниц</button><button class="opt" data-v="2">Печати на бумаге только</button><button class="opt" data-v="3">Охлаждения</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">IP-адрес —?</div><div class="opts"><button class="opt" data-v="1">Адрес в сети</button><button class="opt" data-v="2">Имя файла</button><button class="opt" data-v="3">Байт диска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пароль должен быть?</div><div class="opts"><button class="opt" data-v="1">Сложным и тайным</button><button class="opt" data-v="2">12345</button><button class="opt" data-v="3">Как у всех</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фишинг —?</div><div class="opts"><button class="opt" data-v="1">Мошенничество</button><button class="opt" data-v="2">Антивирус</button><button class="opt" data-v="3">Процессор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сервер предоставляет?</div><div class="opts"><button class="opt" data-v="1">Службы/данные клиентам</button><button class="opt" data-v="2">Только охлаждение</button><button class="opt" data-v="3">Только маску</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Доменное имя —?</div><div class="opts"><button class="opt" data-v="1">Человекочитаемый адрес</button><button class="opt" data-v="2">Байт</button><button class="opt" data-v="3">Логика НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ввод — пример?</div><div class="opts"><button class="opt" data-v="1">Клавиатура</button><button class="opt" data-v="2">Монитор как вывод</button><button class="opt" data-v="3">Процессор только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вывод — пример?</div><div class="opts"><button class="opt" data-v="1">Монитор/принтер</button><button class="opt" data-v="2">Клавиатура</button><button class="opt" data-v="3">Мышь как только ввод</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Антивирус защищает от?</div><div class="opts"><button class="opt" data-v="1">Вредоносных программ</button><button class="opt" data-v="2">Дождя</button><button class="opt" data-v="3">Гравитации</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Программа — это?</div><div class="opts"><button class="opt" data-v="1">Алгоритм на языке ЭВМ</button><button class="opt" data-v="2">Только файл jpg</button><button class="opt" data-v="3">Только кабель</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сеть соединяет?</div><div class="opts"><button class="opt" data-v="1">Компьютеры</button><button class="opt" data-v="2">Только книги бумажные</button><button class="opt" data-v="3">Только ручки</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Поиск в интернете —?</div><div class="opts"><button class="opt" data-v="1">Запрос в системе</button><button class="opt" data-v="2">Удаление ОЗУ</button><button class="opt" data-v="3">Смена IP обязательно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Безопасность важна?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только офлайн никогда</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="unit" data-unit="i9">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔎</div>
+      <div class="unit-info">
+        <h3>Сортировка и поиск</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i9">
+        <div class="theory"><p><strong>Сортировка и поиск.</strong> Сортировка упорядочивает данные по возрастанию или убыванию. На ОГЭ часто дают небольшой список и просят результат после сортировки или позицию элемента.</p><p>Линейный поиск проверяет элементы по очереди. Двоичный поиск работает по отсортированному массиву: делит пополам, отбрасывает половину.</p><p>В таблицах сортировка по столбцу меняет порядок строк. Следите, по какому ключу сортируют и в какую сторону.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Сортировка по возрастанию —?</div><div class="opts"><button class="opt" data-v="1">От меньшего к большему</button><button class="opt" data-v="2">Случайно</button><button class="opt" data-v="3">Только удаление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Двоичный поиск нужен?</div><div class="opts"><button class="opt" data-v="1">Отсортированный массив</button><button class="opt" data-v="2">Любой хаос</button><button class="opt" data-v="3">Только файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Линейный поиск идёт?</div><div class="opts"><button class="opt" data-v="1">По очереди</button><button class="opt" data-v="2">Сразу в середину всегда</button><button class="opt" data-v="3">Только назад</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ключ сортировки в таблице —?</div><div class="opts"><button class="opt" data-v="1">Столбец</button><button class="opt" data-v="2">Цвет</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">После сортировки меняется?</div><div class="opts"><button class="opt" data-v="1">Порядок строк</button><button class="opt" data-v="2">Имена столбцов обязательно</button><button class="opt" data-v="3">Формула =</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Поиск элемента — задача?</div><div class="opts"><button class="opt" data-v="1">Алгоритмическая</button><button class="opt" data-v="2">Только сетевая</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Убывание — это?</div><div class="opts"><button class="opt" data-v="1">От большего к меньшему</button><button class="opt" data-v="2">Случайно</button><button class="opt" data-v="3">Только алфавит А→Я</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Позиция элемента —?</div><div class="opts"><button class="opt" data-v="1">Индекс/номер</button><button class="opt" data-v="2">Скорость</button><button class="opt" data-v="3">Байт сети</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сортировка имён — часто?</div><div class="opts"><button class="opt" data-v="1">По алфавиту</button><button class="opt" data-v="2">По IP</button><button class="opt" data-v="3">По температуре</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Неверный ключ сортировки даст?</div><div class="opts"><button class="opt" data-v="1">Другой порядок</button><button class="opt" data-v="2">Новый процессор</button><button class="opt" data-v="3">Маску</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Двоичный поиск отбрасывает?</div><div class="opts"><button class="opt" data-v="1">Половину</button><button class="opt" data-v="2">Все данные</button><button class="opt" data-v="3">Только один бит всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Список из 3 чисел отсортировать можно?</div><div class="opts"><button class="opt" data-v="1">На бумаге</button><button class="opt" data-v="2">Только суперкомпьютером</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фильтр vs сортировка?</div><div class="opts"><button class="opt" data-v="1">Фильтр отбирает, сортировка упорядочивает</button><button class="opt" data-v="2">Одно и то же</button><button class="opt" data-v="3">Оба удаляют файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Устойчивость сортировки —?</div><div class="opts"><button class="opt" data-v="1">Сохранение порядка равных</button><button class="opt" data-v="2">Удаление равных</button><button class="opt" data-v="3">Случайность</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">На ОГЭ рисуйте?</div><div class="opts"><button class="opt" data-v="1">Промежуточный список</button><button class="opt" data-v="2">Только мем</button><button class="opt" data-v="3">Только граф без чисел</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i10">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🤖</div>
+      <div class="unit-info">
+        <h3>Исполнитель (Робот)</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i10">
+        <div class="theory"><p><strong>Исполнитель Робот / Черепаха (идея ОГЭ).</strong> У исполнителя есть поле, команды вперёд, поворот, закрасить, условия «сзади стена» и т.п.</p><p>Программа — последовательность команд. Цикл «пока» и «повторить n раз» сокращают запись. Ошибка — выход за границу или удар в стену (зависит от модели).</p><p>На экзамене «прогоняют» программу мысленно: отмечают клетку, направление, что закрашено. Рисуйте путь на черновике.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Исполнитель понимает?</div><div class="opts"><button class="opt" data-v="1">Свои команды</button><button class="opt" data-v="2">Любой язык мира</button><button class="opt" data-v="3">Только стихи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Стена у Робота —?</div><div class="opts"><button class="opt" data-v="1">Препятствие</button><button class="opt" data-v="2">Файл</button><button class="opt" data-v="3">Байт</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Закрасить — типичная?</div><div class="opts"><button class="opt" data-v="1">Команда</button><button class="opt" data-v="2">Ошибка сети</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Повторить 5 раз —?</div><div class="opts"><button class="opt" data-v="1">Цикл</button><button class="opt" data-v="2">Ветвление if без повтора</button><button class="opt" data-v="3">Путь URL</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Направление важно?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только для Excel</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Черновик пути помогает?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Запрещён</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пока не стена — цикл?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Отказ исполнителя —?</div><div class="opts"><button class="opt" data-v="1">Недоступная команда</button><button class="opt" data-v="2">Успех</button><button class="opt" data-v="3">Новый IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Среда исполнителя —?</div><div class="opts"><button class="opt" data-v="1">Поле/обстановка</button><button class="opt" data-v="2">Только облако без правил</button><button class="opt" data-v="3">Только принтер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Программа — последовательность?</div><div class="opts"><button class="opt" data-v="1">Команд</button><button class="opt" data-v="2">Случайных байт ОС</button><button class="opt" data-v="3">Только масок</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Поворот меняет?</div><div class="opts"><button class="opt" data-v="1">Направление</button><button class="opt" data-v="2">Имя файла</button><button class="opt" data-v="3">Формулу A1</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Клетка поля —?</div><div class="opts"><button class="opt" data-v="1">Позиция</button><button class="opt" data-v="2">Процессор</button><button class="opt" data-v="3">Домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мысленный прогон —?</div><div class="opts"><button class="opt" data-v="1">Выполнение на бумаге</button><button class="opt" data-v="2">Удаление кода</button><button class="opt" data-v="3">Смена пароля</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка выхода за край —?</div><div class="opts"><button class="opt" data-v="1">Возможна в модели</button><button class="opt" data-v="2">Невозможна всегда</button><button class="opt" data-v="3">Только в Excel</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Команда «вперёд» сдвигает?</div><div class="opts"><button class="opt" data-v="1">Исполнителя</button><button class="opt" data-v="2">Таблицу истинности</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i11">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📝</div>
+      <div class="unit-info">
+        <h3>Разбор кода</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i11">
+        <div class="theory"><p><strong>Разбор программного кода.</strong> Читайте сверху вниз. Заведите таблицу: шаг → значения переменных.</p><p>Типовые фрагменты: счётчик, сумма, произведение, количество по условию, максимум/минимум, поиск первого подходящего.</p><p>Осторожно с границами цикла и с тем, обновляется ли переменная внутри. Ответ часто — число после выполнения или строка вывода.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Таблица переменных нужна?</div><div class="opts"><button class="opt" data-v="1">При разборе кода</button><button class="opt" data-v="2">Только для рисунка</button><button class="opt" data-v="3">Нет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Счётчик обычно?</div><div class="opts"><button class="opt" data-v="1">i = i + 1</button><button class="opt" data-v="2">Удаляет файл</button><button class="opt" data-v="3">Меняет маску</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сумма в цикле?</div><div class="opts"><button class="opt" data-v="1">s = s + x</button><button class="opt" data-v="2">s = s / 0</button><button class="opt" data-v="3">s = имя файла</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Условие x>0 при x=0?</div><div class="opts"><button class="opt" data-v="1">Ложно</button><button class="opt" data-v="2">Истинно</button><button class="opt" data-v="3">Ошибка сети</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Максимум обновляют когда?</div><div class="opts"><button class="opt" data-v="1">Нашли больше</button><button class="opt" data-v="2">Всегда уменьшают</button><button class="opt" data-v="3">Удаляют</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Граница цикла off-by-one?</div><div class="opts"><button class="opt" data-v="1">Частая ошибка</button><button class="opt" data-v="2">Бонус</button><button class="opt" data-v="3">Цель</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Присваивание a=b заносит?</div><div class="opts"><button class="opt" data-v="1">Значение b в a</button><button class="opt" data-v="2">Удаляет b</button><button class="opt" data-v="3">Склеивает файлы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Трассировка — это?</div><div class="opts"><button class="opt" data-v="1">Пошаговый разбор</button><button class="opt" data-v="2">Форматирование диска</button><button class="opt" data-v="3">Фишинг</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Количество по условию?</div><div class="opts"><button class="opt" data-v="1">Счётчик++ если да</button><button class="opt" data-v="2">Удаление</button><button class="opt" data-v="3">Сортировка без счёта</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вывод после цикла —?</div><div class="opts"><button class="opt" data-v="1">Итог</button><button class="opt" data-v="2">Первый шаг только</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Переменная не инициализирована —?</div><div class="opts"><button class="opt" data-v="1">Риск ошибки</button><button class="opt" data-v="2">Всегда 0 в любой модели</button><button class="opt" data-v="3">Файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вложенный if —?</div><div class="opts"><button class="opt" data-v="1">Условие внутри условия</button><button class="opt" data-v="2">Только цикл</button><button class="opt" data-v="3">Только сеть</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Комментарий не влияет на?</div><div class="opts"><button class="opt" data-v="1">Выполнение</button><button class="opt" data-v="2">Понимание человеком</button><button class="opt" data-v="3">Текст файла исходника</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Читать код с?</div><div class="opts"><button class="opt" data-v="1">Начала</button><button class="opt" data-v="2">Конца обязательно</button><button class="opt" data-v="3">Середины только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ответ ОГЭ часто после?</div><div class="opts"><button class="opt" data-v="1">Полного выполнения</button><button class="opt" data-v="2">Первой строки</button><button class="opt" data-v="3">Удаления ПК</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i12">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📏</div>
+      <div class="unit-info">
+        <h3>Единицы и скорость</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i12">
+        <div class="theory"><p><strong>Единицы и перевод.</strong> бит → байт (/8), байт → Кбайт (/1024), Кбайт → Мбайт (/1024). В задачах ОГЭ обычно 1 Кбайт = 1024 байт.</p><p>Скорость передачи: бит/с, байт/с. Время = объём / скорость (в одних единицах).</p><p>Изображение: число пикселей × бит на пиксель. Звук: частота × время × разрядность × каналы. Считайте аккуратно и сокращайте степени двойки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">8 бит = ? байт</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">8</button><button class="opt" data-v="3">16</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1024 Кбайт = ? Мбайт</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">1024</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Объём/скорость = ?</div><div class="opts"><button class="opt" data-v="1">Время</button><button class="opt" data-v="2">Маска</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пиксели × бит/пиксель = ?</div><div class="opts"><button class="opt" data-v="1">Объём изображения</button><button class="opt" data-v="2">Скорость CPU</button><button class="opt" data-v="3">Домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Единицы должны быть?</div><div class="opts"><button class="opt" data-v="1">Согласованы</button><button class="opt" data-v="2">Случайны</button><button class="opt" data-v="3">Только в см</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">2^10 = ?</div><div class="opts"><button class="opt" data-v="1">1024</button><button class="opt" data-v="2">1000</button><button class="opt" data-v="3">512</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скорость в бит/с перевести в байт/с?</div><div class="opts"><button class="opt" data-v="1">/8</button><button class="opt" data-v="2">*8</button><button class="opt" data-v="3">/1024 только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Больше Мбайт чем Кбайт?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Равны</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Звук: выше частота —?</div><div class="opts"><button class="opt" data-v="1">Больше данных (обычно)</button><button class="opt" data-v="2">Меньше всегда</button><button class="opt" data-v="3">Не связано</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сокращать 2^n удобно?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Запрещено</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1 Мбайт = 2^? байт</div><div class="opts"><button class="opt" data-v="1">20</button><button class="opt" data-v="2">10</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в единицах даёт?</div><div class="opts"><button class="opt" data-v="1">Неверный ответ</button><button class="opt" data-v="2">Верный всегда</button><button class="opt" data-v="3">Новый граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бит/с — единица?</div><div class="opts"><button class="opt" data-v="1">Скорости передачи</button><button class="opt" data-v="2">Массы</button><button class="opt" data-v="3">Длины</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кбайт в ОГЭ чаще?</div><div class="opts"><button class="opt" data-v="1">1024 байт</button><button class="opt" data-v="2">1000 бит</button><button class="opt" data-v="3">1 бит</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Время передачи растёт с?</div><div class="opts"><button class="opt" data-v="1">Объёмом</button><button class="opt" data-v="2">Уменьшением объёма только</button><button class="opt" data-v="3">Цветом</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i13">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🗄️</div>
+      <div class="unit-info">
+        <h3>Базы данных</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i13">
+        <div class="theory"><p><strong>Базы данных (база ОГЭ).</strong> Таблица: записи (строки) и поля (столбцы). Ключ однозначно определяет запись.</p><p>Запрос выбирает записи по условию (равно, больше, И/ИЛИ). Сортировка результата.</p><p>На ОГЭ читают небольшую таблицу и отвечают, сколько записей удовлетворяет условию, или какое значение в поле.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Запись в БД — это?</div><div class="opts"><button class="opt" data-v="1">Строка</button><button class="opt" data-v="2">Столбец только</button><button class="opt" data-v="3">Файл ОС только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Поле — это?</div><div class="opts"><button class="opt" data-v="1">Столбец</button><button class="opt" data-v="2">Сеть</button><button class="opt" data-v="3">Процессор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ключ однозначно?</div><div class="opts"><button class="opt" data-v="1">Определяет запись</button><button class="opt" data-v="2">Удаляет таблицу</button><button class="opt" data-v="3">Меняет IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Запрос отбирает?</div><div class="opts"><button class="opt" data-v="1">По условию</button><button class="opt" data-v="2">Случайно</button><button class="opt" data-v="3">Только всё всегда без условия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">И в условии запроса?</div><div class="opts"><button class="opt" data-v="1">Оба верны</button><button class="opt" data-v="2">Один верный</button><button class="opt" data-v="3">Ни одного</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ИЛИ в запросе?</div><div class="opts"><button class="opt" data-v="1">Хотя бы одно</button><button class="opt" data-v="2">Оба обязательны</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сортировка результата?</div><div class="opts"><button class="opt" data-v="1">Возможна</button><button class="opt" data-v="2">Запрещена</button><button class="opt" data-v="3">Удаляет БД</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Число записей по условию —?</div><div class="opts"><button class="opt" data-v="1">Частый вопрос</button><button class="opt" data-v="2">Не бывает</button><button class="opt" data-v="3">Только граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пустое поле —?</div><div class="opts"><button class="opt" data-v="1">Может быть</button><button class="opt" data-v="2">Невозможно</button><button class="opt" data-v="3">Процессор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Таблица БД похожа на?</div><div class="opts"><button class="opt" data-v="1">Строки и столбцы</button><button class="opt" data-v="2">Только граф</button><button class="opt" data-v="3">Только звук</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Условие «> 5» отберёт?</div><div class="opts"><button class="opt" data-v="1">Большие 5</button><button class="opt" data-v="2">Меньше 5</button><button class="opt" data-v="3">Равно только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Первичный ключ повторяется?</div><div class="opts"><button class="opt" data-v="1">Нет (уникален)</button><button class="opt" data-v="2">Да всегда</button><button class="opt" data-v="3">Случайно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фильтр в таблице похож на?</div><div class="opts"><button class="opt" data-v="1">Запрос-условие</button><button class="opt" data-v="2">Форматирование диска</button><button class="opt" data-v="3">Фишинг</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Несколько полей в записи?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только одно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ответ «сколько записей» —?</div><div class="opts"><button class="opt" data-v="1">Число</button><button class="opt" data-v="2">Маска</button><button class="opt" data-v="3">URL</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i14">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧠</div>
+      <div class="unit-info">
+        <h3>Логика в задачах</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i14">
+        <div class="theory"><p><strong>Логические выражения в задачах.</strong> Сложные условия: (A и B) или C. Скобки задают порядок.</p><p>Чтобы найти, при каких A,B,C выражение истинно, постройте таблицу или переберите 8 комбинаций для трёх переменных.</p><p>Иногда просят упростить: A и 1 = A, A или 0 = A, A и не A = 0. Подставляйте конкретные 0/1 для проверки.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Сколько комбинаций у 3 лог. переменных?</div><div class="opts"><button class="opt" data-v="1">8</button><button class="opt" data-v="2">3</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A и 1 = ?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">1 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A или 0 = ?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">1 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A и не A = ?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A или не A = ?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скобки влияют на?</div><div class="opts"><button class="opt" data-v="1">Порядок</button><button class="opt" data-v="2">Цвет</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Перебор для 2 переменных?</div><div class="opts"><button class="opt" data-v="1">4 строки</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">16</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Истинно только если оба?</div><div class="opts"><button class="opt" data-v="1">И</button><button class="opt" data-v="2">ИЛИ</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ложно только если оба ложны?</div><div class="opts"><button class="opt" data-v="1">ИЛИ</button><button class="opt" data-v="2">И</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Проверка подстановкой 0/1?</div><div class="opts"><button class="opt" data-v="1">Полезна</button><button class="opt" data-v="2">Вредна</button><button class="opt" data-v="3">Запрещена</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">НЕ меняет?</div><div class="opts"><button class="opt" data-v="1">0↔1</button><button class="opt" data-v="2">Имя файла</button><button class="opt" data-v="3">Скорость</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сложное условие на ОГЭ?</div><div class="opts"><button class="opt" data-v="1">Часто</button><button class="opt" data-v="2">Никогда</button><button class="opt" data-v="3">Только в физике</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Таблица истинности для 1 переменной строк?</div><div class="opts"><button class="opt" data-v="1">2</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Упрощение уменьшает?</div><div class="opts"><button class="opt" data-v="1">Сложность выражения</button><button class="opt" data-v="2">Объём диска обязательно</button><button class="opt" data-v="3">Число пикселей</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Приоритет НЕ выше?</div><div class="opts"><button class="opt" data-v="1">И и ИЛИ</button><button class="opt" data-v="2">Только сложения байт</button><button class="opt" data-v="3">Ничего</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i15">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📍</div>
+      <div class="unit-info">
+        <h3>Пути и адреса</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i15">
+        <div class="theory"><p><strong>Адресация и пути.</strong> Полный путь включает диски/каталоги. Относительный — от текущей папки. «..» — на уровень вверх (в многих системах).</p><p>URL: протокол, домен, путь к ресурсу. Email: имя@домен.</p><p>На ОГЭ могут спросить, какой файл выбран маской в каталоге, или сопоставить путь и файл.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">.. в пути часто значит?</div><div class="opts"><button class="opt" data-v="1">Вверх на уровень</button><button class="opt" data-v="2">Удалить диск</button><button class="opt" data-v="3">Новый домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Абсолютный путь от?</div><div class="opts"><button class="opt" data-v="1">Корня</button><button class="opt" data-v="2">Только имени файла</button><button class="opt" data-v="3">Маски</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">URL содержит?</div><div class="opts"><button class="opt" data-v="1">Адрес ресурса</button><button class="opt" data-v="2">Только байт ОЗУ</button><button class="opt" data-v="3">Только маску ?</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">email@site.ru —?</div><div class="opts"><button class="opt" data-v="1">Почта</button><button class="opt" data-v="2">Папка Windows только</button><button class="opt" data-v="3">Граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Относительный путь — от?</div><div class="opts"><button class="opt" data-v="1">Текущей папки</button><button class="opt" data-v="2">Другой планеты</button><button class="opt" data-v="3">CPU</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Домен — часть?</div><div class="opts"><button class="opt" data-v="1">Имени в сети</button><button class="opt" data-v="2">Байта</button><button class="opt" data-v="3">Цикла for</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Маска в каталоге отбирает?</div><div class="opts"><button class="opt" data-v="1">Имена файлов</button><button class="opt" data-v="2">Процессы CPU</button><button class="opt" data-v="3">Пиксели</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Расширение в конце имени?</div><div class="opts"><button class="opt" data-v="1">Часто да</button><button class="opt" data-v="2">Никогда</button><button class="opt" data-v="3">Только в URL</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Путь с папками разделяют?</div><div class="opts"><button class="opt" data-v="1">\ или /</button><button class="opt" data-v="2">Только пробел</button><button class="opt" data-v="3">Только запятая</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Корень диска C: —?</div><div class="opts"><button class="opt" data-v="1">Начало пути Windows</button><button class="opt" data-v="2">Байт</button><button class="opt" data-v="3">Логика</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ссылка в вебе ведёт?</div><div class="opts"><button class="opt" data-v="1">На ресурс</button><button class="opt" data-v="2">На удаление ОЗУ</button><button class="opt" data-v="3">На сортировку</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Имя файла без папок —?</div><div class="opts"><button class="opt" data-v="1">Короткое</button><button class="opt" data-v="2">Абсолютный полный всегда</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в пути —?</div><div class="opts"><button class="opt" data-v="1">Файл не найден</button><button class="opt" data-v="2">Новый граф</button><button class="opt" data-v="3">Антивирус</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сайт — это?</div><div class="opts"><button class="opt" data-v="1">Ресурс в сети</button><button class="opt" data-v="2">Только файл .txt локально без сети</button><button class="opt" data-v="3">Только принтер</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Протокол http связан с?</div><div class="opts"><button class="opt" data-v="1">Вебом</button><button class="opt" data-v="2">Только принтером</button><button class="opt" data-v="3">Только сортировкой</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="i16">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔤</div>
+      <div class="unit-info">
+        <h3>Строки</h3>
+        <p>15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="i16">
+        <div class="theory"><p><strong>Строки и цепочки.</strong> Длина строки, конкатенация (склейка), подстрока. В алгоритмах часто идут по символам циклом.</p><p>Коды символов (ASCII/Unicode) — числа. Сравнение строк может быть по алфавиту.</p><p>Задания: сколько раз встречается символ, что получится после замен, длина результата.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Длина «info» = ?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">5</button><button class="opt" data-v="3">1</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Склейка «a»+«b» = ?</div><div class="opts"><button class="opt" data-v="1">ab</button><button class="opt" data-v="2">ba</button><button class="opt" data-v="3">a</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Подстрока —?</div><div class="opts"><button class="opt" data-v="1">Часть строки</button><button class="opt" data-v="2">Файл</button><button class="opt" data-v="3">Граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Цикл по символам?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только по IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Код символа —?</div><div class="opts"><button class="opt" data-v="1">Число</button><button class="opt" data-v="2">Папка</button><button class="opt" data-v="3">Домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сравнение строк часто?</div><div class="opts"><button class="opt" data-v="1">По алфавиту</button><button class="opt" data-v="2">По температуре</button><button class="opt" data-v="3">По скорости CPU</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пустая строка длина?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Замена символа меняет?</div><div class="opts"><button class="opt" data-v="1">Строку</button><button class="opt" data-v="2">Диск C обязательно</button><button class="opt" data-v="3">Маску сети</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Счёт вхождений «a» —?</div><div class="opts"><button class="opt" data-v="1">Алгоритм по строке</button><button class="opt" data-v="2">Форматирование</button><button class="opt" data-v="3">Фишинг</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Индекс символа —?</div><div class="opts"><button class="opt" data-v="1">Позиция</button><button class="opt" data-v="2">Скорость</button><button class="opt" data-v="3">Байт/с</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Конкатенация —?</div><div class="opts"><button class="opt" data-v="1">Склейка</button><button class="opt" data-v="2">Деление строки</button><button class="opt" data-v="3">Удаление ПК</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Строка в программе — тип?</div><div class="opts"><button class="opt" data-v="1">Данных</button><button class="opt" data-v="2">Только сети</button><button class="opt" data-v="3">Только графа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вывод строки на ОГЭ —?</div><div class="opts"><button class="opt" data-v="1">Частый ответ</button><button class="opt" data-v="2">Запрет</button><button class="opt" data-v="3">Только картинка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пробел — символ?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только число</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Алфавитный порядок «b» после «a»?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Случайно</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="path hidden" id="path-duo">
+  <div class="duo-path">
+    <div class="hero" style="padding-top:8px"><h1>Практика</h1><p>200 уроков · 10 вопросов · финал 50</p></div>
+    <div id="duoContainer"></div>
+  </div>
+</div>
+<div class="path hidden" id="path-hard">
+  <div class="hero">
+    <h1>Сложные темы</h1>
+    <p>Углублённо: ловушки перевода, формулы объёма, перебор в логике, трассировка, точные маски. Не копия вкладки ОГЭ.</p>
+  </div>
+  <div class="unit" data-unit="ih1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔢</div>
+      <div class="unit-info">
+        <h3>Системы счисления: ловушки</h3>
+        <p>сравнение и перевод</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih1">
+        <div class="theory"><p>Не сравнивайте числа «на глаз» в разных системах — приводите к одному основанию. 100₂ = 4₁₀, не 100. Остатки при переводе 10→2 читают снизу вверх. Группы по 4 бита ↔ hex.</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Сравнивать разные системы лучше через?</div><div class="opts"><button class="opt" data-v="1">Одно основание</button><button class="opt" data-v="2">Глаз</button><button class="opt" data-v="3">Цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">100₂ = ?₁₀</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">100</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Остатки 10→2 читают?</div><div class="opts"><button class="opt" data-v="1">Снизу вверх</button><button class="opt" data-v="2">Сверху</button><button class="opt" data-v="3">Случайно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">4 бита ↔?</div><div class="opts"><button class="opt" data-v="1">Одна hex-цифра</button><button class="opt" data-v="2">Один байт всегда</button><button class="opt" data-v="3">Десятичная цифра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ведущие нули?</div><div class="opts"><button class="opt" data-v="1">Не меняют значение</button><button class="opt" data-v="2">Увеличивают в 10 раз</button><button class="opt" data-v="3">Меняют основание</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка «100₂=100₁₀» —?</div><div class="opts"><button class="opt" data-v="1">Типичная</button><button class="opt" data-v="2">Верная</button><button class="opt" data-v="3">Не бывает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Группы по 3 бита —?</div><div class="opts"><button class="opt" data-v="1">Oct</button><button class="opt" data-v="2">Hex</button><button class="opt" data-v="3">Десятичная</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1010₂ = ?₁₀</div><div class="opts"><button class="opt" data-v="1">10</button><button class="opt" data-v="2">5</button><button class="opt" data-v="3">12</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Перед сравнением нужно?</div><div class="opts"><button class="opt" data-v="1">Унифицировать систему</button><button class="opt" data-v="2">Угадать</button><button class="opt" data-v="3">Сложить буквы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Столбик на черновике?</div><div class="opts"><button class="opt" data-v="1">Полезен</button><button class="opt" data-v="2">Запрет</button><button class="opt" data-v="3">Вредит</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Основание 16 цифры?</div><div class="opts"><button class="opt" data-v="1">0–9 и A–F</button><button class="opt" data-v="2">Только 0–1</button><button class="opt" data-v="3">Только 7</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Перевод через 10 —?</div><div class="opts"><button class="opt" data-v="1">Надёжный метод</button><button class="opt" data-v="2">Запрещён</button><button class="opt" data-v="3">Ненужный</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">0 в любой системе?</div><div class="opts"><button class="opt" data-v="1">Ноль</button><button class="opt" data-v="2">Один</button><button class="opt" data-v="3">Основание</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Граница групп бит?</div><div class="opts"><button class="opt" data-v="1">Важна</button><button class="opt" data-v="2">Не важна</button><button class="opt" data-v="3">Случайна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Быстрый hex полезен если?</div><div class="opts"><button class="opt" data-v="1">Верно группируете биты</button><button class="opt" data-v="2">Игнорируете разряды</button><button class="opt" data-v="3">Пишете наугад</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ih2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧮</div>
+      <div class="unit-info">
+        <h3>Объём: формулы</h3>
+        <p>текст, картинка, звук</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih2">
+        <div class="theory"><p>Текст: I = K·log₂N. Картинка: w·h·бит_на_пиксель (16 цветов → 4 бита). Звук: частота·время·разрядность·каналы. Не смешивайте бит и байт. t = V/v в одних единицах.</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">16 цветов → бит/пиксель?</div><div class="opts"><button class="opt" data-v="1">4</button><button class="opt" data-v="2">16</button><button class="opt" data-v="3">8</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">256 цветов →?</div><div class="opts"><button class="opt" data-v="1">8 бит</button><button class="opt" data-v="2">256 бит</button><button class="opt" data-v="3">2</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Смешать бит и байт —?</div><div class="opts"><button class="opt" data-v="1">Частая ошибка</button><button class="opt" data-v="2">Безопасно</button><button class="opt" data-v="3">Обязательно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">t = V/v требует?</div><div class="opts"><button class="opt" data-v="1">Одинаковых единиц</button><button class="opt" data-v="2">Разных наугад</button><button class="opt" data-v="3">Только см</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">2 канала звука?</div><div class="opts"><button class="opt" data-v="1">Удваивают объём</button><button class="opt" data-v="2">Обнуляют</button><button class="opt" data-v="3">Не влияют</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">1024 байт =?</div><div class="opts"><button class="opt" data-v="1">1 Кбайт (школьно)</button><button class="opt" data-v="2">1 бит</button><button class="opt" data-v="3">8 бит</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">N=2, log₂N=?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">2</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">V изображения?</div><div class="opts"><button class="opt" data-v="1">w·h·b</button><button class="opt" data-v="2">Только w</button><button class="opt" data-v="3">Только h</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">K символов по i бит?</div><div class="opts"><button class="opt" data-v="1">K·i</button><button class="opt" data-v="2">K+i</button><button class="opt" data-v="3">K/i</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Проверка размерности?</div><div class="opts"><button class="opt" data-v="1">Обязательна</button><button class="opt" data-v="2">Лишняя</button><button class="opt" data-v="3">Вредна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Разрядность звука выше →?</div><div class="opts"><button class="opt" data-v="1">Объём больше</button><button class="opt" data-v="2">Объём меньше всегда</button><button class="opt" data-v="3">Не связано</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">log₂N для алфавита?</div><div class="opts"><button class="opt" data-v="1">Бит на символ</button><button class="opt" data-v="2">IP</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Перед /1024?</div><div class="opts"><button class="opt" data-v="1">Собрать байты</button><button class="opt" data-v="2">Удалить данные</button><button class="opt" data-v="3">Сменить IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в степени 2?</div><div class="opts"><button class="opt" data-v="1">Ломает ответ</button><button class="opt" data-v="2">Не влияет</button><button class="opt" data-v="3">Бонус</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">«Не меньше i бит»?</div><div class="opts"><button class="opt" data-v="1">Округление по смыслу условия</button><button class="opt" data-v="2">Всегда вниз</button><button class="opt" data-v="3">Игнор</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ih3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🔗</div>
+      <div class="unit-info">
+        <h3>Логика: перебор</h3>
+        <p>не угадывание</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih3">
+        <div class="theory"><p>3 переменные → 8 строк. Приоритет: скобки, НЕ, И, ИЛИ. A∧¬A=0, A∨¬A=1. Не считайте длинные цепочки «в уме» — ошибается одно НЕ.</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">3 переменные → строк?</div><div class="opts"><button class="opt" data-v="1">8</button><button class="opt" data-v="2">3</button><button class="opt" data-v="3">16</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Приоритет выше у?</div><div class="opts"><button class="opt" data-v="1">НЕ</button><button class="opt" data-v="2">ИЛИ</button><button class="opt" data-v="3">Сложения строк</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A∧¬A=?</div><div class="opts"><button class="opt" data-v="1">0</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A∨¬A=?</div><div class="opts"><button class="opt" data-v="1">1</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">A</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">¬¬A=?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">1</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Систематический перебор лучше?</div><div class="opts"><button class="opt" data-v="1">Случайного угадывания</button><button class="opt" data-v="2">Игнора</button><button class="opt" data-v="3">Удаления условия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A→B часто как?</div><div class="opts"><button class="opt" data-v="1">¬A∨B</button><button class="opt" data-v="2">A∧B</button><button class="opt" data-v="3">A∨B без отрицания</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в одном НЕ?</div><div class="opts"><button class="opt" data-v="1">Ломает цепочку</button><button class="opt" data-v="2">Безобидна</button><button class="opt" data-v="3">Улучшает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">F=G проверяют?</div><div class="opts"><button class="opt" data-v="1">Таблицами/упрощением</button><button class="opt" data-v="2">Глазом названия</button><button class="opt" data-v="3">Цветом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A∧1=?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">0</button><button class="opt" data-v="3">1 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">A∨0=?</div><div class="opts"><button class="opt" data-v="1">A</button><button class="opt" data-v="2">1</button><button class="opt" data-v="3">0 всегда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Истинность «оба» —?</div><div class="opts"><button class="opt" data-v="1">И</button><button class="opt" data-v="2">ИЛИ</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Истинность «хотя бы одно» —?</div><div class="opts"><button class="opt" data-v="1">ИЛИ</button><button class="opt" data-v="2">И</button><button class="opt" data-v="3">НЕ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Скобки нужны чтобы?</div><div class="opts"><button class="opt" data-v="1">Задать порядок</button><button class="opt" data-v="2">Украсить</button><button class="opt" data-v="3">Удалить переменные</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Длинную формулу?</div><div class="opts"><button class="opt" data-v="1">Разбивают по частям</button><button class="opt" data-v="2">Читают по диагонали</button><button class="opt" data-v="3">Игнорируют</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ih4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📐</div>
+      <div class="unit-info">
+        <h3>Трассировка алгоритмов</h3>
+        <p>таблица значений</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih4">
+        <div class="theory"><p>Столбцы: шаг / переменные / условие. Не прыгайте через итерации — там off-by-one. While: условие до тела. Робот: клетка и направление на сетке.</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Трассировка —?</div><div class="opts"><button class="opt" data-v="1">Пошаговая таблица</button><button class="opt" data-v="2">Удаление кода</button><button class="opt" data-v="3">Смена IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Off-by-one на?</div><div class="opts"><button class="opt" data-v="1">Границах цикла</button><button class="opt" data-v="2">Имени файла</button><button class="opt" data-v="3">Цвете</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">While: условие?</div><div class="opts"><button class="opt" data-v="1">До тела</button><button class="opt" data-v="2">Только после удаления ПК</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сетка для Робота?</div><div class="opts"><button class="opt" data-v="1">Полезна</button><button class="opt" data-v="2">Запрет</button><button class="opt" data-v="3">Вредна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Не прыгать через итерации?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только в Excel</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ветка else если?</div><div class="opts"><button class="opt" data-v="1">Условие ложно</button><button class="opt" data-v="2">Всегда</button><button class="opt" data-v="3">Никогда</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Забыли счётчик?</div><div class="opts"><button class="opt" data-v="1">Цикл «залипнет»</button><button class="opt" data-v="2">Ускорится</button><button class="opt" data-v="3">Не влияет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Направление исполнителя?</div><div class="opts"><button class="opt" data-v="1">Нужно помнить</button><button class="opt" data-v="2">Не важно</button><button class="opt" data-v="3">Только цвет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">i от 1 до n шагов?</div><div class="opts"><button class="opt" data-v="1">n</button><button class="opt" data-v="2">n-1</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Результат после цикла —?</div><div class="opts"><button class="opt" data-v="1">Итог переменных</button><button class="opt" data-v="2">Первая строка</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Несколько переменных?</div><div class="opts"><button class="opt" data-v="1">Каждая — столбец</button><button class="opt" data-v="2">Все в одну клетку</button><button class="opt" data-v="3">Игнор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Бесконечный цикл на бумаге?</div><div class="opts"><button class="opt" data-v="1">Нет выхода из условия</button><button class="opt" data-v="2">Успех</button><button class="opt" data-v="3">Файл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Черновик обязателен для?</div><div class="opts"><button class="opt" data-v="1">Сложных трасс</button><button class="opt" data-v="2">Угадывания</button><button class="opt" data-v="3">Игнора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Команда «вперёд» меняет?</div><div class="opts"><button class="opt" data-v="1">Позицию</button><button class="opt" data-v="2">Имя if</button><button class="opt" data-v="3">Домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сверять условие на каждом шаге?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только в конце жизни</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ih5">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📁</div>
+      <div class="unit-info">
+        <h3>Маски: точный разбор</h3>
+        <p>* и ?</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih5">
+        <div class="theory"><p>? = ровно один символ, * = любая длина включая пусто. a?c не берёт ac и не берёт abbc. Маска — шаблон, не «похоже».</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">? значит?</div><div class="opts"><button class="opt" data-v="1">Ровно один символ</button><button class="opt" data-v="2">Любую длину</button><button class="opt" data-v="3">Точку</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">* значит?</div><div class="opts"><button class="opt" data-v="1">Любую длину (в т.ч. пусто)</button><button class="opt" data-v="2">Ровно один</button><button class="opt" data-v="3">Папку только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">a?c подойдёт ac?</div><div class="opts"><button class="opt" data-v="1">Нет</button><button class="opt" data-v="2">Да</button><button class="opt" data-v="3">Только в Excel</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Маска — это?</div><div class="opts"><button class="opt" data-v="1">Точный шаблон</button><button class="opt" data-v="2">Приблизительно</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">??.txt длина имени?</div><div class="opts"><button class="opt" data-v="1">2 символа + .txt</button><button class="opt" data-v="2">Любая</button><button class="opt" data-v="3">0</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">abbc vs a?c?</div><div class="opts"><button class="opt" data-v="1">Не подходит</button><button class="opt" data-v="2">Подходит</button><button class="opt" data-v="3">Случайно</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Относительный путь от?</div><div class="opts"><button class="opt" data-v="1">Текущей папки</button><button class="opt" data-v="2">Другой галактики</button><button class="opt" data-v="3">CPU</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка в одном символе маски?</div><div class="opts"><button class="opt" data-v="1">Меняет набор</button><button class="opt" data-v="2">Не влияет</button><button class="opt" data-v="3">Бонус</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">*.jpg отберёт?</div><div class="opts"><button class="opt" data-v="1">С расширением jpg по шаблону</button><button class="opt" data-v="2">Все файлы мира</button><button class="opt" data-v="3">Ничего</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Две маски через «и»?</div><div class="opts"><button class="opt" data-v="1">Обе условия</button><button class="opt" data-v="2">Любая одна</button><button class="opt" data-v="3">Ни одной</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Не додумывать ОС если?</div><div class="opts"><button class="opt" data-v="1">В условии не сказано</button><button class="opt" data-v="2">Всегда нужно</button><button class="opt" data-v="3">Запрет читать</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Путь с .. часто?</div><div class="opts"><button class="opt" data-v="1">На уровень вверх</button><button class="opt" data-v="2">Удаляет диск</button><button class="opt" data-v="3">Новый домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Черновик списка имён?</div><div class="opts"><button class="opt" data-v="1">Помогает</button><button class="opt" data-v="2">Мешает</button><button class="opt" data-v="3">Запрет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пустой * возможен?</div><div class="opts"><button class="opt" data-v="1">Да по определению</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Ломает диск</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Файл без точки и *.*?</div><div class="opts"><button class="opt" data-v="1">Зависит от условия</button><button class="opt" data-v="2">Всегда да</button><button class="opt" data-v="3">Всегда нет</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="ih6">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📊</div>
+      <div class="unit-info">
+        <h3>Таблицы: логика данных</h3>
+        <p>формулы и сортировка</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="ih6">
+        <div class="theory"><p>Относительные ссылки сдвигаются при копировании, $ фиксирует. Сортировка меняет порядок строк. «Сколько» ≠ сумма значений. Пересчитайте на черновике.</p></div>
+        <div class="quiz-box"><h5>Сложный тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Относительная ссылка при копировании?</div><div class="opts"><button class="opt" data-v="1">Сдвигается</button><button class="opt" data-v="2">Запрещена</button><button class="opt" data-v="3">Удаляет лист</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">$ фиксирует?</div><div class="opts"><button class="opt" data-v="1">Адрес</button><button class="opt" data-v="2">Цвет</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сортировка по B меняет?</div><div class="opts"><button class="opt" data-v="1">Порядок строк</button><button class="opt" data-v="2">Имена столбцов обязательно</button><button class="opt" data-v="3">Формулу в камень</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сумма ≠ количество?</div><div class="opts"><button class="opt" data-v="1">Да, разные вещи</button><button class="opt" data-v="2">Одно и то же</button><button class="opt" data-v="3">Оба = маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Фильтр?</div><div class="opts"><button class="opt" data-v="1">Скрывает по условию</button><button class="opt" data-v="2">Удаляет файл ОС</button><button class="opt" data-v="3">Меняет CPU</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Деление на 0?</div><div class="opts"><button class="opt" data-v="1">Ошибка</button><button class="opt" data-v="2">Успех</button><button class="opt" data-v="3">Новый граф</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">=A1+B1?</div><div class="opts"><button class="opt" data-v="1">Сумма двух ячеек</button><button class="opt" data-v="2">Произведение масок</button><button class="opt" data-v="3">Домен</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">«Сколько > 4» —?</div><div class="opts"><button class="opt" data-v="1">Подсчёт строк по условию</button><button class="opt" data-v="2">Сумма всех баллов всегда</button><button class="opt" data-v="3">Маска</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Черновик порядка строк?</div><div class="opts"><button class="opt" data-v="1">Нужен</button><button class="opt" data-v="2">Вреден</button><button class="opt" data-v="3">Запрет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Смешанная ссылка A$1?</div><div class="opts"><button class="opt" data-v="1">Частичная фиксация</button><button class="opt" data-v="2">Маска файла</button><button class="opt" data-v="3">Цикл</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">После фильтра видимые —?</div><div class="opts"><button class="opt" data-v="1">Отобранные</button><button class="opt" data-v="2">Все удалённые навсегда</button><button class="opt" data-v="3">Случайные</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Проверка формулы?</div><div class="opts"><button class="opt" data-v="1">Пересчёт вручную</button><button class="opt" data-v="2">Игнор</button><button class="opt" data-v="3">Угадайка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Диаграмма по?</div><div class="opts"><button class="opt" data-v="1">Диапазону данных</button><button class="opt" data-v="2">Маске *.*</button><button class="opt" data-v="3">IP</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ошибка ссылки из‑за?</div><div class="opts"><button class="opt" data-v="1">Сдвига/удаления ячеек</button><button class="opt" data-v="2">Красивого шрифта</button><button class="opt" data-v="3">Тиража</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Данные vs формула?</div><div class="opts"><button class="opt" data-v="1">Числа vs текст с =</button><button class="opt" data-v="2">Одно</button><button class="opt" data-v="3">Оба картинка</button></div><div class="fb"></div></div>
+</div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="path hidden" id="path-vars">
+  <div id="variantsContainer"></div>
+</div>
+</div>
+<nav class="bottom-nav">
+  <button class="bnav-item active" data-tab="main" onclick="switchTab('main');setActiveBnav(this)"><span>📋</span>ОГЭ</button>
+  <button class="bnav-item" data-tab="duo" onclick="switchTab('duo');setActiveBnav(this)"><span>🎮</span>Практика</button>
+  <button class="bnav-item" data-tab="hard" onclick="switchTab('hard');setActiveBnav(this)"><span>🔥</span>Сложные</button>
+  <button class="bnav-item" data-tab="vars" onclick="switchTab('vars');setActiveBnav(this)"><span>📝</span>Варианты</button>
+</nav>
+<script>
+
+
+
+
+let xp=parseInt(localStorage.getItem('oge_inf_xp')||'0'),streak=parseInt(localStorage.getItem('oge_inf_streak')||'0'),completed=JSON.parse(localStorage.getItem('oge_inf_completed')||'{}');
+document.getElementById('xpCount').textContent=xp;document.getElementById('streakCount').textContent=streak;
+function switchTab(n){
+  document.getElementById('path-main').classList.toggle('hidden',n!=='main');
+  document.getElementById('path-duo').classList.toggle('hidden',n!=='duo');
+  document.getElementById('path-hard').classList.toggle('hidden',n!=='hard');
+  document.getElementById('path-vars').classList.toggle('hidden',n!=='vars');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setActiveBnav(b){document.querySelectorAll('.bnav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function toggleUnit(h){h.parentElement.classList.toggle('open')}
+
+function bindQuizzes(){
+  document.querySelectorAll('.q-item').forEach(function(q){
+    if(q.dataset.bound==='1') return;
+    q.dataset.bound='1';
+    var opts=q.querySelectorAll('.opt');
+    var fb=q.querySelector('.fb');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        if(opt.classList.contains('disabled')) return;
+        var c=String(q.getAttribute('data-c')||'');
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){
+            if(String(o.getAttribute('data-v'))===c) o.classList.add('correct');
+          });
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+      });
+    });
+  });
+}
+
+bindQuizzes();
+function completeLesson(btn,pts){
+  const id=btn.closest('.lesson').dataset.lesson;
+  if(completed[id]){btn.textContent='Уже пройдено ✓';btn.disabled=true;return}
+  completed[id]=true;localStorage.setItem('oge_inf_completed',JSON.stringify(completed));
+  xp+=pts;
+/* sync progress to main menu (only lessons/tests) */
+try{
+  var STORE='oge_fun_v1';
+  var g=JSON.parse(localStorage.getItem(STORE)||'{}');
+  if(!g.subj) g.subj={};
+  var subj=document.body.getAttribute('data-subject')||(location.pathname.split('/').filter(Boolean).slice(-2,-1)[0])||'russian';
+  g.subj[subj]=Math.min(100,(g.subj[subj]||0)+Math.max(3,Math.round((pts||10)/3)));
+  g.xp=(g.xp||0)+(pts||10);
+  localStorage.setItem(STORE,JSON.stringify(g));
+}catch(e){}
+localStorage.setItem('oge_inf_xp',xp);document.getElementById('xpCount').textContent=xp;
+  const today=new Date().toDateString(),last=localStorage.getItem('oge_inf_last');
+  if(last!==today){streak=(last&&new Date(last).getTime()>Date.now()-172800000)?streak+1:1;localStorage.setItem('oge_inf_streak',streak);localStorage.setItem('oge_inf_last',today);document.getElementById('streakCount').textContent=streak}
+  btn.textContent='Пройдено ✓';btn.disabled=true;updateProgress();
+  document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+  setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1500)
+}
+function updateProgress(){
+  document.querySelectorAll('.unit').forEach(u=>{
+    const ls=u.querySelectorAll('.lesson');if(!ls.length)return;
+    let d=0;ls.forEach(l=>{if(completed[l.dataset.lesson])d++});
+    const b=u.querySelector('.unit-progress-bar');if(b)b.style.width=Math.round(d/ls.length*100)+'%'
+  })
+}
+document.querySelectorAll('.lesson').forEach(l=>{if(completed[l.dataset.lesson]){const b=l.querySelector('.done-btn');if(b){b.textContent='Пройдено ✓';b.disabled=true}}});
+updateProgress();
+function openDuoLesson(btn,panelId){if(btn.classList.contains('locked'))return;document.querySelectorAll('.duo-lesson-panel').forEach(p=>p.classList.remove('show'));const panel=document.getElementById(panelId);if(panel)panel.classList.toggle('show')}
+function completeDuoNode(btn,id,pts){
+  if(!completed['duo-'+id]){completed['duo-'+id]=true;localStorage.setItem('oge_inf_completed',JSON.stringify(completed));xp+=pts;localStorage.setItem('oge_inf_xp',xp);document.getElementById('xpCount').textContent=xp;
+    document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+    setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1200)}
+  const node=btn.closest('.duo-node-wrap').querySelector('.duo-node');
+  if(node){node.classList.remove('active');node.classList.add('done');node.textContent='✓'}
+  document.querySelectorAll('.duo-node.locked[data-unlock="'+id+'"]').forEach(n=>{n.classList.remove('locked');n.classList.add('active')});
+  btn.closest('.duo-lesson-panel').classList.remove('show');bindQuizzes()
+}
+document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+function normalizeAns(s){return String(s).trim().toLowerCase().replace(/\s+/g,'').replace('ё','е')}
+function checkOpenVariant(btn){
+  const lesson=btn.closest('.lesson');if(lesson.dataset.checked==='1')return;
+  const tasks=lesson.querySelectorAll('.open-task');let ok=0,total=tasks.length;
+  tasks.forEach(t=>{
+    const input=t.querySelector('.ans-input');if(!input)return;
+    const corrects=normalizeAns(t.dataset.answer).split('|');
+    const user=normalizeAns(input.value);
+    const ansBox=t.querySelector('.correct-ans');
+    let match=corrects.some(c=>c===user);
+    if(!match&&user.length>=2&&corrects[0]&&corrects[0].length===user.length){
+      match=user.split('').sort().join('')===corrects[0].split('').sort().join('');
+    }
+    if(match&&user!==''){input.classList.add('ok');ok++}else{input.classList.add('bad')}
+    if(ansBox)ansBox.classList.add('show');input.readOnly=true;
+  });
+  lesson.dataset.checked='1';btn.disabled=true;btn.textContent='Проверено';
+  const res=lesson.querySelector('.var-result');const pct=total?Math.round(ok/total*100):0;
+  if(res){res.classList.add('show');res.innerHTML='Результат: <strong>'+ok+' из '+total+'</strong> ('+pct+'%)';
+    if(pct>=80)res.className='var-result show good';else if(pct>=50)res.className='var-result show mid';else res.className='var-result show bad'}
+  const done=lesson.querySelector('.done-btn');if(done)done.style.display='block';
+}
+
+
+
+
+
+
+
+
+
+function generateDuo(){
+  const container=document.getElementById('duoContainer');
+  if(!container)return;
+  const bank=[
+    ['1 байт = ? бит','8','16','2',1],['Двоичные цифры?','0 и 1','0–9','A–F only',1],
+    ['1010₂ = ?₁₀','10','5','12',1],['НЕ 1 =','0','1','2',1],
+    ['1 И 0 =','0','1','2',1],['1 ИЛИ 0 =','1','0','2',1],
+    ['Алгоритм конечен?','Да','Нет','Случайно',1],['if — это?','Ветвление','Цикл','Файл',1],
+    ['* в маске','любая последовательность','один символ','папка',1],['? в маске','один символ','любая длина','бит',1],
+    ['Формула в таблице с','=','#','?',1],['1 Кбайт ≈','1024 байт','8 бит','10 бит',1],
+    ['a = a + 1','увеличить на 1','удалить','сравнить',1],['Цикл нужен чтобы','повторять','удалить ПК','сменить IP',1],
+    ['ОЗУ — память','оперативная','только диск','бумага',1],['IP-адрес','адрес в сети','имя файла','байт',1],
+    ['Конъюнкция','И','ИЛИ','НЕ',1],['Дизъюнкция','ИЛИ','И','НЕ',1],
+    ['111₂ =','7','3','8',1],['log₂8 =','3','8','2',1],
+    ['Ромб на схеме часто','условие','конец','файл',1],['Пароль должен быть','сложным','12345','как у всех',1],
+    ['Фишинг','мошенничество','антивирус','процессор',1],['Сортировка','упорядочивает','удаляет лист','меняет IP',1],
+    ['$A$1','абсолютная ссылка','маска','цикл',1],['Процессор','выполняет команды','только охлаждает','только рисует',1],
+    ['0 ИЛИ 0','0','1','2',1],['1 И 1','1','0','2',1]
+  ];
+  const TOTAL=200; let track=null;
+  for(let i=0;i<TOTAL;i++){
+    if(i%10===0){const m=document.createElement('div');m.className='duo-module';m.innerHTML='<div><h2>МОДУЛЬ '+(Math.floor(i/10)+1)+'</h2></div>';container.appendChild(m);track=document.createElement('div');track.className='duo-track';container.appendChild(track);}
+    const id='dn'+i;const off=['',' offset-left',' offset-right'][i%3];
+    const wrap=document.createElement('div');wrap.className='duo-node-wrap'+off;
+    const btn=document.createElement('button');btn.className='duo-node '+(i===0?'active':'locked');
+    if(i>0)btn.dataset.unlock='dn'+(i-1);
+    btn.textContent=['🔢','💾','🔗','📐','💻','📁'][i%6];
+    btn.onclick=function(){openDuoLesson(this,'panel-'+id)};
+    const label=document.createElement('div');label.className='duo-label';label.textContent='Урок '+(i+1);
+    const panel=document.createElement('div');panel.className='duo-lesson-panel';panel.id='panel-'+id;
+    let quiz='';
+    for(let k=0;k<10;k++){const it=bank[(i*3+k)%bank.length];quiz+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+    panel.innerHTML='<h4>Урок '+(i+1)+'</h4><div class="quiz-box">'+quiz+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\''+id+'\',12)">Готово ✓</button>';
+    wrap.appendChild(btn);wrap.appendChild(label);wrap.appendChild(panel);track.appendChild(wrap);
+    track.appendChild(Object.assign(document.createElement('div'),{className:'duo-line'}));
+  }
+  const fw=document.createElement('div');fw.className='duo-node-wrap';
+  const fb=document.createElement('button');fb.className='duo-node locked';fb.dataset.unlock='dn199';fb.textContent='🏆';
+  fb.onclick=function(){openDuoLesson(this,'panel-dnfinal')};
+  const fl=document.createElement('div');fl.className='duo-label';fl.textContent='Финал 50';
+  const fp=document.createElement('div');fp.className='duo-lesson-panel';fp.id='panel-dnfinal';
+  let fq='';for(let k=0;k<50;k++){const it=bank[k%bank.length];fq+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+(k+1)+'. '+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';}
+  fp.innerHTML='<h4>Итог — 50</h4><div class="quiz-box">'+fq+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\'dnfinal\',100)">Готово ✓</button>';
+  fw.appendChild(fb);fw.appendChild(fl);fw.appendChild(fp);container.appendChild(fw);
+  document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+  bindQuizzes();
+}
+function generateVariants(){
+  const container=document.getElementById('variantsContainer');
+  if(!container)return;
+  const note=document.createElement('div');note.className='hero';
+  note.innerHTML='<h1>Варианты</h1><p><strong>Тренировочные задания, не официальные КИМ ОГЭ.</strong></p>';
+  container.appendChild(note);
+  const shortQ=[
+    ['1010₂ в десятичной системе','10'],['1 байт = ? бит','8'],
+    ['НЕ 1 = ?','0'],['1 И 0 = ?','0'],['1 ИЛИ 0 = ?','1'],
+    ['111₂ = ?₁₀','7'],['log₂ 8 = ?','3'],['1024 байт = ? Кбайт','1'],
+    ['Основание двоичной системы','2'],['8₁₀ в двоичной (ответ числом 1000)','1000'],
+  ];
+  const choice=[
+    ['* в маске означает','любую последовательность','один символ','только точку'],
+    ['if в программе — это','ветвление','только цикл','имя файла'],
+    ['Формула в таблице начинается с','=','#','@'],
+    ['Конъюнкция — это','И','ИЛИ','НЕ'],
+    ['Алгоритм должен быть','конечным','бесконечным','случайным'],
+    ['ОЗУ — это память','оперативная','только на диске','бумажная'],
+    ['Фишинг — это','мошенничество','антивирус','процессор'],
+    ['$A$1 — ссылка','абсолютная','относительная','маска файла'],
+    ['Цикл while нужен чтобы','повторять действия','удалить файл','сменить IP'],
+    ['1 Кбайт в задачах ОГЭ часто','1024 байт','1000 бит','8 бит']
+  ];
+  for(let v=1;v<=50;v++){
+    const unit=document.createElement('div');unit.className='unit';unit.dataset.unit='var'+v;
+    unit.innerHTML='<div class="unit-header" onclick="toggleUnit(this)"><div class="unit-icon">📝</div><div class="unit-info"><h3>Вариант '+v+'</h3><p>12 заданий</p><div class="unit-progress"><div class="unit-progress-bar"></div></div></div><div class="unit-chevron">▼</div></div>';
+    const body=document.createElement('div');body.className='unit-body';
+    const lesson=document.createElement('div');lesson.className='lesson';lesson.dataset.lesson='var'+v;
+    let h='<div class="theory"><p>Тренировка (не офиц. КИМ).</p></div><div class="quiz-box">';
+    for(let i=0;i<8;i++){const q=shortQ[(v+i)%shortQ.length];h+='<div class="q-item open-q" data-a="'+q[1]+'"><div class="q-text">'+(i+1)+'. '+q[0]+'</div><input class="open-input" placeholder="Ответ" style="width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #ccc"><div class="fb"></div></div>';}
+    for(let i=0;i<4;i++){const q=choice[(v+i)%choice.length];h+='<div class="q-item" data-c="1"><div class="q-text">'+(9+i)+'. '+q[0]+'</div><div class="opts"><button class="opt" data-v="1">'+q[1]+'</button><button class="opt" data-v="2">'+q[2]+'</button><button class="opt" data-v="3">'+q[3]+'</button></div><div class="fb"></div></div>';}
+    h+='</div><button class="done-btn" style="display:block" onclick="checkOpenVariant(this)">Проверить</button>';
+    lesson.innerHTML=h;body.appendChild(lesson);unit.appendChild(body);container.appendChild(unit);
+  }
+  bindQuizzes();
+}
+generateDuo();
+generateVariants();
+
+</script>
+<script src="../shared-enhance.js">
+
+
+
+
+
+/* ===== Duolingo sequential lessons (fixed) ===== */
+(function(){
+  function initDuoLessons(){
+    document.querySelectorAll('.lesson').forEach(function(lesson){
+      if(lesson.dataset.duoInit==='1') return;
+      lesson.dataset.duoInit='1';
+
+      var theory=lesson.querySelector('.theory');
+      var tip=lesson.querySelector('.tip');
+      var questions=Array.prototype.slice.call(lesson.querySelectorAll('.q-item'));
+      var doneBtn=lesson.querySelector('.done-btn');
+      var pts=10;
+      if(doneBtn){
+        var mm=(doneBtn.getAttribute('onclick')||'').match(/completeLesson\([^,]+,\s*(\d+)/);
+        if(mm) pts=parseInt(mm[1],10)||10;
+      }
+
+      var steps=[];
+      if(theory){
+        var th=document.createElement('div');
+        th.className='duo-step duo-theory';
+        th.appendChild(theory);
+        if(tip) th.appendChild(tip);
+        steps.push({el:th, type:'theory'});
+      }
+      questions.forEach(function(q,i){
+        var st=document.createElement('div');
+        st.className='duo-step duo-q';
+        var lab=document.createElement('div');
+        lab.className='duo-step-label';
+        lab.textContent='Вопрос '+(i+1)+' из '+questions.length;
+        st.appendChild(lab);
+        st.appendChild(q);
+        steps.push({el:st, type:'q', q:q, qi:i});
+      });
+      if(!steps.length) return;
+
+      lesson.classList.add('duo-mode');
+      var h4=lesson.querySelector('h4');
+      Array.prototype.slice.call(lesson.children).forEach(function(ch){
+        if(ch===h4) return;
+        if(ch===doneBtn){ ch.style.display='none'; return; }
+        try{ lesson.removeChild(ch); }catch(e){}
+      });
+
+      var prog=document.createElement('div');
+      prog.className='duo-progress';
+      for(var i=0;i<steps.length;i++){
+        prog.appendChild(document.createElement('i'));
+      }
+      lesson.appendChild(prog);
+      steps.forEach(function(s){ lesson.appendChild(s.el); });
+
+      var nav=document.createElement('div');
+      nav.className='duo-nav';
+      var next=document.createElement('button');
+      next.type='button';
+      next.className='duo-next';
+      next.textContent='Далее →';
+      nav.appendChild(next);
+      lesson.appendChild(nav);
+
+      var finish=document.createElement('div');
+      finish.className='duo-step duo-finish-wrap';
+      finish.innerHTML='<div class="duo-finish"><div class="big">Урок пройден!</div><div>Отличная работа</div></div>';
+      lesson.appendChild(finish);
+
+      var state={idx:0, answered:{}, finished:false};
+
+      function setProgress(){
+        var dots=prog.querySelectorAll('i');
+        for(var j=0;j<dots.length;j++){
+          dots[j].classList.remove('on','cur');
+          if(j<state.idx) dots[j].classList.add('on');
+          if(j===state.idx) dots[j].classList.add('cur');
+        }
+      }
+
+      function show(i){
+        if(state.finished) return;
+        state.idx=i;
+        for(var j=0;j<steps.length;j++){
+          steps[j].el.classList.toggle('active', j===i);
+        }
+        finish.classList.remove('active');
+        setProgress();
+        var step=steps[i];
+        if(!step) return;
+        if(step.type==='theory'){
+          next.style.display='flex';
+          next.disabled=false;
+          next.textContent=questions.length?'К вопросам →':'Готово ✓';
+        } else {
+          if(state.answered[step.qi]){
+            next.style.display='flex';
+            next.disabled=false;
+            next.textContent=(i>=steps.length-1)?'Завершить ✓':'Далее →';
+          } else {
+            next.style.display='none';
+          }
+        }
+        try{ step.el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+      }
+
+      function finishLesson(){
+        if(state.finished) return;
+        state.finished=true;
+        for(var j=0;j<steps.length;j++) steps[j].el.classList.remove('active');
+        finish.classList.add('active');
+        prog.querySelectorAll('i').forEach(function(d){ d.classList.add('on'); d.classList.remove('cur'); });
+        next.style.display='none';
+        var btn=doneBtn;
+        if(!btn){
+          btn=document.createElement('button');
+          btn.className='done-btn';
+          btn.style.display='none';
+          lesson.appendChild(btn);
+        } else if(!lesson.contains(btn)){
+          lesson.appendChild(btn);
+          btn.style.display='none';
+        }
+        try{
+          if(typeof completeLesson==='function') completeLesson(btn, pts);
+        }catch(e){ console.warn(e); }
+      }
+
+      next.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(state.finished) return;
+        if(state.idx>=steps.length-1){
+          finishLesson();
+          return;
+        }
+        show(state.idx+1);
+      };
+
+      lesson.addEventListener('click', function(e){
+        var opt=e.target.closest ? e.target.closest('.opt') : null;
+        if(!opt || !lesson.contains(opt)) return;
+        if(opt.classList.contains('disabled')) return;
+        var q=opt.closest('.q-item');
+        if(!q) return;
+        var stepEl=opt.closest('.duo-step');
+        if(!stepEl || !stepEl.classList.contains('active')) return;
+
+        var c=String(q.getAttribute('data-c'));
+        var opts=q.querySelectorAll('.opt');
+        var fb=q.querySelector('.fb');
+        for(var oi=0;oi<opts.length;oi++) opts[oi].classList.add('disabled');
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          for(var oi=0;oi<opts.length;oi++){
+            if(String(opts[oi].getAttribute('data-v'))===c) opts[oi].classList.add('correct');
+          }
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+
+        var qi=-1;
+        for(var i=0;i<questions.length;i++){ if(questions[i]===q) qi=i; }
+        if(qi>=0) state.answered[qi]=true;
+
+        next.style.display='flex';
+        next.disabled=false;
+        var isLast=state.idx>=steps.length-1;
+        next.textContent=isLast?'Завершить ✓':'Далее →';
+
+        clearTimeout(lesson._duoT);
+        lesson._duoT=setTimeout(function(){
+          if(state.finished) return;
+          if(isLast) finishLesson();
+          else show(state.idx+1);
+        }, 700);
+      }, true);
+
+      show(0);
+    });
+  }
+
+  var _toggle=window.toggleUnit;
+  window.toggleUnit=function(h){
+    try{
+      if(typeof _toggle==='function') _toggle(h);
+      else if(h && h.parentElement) h.parentElement.classList.toggle('open');
+    }catch(e){}
+    setTimeout(initDuoLessons, 40);
+  };
+
+  function boot(){ setTimeout(initDuoLessons, 80); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    initDuoLessons();
+    if(tries>15) clearInterval(iv);
+  }, 500);
+})();
+
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="../ai-coach.js"></script>
+<script src="../ai-tutor-widget.js"></script>
+</body>
+</html>

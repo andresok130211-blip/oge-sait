@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ОГЭ География — Полный курс</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0284c7;--g:#0ea5e9;--gs:#e0f2fe;--t:#0c4a6e;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(2,132,199,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#0c4a6e;
+background-image:
+  radial-gradient(ellipse at 15% 10%,rgba(56,189,248,.45),transparent 45%),
+  radial-gradient(ellipse at 90% 70%,rgba(45,212,191,.3),transparent 40%),
+  linear-gradient(160deg,#0c4a6e 0%,#164e63 40%,#083344 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.2;
+background:repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(255,255,255,.04) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(255,255,255,.04) 20px)}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(2,132,199,.12);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(2,132,199,.06)}
+.logo{font-weight:800;font-size:1.2rem}.logo span{background:linear-gradient(135deg,#0284c7,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:flex;gap:14px;font-size:.9rem;font-weight:600}.stat.xp{color:#0369a1}.stat.streak{color:#ea580c}
+.tabs{display:flex;gap:8px;padding:16px 16px 0;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.7);border:2px solid transparent;cursor:pointer;color:var(--ts);font-family:inherit}
+.tab.active{background:#fff;border-color:var(--p);color:var(--p);box-shadow:var(--sh)}
+.hero{padding:24px 20px 20px;text-align:center;max-width:560px;margin:0 auto}
+.hero h1{font-size:clamp(1.4rem,5vw,1.85rem);margin-bottom:8px}.hero p{color:var(--ts);font-size:.95rem}
+.path{max-width:560px;margin:0 auto;padding:12px 16px 40px}.path.hidden{display:none}
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(2,132,199,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#e0f2fe,#bae6fd)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#e0f2fe;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#0284c7,#0ea5e9);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #7dd3fc;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.quiz-box{background:linear-gradient(145deg,#f0f9ff,#e0f2fe);border:1.5px solid #7dd3fc;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#075985;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#f0f9ff}
+.opt.correct{border-color:#10b981;background:#d1fae5;color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(14,165,233,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(2,132,199,.1);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:90}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem;color:var(--ts);padding:4px 10px;background:none;border:none;font-family:inherit;cursor:pointer}
+.bnav-item.active{color:var(--p);font-weight:600}.bnav-item span{font-size:1.3rem}
+.xp-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fff;border-radius:24px;padding:28px 36px;box-shadow:0 25px 60px rgba(2,132,199,.25);text-align:center;z-index:200;opacity:0;pointer-events:none;transition:all .3s}
+.xp-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}.xp-popup .big{font-size:2.8rem;margin-bottom:6px}
+.overlay{position:fixed;inset:0;background:rgba(12,74,110,.45);z-index:190;opacity:0;pointer-events:none;transition:opacity .3s}.overlay.show{opacity:1;pointer-events:auto}
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px}
+.duo-module{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0369a1;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#0ea5e9,#0284c7);box-shadow:0 5px 0 #0c4a6e;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#0ea5e9,#0284c7);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #0369a1;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0369a1}
+.duo-mascot{font-size:2.5rem;margin:8px 0}
+.var-result{margin-top:12px;padding:12px;border-radius:12px;font-weight:600;display:none}
+.var-result.show{display:block}
+.var-result.good{background:#d1fae5;color:#065f46}
+.var-result.mid{background:#fef3c7;color:#92400e}
+.var-result.bad{background:#fee2e2;color:#991b1b}
+.ans-input{width:100%;max-width:280px;padding:12px 14px;border:2px solid #7dd3fc;border-radius:12px;font-size:1.05rem;font-family:inherit;margin-top:8px;background:#fff}
+.ans-input:focus{outline:none;border-color:#0284c7}
+.ans-input.ok{border-color:#10b981;background:#ecfdf5}
+.ans-input.bad{border-color:#ef4444;background:#fef2f2}
+.correct-ans{margin-top:6px;font-size:.9rem;color:#065f46;font-weight:600;display:none}
+.correct-ans.show{display:block}
+.exam-task{margin:20px 0;padding:16px;background:#fff;border-radius:12px;border:1px solid #e2e8f0}
+.exam-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;background:#0284c7;color:#fff;border-radius:8px;font-weight:800;font-size:.9rem;margin-right:8px}
+.exam-title{font-size:.85rem;color:#075985;font-weight:600;margin-bottom:8px}
+.exam-text{font-size:.95rem;line-height:1.55;margin:8px 0}
+.ans-row{margin-top:10px}
+.ans-row label{font-size:.85rem;color:#64748b;display:block;margin-bottom:4px}
+.check-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(2,132,199,.3)}
+.check-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}
+.warn-box{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.9rem;color:#9a3412}
+
+.home-btn{
+  display:flex;align-items:center;justify-content:center;
+  margin:12px 16px 8px;
+  padding:14px 18px;
+  font-size:1.05rem;font-weight:800;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(79,70,229,.35);
+  letter-spacing:.01em;
+}
+.home-btn:active{transform:scale(.98);opacity:.95}
+
+
+
+
+/* Duolingo-style sequential lesson */
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none;animation:duoFade .3s ease}
+.lesson .duo-step.active{display:block}
+@keyframes duoFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{
+  display:flex;gap:4px;margin:0 0 12px;padding:0 2px;
+}
+.duo-progress i{
+  flex:1;height:6px;border-radius:99px;background:#e2e8f0;
+  transition:background .25s;
+}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.25)}
+.duo-nav{
+  display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;
+}
+.duo-nav .duo-next{
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.3);
+}
+.duo-nav .duo-next:disabled{opacity:.5;cursor:default}
+.duo-nav .duo-skip{
+  padding:14px 14px;border-radius:14px;border:2px solid #e2e8f0;
+  background:#fff;font-weight:700;color:#64748b;cursor:pointer;
+}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.lesson.duo-mode .q-item{margin:0;border:none;padding:0;background:transparent}
+.duo-step-label{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+  color:#7c3aed;margin-bottom:8px;
+}
+.duo-finish{
+  text-align:center;padding:20px 12px;
+  background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px;
+}
+.duo-finish .big{font-size:1.5rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+.lesson.duo-mode{position:relative}
+.lesson .duo-step{display:none !important;animation:duoFade .28s ease}
+.lesson .duo-step.active{display:block !important}
+@keyframes duoFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.duo-progress{display:flex;gap:4px;margin:0 0 12px}
+.duo-progress i{flex:1;height:7px;border-radius:99px;background:#e2e8f0;transition:background .25s}
+.duo-progress i.on{background:linear-gradient(90deg,#7c3aed,#22c55e)}
+.duo-progress i.cur{background:#7c3aed;box-shadow:0 0 0 2px rgba(124,58,237,.3)}
+.duo-nav{display:flex;gap:10px;margin-top:14px;position:sticky;bottom:72px;z-index:5}
+.duo-nav .duo-next{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:140px;padding:14px 18px;border:none;border-radius:14px;
+  font-weight:800;font-size:1.05rem;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  box-shadow:0 6px 18px rgba(79,70,229,.35);
+}
+.duo-nav .duo-next:disabled{opacity:.45}
+.lesson.duo-mode .done-btn{display:none !important}
+.lesson.duo-mode .quiz-box h5{display:none}
+.duo-step-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#7c3aed;margin-bottom:8px}
+.duo-finish{text-align:center;padding:22px 12px;background:linear-gradient(135deg,#dcfce7,#ede9fe);border-radius:16px}
+.duo-finish .big{font-size:1.45rem;font-weight:900;color:#16a34a;margin-bottom:6px}
+
+
+
+
+/* subject-theme-geography */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' viewBox='0 0 130 130'%3E%3Ctext x='10' y='30' font-size='14' fill='%230289d1' opacity='0.08'%3A%D0%BA%D0%B0%D1%80%D1%82%D0%B0%3C/text%3E%3Ctext x='40' y='70' font-size='13' fill='%230ea5e9' opacity='0.07'%3AN%20S%3C/text%3E%3Ctext x='15' y='105' font-size='12' fill='%230369a1' opacity='0.07'%3A%C2%B0C%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+
+</style>
+</head>
+<body data-subject="geography">
+<div class="topbar">
+  <div class="logo">ОГЭ <span>География</span></div>
+  <div class="stats">
+    <div class="stat xp">⚡ <span id="xpCount">0</span></div>
+    <div class="stat streak">🔥 <span id="streakCount">0</span></div>
+  </div>
+</div>
+<a class="home-btn" href="../index.html">← Главное меню</a>
+
+<div class="tabs">
+  <button class="tab active" data-tab="main" onclick="switchTab('main')">📋 ОГЭ</button>
+  <button class="tab" data-tab="duo" onclick="switchTab('duo')">🎮 Практика</button>
+  <button class="tab" data-tab="hard" onclick="switchTab('hard')">🔥 Сложные</button>
+  <button class="tab" data-tab="vars" onclick="switchTab('vars')">📝 Варианты</button>
+</div>
+
+<div class="path" id="path-main">
+  <div class="hero">
+    <h1>ОГЭ по географии</h1>
+    <p>С нуля: карта, природа России, население, хозяйство. Для тех, кто много пропускал.</p>
+  </div>
+  <div class="unit open" data-unit="0">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📋</div>
+      <div class="unit-info"><h3>Структура ОГЭ</h3><p>Что ждать на экзамене</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="g0">
+        <h4><span class="lesson-num">1</span> Формат</h4>
+        <div class="theory">
+          <p>ОГЭ по географии: работа с <strong>картой</strong>, таблицы, климат, природа и хозяйство России, население, источники информации.</p><p>Важно уметь читать условные знаки, масштаб, определять координаты и направления.</p>
+        </div>
+        <div class="tip">Не зубри списки городов — учи логику: где холодно/тепло, где горы/равнины, где добывают/производят.</div>
+        <div class="quiz-box">
+          <div class="q-item" data-c="1"><div class="q-text">Что важнее на ОГЭ по географии?</div><div class="opts"><button class="opt" data-v="1">Уметь читать карту и таблицы</button><button class="opt" data-v="2">Выучить только столицы мира</button><button class="opt" data-v="3">Игнорировать масштаб</button></div><div class="fb"></div></div>
+        </div>
+        <button class="done-btn" onclick="completeLesson(this,10)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+<div class="unit" data-unit="gm_map">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🗺️</div>
+      <div class="unit-info"><h3>Карта и масштаб</h3><p>250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gm_map">
+        <div class="theory"><p>Географическая карта — уменьшенное обобщённое изображение поверхности Земли. Главное свойство карты — <strong>масштаб</strong>: отношение длины отрезка на карте к длине того же отрезка на местности. Различают численный масштаб (1:100 000), именованный (в 1 см 1 км) и линейный (графическая линейка). Чем меньше знаменатель численного масштаба, тем крупнее масштаб и тем подробнее изображение: план города подробнее карты области, а карта области подробнее карты мира.</p><p><strong>Градусная сеть</strong> состоит из параллелей и меридианов. Параллели показывают географическую <strong>широту</strong> — расстояние в градусах от экватора к северу или югу (от 0° до 90°). Меридианы показывают <strong>долготу</strong> — расстояние от нулевого (Гринвичского) меридиана к востоку или западу (от 0° до 180°). Россия лежит в основном в северном и восточном полушариях. Координаты точки — это пара «широта, долгота»; по ним можно найти любой объект на карте мира.</p><p><strong>Азимут</strong> — угол между направлением на север и направлением на выбранный объект, отсчитываемый по часовой стрелке от 0° до 360°. Азимут 0° — север, 90° — восток, 180° — юг, 270° — запад. На топографических картах рельеф показывают <strong>горизонталями</strong> (изогипсами): линии равных высот. Чем чаще горизонтали, тем круче склон. Условные знаки в легенде объясняют, что означают значки дорог, лесов, населённых пунктов и водных объектов. На ОГЭ нужно уметь измерить расстояние, определить направление, прочитать высоту и сопоставить объект с координатами.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Численный масштаб 1:50 000 — в 1 см?</div><div class="opts"><button class="opt" data-v="1">500 м</button><button class="opt" data-v="2">50 км</button><button class="opt" data-v="3">5 м</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Карта 1:10 000 по сравнению с 1:1 000 000?</div><div class="opts"><button class="opt" data-v="1">Крупнее</button><button class="opt" data-v="2">Мельче</button><button class="opt" data-v="3">Одинакова</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Широта экватора?</div><div class="opts"><button class="opt" data-v="1">0°</button><button class="opt" data-v="2">90°</button><button class="opt" data-v="3">180°</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нулевой меридиан?</div><div class="opts"><button class="opt" data-v="1">Гринвич</button><button class="opt" data-v="2">Москва</button><button class="opt" data-v="3">Экватор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 180°?</div><div class="opts"><button class="opt" data-v="1">Юг</button><button class="opt" data-v="2">Север</button><button class="opt" data-v="3">Восток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 90°?</div><div class="opts"><button class="opt" data-v="1">Восток</button><button class="opt" data-v="2">Запад</button><button class="opt" data-v="3">Север</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Горизонтали показывают?</div><div class="opts"><button class="opt" data-v="1">Высоту</button><button class="opt" data-v="2">Температуру</button><button class="opt" data-v="3">Население</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Частые горизонтали — склон?</div><div class="opts"><button class="opt" data-v="1">Круче</button><button class="opt" data-v="2">Положе</button><button class="opt" data-v="3">Ниже океана</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Россия в полушариях?</div><div class="opts"><button class="opt" data-v="1">Северном и восточном</button><button class="opt" data-v="2">Южном и западном</button><button class="opt" data-v="3">Только южном</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мелкомасштабная карта для?</div><div class="opts"><button class="opt" data-v="1">Обзора большой территории</button><button class="opt" data-v="2">Плана двора</button><button class="opt" data-v="3">Только комнаты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В 1 см 2 км — это примерно?</div><div class="opts"><button class="opt" data-v="1">1:200 000</button><button class="opt" data-v="2">1:2000</button><button class="opt" data-v="3">1:20</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Широта растёт к?</div><div class="opts"><button class="opt" data-v="1">Полюсам</button><button class="opt" data-v="2">Гринвичу</button><button class="opt" data-v="3">Только западу</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Долгота отсчитывается от?</div><div class="opts"><button class="opt" data-v="1">Гринвича</button><button class="opt" data-v="2">Экватора</button><button class="opt" data-v="3">Полюса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Север на обычной карте?</div><div class="opts"><button class="opt" data-v="1">Вверху</button><button class="opt" data-v="2">Внизу</button><button class="opt" data-v="3">Справа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 270°?</div><div class="opts"><button class="opt" data-v="1">Запад</button><button class="opt" data-v="2">Восток</button><button class="opt" data-v="3">Север</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+<div class="unit" data-unit="gm_rel">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🏔️</div>
+      <div class="unit-info"><h3>Рельеф России</h3><p>250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gm_rel">
+        <div class="theory"><p>Рельеф России чрезвычайно разнообразен. На западе простирается <strong>Восточно-Европейская (Русская) равнина</strong> с чередованием возвышенностей (Среднерусская, Валдайская, Приволжская) и низменностей. К востоку от Уральских гор лежит обширная плоская <strong>Западно-Сибирская равнина</strong>, богатая болотами, нефтью и газом. Между Енисеем и Леной расположено <strong>Среднесибирское плоскогорье</strong> с плато и траппами.</p><p><strong>Урал</strong> — древние невысокие горы, условная граница Европы и Азии. На юге страны поднимается молодой высокий <strong>Кавказ</strong>; здесь находится <strong>Эльбрус</strong> (5642 м) — высшая точка России. В Южной Сибири — Алтай (Белуха), Саяны, хребты Прибайкалья. На северо-востоке — хребты Верхоянский и Черского. Камчатка известна действующими вулканами, среди них Ключевская сопка. Прикаспийская низменность частично лежит ниже уровня Мирового океана — это одна из самых низких территорий страны.</p><p>Рельеф влияет на климат, реки, расселение и хозяйство: на равнинах удобнее земледелие и строительство, в горах — добыча руд, туризм, ГЭС на горных реках. На ОГЭ часто спрашивают, где находится высшая точка, какая равнина лежит между Уралом и Енисеем, чем Урал отличается от Кавказа по высоте и возрасту.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Высшая точка России?</div><div class="opts"><button class="opt" data-v="1">Эльбрус</button><button class="opt" data-v="2">Белуха</button><button class="opt" data-v="3">Народная</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Урал разделяет?</div><div class="opts"><button class="opt" data-v="1">Европу и Азию</button><button class="opt" data-v="2">Африку и Европу</button><button class="opt" data-v="3">Только лес и степь</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Равнина между Уралом и Енисеем?</div><div class="opts"><button class="opt" data-v="1">Западно-Сибирская</button><button class="opt" data-v="2">Прикаспийская</button><button class="opt" data-v="3">Валдай</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Прикаспийская низменность?</div><div class="opts"><button class="opt" data-v="1">Частично ниже уровня океана</button><button class="opt" data-v="2">Выше Эльбруса</button><button class="opt" data-v="3">На Камчатке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ключевская сопка —?</div><div class="opts"><button class="opt" data-v="1">Вулкан Камчатки</button><button class="opt" data-v="2">Гора Урала</button><button class="opt" data-v="3">Холм Валдая</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Среднесибирское плоскогорье восточнее?</div><div class="opts"><button class="opt" data-v="1">Енисея</button><button class="opt" data-v="2">Волги</button><button class="opt" data-v="3">Дона</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Белуха находится на?</div><div class="opts"><button class="opt" data-v="1">Алтае</button><button class="opt" data-v="2">Кавказе</button><button class="opt" data-v="3">Урале</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Русская равнина — это?</div><div class="opts"><button class="opt" data-v="1">Восточно-Европейская</button><button class="opt" data-v="2">Западно-Сибирская</button><button class="opt" data-v="3">Прикаспий только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Урал по высоте?</div><div class="opts"><button class="opt" data-v="1">Невысокий древний</button><button class="opt" data-v="2">Выше Эльбруса</button><button class="opt" data-v="3">Ниже уровня моря</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Молодые высокие горы юга?</div><div class="opts"><button class="opt" data-v="1">Кавказ</button><button class="opt" data-v="2">Урал</button><button class="opt" data-v="3">Валдай</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Западно-Сибирская равнина известна?</div><div class="opts"><button class="opt" data-v="1">Болотами и нефтью</button><button class="opt" data-v="2">Только пустынями</button><button class="opt" data-v="3">Только ледниками везде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Верхоянский хребет в?</div><div class="opts"><button class="opt" data-v="1">Якутии</button><button class="opt" data-v="2">Крыму</button><button class="opt" data-v="3">Калининграде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Валдай — возвышенность на?</div><div class="opts"><button class="opt" data-v="1">Русской равнине</button><button class="opt" data-v="2">Камчатке</button><button class="opt" data-v="3">Чукотке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Граница Европы и Азии по?</div><div class="opts"><button class="opt" data-v="1">Уралу</button><button class="opt" data-v="2">Волге</button><button class="opt" data-v="3">Енисею</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Народная ниже Эльбруса?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Одинаковы</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+<div class="unit" data-unit="gm_clim">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌡️</div>
+      <div class="unit-info"><h3>Климат России</h3><p>250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gm_clim">
+        <div class="theory"><p>Климат России определяется географической широтой, удалённостью от океанов, рельефом и господствующими воздушными массами. Большая часть страны находится в <strong>умеренном</strong> климатическом поясе. На крайнем севере — арктический и субарктический пояса. Узкая полоса <strong>субтропиков</strong> есть на Черноморском побережье Кавказа (район Сочи), где зимы мягкие, а осадков достаточно.</p><p>Внутри умеренного пояса климат меняется с запада на восток: на западе он мягче благодаря влиянию Атлантики, в Восточной Сибири — <strong>резко континентальный</strong> с очень холодной зимой и тёплым летом, огромной годовой амплитудой температур. Оймякон и Верхоянск известны как полюс холода Северного полушария. На юге Дальнего Востока климат <strong>муссонный</strong>: влажное лето и относительно сухая зима.</p><p>Чем дальше от океана, тем сильнее континентальность: меньше осадков зимой, жарче лето и холоднее зима. Горы задерживают влагу на наветренных склонах. На ОГЭ разбирают климатограммы: по столбцам осадков и линии температуры определяют тип климата и природную зону. Важно помнить, какой пояс занимает большую часть России и где встречаются субтропики.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Основной пояс России?</div><div class="opts"><button class="opt" data-v="1">Умеренный</button><button class="opt" data-v="2">Тропический</button><button class="opt" data-v="3">Экваториальный</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Субтропики в РФ?</div><div class="opts"><button class="opt" data-v="1">Черноморское побережье Кавказа</button><button class="opt" data-v="2">Якутия</button><button class="opt" data-v="3">Чукотка</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Резко континентальный климат?</div><div class="opts"><button class="opt" data-v="1">Восточная Сибирь</button><button class="opt" data-v="2">Калининград</button><button class="opt" data-v="3">Сочи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Муссонный климат?</div><div class="opts"><button class="opt" data-v="1">Юг Дальнего Востока</button><button class="opt" data-v="2">Мурманск</button><button class="opt" data-v="3">Астрахань только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полюс холода связан с?</div><div class="opts"><button class="opt" data-v="1">Оймяконом/Верхоянском</button><button class="opt" data-v="2">Сочи</button><button class="opt" data-v="3">Крымом</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дальше от океана климат?</div><div class="opts"><button class="opt" data-v="1">Более континентальный</button><button class="opt" data-v="2">Всегда теплее зимой</button><button class="opt" data-v="3">Всегда влажнее</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Арктический пояс —?</div><div class="opts"><button class="opt" data-v="1">Крайний север</button><button class="opt" data-v="2">Черноморское побережье</button><button class="opt" data-v="3">Пустыни Прикаспия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Влажное лето, сухая зима —?</div><div class="opts"><button class="opt" data-v="1">Муссонный тип</button><button class="opt" data-v="2">Только пустыня</button><button class="opt" data-v="3">Только арктика</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Запад России климат?</div><div class="opts"><button class="opt" data-v="1">Мягче из-за Атлантики</button><button class="opt" data-v="2">Жёстче Якутии всегда</button><button class="opt" data-v="3">Как на экваторе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Большая амплитуда температур —?</div><div class="opts"><button class="opt" data-v="1">Резко континентальный</button><button class="opt" data-v="2">Морской</button><button class="opt" data-v="3">Субтропический влажный</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Факторы климата?</div><div class="opts"><button class="opt" data-v="1">Широта, океан, рельеф</button><button class="opt" data-v="2">Только цвет почвы</button><button class="opt" data-v="3">Только число городов</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Субарктика между?</div><div class="opts"><button class="opt" data-v="1">Арктикой и умеренным</button><button class="opt" data-v="2">Тропиками и экватором</button><button class="opt" data-v="3">Только в Африке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сочи зимой?</div><div class="opts"><button class="opt" data-v="1">Мягкая</button><button class="opt" data-v="2">Как в Оймяконе</button><button class="opt" data-v="3">Всегда −50</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Влияние Атлантики сильнее на?</div><div class="opts"><button class="opt" data-v="1">Западе РФ</button><button class="opt" data-v="2">Чукотке</button><button class="opt" data-v="3">Восточной Камчатке</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Изотермы — линии равных?</div><div class="opts"><button class="opt" data-v="1">Температур</button><button class="opt" data-v="2">Высот</button><button class="opt" data-v="3">Населения</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+<div class="unit" data-unit="gm_zones">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌲</div>
+      <div class="unit-info"><h3>Природные зоны</h3><p>250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gm_zones">
+        <div class="theory"><p>Природные зоны России сменяются с севера на юг вслед за изменением тепла и влаги. <strong>Арктические пустыни</strong> — льды, бедные мхи. <strong>Тундра</strong> — многолетняя мерзлота, ягель, карликовые берёзы и ивы, оленеводство. Далее <strong>лесотундра</strong> — переход к лесу. <strong>Тайга</strong> — самая большая зона: ель, пихта, сосна, лиственница; охота, лесозаготовки, пушнина.</p><p>В европейской части южнее тайги — <strong>смешанные и широколиственные леса</strong> (дуб, липа, клён). <strong>Лесостепь и степь</strong> — плодородные чернозёмы, главная житница: пшеница, подсолнечник, свекла. <strong>Полупустыни и пустыни</strong> у Прикаспия — полынь, солончаки, пастбищное животноводство.</p><p>В горах выражена <strong>высотная поясность</strong>: с подъёмом вверх зоны сменяются подобно движению на север. Хозяйство зоны зависит от почв и климата: в тундре — олени, в степи — зерно, в тайге — лес. На ОГЭ нужно знать порядок зон с севера на юг, типичные растения, почвы и занятия населения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Самая большая зона РФ?</div><div class="opts"><button class="opt" data-v="1">Тайга</button><button class="opt" data-v="2">Степь</button><button class="opt" data-v="3">Пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ягель и олени —?</div><div class="opts"><button class="opt" data-v="1">Тундра</button><button class="opt" data-v="2">Степь</button><button class="opt" data-v="3">Пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Чернозём типичен для?</div><div class="opts"><button class="opt" data-v="1">Степи и лесостепи</button><button class="opt" data-v="2">Тундры</button><button class="opt" data-v="3">Арктики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хвойные леса —?</div><div class="opts"><button class="opt" data-v="1">Тайга</button><button class="opt" data-v="2">Только пустыня</button><button class="opt" data-v="3">Только степь</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Высотная поясность —?</div><div class="opts"><button class="opt" data-v="1">Смена зон в горах</button><button class="opt" data-v="2">Только по долготе</button><button class="opt" data-v="3">Только в океане</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полупустыни у?</div><div class="opts"><button class="opt" data-v="1">Прикаспия</button><button class="opt" data-v="2">Мурманска</button><button class="opt" data-v="3">Северной Камчатки</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мерзлота типична для?</div><div class="opts"><button class="opt" data-v="1">Тундры и части тайги</button><button class="opt" data-v="2">Субтропиков</button><button class="opt" data-v="3">Только степи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дуб и липа — леса?</div><div class="opts"><button class="opt" data-v="1">Широколиственные/смешанные</button><button class="opt" data-v="2">Только тундра</button><button class="opt" data-v="3">Только пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пшеница в зоне?</div><div class="opts"><button class="opt" data-v="1">Степи</button><button class="opt" data-v="2">Арктики</button><button class="opt" data-v="3">Тундры</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Переход тундра–тайга?</div><div class="opts"><button class="opt" data-v="1">Лесотундра</button><button class="opt" data-v="2">Пустыня</button><button class="opt" data-v="3">Саванна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лиственница устойчива к?</div><div class="opts"><button class="opt" data-v="1">Холоду и мерзлоте</button><button class="opt" data-v="2">Только тропикам</button><button class="opt" data-v="3">Только пустыне</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полынь, солончаки —?</div><div class="opts"><button class="opt" data-v="1">Полупустыня</button><button class="opt" data-v="2">Тайга</button><button class="opt" data-v="3">Смешанный лес</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Зоны к югу сменяются из-за?</div><div class="opts"><button class="opt" data-v="1">Роста тепла</button><button class="opt" data-v="2">Уменьшения долготы</button><button class="opt" data-v="3">Только ветра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пушнина связана с?</div><div class="opts"><button class="opt" data-v="1">Тайгой</button><button class="opt" data-v="2">Пустыней</button><button class="opt" data-v="3">Субтропиками</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Карликовая берёза —?</div><div class="opts"><button class="opt" data-v="1">Тундра</button><button class="opt" data-v="2">Влажные субтропики</button><button class="opt" data-v="3">Экваториальный лес</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+<div class="unit" data-unit="gm_eco">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🏭</div>
+      <div class="unit-info"><h3>Население и хозяйство</h3><p>250 слов · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gm_eco">
+        <div class="theory"><p>Население России размещено неравномерно. Главная полоса расселения — европейская часть и юг Сибири. Здесь выше плотность, больше крупных городов. <strong>Москва</strong> — крупнейший город, затем Санкт-Петербург, Новосибирск, Екатеринбург, Казань и другие. На севере и северо-востоке плотность низкая из-за сурового климата.</p><p>Топливно-энергетический комплекс опирается на <strong>нефть и газ Западной Сибири</strong> (Ханты-Мансийский и Ямало-Ненецкий округа), уголь Кузбасса и Канско-Ачинского бассейна, гидроэнергию Ангары, Енисея и Волги. Чёрная металлургия развита на Урале, в районе Курской магнитной аномалии, в Череповце и Кузбассе. Машиностроение тяготеет к крупным городам и квалифицированным кадрам.</p><p>Сельское хозяйство: зерновые — степь и лесостепь; животноводство распространено шире; на ограниченных субтропиках выращивают чай и цитрусовые. Порты: Балтика — Санкт-Петербург и Калининград; Чёрное море — Новороссийск; Тихий океан — Владивосток и Находка; на севере незамерзающий <strong>Мурманск</strong>. На ОГЭ связывают ресурс с районом и город с функцией (порт, металлургия, столица).</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Выше плотность населения?</div><div class="opts"><button class="opt" data-v="1">Европейская часть</button><button class="opt" data-v="2">Вся Якутия равномерно</button><button class="opt" data-v="3">Только острова Арктики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крупнейший город?</div><div class="opts"><button class="opt" data-v="1">Москва</button><button class="opt" data-v="2">Владивосток</button><button class="opt" data-v="3">Магадан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нефть и газ — район?</div><div class="opts"><button class="opt" data-v="1">Западная Сибирь</button><button class="opt" data-v="2">Только Крым</button><button class="opt" data-v="3">Только Карелия</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Кузбасс —?</div><div class="opts"><button class="opt" data-v="1">Уголь</button><button class="opt" data-v="2">Чай</button><button class="opt" data-v="3">Хлопок</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">КМА — запасы?</div><div class="opts"><button class="opt" data-v="1">Железной руды</button><button class="opt" data-v="2">Нефти только</button><button class="opt" data-v="3">Газа только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Незамерзающий порт севера?</div><div class="opts"><button class="opt" data-v="1">Мурманск</button><button class="opt" data-v="2">Омск</button><button class="opt" data-v="3">Иркутск</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Порт Тихого океана?</div><div class="opts"><button class="opt" data-v="1">Владивосток</button><button class="opt" data-v="2">Астрахань</button><button class="opt" data-v="3">Ростов только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Зерно сильнее в?</div><div class="opts"><button class="opt" data-v="1">Степи</button><button class="opt" data-v="2">Тундре</button><button class="opt" data-v="3">Арктике</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ГЭС на Енисее/Ангаре —?</div><div class="opts"><button class="opt" data-v="1">Сибирь</button><button class="opt" data-v="2">Калининград</button><button class="opt" data-v="3">Только Кавказ</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ХМАО связан с?</div><div class="opts"><button class="opt" data-v="1">Нефтью</button><button class="opt" data-v="2">Виноградом</button><button class="opt" data-v="3">Рыбой только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Металлургия Урала —?</div><div class="opts"><button class="opt" data-v="1">Руды и промышленность</button><button class="opt" data-v="2">Только туризм</button><button class="opt" data-v="3">Только бананы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Новороссийск — порт?</div><div class="opts"><button class="opt" data-v="1">Чёрного моря</button><button class="opt" data-v="2">Балтики</button><button class="opt" data-v="3">Японского моря</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Главная полоса расселения?</div><div class="opts"><button class="opt" data-v="1">Запад и юг страны</button><button class="opt" data-v="2">Только Чукотка</button><button class="opt" data-v="3">Только пустыни</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ЯНАО известен?</div><div class="opts"><button class="opt" data-v="1">Газом</button><button class="opt" data-v="2">Чаем</button><button class="opt" data-v="3">Хлопком</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">СПб — порт?</div><div class="opts"><button class="opt" data-v="1">Балтийского моря</button><button class="opt" data-v="2">Каспия</button><button class="opt" data-v="3">Охотского моря</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,30)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="path hidden" id="path-duo">
+  <div class="duo-path">
+    <div class="hero" style="padding-top:8px"><h1>Практика</h1><p>300 уроков + финальный тест из 50 вопросов по всем темам.</p></div>
+    <div id="duoContainer"></div>
+  </div>
+</div>
+
+
+<div class="path hidden" id="path-hard">
+  <div class="hero">
+    <h1>Сложные темы</h1>
+    <p>То, что часто путают на ОГЭ</p>
+  </div>
+  <div class="unit" data-unit="gh_hydro">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">💧</div>
+      <div class="unit-info"><h3>Гидрография России</h3><p>Реки, озёра, моря · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_hydro">
+        <div class="theory"><p>Речная сеть России принадлежит бассейнам Северного Ледовитого, Тихого и Атлантического океанов, а также области внутреннего стока. В Ледовитый океан несут воды <strong>Обь, Енисей, Лена, Печора</strong> — длинные, с весенним половодьем, важные для судоходства и гидроэнергетики. <strong>Амур</strong> относится к бассейну Тихого океана. <strong>Волга</strong> — самая длинная река Европы — впадает в Каспийское море (область внутреннего стока); её притоки — Кама и Ока.</p><p><strong>Байкал</strong> — самое глубокое пресное озеро мира. Ладожское и Онежское — крупнейшие озёра Европы. Каспий — крупнейшее бессточное озеро-море. Моря России: Баренцево (у Мурманска относительно мягкий режим), Карское, Лаптевых, Восточно-Сибирское, Чукотское; на востоке — Берингово, Охотское, Японское; на юго-западе — Чёрное и Азовское; на западе — Балтийское.</p><p>Реки используют для ГЭС, перевозки грузов, водоснабжения. Озёра — для пресной воды, рыболовства, туризма. На ОГЭ спрашивают, куда впадает река, какое озеро самое глубокое, какой порт связан с незамерзающим морем.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Самая длинная река Европы в РФ?</div><div class="opts"><button class="opt" data-v="1">Волга</button><button class="opt" data-v="2">Обь</button><button class="opt" data-v="3">Лена</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Самое глубокое озеро?</div><div class="opts"><button class="opt" data-v="1">Байкал</button><button class="opt" data-v="2">Ладога</button><button class="opt" data-v="3">Каспий</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Волга впадает в?</div><div class="opts"><button class="opt" data-v="1">Каспий</button><button class="opt" data-v="2">Чёрное море</button><button class="opt" data-v="3">Балтику</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Амур — бассейн?</div><div class="opts"><button class="opt" data-v="1">Тихого океана</button><button class="opt" data-v="2">Каспия</button><button class="opt" data-v="3">Балтики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Незамерзающий район у?</div><div class="opts"><button class="opt" data-v="1">Баренцева моря/Мурманска</button><button class="opt" data-v="2">Всего Карского зимой</button><button class="opt" data-v="3">Всех морей Лаптевых</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Обь и Енисей текут в основном на?</div><div class="opts"><button class="opt" data-v="1">Север</button><button class="opt" data-v="2">Юг</button><button class="opt" data-v="3">Запад</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ладога —?</div><div class="opts"><button class="opt" data-v="1">Крупнейшее озеро Европы</button><button class="opt" data-v="2">Самое глубокое в мире</button><button class="opt" data-v="3">Солёное как океан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Каспий —?</div><div class="opts"><button class="opt" data-v="1">Бессточное озеро</button><button class="opt" data-v="2">Часть Атлантики</button><button class="opt" data-v="3">Река</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дон впадает в?</div><div class="opts"><button class="opt" data-v="1">Азовское море</button><button class="opt" data-v="2">Балтику</button><button class="opt" data-v="3">Байкал</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лена протекает в?</div><div class="opts"><button class="opt" data-v="1">Якутии</button><button class="opt" data-v="2">Калининграде</button><button class="opt" data-v="3">Крыму</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">ГЭС часто на?</div><div class="opts"><button class="opt" data-v="1">Енисее, Ангаре, Волге</button><button class="opt" data-v="2">Только ручьях пустыни</button><button class="opt" data-v="3">Только без рек</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Онежское озеро —?</div><div class="opts"><button class="opt" data-v="1">Северо-Запад РФ</button><button class="opt" data-v="2">Камчатка</button><button class="opt" data-v="3">Прикаспий</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Чёрное море омывает?</div><div class="opts"><button class="opt" data-v="1">Юг РФ</button><button class="opt" data-v="2">Чукотку</button><button class="opt" data-v="3">Мурманск</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Внутренний сток — реки в?</div><div class="opts"><button class="opt" data-v="1">Каспий</button><button class="opt" data-v="2">Все в Тихий</button><button class="opt" data-v="3">Все в Атлантику</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Печора несёт воды к?</div><div class="opts"><button class="opt" data-v="1">Северу (Баренцево/Печорское)</button><button class="opt" data-v="2">Байкалу</button><button class="opt" data-v="3">Амуру</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="gh_time">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🕐</div>
+      <div class="unit-info"><h3>Часовые пояса</h3><p>Время в России · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_time">
+        <div class="theory"><p>Земля вращается с запада на восток, поэтому местное солнечное время на востоке опережает время на западе. Для удобства мир разделён на часовые пояса. Россия протянулась на многие тысячи километров с запада на восток и занимает несколько часовых зон. <strong>Московское время</strong> соответствует примерно UTC+3.</p><p>При движении на восток часы переводят вперёд, на запад — назад. Разница между Москвой и Камчаткой или Чукоткой составляет много часов: когда в Москве утро, на Дальнем Востоке уже день или вечер. Калининградская область западнее Москвы и отстаёт на один час.</p><p>Линия перемены даты проходит вблизи 180-го меридиана: при её пересечении меняется календарная дата. Понимание часовых поясов нужно для расписаний транспорта, связи и просто для ответа на вопрос ОГЭ: «как изменится время при перелёте из города А в город Б».</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">На восток от Москвы время?</div><div class="opts"><button class="opt" data-v="1">Больше (вперёд)</button><button class="opt" data-v="2">Меньше</button><button class="opt" data-v="3">Как в Лондоне</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Московское время roughly?</div><div class="opts"><button class="opt" data-v="1">UTC+3</button><button class="opt" data-v="2">UTC−5</button><button class="opt" data-v="3">UTC+12 везде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Москва → Владивосток часы?</div><div class="opts"><button class="opt" data-v="1">Вперёд</button><button class="opt" data-v="2">Назад на 10 всегда</button><button class="opt" data-v="3">Не меняют</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Чукотка относительно Москвы?</div><div class="opts"><button class="opt" data-v="1">Восточнее по времени</button><button class="opt" data-v="2">Западнее</button><button class="opt" data-v="3">То же</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Линия перемены даты у?</div><div class="opts"><button class="opt" data-v="1">180°</button><button class="opt" data-v="2">Экватора</button><button class="opt" data-v="3">Только Гринвича</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Калининград относительно Москвы?</div><div class="opts"><button class="opt" data-v="1">Западнее (−1 ч)</button><button class="opt" data-v="2">Восточнее +5</button><button class="opt" data-v="3">Южнее по времени</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сутки —?</div><div class="opts"><button class="opt" data-v="1">24 часа</button><button class="opt" data-v="2">12</button><button class="opt" data-v="3">48</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Солнце раньше на?</div><div class="opts"><button class="opt" data-v="1">Востоке</button><button class="opt" data-v="2">Западе</button><button class="opt" data-v="3">Только на полюсе</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Часовой пояс нужен для?</div><div class="opts"><button class="opt" data-v="1">Согласования времени</button><button class="opt" data-v="2">Высоты гор</button><button class="opt" data-v="3">Подсчёта населения</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дальний Восток vs Москва?</div><div class="opts"><button class="opt" data-v="1">Другое местное время</button><button class="opt" data-v="2">Всегда одинаково</button><button class="opt" data-v="3">Только летом совпадает</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Вперёд часы при движении?</div><div class="opts"><button class="opt" data-v="1">На восток</button><button class="opt" data-v="2">На запад</button><button class="opt" data-v="3">На юг</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">UTC — это?</div><div class="opts"><button class="opt" data-v="1">Всемирное время</button><button class="opt" data-v="2">Только Урал</button><button class="opt" data-v="3">Только тундра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Якутск восточнее Москвы по времени?</div><div class="opts"><button class="opt" data-v="1">Да</button><button class="opt" data-v="2">Нет</button><button class="opt" data-v="3">Только зимой нет</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Разница поясов из-за?</div><div class="opts"><button class="opt" data-v="1">Вращения Земли/долготы</button><button class="opt" data-v="2">Только широты</button><button class="opt" data-v="3">Только высоты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Камчатка — одна из?</div><div class="opts"><button class="opt" data-v="1">Самых восточных зон РФ</button><button class="opt" data-v="2">Самых западных</button><button class="opt" data-v="3">= Лондон</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="gh_world">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌐</div>
+      <div class="unit-info"><h3>Материки и океаны</h3><p>Мир · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_world">
+        <div class="theory"><p>На Земле выделяют материки: <strong>Евразия, Африка, Северная Америка, Южная Америка, Антарктида, Австралия</strong>. Евразия — крупнейший; Антарктида покрыта ледниковым щитом; Австралия — самый маленький материк и единственный, занятый одним государством целиком. Океаны: <strong>Тихий</strong> (самый большой и глубокий), Атлантический, Индийский, Северный Ледовитый; часто выделяют Южный океан вокруг Антарктиды.</p><p>Высшая точка суши — <strong>Джомолунгма (Эверест)</strong> в Гималаях. Глубочайшее место Мирового океана — Марианский жёлоб в Тихом океане. Крупнейшая пустыня — Сахара в Африке. Амазонка знаменита водностью и площадью бассейна; Нил — одной из величайших длин.</p><p>Экватор делит Землю на северное и южное полушария; нулевой меридиан — на западное и восточное. Россия относится к Евразии, омывается водами трёх океанов. Эти факты нужны для заданий «соотнеси объект и материк/океан» и для понимания положения России на карте мира.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Самый большой океан?</div><div class="opts"><button class="opt" data-v="1">Тихий</button><button class="opt" data-v="2">Атлантический</button><button class="opt" data-v="3">Индийский</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Высшая точка суши?</div><div class="opts"><button class="opt" data-v="1">Эверест</button><button class="opt" data-v="2">Эльбрус</button><button class="opt" data-v="3">Килиманджаро</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Крупнейшая пустыня?</div><div class="opts"><button class="opt" data-v="1">Сахара</button><button class="opt" data-v="2">Гоби</button><button class="opt" data-v="3">Калахари</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Антарктида —?</div><div class="opts"><button class="opt" data-v="1">Материк</button><button class="opt" data-v="2">Океан</button><button class="opt" data-v="3">Остров в Каспии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Евразия включает?</div><div class="opts"><button class="opt" data-v="1">Европу и Азию</button><button class="opt" data-v="2">Только Африку</button><button class="opt" data-v="3">Только Австралию</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Сев. Ледовитый омывает?</div><div class="opts"><button class="opt" data-v="1">Север России</button><button class="opt" data-v="2">Австралию с юга</button><button class="opt" data-v="3">Бразилию</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Амазонка известна?</div><div class="opts"><button class="opt" data-v="1">Водностью</button><button class="opt" data-v="2">Как пустыня</button><button class="opt" data-v="3">Как гора</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Марианский жёлоб в?</div><div class="opts"><button class="opt" data-v="1">Тихом океане</button><button class="opt" data-v="2">Каспии</button><button class="opt" data-v="3">Байкале</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Африка пересекается?</div><div class="opts"><button class="opt" data-v="1">Экватором</button><button class="opt" data-v="2">Только полярным кругом</button><button class="opt" data-v="3">Только 180°</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Австралия — материк в?</div><div class="opts"><button class="opt" data-v="1">Южном полушарии</button><button class="opt" data-v="2">Только северном</button><button class="opt" data-v="3">Только Арктике</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Атлантика между?</div><div class="opts"><button class="opt" data-v="1">Америкой и Евразией/Африкой</button><button class="opt" data-v="2">Китаем и США западом</button><button class="opt" data-v="3">Только полюсами</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Килиманджаро в?</div><div class="opts"><button class="opt" data-v="1">Африке</button><button class="opt" data-v="2">России</button><button class="opt" data-v="3">Антарктиде</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Гоби — пустыня в?</div><div class="opts"><button class="opt" data-v="1">Азии</button><button class="opt" data-v="2">Амазонии</button><button class="opt" data-v="3">Только Австралии</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Маленький океан часто?</div><div class="opts"><button class="opt" data-v="1">Северный Ледовитый</button><button class="opt" data-v="2">Тихий</button><button class="opt" data-v="3">Атлантический</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Экватор делит на?</div><div class="opts"><button class="opt" data-v="1">Сев. и юж. полушария</button><button class="opt" data-v="2">Только сушу и воду</button><button class="opt" data-v="3">Только пояса</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="gh_src">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">📎</div>
+      <div class="unit-info"><h3>Источники на ОГЭ</h3><p>Карты, таблицы, климатограммы · 15 вопросов</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_src">
+        <div class="theory"><p>На ОГЭ по географии почти всегда есть задания с <strong>источниками</strong>: фрагмент карты, таблица, климатограмма, профиль рельефа, короткий текст со статистикой. Успех зависит не от зубрёжки, а от умения читать эти материалы.</p><p><strong>Климатограмма</strong>: обычно столбцы — месячные осадки, линия — температура. Тёплое лето и мало осадков намекают на степь или полупустыню; ровная тёплая температура и обильные дожди — на влажные субтропики; очень холодная зима и малое количество осадков — на резко континентальный климат.</p><p><strong>Профиль рельефа</strong> — разрез по линии: по горизонтали расстояние, по вертикали высота. Частые «зубцы» — горы, пологая линия — равнина. В <strong>таблицах</strong> сравнивают строки и столбцы, ищут максимум и минимум, считают разницу. Легенда карты объясняет условные знаки. Масштабная линейка позволяет оценить расстояние. Всегда смотрите единицы измерения и год данных — иначе легко ошибиться в выводе.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Климатограмма показывает?</div><div class="opts"><button class="opt" data-v="1">Температуру и осадки</button><button class="opt" data-v="2">Только население</button><button class="opt" data-v="3">Только высоту</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Много летних осадков + муссон ~?</div><div class="opts"><button class="opt" data-v="1">Дальний Восток</button><button class="opt" data-v="2">Сахара</button><button class="opt" data-v="3">Арктика без осадков</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Профиль рельефа —?</div><div class="opts"><button class="opt" data-v="1">Разрез высот</button><button class="opt" data-v="2">Список городов</button><button class="opt" data-v="3">Политическая карта</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Плотность населения =?</div><div class="opts"><button class="opt" data-v="1">чел/км²</button><button class="opt" data-v="2">км/ч</button><button class="opt" data-v="3">°C</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Максимум у региона А в таблице?</div><div class="opts"><button class="opt" data-v="1">У А наибольший показатель</button><button class="opt" data-v="2">У А всегда минимум</button><button class="opt" data-v="3">Данные всегда ложны</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Изобата — равные?</div><div class="opts"><button class="opt" data-v="1">Глубины</button><button class="opt" data-v="2">Температуры воздуха</button><button class="opt" data-v="3">Осадки на суше</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Изогиета — равные?</div><div class="opts"><button class="opt" data-v="1">Осадки</button><button class="opt" data-v="2">Высоты</button><button class="opt" data-v="3">Давление только</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Легенда карты нужна чтобы?</div><div class="opts"><button class="opt" data-v="1">Понять знаки</button><button class="opt" data-v="2">Измерить температуру тела</button><button class="opt" data-v="3">Посчитать часы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Градусная сеть для?</div><div class="opts"><button class="opt" data-v="1">Координат</button><button class="opt" data-v="2">Цвета почвы</button><button class="opt" data-v="3">Только названий</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Столбцы климатограммы чаще?</div><div class="opts"><button class="opt" data-v="1">Осадки</button><button class="opt" data-v="2">Только ветер</button><button class="opt" data-v="3">Только давление</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Линия на климатограмме чаще?</div><div class="opts"><button class="opt" data-v="1">Температура</button><button class="opt" data-v="2">Численность скота</button><button class="opt" data-v="3">Курс валют</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">«Зубчатый» профиль —?</div><div class="opts"><button class="opt" data-v="1">Горы/пересечённый</button><button class="opt" data-v="2">Идеально плоский</button><button class="opt" data-v="3">Только океан</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Масштабная линейка помогает?</div><div class="opts"><button class="opt" data-v="1">Измерить расстояние</button><button class="opt" data-v="2">Измерить температуру</button><button class="opt" data-v="3">Узнать язык</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В статистике смотри?</div><div class="opts"><button class="opt" data-v="1">Единицы и год</button><button class="opt" data-v="2">Только цвет шрифта</button><button class="opt" data-v="3">Только номер страницы</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Картосхема без масштаба?</div><div class="opts"><button class="opt" data-v="1">Менее точна для измерений</button><button class="opt" data-v="2">Всегда точнее топокарты</button><button class="opt" data-v="3">Заменяет координаты</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="gh_map2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🧭</div>
+      <div class="unit-info"><h3>Карта: сложный уровень</h3><p>Азимут, горизонтали, координаты</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_map2">
+        <div class="theory"><p>Географическая карта — уменьшенное обобщённое изображение поверхности Земли. Главное свойство карты — <strong>масштаб</strong>: отношение длины отрезка на карте к длине того же отрезка на местности. Различают численный масштаб (1:100 000), именованный (в 1 см 1 км) и линейный (графическая линейка). Чем меньше знаменатель численного масштаба, тем крупнее масштаб и тем подробнее изображение: план города подробнее карты области, а карта области подробнее карты мира.</p><p><strong>Градусная сеть</strong> состоит из параллелей и меридианов. Параллели показывают географическую <strong>широту</strong> — расстояние в градусах от экватора к северу или югу (от 0° до 90°). Меридианы показывают <strong>долготу</strong> — расстояние от нулевого (Гринвичского) меридиана к востоку или западу (от 0° до 180°). Россия лежит в основном в северном и восточном полушариях. Координаты точки — это пара «широта, долгота»; по ним можно найти любой объект на карте мира.</p><p><strong>Азимут</strong> — угол между направлением на север и направлением на выбранный объект, отсчитываемый по часовой стрелке от 0° до 360°. Азимут 0° — север, 90° — восток, 180° — юг, 270° — запад. На топографических картах рельеф показывают <strong>горизонталями</strong> (изогипсами): линии равных высот. Чем чаще горизонтали, тем круче склон. Условные знаки в легенде объясняют, что означают значки дорог, лесов, населённых пунктов и водных объектов. На ОГЭ нужно уметь измерить расстояние, определить направление, прочитать высоту и сопоставить объект с координатами.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Численный масштаб 1:50 000 — в 1 см?</div><div class="opts"><button class="opt" data-v="1">500 м</button><button class="opt" data-v="2">50 км</button><button class="opt" data-v="3">5 м</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Карта 1:10 000 по сравнению с 1:1 000 000?</div><div class="opts"><button class="opt" data-v="1">Крупнее</button><button class="opt" data-v="2">Мельче</button><button class="opt" data-v="3">Одинакова</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Широта экватора?</div><div class="opts"><button class="opt" data-v="1">0°</button><button class="opt" data-v="2">90°</button><button class="opt" data-v="3">180°</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Нулевой меридиан?</div><div class="opts"><button class="opt" data-v="1">Гринвич</button><button class="opt" data-v="2">Москва</button><button class="opt" data-v="3">Экватор</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 180°?</div><div class="opts"><button class="opt" data-v="1">Юг</button><button class="opt" data-v="2">Север</button><button class="opt" data-v="3">Восток</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 90°?</div><div class="opts"><button class="opt" data-v="1">Восток</button><button class="opt" data-v="2">Запад</button><button class="opt" data-v="3">Север</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Горизонтали показывают?</div><div class="opts"><button class="opt" data-v="1">Высоту</button><button class="opt" data-v="2">Температуру</button><button class="opt" data-v="3">Население</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Частые горизонтали — склон?</div><div class="opts"><button class="opt" data-v="1">Круче</button><button class="opt" data-v="2">Положе</button><button class="opt" data-v="3">Ниже океана</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Россия в полушариях?</div><div class="opts"><button class="opt" data-v="1">Северном и восточном</button><button class="opt" data-v="2">Южном и западном</button><button class="opt" data-v="3">Только южном</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мелкомасштабная карта для?</div><div class="opts"><button class="opt" data-v="1">Обзора большой территории</button><button class="opt" data-v="2">Плана двора</button><button class="opt" data-v="3">Только комнаты</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">В 1 см 2 км — это примерно?</div><div class="opts"><button class="opt" data-v="1">1:200 000</button><button class="opt" data-v="2">1:2000</button><button class="opt" data-v="3">1:20</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Широта растёт к?</div><div class="opts"><button class="opt" data-v="1">Полюсам</button><button class="opt" data-v="2">Гринвичу</button><button class="opt" data-v="3">Только западу</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Долгота отсчитывается от?</div><div class="opts"><button class="opt" data-v="1">Гринвича</button><button class="opt" data-v="2">Экватора</button><button class="opt" data-v="3">Полюса</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Север на обычной карте?</div><div class="opts"><button class="opt" data-v="1">Вверху</button><button class="opt" data-v="2">Внизу</button><button class="opt" data-v="3">Справа</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Азимут 270°?</div><div class="opts"><button class="opt" data-v="1">Запад</button><button class="opt" data-v="2">Восток</button><button class="opt" data-v="3">Север</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit" data-unit="gh_zones2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon">🌿</div>
+      <div class="unit-info"><h3>Зоны: сложный уровень</h3><p>Сравнение и хозяйство зон</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div></div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="gh_zones2">
+        <div class="theory"><p>Природные зоны России сменяются с севера на юг вслед за изменением тепла и влаги. <strong>Арктические пустыни</strong> — льды, бедные мхи. <strong>Тундра</strong> — многолетняя мерзлота, ягель, карликовые берёзы и ивы, оленеводство. Далее <strong>лесотундра</strong> — переход к лесу. <strong>Тайга</strong> — самая большая зона: ель, пихта, сосна, лиственница; охота, лесозаготовки, пушнина.</p><p>В европейской части южнее тайги — <strong>смешанные и широколиственные леса</strong> (дуб, липа, клён). <strong>Лесостепь и степь</strong> — плодородные чернозёмы, главная житница: пшеница, подсолнечник, свекла. <strong>Полупустыни и пустыни</strong> у Прикаспия — полынь, солончаки, пастбищное животноводство.</p><p>В горах выражена <strong>высотная поясность</strong>: с подъёмом вверх зоны сменяются подобно движению на север. Хозяйство зоны зависит от почв и климата: в тундре — олени, в степи — зерно, в тайге — лес. На ОГЭ нужно знать порядок зон с севера на юг, типичные растения, почвы и занятия населения.</p></div>
+        <div class="quiz-box"><h5>Тест — 15 вопросов</h5>
+<div class="q-item" data-c="1"><div class="q-text">Самая большая зона РФ?</div><div class="opts"><button class="opt" data-v="1">Тайга</button><button class="opt" data-v="2">Степь</button><button class="opt" data-v="3">Пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Ягель и олени —?</div><div class="opts"><button class="opt" data-v="1">Тундра</button><button class="opt" data-v="2">Степь</button><button class="opt" data-v="3">Пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Чернозём типичен для?</div><div class="opts"><button class="opt" data-v="1">Степи и лесостепи</button><button class="opt" data-v="2">Тундры</button><button class="opt" data-v="3">Арктики</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Хвойные леса —?</div><div class="opts"><button class="opt" data-v="1">Тайга</button><button class="opt" data-v="2">Только пустыня</button><button class="opt" data-v="3">Только степь</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Высотная поясность —?</div><div class="opts"><button class="opt" data-v="1">Смена зон в горах</button><button class="opt" data-v="2">Только по долготе</button><button class="opt" data-v="3">Только в океане</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полупустыни у?</div><div class="opts"><button class="opt" data-v="1">Прикаспия</button><button class="opt" data-v="2">Мурманска</button><button class="opt" data-v="3">Северной Камчатки</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Мерзлота типична для?</div><div class="opts"><button class="opt" data-v="1">Тундры и части тайги</button><button class="opt" data-v="2">Субтропиков</button><button class="opt" data-v="3">Только степи</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Дуб и липа — леса?</div><div class="opts"><button class="opt" data-v="1">Широколиственные/смешанные</button><button class="opt" data-v="2">Только тундра</button><button class="opt" data-v="3">Только пустыня</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пшеница в зоне?</div><div class="opts"><button class="opt" data-v="1">Степи</button><button class="opt" data-v="2">Арктики</button><button class="opt" data-v="3">Тундры</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Переход тундра–тайга?</div><div class="opts"><button class="opt" data-v="1">Лесотундра</button><button class="opt" data-v="2">Пустыня</button><button class="opt" data-v="3">Саванна</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Лиственница устойчива к?</div><div class="opts"><button class="opt" data-v="1">Холоду и мерзлоте</button><button class="opt" data-v="2">Только тропикам</button><button class="opt" data-v="3">Только пустыне</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Полынь, солончаки —?</div><div class="opts"><button class="opt" data-v="1">Полупустыня</button><button class="opt" data-v="2">Тайга</button><button class="opt" data-v="3">Смешанный лес</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Зоны к югу сменяются из-за?</div><div class="opts"><button class="opt" data-v="1">Роста тепла</button><button class="opt" data-v="2">Уменьшения долготы</button><button class="opt" data-v="3">Только ветра</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Пушнина связана с?</div><div class="opts"><button class="opt" data-v="1">Тайгой</button><button class="opt" data-v="2">Пустыней</button><button class="opt" data-v="3">Субтропиками</button></div><div class="fb"></div></div>
+<div class="q-item" data-c="1"><div class="q-text">Карликовая берёза —?</div><div class="opts"><button class="opt" data-v="1">Тундра</button><button class="opt" data-v="2">Влажные субтропики</button><button class="opt" data-v="3">Экваториальный лес</button></div><div class="fb"></div></div></div>
+        <button class="done-btn" onclick="completeLesson(this,35)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="path hidden" id="path-vars">
+  <div class="hero">
+    <h1>Варианты для тренировки</h1>
+    <p class="warn-box"><strong>Это не реальные варианты ОГЭ.</strong> Задания для практики в похожем формате. На экзамене — официальные КИМ.</p><p>Сначала ответь — потом «Проверить».</p>
+  </div>
+  <div id="variantsContainer"></div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="xp-popup" id="xpPopup"><div class="big">🎉</div><h3>+<span id="xpGain">0</span> XP</h3></div>
+
+<nav class="bottom-nav">
+  <button class="bnav-item active" onclick="switchTab('main');setActiveBnav(this)"><span>📋</span> ОГЭ</button>
+  <button class="bnav-item" onclick="switchTab('duo');setActiveBnav(this)"><span>🎮</span> Практика</button>
+  <button class="bnav-item" onclick="switchTab('hard');setActiveBnav(this)"><span>🔥</span> Сложные</button>
+  <button class="bnav-item" onclick="switchTab('vars');setActiveBnav(this)"><span>📝</span> Варианты</button>
+</nav>
+
+<script>
+let xp=parseInt(localStorage.getItem('oge_geo_xp')||'0'),streak=parseInt(localStorage.getItem('oge_geo_streak')||'0'),completed=JSON.parse(localStorage.getItem('oge_geo_completed')||'{}');
+document.getElementById('xpCount').textContent=xp;document.getElementById('streakCount').textContent=streak;
+function switchTab(n){
+  document.getElementById('path-main').classList.toggle('hidden',n!=='main');
+  document.getElementById('path-duo').classList.toggle('hidden',n!=='duo');
+  document.getElementById('path-hard').classList.toggle('hidden',n!=='hard');
+  document.getElementById('path-vars').classList.toggle('hidden',n!=='vars');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setActiveBnav(b){document.querySelectorAll('.bnav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function toggleUnit(h){h.parentElement.classList.toggle('open')}
+
+function bindQuizzes(){
+  document.querySelectorAll('.q-item').forEach(function(q){
+    if(q.dataset.bound==='1') return;
+    q.dataset.bound='1';
+    var opts=q.querySelectorAll('.opt');
+    var fb=q.querySelector('.fb');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        if(opt.classList.contains('disabled')) return;
+        var c=String(q.getAttribute('data-c')||'');
+        opts.forEach(function(o){ o.classList.add('disabled'); });
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          opts.forEach(function(o){
+            if(String(o.getAttribute('data-v'))===c) o.classList.add('correct');
+          });
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+      });
+    });
+  });
+}
+
+bindQuizzes();
+function completeLesson(btn,pts){
+  const id=btn.closest('.lesson').dataset.lesson;
+  if(completed[id]){btn.textContent='Уже пройдено ✓';btn.disabled=true;return}
+  completed[id]=true;localStorage.setItem('oge_geo_completed',JSON.stringify(completed));
+  xp+=pts;
+/* sync progress to main menu (only lessons/tests) */
+try{
+  var STORE='oge_fun_v1';
+  var g=JSON.parse(localStorage.getItem(STORE)||'{}');
+  if(!g.subj) g.subj={};
+  var subj=document.body.getAttribute('data-subject')||(location.pathname.split('/').filter(Boolean).slice(-2,-1)[0])||'russian';
+  g.subj[subj]=Math.min(100,(g.subj[subj]||0)+Math.max(3,Math.round((pts||10)/3)));
+  g.xp=(g.xp||0)+(pts||10);
+  localStorage.setItem(STORE,JSON.stringify(g));
+}catch(e){}
+localStorage.setItem('oge_geo_xp',xp);document.getElementById('xpCount').textContent=xp;
+  const today=new Date().toDateString(),last=localStorage.getItem('oge_geo_last');
+  if(last!==today){streak=(last&&new Date(last).getTime()>Date.now()-172800000)?streak+1:1;localStorage.setItem('oge_geo_streak',streak);localStorage.setItem('oge_geo_last',today);document.getElementById('streakCount').textContent=streak}
+  btn.textContent='Пройдено ✓';btn.disabled=true;updateProgress();
+  document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+  setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1500)
+}
+function updateProgress(){
+  document.querySelectorAll('.unit').forEach(u=>{
+    const ls=u.querySelectorAll('.lesson');if(!ls.length)return;
+    let d=0;ls.forEach(l=>{if(completed[l.dataset.lesson])d++});
+    const b=u.querySelector('.unit-progress-bar');if(b)b.style.width=Math.round(d/ls.length*100)+'%'
+  })
+}
+document.querySelectorAll('.lesson').forEach(l=>{if(completed[l.dataset.lesson]){const b=l.querySelector('.done-btn');if(b){b.textContent='Пройдено ✓';b.disabled=true}}});
+updateProgress();
+function openDuoLesson(btn,panelId){if(btn.classList.contains('locked'))return;document.querySelectorAll('.duo-lesson-panel').forEach(p=>p.classList.remove('show'));const panel=document.getElementById(panelId);if(panel)panel.classList.toggle('show')}
+function completeDuoNode(btn,id,pts){
+  if(!completed['duo-'+id]){completed['duo-'+id]=true;localStorage.setItem('oge_geo_completed',JSON.stringify(completed));xp+=pts;localStorage.setItem('oge_geo_xp',xp);document.getElementById('xpCount').textContent=xp;
+    document.getElementById('xpGain').textContent=pts;document.getElementById('overlay').classList.add('show');document.getElementById('xpPopup').classList.add('show');
+    setTimeout(()=>{document.getElementById('overlay').classList.remove('show');document.getElementById('xpPopup').classList.remove('show')},1200)}
+  const node=btn.closest('.duo-node-wrap').querySelector('.duo-node');
+  if(node){node.classList.remove('active');node.classList.add('done');node.textContent='✓'}
+  document.querySelectorAll('.duo-node.locked[data-unlock="'+id+'"]').forEach(n=>{n.classList.remove('locked');n.classList.add('active')});
+  btn.closest('.duo-lesson-panel').classList.remove('show');bindQuizzes()
+}
+document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}});
+function normalizeAns(s){return String(s).trim().toLowerCase().replace(/\s+/g,'').replace('ё','е')}
+function checkOpenVariant(btn){
+  const lesson=btn.closest('.lesson');if(lesson.dataset.checked==='1')return;
+  const tasks=lesson.querySelectorAll('.open-task');let ok=0,total=tasks.length;
+  tasks.forEach(t=>{
+    const input=t.querySelector('.ans-input');if(!input)return;
+    const corrects=normalizeAns(t.dataset.answer).split('|');
+    const user=normalizeAns(input.value);
+    const ansBox=t.querySelector('.correct-ans');
+    let match=corrects.some(c=>c===user);
+    if(!match&&user.length>=2&&corrects[0]&&corrects[0].length===user.length){
+      match=user.split('').sort().join('')===corrects[0].split('').sort().join('');
+    }
+    if(match&&user!==''){input.classList.add('ok');ok++}else{input.classList.add('bad')}
+    if(ansBox)ansBox.classList.add('show');input.readOnly=true;
+  });
+  lesson.dataset.checked='1';btn.disabled=true;btn.textContent='Проверено';
+  const res=lesson.querySelector('.var-result');const pct=total?Math.round(ok/total*100):0;
+  if(res){res.classList.add('show');res.innerHTML='Результат: <strong>'+ok+' из '+total+'</strong> ('+pct+'%)';
+    if(pct>=80)res.className='var-result show good';else if(pct>=50)res.className='var-result show mid';else res.className='var-result show bad'}
+  const done=lesson.querySelector('.done-btn');if(done)done.style.display='block';
+}
+
+function generateDuo(){
+  const container=document.getElementById('duoContainer');
+  if(!container)return;
+  const bank=[
+    ['Масштаб 1:100 000 — в 1 см?','1 км','10 км','100 м',1],
+    ['Крупнее масштаб у карты?','1:10 000','1:1 000 000','1:5 000 000',1],
+    ['Экватор — широта?','0°','90°','45°',1],
+    ['Гринвич — меридиан?','0°','180°','90°',1],
+    ['Азимут юга?','180°','90°','0°',1],
+    ['Азимут востока?','90°','180°','270°',1],
+    ['Высшая точка РФ?','Эльбрус','Народная','Белуха',1],
+    ['Урал — граница?','Европы и Азии','Африки и Азии','Только леса',1],
+    ['Равнина Урал–Енисей?','Западно-Сибирская','Прикаспийская','Валдай',1],
+    ['Самая большая зона?','Тайга','Степь','Пустыня',1],
+    ['Чернозём в?','Степи','Тундре','Арктике',1],
+    ['Основной климат РФ?','Умеренный','Тропический','Экваториальный',1],
+    ['Субтропики РФ?','Черноморское побережье','Якутия','Чукотка',1],
+    ['Нефть/газ — район?','Западная Сибирь','Только Крым','Карелия',1],
+    ['Кузбасс — это?','Уголь','Чай','Хлопок',1],
+    ['Крупнейший город?','Москва','Магадан','Анадырь',1],
+    ['Где плотность выше?','Европейская часть','Вся тундра равномерно','Только острова',1],
+    ['Байкал — озеро?','Самое глубокое','Самое мелкое','Солёное как океан',1],
+    ['Волга впадает в?','Каспий','Балтику','Тихий океан',1],
+    ['Мурманск — порт?','Незамерзающий','Только речной юг','Только озёрный',1],
+    ['Владивосток у?','Тихого океана','Каспия','Балтики',1],
+    ['Оймякон известен?','Холодом','Жарой экватора','Влажностью Амазонки',1],
+    ['Муссоны у?','Дальнего Востока','Калининграда только','Пустыни Прикаспия',1],
+    ['КМА — руда?','Железная','Нефть','Уран только',1],
+    ['Горизонтали показывают?','Высоту','Население','Температуру',1],
+    ['Север на карте?','Вверху','Внизу','Слева всегда',1],
+    ['Тихий океан —?','Самый большой','Самый маленький','Пресноводный',1],
+    ['Эверест —?','Высшая точка суши','Глубина океана','Город РФ',1],
+    ['Сахара —?','Пустыня','Озеро','Гора',1],
+    ['Тайга — лес?','Хвойный','Только дубовый','Только пальмы',1],
+    ['Тундра —?','Ягель, олени','Пальмы','Лианы',1],
+    ['Кавказ — горы?','Высокие молодые','Только холмы Валдая','Ниже уровня моря',1],
+    ['ЯНАО —?','Газ','Чай','Хлопок',1],
+    ['ХМАО —?','Нефть','Виноград','Какао',1],
+    ['Ладога —?','Крупное озеро','Вулкан','Пустыня',1],
+    ['Амур — бассейн?','Тихого океана','Каспия','Балтики',1],
+    ['Дон впадает в?','Азовское море','Байкал','Балтику',1],
+    ['Прикаспий —?','Низменность','Высочайшие горы','Только тайга',1],
+    ['Белуха на?','Алтае','Кавказе','Урале',1],
+    ['Ключевская —?','Вулкан Камчатки','Река','Озеро',1],
+    ['Широта растёт к?','Полюсам','Гринвичу','Только западу',1],
+    ['Долгота от?','Гринвича','Экватора','Полюса',1],
+    ['Изотерма —?','Равная температура','Равная высота','Равное население',1],
+    ['Плотность —?','чел/км²','км/ч','°C',1],
+    ['Степь — хозяйство?','Зерно','Оленеводство только','Пальмы',1],
+    ['Оленеводство — зона?','Тундра','Субтропики','Пустыня Сахара',1],
+    ['Новороссийск — море?','Чёрное','Балтийское','Японское',1],
+    ['СПб — море?','Балтийское','Каспий','Охотское',1],
+    ['Резко континентальный —?','Восточная Сибирь','Сочи','Калининград',1],
+    ['Арктика — пояс?','Холодный север','Тропики','Экватор',1],
+    ['Камчатка известна?','Вулканами','Только степью','Только пустыней',1],
+    ['Саяны — горы в?','Южной Сибири','Калининграде','Крыму только',1],
+    ['Енисей течёт в?','Северный Ледовитый','Каспий','Чёрное море',1],
+    ['Обь течёт в?','Северный Ледовитый','Балтику','Азов',1],
+    ['Лена течёт в?','Море Лаптевых','Каспий','Чёрное',1],
+    ['Каспий — это?','Бессточное озеро','Река','Часть Атлантики',1],
+    ['Балтика омывает?','СПб и Калининград','Владивосток','Мурманск только',1],
+    ['Японское море у?','Дальнего Востока','Кавказа','Кольского',1],
+    ['Чернозём богат?','Гумусом','Только песком','Только льдом',1],
+    ['Мерзлота типична для?','Тундры и севера','Субтропиков Сочи','Пустынь Африки',1]
+  ];
+  const TOTAL=200;
+  let track=null;
+  for(let i=0;i<TOTAL;i++){
+    if(i%10===0){
+      const m=document.createElement('div');
+      m.className='duo-module';
+      m.innerHTML='<div><h2>МОДУЛЬ '+(Math.floor(i/10)+1)+'</h2></div>';
+      container.appendChild(m);
+      track=document.createElement('div');
+      track.className='duo-track';
+      container.appendChild(track);
+    }
+    const id='dn'+i;
+    const off=['',' offset-left',' offset-right'][i%3];
+    const wrap=document.createElement('div');
+    wrap.className='duo-node-wrap'+off;
+    const btn=document.createElement('button');
+    btn.className='duo-node '+(i===0?'active':'locked');
+    if(i>0) btn.dataset.unlock='dn'+(i-1);
+    btn.textContent=['🗺️','⛰️','🌡️','🌲','🏙️','💧','🧭','⭐'][i%8];
+    btn.onclick=function(){openDuoLesson(this,'panel-'+id)};
+    const label=document.createElement('div');
+    label.className='duo-label';
+    label.textContent='Урок '+(i+1);
+    const panel=document.createElement('div');
+    panel.className='duo-lesson-panel';
+    panel.id='panel-'+id;
+    let quiz='';
+    for(let k=0;k<10;k++){
+      const it=bank[(i*5+k)%bank.length];
+      quiz+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';
+    }
+    panel.innerHTML='<h4>Урок '+(i+1)+'</h4><div class="quiz-box">'+quiz+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\''+id+'\',12)">Готово ✓</button>';
+    wrap.appendChild(btn);wrap.appendChild(label);wrap.appendChild(panel);
+    track.appendChild(wrap);
+    const line=document.createElement('div');line.className='duo-line';track.appendChild(line);
+  }
+  
+  // Финальный урок — 50 вопросов по всем темам
+  const finalWrap=document.createElement('div');
+  finalWrap.className='duo-node-wrap';
+  const finalBtn=document.createElement('button');
+  finalBtn.className='duo-node locked';
+  finalBtn.dataset.unlock='dn199';
+  finalBtn.textContent='🏆';
+  finalBtn.onclick=function(){openDuoLesson(this,'panel-dnfinal')};
+  const finalLabel=document.createElement('div');
+  finalLabel.className='duo-label';
+  finalLabel.textContent='Финал 50';
+  const finalPanel=document.createElement('div');
+  finalPanel.className='duo-lesson-panel';
+  finalPanel.id='panel-dnfinal';
+  let fq='';
+  for(let k=0;k<50;k++){
+    const it=bank[k%bank.length];
+    fq+='<div class="q-item" data-c="'+it[4]+'"><div class="q-text">'+(k+1)+'. '+it[0]+'</div><div class="opts"><button class="opt" data-v="1">'+it[1]+'</button><button class="opt" data-v="2">'+it[2]+'</button><button class="opt" data-v="3">'+it[3]+'</button></div><div class="fb"></div></div>';
+  }
+  finalPanel.innerHTML='<h4>Итоговый тест — 50 вопросов</h4><div class="quiz-box">'+fq+'</div><button class="duo-start-btn" onclick="completeDuoNode(this,\'dnfinal\',100)">Готово ✓</button>';
+  finalWrap.appendChild(finalBtn);finalWrap.appendChild(finalLabel);finalWrap.appendChild(finalPanel);
+  container.appendChild(finalWrap);
+const mas=document.createElement('div');mas.className='duo-mascot';mas.textContent='🌍';container.appendChild(mas);
+  document.querySelectorAll('.duo-node[data-unlock]').forEach(n=>{
+    if(completed['duo-'+n.dataset.unlock]){n.classList.remove('locked');n.classList.add('active')}
+  });
+  bindQuizzes();
+}
+
+function generateVariants(){
+  const container=document.getElementById('variantsContainer');
+  container.innerHTML='';
+  const matchTasks=[
+    {title:'Зона — признак',left:['А) Тундра','Б) Тайга','В) Степь','Г) Пустыня'],right:['1) Хвойный лес','2) Ягель','3) Чернозём','4) Мало осадков'],ans:'2134'},
+    {title:'Объект — факт',left:['А) Эльбрус','Б) Урал','В) Волга','Г) Байкал'],right:['1) Граница Европы и Азии','2) Высшая точка РФ','3) Глубочайшее озеро','4) Впадает в Каспий'],ans:'2143'},
+    {title:'Ресурс — район',left:['А) Нефть','Б) Уголь','В) Железная руда','Г) Газ'],right:['1) Кузбасс','2) Западная Сибирь','3) КМА','4) Ямал'],ans:'2134'},
+    {title:'Река — море/океан',left:['А) Волга','Б) Лена','В) Амур','Г) Дон'],right:['1) Сев. Ледовитый','2) Каспий','3) Тихий','4) Азовское'],ans:'2134'},
+  ];
+  const shortQ=[
+    ['Высшая точка России','эльбрус'],['Самая большая природная зона','тайга'],['Горы — граница Европы и Азии','урал'],
+    ['Главный район нефти и газа','западная сибирь'],['Климатический пояс большей части РФ','умеренный'],
+    ['Чернозёмы типичны для','степи|лесостепи'],['Крупнейший город России','москва'],['Самое глубокое озеро','байкал'],
+    ['Угольный бассейн','кузбасс'],['Субтропики в РФ','кавказ|сочи'],['Волга впадает в','каспий|каспийское море'],
+    ['Незамерзающий порт севера','мурманск'],['Порт Тихого океана','владивосток'],['КМА — это запасы','железной руды|железа'],
+    ['Азимут юга (градусы)','180'],['Широта экватора','0'],['Нулевой меридиан','гринвич'],
+  ];
+  for(let v=1;v<=40;v++){
+    const unit=document.createElement('div');unit.className='unit'+(v===1?' open':'');
+    const header=document.createElement('div');header.className='unit-header';header.onclick=function(){toggleUnit(this)};
+    header.innerHTML=`<div class="unit-icon">${v}</div><div class="unit-info"><h3>Вариант ${v}</h3><p>Тренировка · не официальный КИМ</p><div class="unit-progress"><div class="unit-progress-bar"></div></div></div><div class="unit-chevron">▼</div>`;
+    unit.appendChild(header);
+    const body=document.createElement('div');body.className='unit-body';
+    const lesson=document.createElement('div');lesson.className='lesson';lesson.dataset.lesson='gv'+v;
+    // 2 match
+    for(let m=0;m<2;m++){
+      const mt=matchTasks[(v+m)%matchTasks.length];
+      let L='',R='';mt.left.forEach(x=>L+=x+'<br>');mt.right.forEach(x=>R+=x+'<br>');
+      const t=document.createElement('div');t.className='exam-task open-task';t.dataset.answer=mt.ans;
+      t.innerHTML=`<div class="exam-title"><span class="exam-num">${m+1}</span> ${mt.title}</div><div class="exam-text"><strong>СТОЛБЕЦ 1</strong><br>${L}</div><div class="exam-text"><strong>СТОЛБЕЦ 2</strong><br>${R}</div><div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="${mt.ans}" autocomplete="off"></div><div class="correct-ans">Правильный ответ: <strong>${mt.ans}</strong></div>`;
+      lesson.appendChild(t);
+    }
+    // 12 short
+    for(let i=0;i<12;i++){
+      const item=shortQ[(v*3+i)%shortQ.length];
+      const t=document.createElement('div');t.className='exam-task open-task';t.dataset.answer=item[1];
+      t.innerHTML=`<div class="exam-title"><span class="exam-num">${i+3}</span> Краткий ответ</div><div class="exam-text">${item[0]}?</div><div class="ans-row"><label>Ответ:</label><input type="text" class="ans-input" placeholder="Ответ" autocomplete="off"></div><div class="correct-ans">Правильный ответ: <strong>${item[1].split('|')[0]}</strong></div>`;
+      lesson.appendChild(t);
+    }
+    const btn=document.createElement('button');btn.className='check-btn';btn.textContent='Проверить вариант';btn.onclick=function(){checkOpenVariant(this)};
+    lesson.appendChild(btn);
+    const res=document.createElement('div');res.className='var-result';lesson.appendChild(res);
+    const done=document.createElement('button');done.className='done-btn';done.style.display='none';done.textContent=`Вариант ${v} засчитан ✓`;done.onclick=function(){completeLesson(this,50)};
+    lesson.appendChild(done);
+    body.appendChild(lesson);unit.appendChild(body);container.appendChild(unit);
+  }
+}
+
+generateDuo();
+generateVariants();
+
+</script>
+<script src="../shared-enhance.js">
+
+
+
+
+
+/* ===== Duolingo sequential lessons (fixed) ===== */
+(function(){
+  function initDuoLessons(){
+    document.querySelectorAll('.lesson').forEach(function(lesson){
+      if(lesson.dataset.duoInit==='1') return;
+      lesson.dataset.duoInit='1';
+
+      var theory=lesson.querySelector('.theory');
+      var tip=lesson.querySelector('.tip');
+      var questions=Array.prototype.slice.call(lesson.querySelectorAll('.q-item'));
+      var doneBtn=lesson.querySelector('.done-btn');
+      var pts=10;
+      if(doneBtn){
+        var mm=(doneBtn.getAttribute('onclick')||'').match(/completeLesson\([^,]+,\s*(\d+)/);
+        if(mm) pts=parseInt(mm[1],10)||10;
+      }
+
+      var steps=[];
+      if(theory){
+        var th=document.createElement('div');
+        th.className='duo-step duo-theory';
+        th.appendChild(theory);
+        if(tip) th.appendChild(tip);
+        steps.push({el:th, type:'theory'});
+      }
+      questions.forEach(function(q,i){
+        var st=document.createElement('div');
+        st.className='duo-step duo-q';
+        var lab=document.createElement('div');
+        lab.className='duo-step-label';
+        lab.textContent='Вопрос '+(i+1)+' из '+questions.length;
+        st.appendChild(lab);
+        st.appendChild(q);
+        steps.push({el:st, type:'q', q:q, qi:i});
+      });
+      if(!steps.length) return;
+
+      lesson.classList.add('duo-mode');
+      var h4=lesson.querySelector('h4');
+      Array.prototype.slice.call(lesson.children).forEach(function(ch){
+        if(ch===h4) return;
+        if(ch===doneBtn){ ch.style.display='none'; return; }
+        try{ lesson.removeChild(ch); }catch(e){}
+      });
+
+      var prog=document.createElement('div');
+      prog.className='duo-progress';
+      for(var i=0;i<steps.length;i++){
+        prog.appendChild(document.createElement('i'));
+      }
+      lesson.appendChild(prog);
+      steps.forEach(function(s){ lesson.appendChild(s.el); });
+
+      var nav=document.createElement('div');
+      nav.className='duo-nav';
+      var next=document.createElement('button');
+      next.type='button';
+      next.className='duo-next';
+      next.textContent='Далее →';
+      nav.appendChild(next);
+      lesson.appendChild(nav);
+
+      var finish=document.createElement('div');
+      finish.className='duo-step duo-finish-wrap';
+      finish.innerHTML='<div class="duo-finish"><div class="big">Урок пройден!</div><div>Отличная работа</div></div>';
+      lesson.appendChild(finish);
+
+      var state={idx:0, answered:{}, finished:false};
+
+      function setProgress(){
+        var dots=prog.querySelectorAll('i');
+        for(var j=0;j<dots.length;j++){
+          dots[j].classList.remove('on','cur');
+          if(j<state.idx) dots[j].classList.add('on');
+          if(j===state.idx) dots[j].classList.add('cur');
+        }
+      }
+
+      function show(i){
+        if(state.finished) return;
+        state.idx=i;
+        for(var j=0;j<steps.length;j++){
+          steps[j].el.classList.toggle('active', j===i);
+        }
+        finish.classList.remove('active');
+        setProgress();
+        var step=steps[i];
+        if(!step) return;
+        if(step.type==='theory'){
+          next.style.display='flex';
+          next.disabled=false;
+          next.textContent=questions.length?'К вопросам →':'Готово ✓';
+        } else {
+          if(state.answered[step.qi]){
+            next.style.display='flex';
+            next.disabled=false;
+            next.textContent=(i>=steps.length-1)?'Завершить ✓':'Далее →';
+          } else {
+            next.style.display='none';
+          }
+        }
+        try{ step.el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+      }
+
+      function finishLesson(){
+        if(state.finished) return;
+        state.finished=true;
+        for(var j=0;j<steps.length;j++) steps[j].el.classList.remove('active');
+        finish.classList.add('active');
+        prog.querySelectorAll('i').forEach(function(d){ d.classList.add('on'); d.classList.remove('cur'); });
+        next.style.display='none';
+        var btn=doneBtn;
+        if(!btn){
+          btn=document.createElement('button');
+          btn.className='done-btn';
+          btn.style.display='none';
+          lesson.appendChild(btn);
+        } else if(!lesson.contains(btn)){
+          lesson.appendChild(btn);
+          btn.style.display='none';
+        }
+        try{
+          if(typeof completeLesson==='function') completeLesson(btn, pts);
+        }catch(e){ console.warn(e); }
+      }
+
+      next.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(state.finished) return;
+        if(state.idx>=steps.length-1){
+          finishLesson();
+          return;
+        }
+        show(state.idx+1);
+      };
+
+      lesson.addEventListener('click', function(e){
+        var opt=e.target.closest ? e.target.closest('.opt') : null;
+        if(!opt || !lesson.contains(opt)) return;
+        if(opt.classList.contains('disabled')) return;
+        var q=opt.closest('.q-item');
+        if(!q) return;
+        var stepEl=opt.closest('.duo-step');
+        if(!stepEl || !stepEl.classList.contains('active')) return;
+
+        var c=String(q.getAttribute('data-c'));
+        var opts=q.querySelectorAll('.opt');
+        var fb=q.querySelector('.fb');
+        for(var oi=0;oi<opts.length;oi++) opts[oi].classList.add('disabled');
+        if(String(opt.getAttribute('data-v'))===c){
+          opt.classList.add('correct');
+          if(fb){ fb.textContent='✓ Верно!'; fb.className='fb show ok'; }
+        } else {
+          opt.classList.add('wrong');
+          for(var oi=0;oi<opts.length;oi++){
+            if(String(opts[oi].getAttribute('data-v'))===c) opts[oi].classList.add('correct');
+          }
+          if(fb){ fb.textContent='✗ Неправильно. Правильный — зелёным.'; fb.className='fb show fail'; }
+        }
+
+        var qi=-1;
+        for(var i=0;i<questions.length;i++){ if(questions[i]===q) qi=i; }
+        if(qi>=0) state.answered[qi]=true;
+
+        next.style.display='flex';
+        next.disabled=false;
+        var isLast=state.idx>=steps.length-1;
+        next.textContent=isLast?'Завершить ✓':'Далее →';
+
+        clearTimeout(lesson._duoT);
+        lesson._duoT=setTimeout(function(){
+          if(state.finished) return;
+          if(isLast) finishLesson();
+          else show(state.idx+1);
+        }, 700);
+      }, true);
+
+      show(0);
+    });
+  }
+
+  var _toggle=window.toggleUnit;
+  window.toggleUnit=function(h){
+    try{
+      if(typeof _toggle==='function') _toggle(h);
+      else if(h && h.parentElement) h.parentElement.classList.toggle('open');
+    }catch(e){}
+    setTimeout(initDuoLessons, 40);
+  };
+
+  function boot(){ setTimeout(initDuoLessons, 80); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  var tries=0;
+  var iv=setInterval(function(){
+    tries++;
+    initDuoLessons();
+    if(tries>15) clearInterval(iv);
+  }, 500);
+})();
+
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="../ai-coach.js"></script>
+<script src="../ai-tutor-widget.js"></script>
+</body>
+</html>

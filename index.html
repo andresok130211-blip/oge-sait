@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ru" data-build="2026-08-12-fun">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ОГЭ — подготовка с нуля</title>
+<meta name="description" content="Бесплатная подготовка к ОГЭ с нуля. Задание дня, серия дней, прогресс, мини-тест. Все предметы.">
+<meta name="theme-color" content="#7c3aed">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --violet:#7c3aed;--pink:#ec4899;--cyan:#06b6d4;--lime:#84cc16;
+  --orange:#f97316;--indigo:#4f46e5;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  min-height:100vh;color:#0f172a;
+  background:#0f0a1e;
+  overflow-x:hidden;
+  padding:0 0 80px;
+}
+
+/* === Animated background === */
+.bg{
+  position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  background:linear-gradient(160deg,#1e1b4b 0%,#312e81 35%,#4c1d95 70%,#831843 100%);
+}
+.blob{
+  position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;
+  animation:float 18s ease-in-out infinite;
+}
+.blob.b1{width:340px;height:340px;background:#a78bfa;top:-80px;left:-60px;animation-delay:0s}
+.blob.b2{width:280px;height:280px;background:#f472b6;top:20%;right:-80px;animation-delay:-4s}
+.blob.b3{width:300px;height:300px;background:#22d3ee;bottom:10%;left:10%;animation-delay:-8s}
+.blob.b4{width:220px;height:220px;background:#fbbf24;bottom:-40px;right:15%;animation-delay:-12s}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(30px,-40px) scale(1.08)}
+  66%{transform:translate(-25px,20px) scale(.95)}
+}
+.stars{position:absolute;inset:0}
+.star{
+  position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;
+  animation:twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:20px 16px 40px}
+
+/* === Header === */
+.header{text-align:center;padding:20px 8px 12px}
+.badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#a78bfa,#ec4899,#22d3ee);
+  background-size:200% 200%;
+  animation:gradShift 5s ease infinite;
+  color:#fff;font-size:.78rem;font-weight:800;padding:6px 14px;border-radius:99px;
+  margin-bottom:12px;letter-spacing:.02em;
+  box-shadow:0 4px 20px rgba(236,72,153,.4);
+}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.header h1{
+  font-size:clamp(1.7rem,6.5vw,2.4rem);margin-bottom:8px;
+  background:linear-gradient(90deg,#fff 0%,#e9d5ff 40%,#fbcfe8 70%,#a5f3fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-weight:900;
+}
+.header p{color:rgba(255,255,255,.78);font-size:.95rem;line-height:1.5}
+
+/* === Stats row: streak + XP === */
+.stats-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 14px;
+}
+.stat-card{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:20px;padding:14px 16px;text-align:center;
+  animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+.stat-card .emoji{font-size:1.8rem;display:block;margin-bottom:4px;animation:bounce 2s ease infinite}
+.stat-card .val{font-size:1.6rem;font-weight:900;color:#fff}
+.stat-card .lbl{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:2px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+/* === Daily mission === */
+.mission{
+  background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,.88));
+  border-radius:24px;padding:18px;margin-bottom:16px;
+  box-shadow:0 12px 40px rgba(124,58,237,.25);
+  border:2px solid rgba(255,255,255,.6);
+  animation:slideUp .5s ease both;
+  position:relative;overflow:hidden;
+}
+.mission::before{
+  content:"";position:absolute;top:-50%;right:-30%;width:180px;height:180px;
+  background:radial-gradient(circle,rgba(236,72,153,.2),transparent 70%);
+  border-radius:50%;
+}
+.mission-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;
+  font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:99px;margin-bottom:10px;
+}
+.mission h3{font-size:1.1rem;margin-bottom:6px;color:#1e1b4b}
+.mission p{font-size:.88rem;color:#64748b;line-height:1.45;margin-bottom:12px}
+.mission-btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:12px 16px;border-radius:14px;border:none;font-weight:800;font-size:.9rem;
+  cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s;
+}
+.btn:active{transform:scale(.96)}
+.btn-primary{
+  background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;
+  box-shadow:0 6px 20px rgba(124,58,237,.4);
+}
+.btn-primary:hover{box-shadow:0 8px 28px rgba(124,58,237,.55)}
+.btn-soft{background:#f1f5f9;color:#334155}
+.btn-ok{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+.btn-cyan{background:linear-gradient(135deg,#06b6d4,#2563eb);color:#fff}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* === Progress panel === */
+.progress-panel{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;padding:16px;margin-bottom:16px;
+  animation:slideUp .55s ease .05s both;
+}
+.progress-panel h3{color:#fff;font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.prog-item{margin-bottom:10px}
+.prog-item:last-child{margin-bottom:0}
+.prog-head{display:flex;justify-content:space-between;font-size:.8rem;color:rgba(255,255,255,.85);margin-bottom:4px}
+.prog-bar{
+  height:10px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;
+}
+.prog-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,#a78bfa,#ec4899,#22d3ee);
+  background-size:200% 100%;
+  animation:gradShift 4s ease infinite;
+  transition:width .6s cubic-bezier(.34,1.2,.64,1);
+  width:0;
+}
+
+/* === Mini test === */
+.quiz-panel{
+  background:rgba(255,255,255,.95);border-radius:24px;padding:18px;margin-bottom:16px;
+  box-shadow:0 12px 36px rgba(0,0,0,.15);
+  animation:slideUp .6s ease .1s both;
+  display:none;
+}
+.quiz-panel.open{display:block}
+.quiz-panel h3{font-size:1.05rem;margin-bottom:8px;color:#1e1b4b}
+.q-card{margin:12px 0;padding:12px;background:#f8fafc;border-radius:14px;border:1px solid #e2e8f0}
+.q-card .q-text{font-weight:700;font-size:.92rem;margin-bottom:8px;color:#0f172a}
+.q-opt{
+  display:block;width:100%;text-align:left;padding:10px 12px;margin:6px 0;
+  border-radius:12px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;
+  font-size:.88rem;transition:border-color .15s,background .15s;
+}
+.q-opt:hover{border-color:#a78bfa}
+.q-opt.picked{border-color:#7c3aed;background:#f5f3ff}
+.q-opt.correct{border-color:#22c55e;background:#dcfce7}
+.q-opt.wrong{border-color:#ef4444;background:#fee2e2}
+.quiz-result{
+  text-align:center;padding:16px;margin-top:12px;
+  background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:16px;
+}
+.quiz-result .score{font-size:2rem;font-weight:900;color:#7c3aed}
+
+/* === Share === */
+.share-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+
+/* === Subject cards === */
+.section-title{
+  color:#fff;font-size:1.05rem;font-weight:800;margin:8px 0 12px;
+  display:flex;align-items:center;gap:8px;
+}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.94);
+  border:2px solid rgba(255,255,255,.5);
+  border-radius:20px;padding:16px;
+  text-decoration:none;color:inherit;
+  box-shadow:0 8px 28px rgba(0,0,0,.12);
+  transition:transform .2s,box-shadow .2s;
+  animation:slideUp .5s ease both;
+}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.11s}
+.card:nth-child(4){animation-delay:.14s}
+.card:nth-child(5){animation-delay:.17s}
+.card:nth-child(6){animation-delay:.2s}
+.card:nth-child(7){animation-delay:.23s}
+.card:nth-child(8){animation-delay:.26s}
+.card:nth-child(9){animation-delay:.29s}
+.card:nth-child(10){animation-delay:.32s}
+.card:nth-child(11){animation-delay:.35s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(124,58,237,.25)}
+.card:active{transform:scale(.98)}
+.card-icon{
+  width:54px;height:54px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.65rem;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.card-body{flex:1;min-width:0}
+.card-body h2{font-size:1.08rem;margin-bottom:2px;color:#1e1b4b}
+.card-body p{font-size:.8rem;color:#64748b}
+.card-arrow{font-size:1.2rem;color:#a78bfa;font-weight:700}
+.card-xp{font-size:.72rem;color:#7c3aed;font-weight:700;margin-top:2px}
+
+/* === App panel (compact) === */
+.app-panel{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;padding:16px;margin:18px 0;
+  animation:slideUp .6s ease .15s both;
+}
+.app-panel h2{color:#fff;font-size:1rem;margin-bottom:6px}
+.app-panel p{color:rgba(255,255,255,.7);font-size:.85rem;margin-bottom:10px;line-height:1.45}
+.app-actions{display:flex;flex-wrap:wrap;gap:8px}
+.app-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:11px 14px;border-radius:14px;
+  border:none;font-weight:800;cursor:pointer;font-size:.85rem;text-decoration:none;color:#fff;
+}
+.app-btn.primary{background:linear-gradient(135deg,#7c3aed,#ec4899)}
+.app-btn.secondary{background:rgba(255,255,255,.2);color:#fff}
+.app-grid{margin-top:10px}
+.app-grid label{display:block;font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:4px}
+.app-grid select{
+  padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.15);color:#fff;font:inherit;
+}
+.app-grid select option{color:#0f172a}
+
+.footer{text-align:center;margin-top:20px;font-size:.78rem;color:rgba(255,255,255,.45)}
+
+/* confetti canvas */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:99}
+
+/* toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:#1e1b4b;color:#fff;padding:12px 20px;border-radius:14px;
+  font-weight:700;font-size:.9rem;z-index:100;
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);opacity:0;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+
+
+/* main-white-bg */
+
+html, body {
+  background-color: #fafafa !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext x='12' y='40' font-size='18' fill='%237c3aed' opacity='0.06'%3E%D0%9E%D0%93%D0%AD%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+}
+.bg { display: none !important; }
+.wrap { position: relative; z-index: 1; }
+.header h1 {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.header p { color: #475569 !important; }
+.section-title { color: #1e1b4b !important; }
+.stat-card, .progress-panel, .app-panel {
+  background: #fff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.stat-card .val, .progress-panel h3, .app-panel h2 { color: #1e1b4b !important; }
+.stat-card .lbl, .app-panel p, .prog-head { color: #64748b !important; }
+.footer { color: #94a3b8 !important; }
+.mission {
+  background: #fff !important;
+}
+
+
+/* visibility fix on white */
+.app-panel, .mission, .stat-card, .progress-panel, .card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.app-panel h2, .mission h3, .stat-card .val, .progress-panel h3 { color: #1e1b4b !important; }
+.app-panel p, .mission p, .stat-card .lbl, .prog-head, .card-body p { color: #475569 !important; }
+.app-btn.secondary {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.app-btn.primary { color: #fff !important; }
+.app-grid label { color: #334155 !important; }
+.app-grid select, .app-grid input {
+  background: #fff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+.app-grid select option { color: #0f172a !important; background: #fff !important; }
+.header p { color: #475569 !important; }
+.section-title { color: #1e1b4b !important; }
+.footer { color: #64748b !important; }
+.badge { color: #fff !important; }
+
+
+
+
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+  <div class="stars" id="stars"></div>
+</div>
+<canvas id="confetti"></canvas>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <header class="header">
+    <div class="badge">ОГЭ 2025–2026 · бесплатно</div>
+    <h1>Подготовка к ОГЭ</h1>
+    <p>С нуля · теория · практика · варианты<br>Заходи каждый день — стрик растёт 🔥</p>
+  </header>
+
+  <!-- Streak + XP -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="emoji">🔥</span>
+      <div class="val" id="streakVal">0</div>
+      <div class="lbl">дней подряд</div>
+    </div>
+    <div class="stat-card">
+      <span class="emoji">⭐</span>
+      <div class="val" id="xpVal">0</div>
+      <div class="lbl">очков XP</div>
+    </div>
+  </div>
+
+  <!-- Daily mission -->
+  <div class="mission" id="missionCard">
+    <div class="mission-tag">⚡ Задание дня</div>
+    <h3 id="missionTitle">Загрузка…</h3>
+    <p id="missionDesc"></p>
+    <div class="mission-btns">
+      <a class="btn btn-primary" id="missionGo" href="#">К уроку →</a>
+      <button type="button" class="btn btn-ok" id="missionDone" style="display:none">Готово ✓ (+15 XP)</button>
+      <button type="button" class="btn btn-soft" id="missionSkip">Другое</button>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-panel">
+    <h3>📊 Твой прогресс</h3>
+    <div id="progressList"></div>
+  </div>
+
+  <!-- Mini test CTA -->
+  <div class="mission" style="animation-delay:.08s">
+    <div class="mission-tag" style="background:linear-gradient(135deg,#06b6d4,#2563eb)">🎯 Мини-тест</div>
+    <h3>На сколько ты готов к ОГЭ?</h3>
+    <p>5 быстрых вопросов из разных предметов. Узнай уровень и поделись с другом.</p>
+    <div class="mission-btns">
+      <button type="button" class="btn btn-cyan" id="startQuiz">Пройти тест</button>
+    </div>
+  </div>
+
+  <!-- Quiz panel -->
+  <div class="quiz-panel" id="quizPanel">
+    <h3>🎯 Мини-тест · 5 вопросов</h3>
+    <div id="quizBody"></div>
+    <div id="quizFooter"></div>
+  </div>
+
+  <!-- Subjects -->
+  <div class="section-title">📚 Предметы</div>
+  <div class="cards" id="subjectCards">
+    <a class="card" data-subj="russian" href="russian/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#ddd6fe,#c4b5fd)">📖</div><div class="card-body"><h2>Русский язык</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="russian"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="math" href="math/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#bfdbfe,#93c5fd)">🔢</div><div class="card-body"><h2>Математика</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="math"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="history" href="history/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🏛️</div><div class="card-body"><h2>История</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="history"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="biology" href="biology/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">🧬</div><div class="card-body"><h2>Биология</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="biology"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="physics" href="physics/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd)">⚛️</div><div class="card-body"><h2>Физика</h2><p>ОГЭ · Практика · Формулы · Варианты</p><div class="card-xp" data-xp="physics"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="english" href="english/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#dbeafe,#93c5fd)">🇬🇧</div><div class="card-body"><h2>Английский язык</h2><p>С нуля · ОГЭ · Практика · Варианты</p><div class="card-xp" data-xp="english"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="geography" href="geography/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">🌍</div><div class="card-body"><h2>География</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="geography"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="social" href="social/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">⚖️</div><div class="card-body"><h2>Обществознание</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="social"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="informatics" href="informatics/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7)">💻</div><div class="card-body"><h2>Информатика</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="informatics"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="literature" href="literature/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">📕</div><div class="card-body"><h2>Литература</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="literature"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="chemistry" href="chemistry/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚗️</div><div class="card-body"><h2>Химия</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="chemistry"></div></div><div class="card-arrow">→</div></a>
+  </div>
+
+  <!-- App / notify / telegram -->
+  <div class="app-panel" id="appPanel">
+    <h2>📱 Приложение и напоминания</h2>
+    <p>Установи на телефон и включи напоминание — стрик не сорвётся.</p>
+    <div class="app-actions">
+      <button type="button" class="app-btn primary" id="btnInstallApp" onclick="OgeApp.installPWA()">⬇️ Установить</button>
+      <a class="app-btn primary" href="oge-app.apk" download="OGE-Podgotovka.apk">🤖 APK</a>
+      <button type="button" class="app-btn secondary" onclick="OgeApp.enableNotifications()" class="app-btn secondary">🔔 Напоминания</button>
+      <button type="button" class="app-btn secondary" onclick="OgeApp.disableNotifications()" class="app-btn secondary">🔕 Выключить</button>
+    </div>
+    <div class="app-grid">
+      <label>Время напоминания</label>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <select id="notifyHour"></select>
+        <span style="color:#fff">:</span>
+        <select id="notifyMinute"></select>
+        <button type="button" class="app-btn secondary" onclick="var s=OgeApp.getNotify();s.hour=+document.getElementById('notifyHour').value;s.minute=+document.getElementById('notifyMinute').value;OgeApp.setNotify(s);toast('Время сохранено')">OK</button>
+      </div>
+    </div>
+    <div class="app-actions" style="margin-top:12px">
+      <a class="app-btn primary" href="https://t.me/Preparation_for_OGE124_bot" target="_blank" rel="noopener">✈️ Telegram — отзывы и идеи</a>
+    </div>
+  </div>
+
+  <div class="footer">ОГЭ · подготовка с нуля · заходи каждый день 🔥</div>
+</div>
+
+<script src="app.js"></script>
+<script>
+(function(){
+"use strict";
+try{
+
+/* Stars */
+(function(){
+  var box=document.getElementById('stars');
+  if(!box) return;
+  for(var i=0;i<40;i++){
+    var s=document.createElement('div');
+    s.className='star';
+    s.style.left=Math.random()*100+'%';
+    s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';
+    var sz=(1+Math.random()*2)+'px';
+    s.style.width=sz; s.style.height=sz;
+    box.appendChild(s);
+  }
+})();
+
+var STORE='oge_fun_v1';
+function load(){
+  try{
+    var base={xp:0,streak:0,lastDay:'',missionDone:'',missionId:0,subj:{},quizBest:0,visits:{}};
+    return Object.assign(base, JSON.parse(localStorage.getItem(STORE)||'{}'));
+  }catch(e){ return {xp:0,streak:0,lastDay:'',missionDone:'',missionId:0,subj:{},quizBest:0,visits:{}}; }
+}
+function save(d){ try{ localStorage.setItem(STORE, JSON.stringify(d)); }catch(e){} }
+function today(){ return new Date().toDateString(); }
+function yesterday(){ var d=new Date(); d.setDate(d.getDate()-1); return d.toDateString(); }
+
+function toast(msg){
+  var t=document.getElementById('toast');
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt=setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+window.toast=toast;
+
+function confetti(){
+  var c=document.getElementById('confetti');
+  if(!c || !c.getContext) return;
+  var ctx=c.getContext('2d');
+  c.width=window.innerWidth; c.height=window.innerHeight;
+  var parts=[], colors=['#a78bfa','#ec4899','#22d3ee','#fbbf24','#4ade80','#f472b6'];
+  for(var i=0;i<80;i++){
+    parts.push({
+      x:c.width/2, y:c.height*0.3,
+      vx:(Math.random()-0.5)*12, vy:-(Math.random()*10+4),
+      g:0.25+Math.random()*0.15, r:3+Math.random()*4,
+      col:colors[i%colors.length], life:60+Math.random()*40
+    });
+  }
+  var frame=0;
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    for(var j=0;j<parts.length;j++){
+      var p=parts[j];
+      p.x+=p.vx; p.y+=p.vy; p.vy+=p.g; p.life--;
+      ctx.globalAlpha=Math.max(0,p.life/40);
+      ctx.fillStyle=p.col;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    }
+    frame++;
+    if(frame<90) requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,c.width,c.height);
+  }
+  draw();
+}
+
+function updateStreak(){
+  var d=load();
+  var t=today();
+  if(d.lastDay!==t){
+    if(d.lastDay===yesterday()) d.streak=(d.streak||0)+1;
+    else d.streak=1;
+    d.lastDay=t;
+    save(d);
+  }
+  var sv=document.getElementById('streakVal');
+  var xv=document.getElementById('xpVal');
+  if(sv) sv.textContent=d.streak||0;
+  if(xv) xv.textContent=d.xp||0;
+  return d;
+}
+
+var SUBJECTS=[
+  {id:'russian',name:'Русский',icon:'📖'},
+  {id:'math',name:'Математика',icon:'🔢'},
+  {id:'history',name:'История',icon:'🏛️'},
+  {id:'biology',name:'Биология',icon:'🧬'},
+  {id:'physics',name:'Физика',icon:'⚛️'},
+  {id:'english',name:'Английский',icon:'🇬🇧'},
+  {id:'geography',name:'География',icon:'🌍'},
+  {id:'social',name:'Обществознание',icon:'⚖️'},
+  {id:'informatics',name:'Информатика',icon:'💻'},
+  {id:'literature',name:'Литература',icon:'📕'},
+  {id:'chemistry',name:'Химия',icon:'⚗️'}
+];
+
+function renderProgress(){
+  var d=load();
+  var box=document.getElementById('progressList');
+  if(!box) return;
+  var html='';
+  for(var i=0;i<SUBJECTS.length;i++){
+    var s=SUBJECTS[i];
+    var v=Math.min(100, d.subj[s.id]||0);
+    html+='<div class="prog-item"><div class="prog-head"><span>'+s.icon+' '+s.name+'</span><span>'+v+'%</span></div><div class="prog-bar"><div class="prog-fill" style="width:'+v+'%"></div></div></div>';
+  }
+  box.innerHTML=html;
+  var els=document.querySelectorAll('[data-xp]');
+  for(var k=0;k<els.length;k++){
+    var id=els[k].getAttribute('data-xp');
+    var vv=d.subj[id]||0;
+    els[k].textContent=vv?('прогресс '+vv+'%'):'ещё не начинал';
+  }
+}
+
+function addProgress(subj,pts){
+  var d=load();
+  d.subj[subj]=Math.min(100,(d.subj[subj]||0)+pts);
+  d.xp=(d.xp||0)+Math.round(pts/2);
+  save(d);
+  renderProgress();
+  var xv=document.getElementById('xpVal');
+  if(xv) xv.textContent=d.xp;
+}
+
+/* XP only once per subject per day (not every click) */
+var cards=document.querySelectorAll('.card[data-subj]');
+for(var ci=0;ci<cards.length;ci++){
+  (function(a){
+    a.addEventListener('click', function(){
+      var id=a.getAttribute('data-subj');
+      grantSubjectVisit(id);
+    });
+  })(cards[ci]);
+}
+
+function grantSubjectVisit(subj){
+  /* Больше НЕ даём XP за открытие предмета — только уроки/тесты */
+  return;
+}
+
+var MISSIONS=[
+  {title:'Русский · орфография',desc:'10 минут: повтори сложные написания и сделай 5 упражнений в разделе Практика.',href:'russian/index.html',subj:'russian'},
+  {title:'Математика · формулы',desc:'Повтори 5 формул и реши 3 задания из практики.',href:'math/index.html',subj:'math'},
+  {title:'История · даты',desc:'Выучи 5 ключевых дат и проверь себя в тесте темы.',href:'history/index.html',subj:'history'},
+  {title:'Биология · термины',desc:'Разбери одну сложную тему и ответь на 5 вопросов.',href:'biology/index.html',subj:'biology'},
+  {title:'Физика · единицы',desc:'Повтори обозначения величин и реши 2 задачи.',href:'physics/index.html',subj:'physics'},
+  {title:'Английский · слова',desc:'Выучи 10 слов и пройди мини-урок в практике.',href:'english/index.html',subj:'english'},
+  {title:'География · карта',desc:'Повтори регионы России и пройди тест по теме.',href:'geography/index.html',subj:'geography'},
+  {title:'Обществознание · понятия',desc:'Разбери 3 термина и ответь на вопросы в ОГЭ.',href:'social/index.html',subj:'social'},
+  {title:'Информатика · алгоритмы',desc:'Повтори блок-схемы и сделай 3 задания.',href:'informatics/index.html',subj:'informatics'},
+  {title:'Литература · произведения',desc:'Вспомни 2 произведения и сюжет — раздел ОГЭ.',href:'literature/index.html',subj:'literature'},
+  {title:'Химия · реакции',desc:'Повтори типы реакций и пройди короткий тест.',href:'chemistry/index.html',subj:'chemistry'},
+  {title:'Мини-тест дня',desc:'Пройди мини-тест из 5 вопросов на главной — проверь уровень.',href:'#quiz',subj:'russian'}
+];
+
+function dayIndex(){
+  var start=new Date(2025,0,1).getTime();
+  return Math.floor((Date.now()-start)/86400000);
+}
+
+function showMission(forceNew){
+  var d=load();
+  var idx;
+  if(forceNew) idx=(dayIndex()+Math.floor(Math.random()*MISSIONS.length))%MISSIONS.length;
+  else if(typeof d.missionId==='number') idx=d.missionId%MISSIONS.length;
+  else idx=dayIndex()%MISSIONS.length;
+  d.missionId=idx; save(d);
+  var m=MISSIONS[idx];
+  var mt=document.getElementById('missionTitle');
+  var md=document.getElementById('missionDesc');
+  var go=document.getElementById('missionGo');
+  var done=document.getElementById('missionDone');
+  if(mt) mt.textContent=m.title;
+  if(md) md.textContent=m.desc;
+  if(go){
+    go.href=m.href;
+    go.onclick=function(e){
+      if(m.href==='#quiz'){
+        e.preventDefault();
+        var b=document.getElementById('startQuiz');
+        if(b) b.click();
+        return;
+      }
+      /* XP only when opening subject (once/day) or finishing mission — not for button press */
+    };
+  }
+  if(done){
+    done.style.display='inline-flex';
+    if(d.missionDone===today()){ done.textContent='Выполнено ✓'; done.disabled=true; }
+    else { done.textContent='Готово ✓ (+15 XP)'; done.disabled=false; }
+  }
+}
+
+var missionDoneBtn=document.getElementById('missionDone');
+if(missionDoneBtn){
+  missionDoneBtn.onclick=function(){
+    var d=load();
+    if(d.missionDone===today()){ toast('Уже засчитано сегодня'); return; }
+    d.missionDone=today();
+    d.xp=(d.xp||0)+15;
+    var m=MISSIONS[(d.missionId||0)%MISSIONS.length];
+    d.subj[m.subj]=Math.min(100,(d.subj[m.subj]||0)+10);
+    save(d);
+    var xv=document.getElementById('xpVal');
+    if(xv) xv.textContent=d.xp;
+    this.textContent='Выполнено ✓';
+    this.disabled=true;
+    renderProgress();
+    confetti();
+    toast('Задание дня выполнено! +15 XP');
+  };
+}
+var missionSkip=document.getElementById('missionSkip');
+if(missionSkip){
+  missionSkip.onclick=function(){
+    var d=load();
+    d.missionId=((d.missionId||0)+1)%MISSIONS.length;
+    save(d);
+    showMission(true);
+  };
+}
+
+var QUIZ=[
+  {q:'Русский: в каком слове пишется НН?',opts:['деревяный','стеклянный','ветреный','юный'],a:1},
+  {q:'Математика: чему равен корень из 144?',opts:['10','11','12','14'],a:2},
+  {q:'История: в каком году началась Великая Отечественная война?',opts:['1939','1941','1945','1917'],a:1},
+  {q:'Биология: какая органелла отвечает за синтез белка?',opts:['митохондрия','рибосома','лизосома','вакуоль'],a:1},
+  {q:'Физика: единица силы тока?',opts:['вольт','ватт','ампер','ом'],a:2}
+];
+var quizAnswers=[];
+
+var startQuizBtn=document.getElementById('startQuiz');
+if(startQuizBtn){
+  startQuizBtn.onclick=function(){
+    quizAnswers=[];
+    for(var i=0;i<QUIZ.length;i++) quizAnswers.push(null);
+    var panel=document.getElementById('quizPanel');
+    if(!panel) return;
+    panel.classList.add('open');
+    try{ panel.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+    var body=document.getElementById('quizBody');
+    var html='';
+    for(var qi=0;qi<QUIZ.length;qi++){
+      var item=QUIZ[qi];
+      html+='<div class="q-card" data-qi="'+qi+'"><div class="q-text">'+(qi+1)+'. '+item.q+'</div>';
+      for(var oi=0;oi<item.opts.length;oi++){
+        html+='<button type="button" class="q-opt" data-qi="'+qi+'" data-oi="'+oi+'">'+item.opts[oi]+'</button>';
+      }
+      html+='</div>';
+    }
+    body.innerHTML=html;
+    document.getElementById('quizFooter').innerHTML='<button type="button" class="btn btn-primary" id="quizSubmit" style="width:100%">Проверить</button>';
+    var opts=body.querySelectorAll('.q-opt');
+    for(var oi=0;oi<opts.length;oi++){
+      opts[oi].onclick=function(){
+        var qi=+this.getAttribute('data-qi');
+        var oiv=+this.getAttribute('data-oi');
+        quizAnswers[qi]=oiv;
+        var all=body.querySelectorAll('.q-opt[data-qi="'+qi+'"]');
+        for(var j=0;j<all.length;j++) all[j].classList.remove('picked');
+        this.classList.add('picked');
+      };
+    }
+    document.getElementById('quizSubmit').onclick=finishQuiz;
+  };
+}
+
+function finishQuiz(){
+  for(var i=0;i<quizAnswers.length;i++){
+    if(quizAnswers[i]===null){ toast('Ответь на все вопросы'); return; }
+  }
+  var score=0;
+  for(var qi=0;qi<QUIZ.length;qi++){
+    var item=QUIZ[qi];
+    var card=document.querySelector('.q-card[data-qi="'+qi+'"]');
+    if(!card) continue;
+    var btns=card.querySelectorAll('.q-opt');
+    for(var oi=0;oi<btns.length;oi++){
+      btns[oi].disabled=true;
+      if(oi===item.a) btns[oi].classList.add('correct');
+      else if(oi===quizAnswers[qi]) btns[oi].classList.add('wrong');
+    }
+    if(quizAnswers[qi]===item.a) score++;
+  }
+  var d=load();
+  d.xp=(d.xp||0)+score*5;
+  d.quizBest=Math.max(d.quizBest||0, score);
+  var bump=['russian','math','history','biology','physics'];
+  for(var bi=0;bi<bump.length;bi++){
+    if(quizAnswers[bi]===QUIZ[bi].a) d.subj[bump[bi]]=Math.min(100,(d.subj[bump[bi]]||0)+4);
+  }
+  save(d);
+  var xv=document.getElementById('xpVal');
+  if(xv) xv.textContent=d.xp;
+  renderProgress();
+  var levels=['Нужно подтянуть базу','Есть пробелы','Средний уровень','Хороший уровень','Отлично, так держать!'];
+  var site='https://preparationforoge.netlify.app/';
+  var shareText='Я прошёл мини-тест ОГЭ: '+score+'/5. '+(levels[score]||'')+'\nГотовься со мной: '+site;
+  var tg='https://t.me/share/url?url='+encodeURIComponent(site)+'&text='+encodeURIComponent(shareText);
+  document.getElementById('quizFooter').innerHTML=
+    '<div class="quiz-result"><div class="score">'+score+'/5</div>'+
+    '<div style="font-weight:700;margin:6px 0;color:#1e1b4b">'+(levels[score]||'')+'</div>'+
+    '<div style="font-size:.85rem;color:#64748b;margin-bottom:10px">+'+ (score*5) +' XP</div>'+
+    '<div class="share-row">'+
+    '<button type="button" class="btn btn-primary" id="shareBtn">Поделиться с другом</button>'+
+    '<a class="btn btn-soft" href="'+tg+'" target="_blank" rel="noopener">В Telegram</a>'+
+    '</div></div>';
+  confetti();
+  var sb=document.getElementById('shareBtn');
+  if(sb){
+    sb.onclick=function(){
+      if(navigator.share){
+        navigator.share({title:'ОГЭ мини-тест', text:shareText, url:site}).catch(function(){});
+      } else if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(shareText).then(function(){ toast('Текст скопирован'); }).catch(function(){ prompt('Скопируй:', shareText); });
+      } else prompt('Скопируй:', shareText);
+    };
+  }
+}
+
+/* notify selects */
+(function(){
+  var hh=document.getElementById('notifyHour');
+  var mm=document.getElementById('notifyMinute');
+  if(!hh||!mm) return;
+  hh.innerHTML=''; mm.innerHTML='';
+  for(var h=0;h<24;h++){
+    var o=document.createElement('option');
+    o.value=h; o.textContent=(h<10?'0':'')+h;
+    if(h===18) o.selected=true;
+    hh.appendChild(o);
+  }
+  var mins=[0,5,10,15,20,25,30,35,40,45,50,55];
+  for(var mi=0;mi<mins.length;mi++){
+    var o2=document.createElement('option');
+    o2.value=mins[mi]; o2.textContent=(mins[mi]<10?'0':'')+mins[mi];
+    mm.appendChild(o2);
+  }
+  if(window.OgeApp && OgeApp.getNotify){
+    var s=OgeApp.getNotify();
+    hh.value=s.hour; mm.value=s.minute;
+  }
+})();
+
+updateStreak();
+renderProgress();
+showMission(false);
+
+}catch(err){
+  console.error('oge main error', err);
+  var w=document.querySelector('.wrap');
+  if(w){
+    var n=document.createElement('div');
+    n.style.cssText='background:#fee2e2;color:#991b1b;padding:12px;border-radius:12px;margin:12px 0;font-size:14px';
+    n.textContent='Ошибка скрипта: '+(err && err.message ? err.message : err);
+    w.insertBefore(n, w.firstChild);
+  }
+}
+})();
+</script>
+
+<script>
+</script>
+
+
+
+
+
+
+<button type="button" id="aiClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="ai-body" id="aiBody"></div>
+  <div class="ai-foot">
+    <input id="aiInput" placeholder="Задай вопрос по ОГЭ…" maxlength="400" autocomplete="off">
+    <button type="button" class="send" id="aiSend">➤</button>
+    <a class="grok-link" id="aiGrokFull" href="https://grok.com" target="_blank" rel="noopener">Открыть полного Grok →</a>
+  </div>
+</div>
+
+
+
+
+<script src="ai-coach.js"></script>
+<script src="ai-tutor-widget.js"></script>
+</body>
+</html>

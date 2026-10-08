@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как сделать APK — ОГЭ</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:20px;background:#f8fafc;color:#0f172a;line-height:1.55}
+h1{font-size:1.4rem} a{color:#4f46e5} .box{background:#fff;border-radius:16px;padding:16px;border:1px solid #e2e8f0;margin:14px 0}
+code{background:#f1f5f9;padding:2px 6px;border-radius:6px;font-size:.9rem}
+.step{font-weight:700;color:#4f46e5}
+</style>
+</head>
+<body>
+<p><a href="index.html">← В меню</a></p>
+<h1>🤖 Файл APK с вашей иконкой</h1>
+<p>Собрать <strong>настоящий подписанный APK</strong> можно бесплатно через сервис Microsoft, указав ваш сайт на Netlify. Иконка «ОГЭ Подготовка с нуля» уже лежит в папке сайта.</p>
+<div class="box">
+<p class="step">Шаг 1.</p>
+<p>Залейте обновлённую папку <code>oge</code> на Netlify (как вы уже делали).</p>
+<p class="step">Шаг 2.</p>
+<p>Откройте <a href="https://www.pwabuilder.com/" target="_blank" rel="noopener">pwabuilder.com</a> → вставьте адрес сайта, например <code>https://ВАШ-САЙТ.netlify.app</code>.</p>
+<p class="step">Шаг 3.</p>
+<p>Package → <strong>Android</strong> → Generate → скачайте <strong>APK</strong> или Bundle. Иконка подтянется из <code>manifest.webmanifest</code>.</p>
+<p class="step">Шаг 4.</p>
+<p>На телефоне разрешите установку из этого файла и установите APK.</p>
+</div>
+<div class="box">
+<p><strong>Почему APK не лежит «готовый» в архиве?</strong></p>
+<p>Подпись Android-приложения и привязка к вашему домену Netlify делаются только с вашего URL. Иначе магазин/телефон могут не принять пакет, а иконка и адрес будут чужими.</p>
+<p>После генерации на PWABuilder у вас будет полноценный APK с вашей иконкой и сайтом внутри (Trusted Web Activity).</p>
+</div>
+<div class="box">
+<p><strong>Отзывы:</strong> в главном меню форма Netlify (Forms в кабинете Netlify). Telegram-кнопка не показывает номер на экране.</p>
+</div>
+</body>
+</html>
