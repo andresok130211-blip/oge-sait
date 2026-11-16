@@ -1,4 +1,4 @@
-const CACHE = 'oge-v5';
+const CACHE = 'oge-v6';
 const PRECACHE = ['./icon-192.png','./icon-512.png','./manifest.webmanifest'];
 
 self.addEventListener('install', e => {
@@ -10,13 +10,28 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE && k !== 'oge-videos').map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
 
+async function videoResp(req) {
+  const c = await caches.open('oge-videos');
+  const hit = await c.match(req.url);
+  if (!hit) return fetch(req);
+  const range = req.headers.get('range');
+  if (!range) return hit;
+  const buf = await hit.arrayBuffer();
+  const m = /bytes=(\d*)-(\d*)/.exec(range) || [];
+  let s = m[1] ? +m[1] : 0, e = m[2] ? +m[2] : buf.byteLength - 1;
+  if (!m[1] && m[2]) { s = buf.byteLength - (+m[2]); e = buf.byteLength - 1; }
+  e = Math.min(e, buf.byteLength - 1);
+  return new Response(buf.slice(s, e + 1), { status: 206, statusText: 'Partial Content', headers: { 'Content-Type': 'video/mp4', 'Content-Range': 'bytes ' + s + '-' + e + '/' + buf.byteLength, 'Content-Length': String(e - s + 1), 'Accept-Ranges': 'bytes' } });
+}
+
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
+  if (e.request.method === 'GET' && url.pathname.indexOf('/videos/') >= 0) { e.respondWith(videoResp(e.request)); return; }
   if (e.request.method !== 'GET' || url.pathname.startsWith('/api/')) return;
   if (e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('/')) {
     e.respondWith(

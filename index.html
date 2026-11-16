@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>ОГЭ — подготовка с нуля</title>
+<title>ОГЭ и школьная программа 5–9 классов</title>
 <meta name="description" content="Бесплатная подготовка к ОГЭ с нуля. Задание дня, серия дней, прогресс, мини-тест. Все предметы.">
 <meta name="theme-color" content="#7c3aed">
 <link rel="manifest" href="manifest.webmanifest">
@@ -354,6 +354,9 @@ html, body {
     </div>
   </div>
 
+  <!-- AI coach: remembers mistakes, swipeable hints -->
+  <div id="aiCoach"></div>
+
   <!-- Daily mission -->
   <div class="mission" id="missionCard">
     <div class="mission-tag">⚡ Задание дня</div>
@@ -392,17 +395,17 @@ html, body {
   <!-- Subjects -->
   <div class="section-title">📚 Предметы</div>
   <div class="cards" id="subjectCards">
-    <a class="card" data-subj="russian" href="russian/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#ddd6fe,#c4b5fd)">📖</div><div class="card-body"><h2>Русский язык</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="russian"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="math" href="math/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#bfdbfe,#93c5fd)">🔢</div><div class="card-body"><h2>Математика</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="math"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="history" href="history/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🏛️</div><div class="card-body"><h2>История</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="history"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="biology" href="biology/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">🧬</div><div class="card-body"><h2>Биология</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="biology"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="russian" href="russian/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#ddd6fe,#c4b5fd)">📖</div><div class="card-body"><h2>Русский язык</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="russian"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="math" href="math/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#bfdbfe,#93c5fd)">🔢</div><div class="card-body"><h2>Математика</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="math"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="history" href="history/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🏛️</div><div class="card-body"><h2>История</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="history"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="biology" href="biology/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">🧬</div><div class="card-body"><h2>Биология</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="biology"></div></div><div class="card-arrow">→</div></a>
     <a class="card" data-subj="physics" href="physics/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd)">⚛️</div><div class="card-body"><h2>Физика</h2><p>ОГЭ · Практика · Формулы · Варианты</p><div class="card-xp" data-xp="physics"></div></div><div class="card-arrow">→</div></a>
     <a class="card" data-subj="english" href="english/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#dbeafe,#93c5fd)">🇬🇧</div><div class="card-body"><h2>Английский язык</h2><p>С нуля · ОГЭ · Практика · Варианты</p><div class="card-xp" data-xp="english"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="geography" href="geography/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">🌍</div><div class="card-body"><h2>География</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="geography"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="social" href="social/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">⚖️</div><div class="card-body"><h2>Обществознание</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="social"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="informatics" href="informatics/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7)">💻</div><div class="card-body"><h2>Информатика</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="informatics"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="literature" href="literature/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">📕</div><div class="card-body"><h2>Литература</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="literature"></div></div><div class="card-arrow">→</div></a>
-    <a class="card" data-subj="chemistry" href="chemistry/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚗️</div><div class="card-body"><h2>Химия</h2><p>ОГЭ · Практика · Сложные · Варианты</p><div class="card-xp" data-xp="chemistry"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="geography" href="geography/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">🌍</div><div class="card-body"><h2>География</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="geography"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="social" href="social/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">⚖️</div><div class="card-body"><h2>Обществознание</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="social"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="informatics" href="informatics/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7)">💻</div><div class="card-body"><h2>Информатика</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="informatics"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="literature" href="literature/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">📕</div><div class="card-body"><h2>Литература</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="literature"></div></div><div class="card-arrow">→</div></a>
+    <a class="card" data-subj="chemistry" href="chemistry/index.html"><div class="card-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚗️</div><div class="card-body"><h2>Химия</h2><p>ОГЭ · Практика · 5–9 классы · Варианты</p><div class="card-xp" data-xp="chemistry"></div></div><div class="card-arrow">→</div></a>
   </div>
 
   <!-- App / notify / telegram -->
@@ -641,7 +644,7 @@ if(missionDoneBtn){
     if(d.missionDone===today()){ toast('Уже засчитано сегодня'); return; }
     d.missionDone=today();
     d.xp=(d.xp||0)+15;
-    var m=MISSIONS[(d.missionId||0)%MISSIONS.length];
+    var m=window.ogeAiMission||MISSIONS[(d.missionId||0)%MISSIONS.length];
     d.subj[m.subj]=Math.min(100,(d.subj[m.subj]||0)+10);
     save(d);
     var xv=document.getElementById('xpVal');
@@ -823,7 +826,8 @@ showMission(false);
 
 
 
-<script src="ai-coach.js"></script>
 <script src="ai-tutor-widget.js"></script>
+<script src="ai-coach.js"></script>
+<script src="extras.js"></script>
 </body>
 </html>
