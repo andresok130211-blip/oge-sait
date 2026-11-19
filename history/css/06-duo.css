@@ -1,0 +1,24 @@
+
+
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px;position:relative}
+.duo-module{background:linear-gradient(135deg,#d97706, #f59e0b);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 0 #b45309;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}.duo-module p{font-size:.8rem;opacity:.95;margin:2px 0 0;font-weight:600}
+.duo-track{display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;position:relative;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:28px;background:#e5e5e5;border-radius:2px}
+.duo-node{width:70px;height:70px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;transition:transform .15s;font-family:inherit;box-shadow:0 5px 0 #ccc}
+.duo-node:active{transform:translateY(3px);box-shadow:0 2px 0 #ccc}
+.duo-node.active{background:linear-gradient(180deg,#d97706,#b45309);box-shadow:0 5px 0 #78350f;color:#fff}
+.duo-node.done{background:linear-gradient(180deg,#10b981,#059669);box-shadow:0 5px 0 #065f46;color:#fff}
+.duo-node.locked{background:#e5e5e5;box-shadow:0 5px 0 #ccc;color:#afafaf;cursor:default}
+.duo-node.chest{background:#e5e5e5;box-shadow:0 5px 0 #ccc;border-radius:16px;width:64px;height:56px}
+.duo-label{margin-top:8px;font-size:.78rem;font-weight:700;color:#777;text-align:center;max-width:100px}
+.duo-node.active + .duo-label,.duo-node-wrap:has(.duo-node.active) .duo-label{color:#b45309}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e5e5e5;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-lesson-panel h4{font-size:1.05rem;margin-bottom:10px;color:#3c3c3c}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#d97706,#b45309);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #78350f;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-start-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #78350f}
+.duo-mascot{font-size:2.5rem;margin:8px 0}

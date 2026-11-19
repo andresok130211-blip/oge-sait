@@ -1,0 +1,26 @@
+/* === Mini test === */
+.quiz-panel{
+  background:rgba(255,255,255,.95);border-radius:24px;padding:18px;margin-bottom:16px;
+  box-shadow:0 12px 36px rgba(0,0,0,.15);
+  animation:slideUp .6s ease .1s both;
+  display:none;
+}
+.quiz-panel.open{display:block}
+.quiz-panel h3{font-size:1.05rem;margin-bottom:8px;color:#1e1b4b}
+.q-card{margin:12px 0;padding:12px;background:#f8fafc;border-radius:14px;border:1px solid #e2e8f0}
+.q-card .q-text{font-weight:700;font-size:.92rem;margin-bottom:8px;color:#0f172a}
+.q-opt{
+  display:block;width:100%;text-align:left;padding:10px 12px;margin:6px 0;
+  border-radius:12px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;
+  font-size:.88rem;transition:border-color .15s,background .15s;
+}
+.q-opt:hover{border-color:#a78bfa}
+.q-opt.picked{border-color:#7c3aed;background:#f5f3ff}
+.q-opt.correct{border-color:#22c55e;background:#dcfce7}
+.q-opt.wrong{border-color:#ef4444;background:#fee2e2}
+.quiz-result{
+  text-align:center;padding:16px;margin-top:12px;
+  background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:16px;
+}
+.quiz-result .score{font-size:2rem;font-weight:900;color:#7c3aed}
+

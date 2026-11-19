@@ -1,0 +1,7 @@
+
+.grade-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:4px 12px 14px}
+.gchip{border:2px solid var(--p,#2563eb);background:rgba(255,255,255,.85);color:var(--p,#2563eb);border-radius:99px;padding:8px 16px;font:inherit;font-weight:700;cursor:pointer}
+.gchip.on{background:var(--p,#2563eb);color:#fff}
+.grade-sec{display:none}.grade-sec.on{display:block}
+.grade-h{font-size:1.15rem;margin:6px 4px 12px;text-align:center}
+.fb .why{display:block;margin-top:4px;font-weight:400;opacity:.9}

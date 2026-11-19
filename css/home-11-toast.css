@@ -1,0 +1,12 @@
+/* toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:#1e1b4b;color:#fff;padding:12px 20px;border-radius:14px;
+  font-weight:700;font-size:.9rem;z-index:100;
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);opacity:0;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+
+

@@ -1,4 +1,4 @@
-const CACHE = 'oge-v6';
+const CACHE = 'oge-v7';
 const PRECACHE = ['./icon-192.png','./icon-512.png','./manifest.webmanifest'];
 
 self.addEventListener('install', e => {
@@ -33,7 +33,7 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method === 'GET' && url.pathname.indexOf('/videos/') >= 0) { e.respondWith(videoResp(e.request)); return; }
   if (e.request.method !== 'GET' || url.pathname.startsWith('/api/')) return;
-  if (e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('/')) {
+  if (e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('/')) {
     e.respondWith(
       fetch(e.request).then(res => {
         const copy = res.clone();

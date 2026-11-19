@@ -1,0 +1,14 @@
+
+:root{--p:#0284c7;--g:#0ea5e9;--gs:#e0f2fe;--t:#0c4a6e;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(2,132,199,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#0c4a6e;
+background-image:
+  radial-gradient(ellipse at 15% 10%,rgba(56,189,248,.45),transparent 45%),
+  radial-gradient(ellipse at 90% 70%,rgba(45,212,191,.3),transparent 40%),
+  linear-gradient(160deg,#0c4a6e 0%,#164e63 40%,#083344 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.2;
+background:repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(255,255,255,.04) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(255,255,255,.04) 20px)}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}

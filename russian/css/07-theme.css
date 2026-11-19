@@ -1,0 +1,31 @@
+
+
+
+
+
+/* subject-theme-russian */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='8' y='28' font-size='14' fill='%234f46e5' opacity='0.07' font-family='serif'%3Eа%3C/text%3E%3Ctext x='50' y='55' font-size='12' fill='%237c3aed' opacity='0.07'%3EН/НН%3C/text%3E%3Ctext x='20' y='90' font-size='13' fill='%2306b6d4' opacity='0.07'%3E—,%3C/text%3E%3Ctext x='70' y='30' font-size='11' fill='%23ec4899' opacity='0.06'%3Eприч.%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+

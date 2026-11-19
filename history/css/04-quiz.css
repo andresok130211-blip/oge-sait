@@ -1,0 +1,14 @@
+
+.quiz-box{background:linear-gradient(145deg,#fffbeb,#fef3c7);border:1.5px solid #fcd34d;border-radius:16px;padding:14px;margin-top:14px}
+.quiz-box h5{font-size:.95rem;color:#92400e;margin-bottom:12px}
+.q-item{margin-bottom:16px}.q-item:last-child{margin-bottom:0}
+.q-text{font-weight:500;margin-bottom:8px;font-size:.94rem}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 14px;text-align:left;cursor:pointer;font-size:.92rem;font-family:inherit;transition:all .15s}
+.opt:hover{border-color:var(--p);background:#fffbeb}
+.opt.correct{border-color:var(--g);background:var(--gs);color:#065f46}
+.opt.wrong{border-color:var(--r);background:#fef2f2;color:#991b1b}
+.opt.disabled{pointer-events:none}
+.fb{margin-top:6px;font-size:.87rem;display:none}.fb.show{display:block}.fb.ok{color:#065f46}.fb.fail{color:#b91c1c}
+.done-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.done-btn:disabled{background:#94a3b8;box-shadow:none;cursor:default}

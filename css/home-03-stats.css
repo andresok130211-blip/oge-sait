@@ -1,0 +1,17 @@
+/* === Stats row: streak + XP === */
+.stats-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 14px;
+}
+.stat-card{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:20px;padding:14px 16px;text-align:center;
+  animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+.stat-card .emoji{font-size:1.8rem;display:block;margin-bottom:4px;animation:bounce 2s ease infinite}
+.stat-card .val{font-size:1.6rem;font-weight:900;color:#fff}
+.stat-card .lbl{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:2px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+

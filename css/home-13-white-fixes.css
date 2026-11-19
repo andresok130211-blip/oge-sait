@@ -1,0 +1,30 @@
+/* visibility fix on white */
+.app-panel, .mission, .stat-card, .progress-panel, .card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.app-panel h2, .mission h3, .stat-card .val, .progress-panel h3 { color: #1e1b4b !important; }
+.app-panel p, .mission p, .stat-card .lbl, .prog-head, .card-body p { color: #475569 !important; }
+.app-btn.secondary {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.app-btn.primary { color: #fff !important; }
+.app-grid label { color: #334155 !important; }
+.app-grid select, .app-grid input {
+  background: #fff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+.app-grid select option { color: #0f172a !important; background: #fff !important; }
+.header p { color: #475569 !important; }
+.section-title { color: #1e1b4b !important; }
+.footer { color: #64748b !important; }
+.badge { color: #fff !important; }
+
+
+
+
+

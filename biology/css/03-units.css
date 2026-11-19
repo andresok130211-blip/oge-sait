@@ -1,0 +1,18 @@
+
+.unit{background:rgba(255,255,255,.92);border-radius:var(--rad);border:2px solid rgba(5,150,105,.1);margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.unit.open{border-color:var(--p)}
+.unit-header{padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+.unit-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+.unit-info{flex:1;min-width:0}.unit-info h3{font-size:1.05rem;margin-bottom:2px}.unit-info p{font-size:.8rem;color:var(--ts)}
+.unit-progress{height:6px;background:#d1fae5;border-radius:99px;margin-top:7px;overflow:hidden}
+.unit-progress-bar{height:100%;background:linear-gradient(90deg,#059669,#10b981);border-radius:99px;width:0%;transition:width .4s}
+.unit-chevron{font-size:1.1rem;color:var(--ts);transition:transform .25s}.unit.open .unit-chevron{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 18px}.unit.open .unit-body{display:block}
+.lesson{background:linear-gradient(145deg,#f8fafc,#f1f5f9);border-radius:16px;padding:16px;margin-top:12px;border:1px solid #e2e8f0}
+.lesson h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lesson-num{background:linear-gradient(135deg,#059669,#10b981);color:#fff;width:26px;height:26px;border-radius:9px;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theory{margin-bottom:12px;font-size:.96rem}.theory p{margin-bottom:10px}.theory ul,.theory ol{margin:8px 0 12px 18px}.theory li{margin-bottom:5px}
+.tip{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.tip::before{content:"💡";flex-shrink:0}
+.warn{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fdba74;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:.92rem;display:flex;gap:10px}.warn::before{content:"⚠️";flex-shrink:0}
+.ex{background:#fff;border-left:4px solid var(--p);padding:12px 14px;margin:12px 0;border-radius:0 12px 12px 0;font-size:.93rem}
+.ex-label{font-size:.72rem;font-weight:700;color:var(--p);letter-spacing:.04em;margin-bottom:4px}

@@ -1,0 +1,20 @@
+/* === Header === */
+.header{text-align:center;padding:20px 8px 12px}
+.badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#a78bfa,#ec4899,#22d3ee);
+  background-size:200% 200%;
+  animation:gradShift 5s ease infinite;
+  color:#fff;font-size:.78rem;font-weight:800;padding:6px 14px;border-radius:99px;
+  margin-bottom:12px;letter-spacing:.02em;
+  box-shadow:0 4px 20px rgba(236,72,153,.4);
+}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.header h1{
+  font-size:clamp(1.7rem,6.5vw,2.4rem);margin-bottom:8px;
+  background:linear-gradient(90deg,#fff 0%,#e9d5ff 40%,#fbcfe8 70%,#a5f3fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-weight:900;
+}
+.header p{color:rgba(255,255,255,.78);font-size:.95rem;line-height:1.5}
+

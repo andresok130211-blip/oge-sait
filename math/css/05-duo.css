@@ -1,0 +1,17 @@
+
+.duo-path{max-width:420px;margin:0 auto;padding:16px 20px 60px}
+.duo-module{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border-radius:16px;padding:14px 18px;margin-bottom:24px;box-shadow:0 4px 0 #1d4ed8;font-family:Manrope,sans-serif}
+.duo-module h2{font-size:.95rem;font-weight:800;margin:0}.duo-module p{font-size:.8rem;opacity:.95;margin:2px 0 0}
+.duo-track{display:flex;flex-direction:column;align-items:center}
+.duo-node-wrap{display:flex;flex-direction:column;align-items:center;padding:8px 0;width:100%}
+.duo-node-wrap.offset-left{align-items:flex-start;padding-left:18%}
+.duo-node-wrap.offset-right{align-items:flex-end;padding-right:18%}
+.duo-line{width:4px;height:26px;background:#e2e8f0;border-radius:2px}
+.duo-node{width:68px;height:68px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 5px 0 #cbd5e1;font-family:inherit}
+.duo-node.active,.duo-node.done{background:linear-gradient(180deg,#2563eb,#1d4ed8);box-shadow:0 5px 0 #1e3a8a;color:#fff}
+.duo-node.locked{background:#e2e8f0;color:#94a3b8;cursor:default}
+.duo-label{margin-top:8px;font-size:.75rem;font-weight:700;color:#64748b;text-align:center;max-width:100px}
+.duo-lesson-panel{display:none;background:#fff;border-radius:20px;border:2px solid #e2e8f0;padding:18px;margin:12px 0 8px;width:100%;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:left}
+.duo-lesson-panel.show{display:block}
+.duo-start-btn{display:block;width:100%;background:linear-gradient(180deg,#2563eb,#1d4ed8);color:#fff;border:none;border-radius:16px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 4px 0 #1e3a8a;font-family:Manrope,sans-serif;margin-top:12px}
+.duo-mascot{font-size:2.4rem;margin:8px 0}

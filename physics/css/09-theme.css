@@ -1,0 +1,31 @@
+
+
+
+
+
+/* subject-theme-physics */
+
+html, body {
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='8' y='28' font-size='15' fill='%237c3aed' opacity='0.08'%3EF%3Dma%3C/text%3E%3Ctext x='50' y='65' font-size='14' fill='%234f46e5' opacity='0.07'%3EE%3Dmc%C2%B2%3C/text%3E%3Ctext x='15' y='105' font-size='13' fill='%2306b6d4' opacity='0.07'%3EV%3DIR%3C/text%3E%3Ctext x='80' y='40' font-size='12' fill='%238b5cf6' opacity='0.06'%3Ep%3Dmv%3C/text%3E%3C/svg%3E") !important;
+  background-attachment: fixed !important;
+  background-size: 140px 140px !important;
+  min-height: 100vh !important;
+}
+.topbar {
+  background: rgba(255,255,255,.95) !important;
+}
+.lesson, .theory, .unit, .quiz-box, .q-item {
+  background: #ffffff !important;
+}
+.lesson {
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 4px 16px rgba(15,23,42,.06) !important;
+}
+.path {
+  background: transparent !important;
+}
+
+
+
+

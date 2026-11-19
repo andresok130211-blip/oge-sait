@@ -1,0 +1,16 @@
+
+:root{--p:#059669;--g:#10b981;--gs:#d1fae5;--t:#064e3b;--ts:#64748b;--r:#ef4444;--sh:0 8px 30px rgba(5,150,105,.08);--rad:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);line-height:1.65;font-size:16px;padding-bottom:100px;min-height:100vh;
+background-color:#052e16;
+background-image:
+  radial-gradient(ellipse at 20% 0%,rgba(74,222,128,.4),transparent 50%),
+  radial-gradient(ellipse at 85% 30%,rgba(52,211,153,.3),transparent 45%),
+  radial-gradient(ellipse at 40% 100%,rgba(16,185,129,.2),transparent 40%),
+  linear-gradient(180deg,#064e3b 0%,#022c22 60%,#0f172a 100%);
+background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:radial-gradient(circle at 2px 2px,rgba(167,243,208,.12) 1px,transparent 0);
+background-size:28px 28px}
+body>*{position:relative;z-index:1}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;font-weight:700;line-height:1.25}

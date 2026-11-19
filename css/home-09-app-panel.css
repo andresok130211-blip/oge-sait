@@ -1,0 +1,27 @@
+/* === App panel (compact) === */
+.app-panel{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;padding:16px;margin:18px 0;
+  animation:slideUp .6s ease .15s both;
+}
+.app-panel h2{color:#fff;font-size:1rem;margin-bottom:6px}
+.app-panel p{color:rgba(255,255,255,.7);font-size:.85rem;margin-bottom:10px;line-height:1.45}
+.app-actions{display:flex;flex-wrap:wrap;gap:8px}
+.app-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:11px 14px;border-radius:14px;
+  border:none;font-weight:800;cursor:pointer;font-size:.85rem;text-decoration:none;color:#fff;
+}
+.app-btn.primary{background:linear-gradient(135deg,#7c3aed,#ec4899)}
+.app-btn.secondary{background:rgba(255,255,255,.2);color:#fff}
+.app-grid{margin-top:10px}
+.app-grid label{display:block;font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:4px}
+.app-grid select{
+  padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.15);color:#fff;font:inherit;
+}
+.app-grid select option{color:#0f172a}
+
+.footer{text-align:center;margin-top:20px;font-size:.78rem;color:rgba(255,255,255,.45)}
+

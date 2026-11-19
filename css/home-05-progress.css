@@ -1,0 +1,24 @@
+/* === Progress panel === */
+.progress-panel{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;padding:16px;margin-bottom:16px;
+  animation:slideUp .55s ease .05s both;
+}
+.progress-panel h3{color:#fff;font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.prog-item{margin-bottom:10px}
+.prog-item:last-child{margin-bottom:0}
+.prog-head{display:flex;justify-content:space-between;font-size:.8rem;color:rgba(255,255,255,.85);margin-bottom:4px}
+.prog-bar{
+  height:10px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;
+}
+.prog-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,#a78bfa,#ec4899,#22d3ee);
+  background-size:200% 100%;
+  animation:gradShift 4s ease infinite;
+  transition:width .6s cubic-bezier(.34,1.2,.64,1);
+  width:0;
+}
+

@@ -1,0 +1,106 @@
+<div class="unit" data-unit="m1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🔢</div>
+      <div class="unit-info">
+        <h3>Числа, дроби, проценты</h3>
+        <p>Самое базовое — без этого никуда</p>
+        <div class="unit-progress"><div class="unit-progress-bar"></div></div>
+      </div>
+      <div class="unit-chevron">▼</div>
+    </div>
+    <div class="unit-body">
+      <div class="lesson" data-lesson="m1a">
+        <h4><span class="lesson-num">1</span> Что такое дробь</h4>
+        <div class="theory">
+          <p><strong>Дробь</strong> — это часть от целого. Например, 1/2 — это половина.</p>
+          <p>В дроби 3/4:</p>
+          <ul>
+            <li><strong>3</strong> — числитель (сколько частей взяли)</li>
+            <li><strong>4</strong> — знаменатель (на сколько частей разделили целое)</li>
+          </ul>
+          <p><strong>Десятичная дробь</strong> — то же самое, но через запятую: 0,5 = 1/2, 0,25 = 1/4.</p>
+        <p>Закрепите тему: выпишите 5 терминов своими словами, приведите примеры, решите несколько коротких заданий без подсказки и объясните вслух «почему так». Если два правила путаются, составьте таблицу «сходство / различие». На ОГЭ важнее уметь применить правило, чем повторить формулировку. Подчёркивайте в условии ключевые слова. Лучше 30 минут осознанной практики, чем час беглого чтения. Ошибки заносите в список «мои типовые промахи» и перерешивайте на следующий день. Короткое повторение перед сном — 10 примеров — даёт хорошую отдачу для памяти.</p><p></p><p></p></div>
+        <div class="ex">
+          <div class="ex-label">Как перевести</div>
+          <p>1/2 = 0,5 = 50%<br>
+          1/4 = 0,25 = 25%<br>
+          1/5 = 0,2 = 20%<br>
+          3/4 = 0,75 = 75%</p>
+        </div>
+        <div class="quiz-box">
+          <h5>Лёгкие</h5>
+          <div class="q-item" data-c="1">
+            <div class="q-text">1/2 — это сколько в процентах? <span class="badge easy">лёгкое</span></div>
+            <div class="opts">
+              <button class="opt" data-v="1">50%</button>
+              <button class="opt" data-v="2">25%</button>
+              <button class="opt" data-v="3">2%</button>
+            </div>
+            <div class="fb"></div>
+          </div>
+          <div class="q-item" data-c="2">
+            <div class="q-text">0,25 — это какая дробь? <span class="badge easy">лёгкое</span></div>
+            <div class="opts">
+              <button class="opt" data-v="1">1/2</button>
+              <button class="opt" data-v="2">1/4</button>
+              <button class="opt" data-v="3">1/5</button>
+            </div>
+            <div class="fb"></div>
+          </div>
+        </div>
+        <button class="done-btn" onclick="completeLesson(this,15)">Урок пройден ✓</button>
+      </div>
+
+      <div class="lesson" data-lesson="m1b">
+        <h4><span class="lesson-num">2</span> Проценты — очень просто</h4>
+        <div class="theory">
+          <p><strong>1%</strong> — это одна сотая часть числа. То есть 1% = 1/100.</p>
+          <p><strong>Как найти процент от числа:</strong></p>
+          <div class="step"><b>Шаг 1.</b> Процент дели на 100 (получишь десятичную дробь).<br>
+          <b>Шаг 2.</b> Умножь на число.<p>Закрепите тему: выпишите 5 терминов своими словами, приведите примеры, решите несколько коротких заданий без подсказки и объясните вслух «почему так». Если два правила путаются, составьте таблицу «сходство / различие». На ОГЭ важнее уметь применить правило, чем повторить формулировку. Подчёркивайте в условии ключевые слова. Лучше 30 минут осознанной практики, чем час беглого чтения. Ошибки заносите в список «мои типовые промахи» и перерешивайте на следующий день. Короткое повторение перед сном — 10 примеров — даёт хорошую отдачу для памяти.</p><p></p><p></p></div>
+          <div class="ex">
+            <div class="ex-label">Пример: 20% от 150</div>
+            <p>20 ÷ 100 = 0,2<br>
+            0,2 × 150 = <strong>30</strong></p>
+          </div>
+          <p><strong>Как найти число, если известен процент:</strong><br>
+          «30 — это 20% от какого числа?» → 30 ÷ 0,2 = 150</p>
+        </div>
+        <div class="tip">«Увеличили на 15%» значит умножить на 1,15. «Уменьшили на 15%» — умножить на 0,85.</div>
+        <div class="quiz-box">
+          <h5>Лёгкие</h5>
+          <div class="q-item" data-c="2">
+            <div class="q-text">10% от 80 = ? <span class="badge easy">лёгкое</span></div>
+            <div class="opts">
+              <button class="opt" data-v="1">4</button>
+              <button class="opt" data-v="2">8</button>
+              <button class="opt" data-v="3">10</button>
+            </div>
+            <div class="fb"></div>
+          </div>
+        </div>
+        <div class="quiz-box">
+          <h5>Сложные</h5>
+          <div class="q-item" data-c="3">
+            <div class="q-text">Цена 800 ₽ выросла на 15%. Новая цена? <span class="badge hard">сложное</span></div>
+            <div class="opts">
+              <button class="opt" data-v="1">815 ₽</button>
+              <button class="opt" data-v="2">880 ₽</button>
+              <button class="opt" data-v="3">920 ₽</button>
+            </div>
+            <div class="fb"></div>
+          </div>
+          <div class="q-item" data-c="1">
+            <div class="q-text">Товар стоил 500 ₽, скидка 20%. Сколько платить? <span class="badge hard">сложное</span></div>
+            <div class="opts">
+              <button class="opt" data-v="1">400 ₽</button>
+              <button class="opt" data-v="2">480 ₽</button>
+              <button class="opt" data-v="3">100 ₽</button>
+            </div>
+            <div class="fb"></div>
+          </div>
+        </div>
+        <button class="done-btn" onclick="completeLesson(this,20)">Урок пройден ✓</button>
+      </div>
+    </div>
+  </div>
